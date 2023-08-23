@@ -7,257 +7,282 @@
     <title>On-site registration</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        input:focus {
-            outline: none;
+    input:focus {
+        outline: none;
+    }
+
+    input[type=checkbox] {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        transform: translateY(0.5px);
+    }
+
+    input[type=radio] {
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        transform: translateY(2.5px);
+    }
+
+    span {
+        color: #c1121f;
+        font-weight: 600;
+    }
+
+    P {
+        font-size: 1.1rem;
+        line-height: 1.75rem;
+        font-weight: 600;
+        margin-top: 12px !important;
+        margin-bottom: 8px !important;
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 18px !important;
+        font-weight: 600 !important;
+    }
+
+    input[type=text] {
+        border: 1px solid #ddd;
+        padding: 8px 16px;
+        height: 2.25rem;
+        /* width: 300px; */
+    }
+
+    label {
+        font-weight: 600;
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+
+    textarea {
+        height: 150px;
+        background-color: #fff;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+
+    .tbl_type01 {
+        border: 1px solid #7d8597;
+        border-top: 2px solid #7d8597;
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    .tbl_type01 th,
+    .tbl_type01 td {
+        border: 1px solid #7d8597;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .tbl_type01 th,
+    .tbl_type01 td {
+        border: 1px solid #7d8597;
+    }
+
+    th {
+        height: 50px;
+        background-color: rgb(186 230 253);
+        ;
+    }
+
+    .container {
+        width: 1300px;
+        padding: 0;
+        margin: 20px auto;
+    }
+
+    .confirm_box {
+        width: 100%;
+        /* height: 200px; */
+        text-align: center;
+        /* border: 1px solid #eee; */
+    }
+
+    .confirm_box_title {
+        text-align: center;
+        background-color: rgb(4, 151, 230);
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .all_checkbox {
+        display: flex;
+        width: 100%;
+        height: 100px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .personal_checkbox {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .personal_checkbox>div {
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .next_btn_box,
+    .final_btn_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .next_btn_box>button,
+    .final_btn {
+        width: 30%;
+        height: 50px;
+        font-size: 24px;
+        border: 1px solid #7d8597;
+        margin: 20px;
+    }
+
+    .full_input {
+        width: 70%;
+    }
+
+    .tbl_type01 td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    .wrap_2_2>table {
+        border: none;
+    }
+
+    .category {
+        height: 80px;
+    }
+
+    .select_category {
+        width: 95%;
+        height: 40px;
+        border: 1px solid #ddd;
+    }
+
+    .member {
+        height: 40px;
+        display: flex;
+        align-items: center;
+    }
+
+    .submit_btn {
+        width: 150px;
+        height: 50px;
+        background-color: #e1e1e1;
+    }
+
+    .mo_wrap {
+        margin-bottom: 1rem;
+    }
+
+    #mobile_form {
+        transform: translateY(6rem);
+    }
+
+    #scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    #scroll {
+        -ms-overflow-style: none;
+        /* 인터넷 익스플로러 */
+        scrollbar-width: none;
+        /* 파이어폭스 */
+    }
+
+    .mo-table th,
+    .mo-table td {
+        padding: 1rem;
+        border: 1px solid #eee;
+        text-align: center;
+    }
+
+    .mo-table td {
+        width: 27rem;
+    }
+
+    .mo-table th {
+        width: 7rem;
+    }
+
+    .mo-table {
+        margin-top: 5rem;
+    }
+
+    @media screen and (max-width:500px) {
+        p {
+            font-size: 0.9rem !important;
         }
 
-        input[type=checkbox] {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
-            transform: translateY(0.5px);
+        .ln {
+            font-size: 0.65rem !important;
         }
 
-        input[type=radio] {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
-            transform: translateY(2.5px);
-        }
-
-        span {
-            color: #c1121f;
-            font-weight: 600;
-        }
-
-        P {
-            font-size: 1.1rem;
-            line-height: 1.75rem;
-            font-weight: 600;
-            margin-top: 12px !important;
-            margin-bottom: 8px !important;
-            margin: 0;
-        }
-
-        h2 {
-            font-size: 18px !important;
-            font-weight: 600 !important;
-        }
-
-        input[type=text] {
-            border: 1px solid #ddd;
-            padding: 8px 16px;
-            height: 2.25rem;
-            /* width: 300px; */
-        }
-
-        label {
-            font-weight: 600;
-            font-size: 1rem;
-            margin-right: 1rem;
-        }
-
-        textarea {
-            height: 150px;
-            background-color: #fff;
-        }
-
-        table {
-            border-collapse: collapse;
-        }
-
-
-        .tbl_type01 {
-            border: 1px solid #7d8597;
-            border-top: 2px solid #7d8597;
-            text-align: center;
-            border-collapse: collapse;
-        }
-
-        .tbl_type01 th,
-        .tbl_type01 td {
-            border: 1px solid #7d8597;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .tbl_type01 th,
-        .tbl_type01 td {
-            border: 1px solid #7d8597;
-        }
-
-        th {
-            height: 50px;
-            background-color: rgb(186 230 253);
-            ;
-        }
-
-        .container {
-            width: 1300px;
+        .mo-table td {
             padding: 0;
-            margin: 20px auto;
         }
 
-        .confirm_box {
-            width: 100%;
-            /* height: 200px; */
-            text-align: center;
-            /* border: 1px solid #eee; */
+        .right {
+            margin-right: 2.9rem;
         }
 
-        .confirm_box_title {
-            text-align: center;
-            background-color: rgb(4, 151, 230);
-            color: #fff;
-            font-weight: 500;
+        .sn {
+            font-size: 0.73rem;
         }
 
-        .all_checkbox {
-            display: flex;
-            width: 100%;
-            height: 100px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .personal_checkbox {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 50px;
-        }
-
-        .personal_checkbox>div {
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: left;
-        }
-
-        .next_btn_box,
-        .final_btn_box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .tbl_type01 td {
+            padding: 0;
+            font-size: 0.7rem;
         }
 
         .next_btn_box>button,
         .final_btn {
-            width: 30%;
-            height: 50px;
-            font-size: 24px;
-            border: 1px solid #7d8597;
-            margin: 20px;
+            font-size: 20px;
+            width: 15rem;
         }
 
-        .full_input {
-            width: 70%;
+        .text-base {
+            font-size: 0.7rem;
+            line-height: 1.5rem;
         }
-
-        .tbl_type01 td {
-            padding: 8px;
-            text-align: left;
-        }
-
-        .wrap_2_2>table {
-            border: none;
-        }
-
-        .category {
-            height: 80px;
-        }
-
-        .select_category {
-            width: 95%;
-            height: 40px;
-            border: 1px solid #ddd;
-        }
-
-        .member {
-            height: 40px;
-            display: flex;
-            align-items: center;
-        }
-
-        .submit_btn {
-            width: 150px;
-            height: 50px;
-            background-color: #e1e1e1;
-        }
-
-        .mo_wrap {
-            margin-bottom: 1rem;
-        }
-
-        #mobile_form {
-            transform: translateY(6rem);
-        }
-
-        #scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        #scroll {
-            -ms-overflow-style: none;
-            /* 인터넷 익스플로러 */
-            scrollbar-width: none;
-            /* 파이어폭스 */
-        }
-
-        .mo-table th,
-        .mo-table td {
-            padding: 1rem;
-            border: 1px solid #eee;
-            text-align: center;
-        }
-
-        .mo-table td {
-            width: 27rem;
-        }
-
-        .mo-table th {
-            width: 7rem;
-        }
-
-        .mo-table {
-            margin-top: 5rem;
-        }
-
-        @media screen and (max-width:390px) {
-            p {
-                font-size: 0.9rem !important;
-            }
-
-            .ln {
-                font-size: 0.65rem !important;
-            }
-
-            .mo-table td {
-                padding: 0;
-            }
-
-            .right {
-                margin-right: 2.9rem;
-            }
-        }
+    }
     </style>
 </head>
 
 <body class="flex items-center justify-center">
-    <div id="scroll" class="w-full h-full flex items-center justify-center overflow-x-hidden overflow-y-scroll relative max-w-5xl">
+    <div id="scroll"
+        class="w-full h-full flex items-center justify-center overflow-x-hidden overflow-y-scroll relative max-w-5xl">
         <div class="w-full max-w-5xl ">
-            <div class="w-full max-w-5xl text-center text-2xl font-semibold bg-gradient-to-r from-green-400 to-blue-500 p-3 text-white fixed z-10">
+            <div
+                class="w-full max-w-5xl text-center text-2xl font-semibold bg-gradient-to-r from-green-400 to-blue-500 p-3 text-white fixed z-10">
                 <h1>On-site registration<br>(현장 등록)</h1>
             </div>
             <section id="container" class="">
 
-                <form action="/onSite/mobile" method="GET" id="mobile_form" class="w-11/12 translate-y-48 mx-auto px-3 h-screen">
+                <form action="/onSite/mobile" method="GET" id="mobile_form"
+                    class="w-11/12 translate-y-48 mx-auto px-3 h-screen">
                     <div id="page_1" class="py-1">
                         <div class="mo_wrap">
                             <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">Name(이름)<span>*</span></p>
                             <div style="display: none;" class="flex justify-between w-full mb-2">
-                                <input type="text" id="firstName" name="firstName" class="w-[49%]" placeholder="*First name(영문 이름)" />
-                                <input type="text" id="lastName" name="lastName" class="w-[49%]" placeholder="*Last name(영문 성)" />
+                                <input type="text" id="firstName" name="firstName" class="w-[49%]"
+                                    placeholder="*First name(영문 이름)" />
+                                <input type="text" id="lastName" name="lastName" class="w-[49%]"
+                                    placeholder="*Last name(영문 성)" />
                             </div>
                             <input type="text" id="KoreanName" name="nick_name" class="w-full" placeholder="국문이름">
                         </div>
@@ -492,16 +517,20 @@
                         <div class="mo_wrap">
                             <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">Mobile Phone Number(휴대전화번호)<span>*</span></p>
-                            <input type="text" id="phoneNumber" name="phone" class="w-full" placeholder="* -를 제외한 숫자만 입력해주세요" oninput="checkFirstDigit(event)">
+                            <input type="text" id="phoneNumber" name="phone" class="w-full"
+                                placeholder="* -를 제외한 숫자만 입력해주세요" oninput="checkFirstDigit(event)">
                         </div>
                         <div class="mo_wrap">
                             <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">E-mail(이메일)<span>*</span></p>
                             <div class="flex items-center justify-space">
-                                <input type="text" name="email1" id="Email1" maxlength="64" value="" class="w-[40%] mr-2">
+                                <input type="text" name="email1" id="Email1" maxlength="64" value=""
+                                    class="w-[40%] mr-2">
                                 <p>@</p>
-                                <input type="text" name="email2" id="Email2" maxlength="64" value="" class="w-[40%] ml-2">
-                                <select name="email3" id="Email3" class="border w-[15%] h-9 ml-3" style="background-color:#ffffff;">
+                                <input type="text" name="email2" id="Email2" maxlength="64" value=""
+                                    class="w-[40%] ml-2">
+                                <select name="email3" id="Email3" class="border w-[15%] h-9 ml-3"
+                                    style="background-color:#ffffff;">
                                     <option value="" selected="selected">직접입력</option>
                                     <option value="naver.com">naver.com</option>
                                     <option value="daum.net">daum.net</option>
@@ -537,7 +566,8 @@
                                 <img src="../../assets/images/circle.png" class="inline-block" />
                                 <p class="inline-block">Type of Participation(참석유형)<span>*</span></p>
                                 <div class="flex justify-between items-center">
-                                    <select id="Participation_1" style="background-color:#ffffff;" class="px-2 py-1 w-full h-9 border" name="type2">
+                                    <select id="Participation_1" style="background-color:#ffffff;"
+                                        class="px-2 py-1 w-full h-9 border" name="type2">
                                         <option value="" selected="selected">* 필수 선택사항</option>
                                         <option value="임원">Committee</option>
                                         <option value="연자">Speaker</option>
@@ -552,7 +582,8 @@
                                 <img src="../../assets/images/circle.png" class="inline-block" />
                                 <p class="inline-block">Category(참석자 구분)<span>*</span></p>
                                 <div class="flex justify-between items-center">
-                                    <select id="Category_1" style="background-color:#ffffff;" class="px-2 py-1 w-full h-9 border">
+                                    <select id="Category_1" style="background-color:#ffffff;"
+                                        class="px-2 py-1 w-full h-9 border">
                                         <option value="" selected="selected">* 필수 선택사항</option>
                                         <option value="개원의">Certified M.D.</option>
                                         <option value="전임의">Fellow</option>
@@ -664,11 +695,13 @@
                                     </tr>
                                 </table>
                             </div>
-                            <button type="button" id="page_1_btn" class="mx-auto w-60 h-15 bg-sky-900 text-white p-3 text-lg flex items-center justify-center mt-20 mb-20">Next</button>
+                            <button type="button" id="page_1_btn"
+                                class="mx-auto w-60 h-15 bg-sky-900 text-white p-3 text-lg flex items-center justify-center mt-20 mb-20">Next</button>
                         </div>
                     </div>
                     <!-- ==========================================================================================================/ -->
-                    <div id="page_2" class="flex flex-col items-center justify-center text-center my-20" style="display: none;">
+                    <div id="page_2" class="flex flex-col items-center justify-center text-center my-20"
+                        style="display: none;">
                         <div>
                             <img src="../../assets/images/circle.png" class="inline-block" />
                             <h2 class="inline-block">Session participation(세션참여 여부)<span>*</span></h2>
@@ -713,7 +746,8 @@
                             <input class="session_radio" type="radio" id="no_5" />
                             <label for="no_5">NO</label>
                         </div>
-                        <button type="button" id="page_2_btn" class="mx-auto w-60 h-15 bg-sky-900 text-white p-3 my-5 text-lg flex items-center justify-center mt-20">Next</button>
+                        <button type="button" id="page_2_btn"
+                            class="mx-auto w-60 h-15 bg-sky-900 text-white p-3 my-5 text-lg flex items-center justify-center mt-20">Next</button>
                     </div>
                     <!-- ==========================================================================================================/ -->
 
@@ -778,7 +812,8 @@
                                 </label>
                             </div>
                         </div>
-                        <button type="button" id="page_3_btn" class="mx-auto w-60 h-15 bg-sky-900 text-white p-3 my-5 text-lg flex items-center justify-center mt-20">Next</button>
+                        <button type="button" id="page_3_btn"
+                            class="mx-auto w-60 h-15 bg-sky-900 text-white p-3 my-5 text-lg flex items-center justify-center mt-20">Next</button>
                     </div>
                     <!-- ================================================================================================/ -->
                     <div id="page_4" class="wrap_2" style="display: none;">
@@ -793,12 +828,12 @@
                         </div>
                         <div class="all_checkbox">
                             <input id="all_check" type="checkbox" />
-                            <label for="all_check">개인정보 수집 및 제공 동의에 모두 동의</label>
+                            <label for="all_check" class="sn">개인정보 수집 및 제공 동의에 모두 동의</label>
                         </div>
                         <div class="personal_checkbox">
                             <div>
                                 <input id="first_check" class="check" type="checkbox" />
-                                <label for="first_check">개인정보 수집 동의 <span>(필수)</span></label>
+                                <label for="first_check" class="sn">개인정보 수집 동의 <span>(필수)</span></label>
                             </div>
 
                             <textarea class="border text-base" disabled="" readonly="">
@@ -815,7 +850,7 @@
                         <div class="personal_checkbox">
                             <div>
                                 <input id="second_check" class="check" type="checkbox" />
-                                <label for="second_check">개인정보 3자 제공 동의<span>(필수)</span></label>
+                                <label for="second_check" class="sn">개인정보 3자 제공 동의<span>(필수)</span></label>
                             </div>
 
                             <textarea class="border text-base" disabled="" readonly="">
@@ -843,7 +878,8 @@
                         <div class="personal_checkbox">
                             <div>
                                 <input id="third_check" class="check" type="checkbox" />
-                                <label for="third_check"> 차기 학술대회 관련 안내 이메일 수신 동의 <span style="color: #7d8597;">(선택)</span>
+                                <label for="third_check" class="sn"> 차기 학술대회 관련 안내 이메일 수신 동의 <span
+                                        style="color: #7d8597;">(선택)</span>
                                 </label>
 
                             </div>
@@ -871,7 +907,8 @@
                         <div class="personal_checkbox">
                             <div>
                                 <input id="fourth_check" class="check" type="checkbox" />
-                                <label for="fourth_check"> 차기 학술대회 관련 안내 이메일 수신 동의 <span style="color: #7d8597;">(선택)</span>
+                                <label for="fourth_check" class="sn"> 차기 학술대회 관련 안내 이메일 수신 동의 <span
+                                        style="color: #7d8597;">(선택)</span>
                                 </label>
 
                             </div>
@@ -897,7 +934,8 @@
                         </div>
                         <div class="next_btn_box">
 
-                            <button class="next_btn w-60 h-15 bg-sky-900 text-white p-3 my-5 text-lg" type="submit">Submit</button>
+                            <button class="next_btn w-60 h-15 bg-sky-900 text-white p-3 my-5 text-lg"
+                                type="submit">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -907,537 +945,537 @@
     </div>
 </body>
 <script>
-    const wrap_1 = document.querySelector("#page_1")
-    const wrap_2 = document.querySelector("#page_2")
-    const wrap_3 = document.querySelector("#page_3")
-    const wrap_4 = document.querySelector("#page_4")
+const wrap_1 = document.querySelector("#page_1")
+const wrap_2 = document.querySelector("#page_2")
+const wrap_3 = document.querySelector("#page_3")
+const wrap_4 = document.querySelector("#page_4")
 
-    const firstName = document.querySelector("#firstName");
-    const LastName = document.querySelector("#lastName");
-    const KoreanName = document.querySelector("#KoreanName");
+const firstName = document.querySelector("#firstName");
+const LastName = document.querySelector("#lastName");
+const KoreanName = document.querySelector("#KoreanName");
 
-    const contry = document.querySelector("#nation_no");
+const contry = document.querySelector("#nation_no");
 
-    const affilation = document.querySelector("#affiliation");
+const affilation = document.querySelector("#affiliation");
 
-    const phone = document.querySelector("#phoneNumber")
+const phone = document.querySelector("#phoneNumber")
 
-    const email_1 = document.querySelector("#Email1")
-    const email_2 = document.querySelector("#Email2")
-    const email_3 = document.querySelector("#Email3")
+const email_1 = document.querySelector("#Email1")
+const email_2 = document.querySelector("#Email2")
+const email_3 = document.querySelector("#Email3")
 
-    const member = document.querySelector("#member");
-    const nonMember = document.querySelector("#non_member")
+const member = document.querySelector("#member");
+const nonMember = document.querySelector("#non_member")
 
-    // const participation = document.querySelector("#Participation");
-    const participationSelect = document.querySelector("#Participation_1")
+// const participation = document.querySelector("#Participation");
+const participationSelect = document.querySelector("#Participation_1")
 
-    // const category = document.querySelector("#Category")
-    const categorySelect = document.querySelector("#Category_1")
-    const categoryOthers = document.querySelector("#category_others")
+// const category = document.querySelector("#Category")
+const categorySelect = document.querySelector("#Category_1")
+const categoryOthers = document.querySelector("#category_others")
 
-    const need = document.querySelector("#need");
-    const nonNeed = document.querySelector("#non_need")
+const need = document.querySelector("#need");
+const nonNeed = document.querySelector("#non_need")
 
-    const doctor = document.querySelector("#doctor");
-    const specialist = document.querySelector("#specialist")
+const doctor = document.querySelector("#doctor");
+const specialist = document.querySelector("#specialist")
 
-    const yes_1 = document.querySelector("#yes_1")
-    const no_1 = document.querySelector("#no_1")
-    const yes_2 = document.querySelector("#yes_2")
-    const no_2 = document.querySelector("#no_2")
-    const yes_3 = document.querySelector("#yes_3")
-    const no_3 = document.querySelector("#no_3")
-    const yes_4 = document.querySelector("#yes_4")
-    const no_4 = document.querySelector("#no_4")
-    const yes_5 = document.querySelector("#yes_5")
-    const no_5 = document.querySelector("#no_5")
+const yes_1 = document.querySelector("#yes_1")
+const no_1 = document.querySelector("#no_1")
+const yes_2 = document.querySelector("#yes_2")
+const no_2 = document.querySelector("#no_2")
+const yes_3 = document.querySelector("#yes_3")
+const no_3 = document.querySelector("#no_3")
+const yes_4 = document.querySelector("#yes_4")
+const no_4 = document.querySelector("#no_4")
+const yes_5 = document.querySelector("#yes_5")
+const no_5 = document.querySelector("#no_5")
 
-    const participationRadios = document.querySelectorAll('.session_radio');
-    const checkboxes = document.querySelectorAll('.checkbox');
-    const allCheck = document.querySelector("#all_check");
-    const checkedbox2 = document.querySelectorAll('.check');
-    const firstCheck = document.querySelector("#first_check");
-    const secondCheck = document.querySelector("#second_check");
-    const thirdCheck = document.querySelector("#third_check");
-    const fourthCheck = document.querySelector("#fourth_check");
+const participationRadios = document.querySelectorAll('.session_radio');
+const checkboxes = document.querySelectorAll('.checkbox');
+const allCheck = document.querySelector("#all_check");
+const checkedbox2 = document.querySelectorAll('.check');
+const firstCheck = document.querySelector("#first_check");
+const secondCheck = document.querySelector("#second_check");
+const thirdCheck = document.querySelector("#third_check");
+const fourthCheck = document.querySelector("#fourth_check");
 
-    const submitButton = document.querySelector("#page_3_btn")
-    const finalButton = document.querySelector(".next_btn")
-    const firstPageBtn = document.querySelector("#page_1_btn")
-    const secondPageBtn = document.querySelector("#page_2_btn")
-    const thirdPageBtn = document.querySelector("#page_3_btn")
-    const fourthPageBtn = document.querySelector("#page_4_btn")
-    const type = document.querySelector("#type")
-    const firstType = document.querySelectorAll(".type-1")
-    const secondType = document.querySelectorAll(".type-2")
-    const thridType = document.querySelectorAll(".type-3")
-    const oneBox = document.querySelector("#one_box")
-    const twoBox = document.querySelector("#two_box")
-    const type1 = document.querySelector("#type_1")
-    const type2 = document.querySelector("#type_2")
-    const type3 = document.querySelector("#type_3")
-    const type4 = document.querySelector("#type_4")
-    const type5 = document.querySelector("#type_5")
-    const type6 = document.querySelector("#type_6")
-    const type7 = document.querySelector("#type_7")
-    const type8 = document.querySelector("#type_8")
-    const type9 = document.querySelector("#type_9")
-    const type10 = document.querySelector("#type_10")
-    const type11 = document.querySelector("#type_11")
-    const type12 = document.querySelector("#type_12")
-    const type13 = document.querySelector("#type_13")
-    const type14 = document.querySelector("#type_14")
-    const type15 = document.querySelector("#type_15")
-    const otherInput = document.querySelector("#other")
+const submitButton = document.querySelector("#page_3_btn")
+const finalButton = document.querySelector(".next_btn")
+const firstPageBtn = document.querySelector("#page_1_btn")
+const secondPageBtn = document.querySelector("#page_2_btn")
+const thirdPageBtn = document.querySelector("#page_3_btn")
+const fourthPageBtn = document.querySelector("#page_4_btn")
+const type = document.querySelector("#type")
+const firstType = document.querySelectorAll(".type-1")
+const secondType = document.querySelectorAll(".type-2")
+const thridType = document.querySelectorAll(".type-3")
+const oneBox = document.querySelector("#one_box")
+const twoBox = document.querySelector("#two_box")
+const type1 = document.querySelector("#type_1")
+const type2 = document.querySelector("#type_2")
+const type3 = document.querySelector("#type_3")
+const type4 = document.querySelector("#type_4")
+const type5 = document.querySelector("#type_5")
+const type6 = document.querySelector("#type_6")
+const type7 = document.querySelector("#type_7")
+const type8 = document.querySelector("#type_8")
+const type9 = document.querySelector("#type_9")
+const type10 = document.querySelector("#type_10")
+const type11 = document.querySelector("#type_11")
+const type12 = document.querySelector("#type_12")
+const type13 = document.querySelector("#type_13")
+const type14 = document.querySelector("#type_14")
+const type15 = document.querySelector("#type_15")
+const otherInput = document.querySelector("#other")
 
 
-    /**영어 유효성 검사 */
-    firstName.addEventListener("input", (event) => {
-        englishInput(event)
-    })
-    LastName.addEventListener("input", (event) => {
-        englishInput(event)
-    })
+/**영어 유효성 검사 */
+firstName.addEventListener("input", (event) => {
+    englishInput(event)
+})
+LastName.addEventListener("input", (event) => {
+    englishInput(event)
+})
 
-    function englishInput(event) {
-        const inputValue = event.target.value;
-        const onlyEnglish = /^[A-Za-z]+$/;
+function englishInput(event) {
+    const inputValue = event.target.value;
+    const onlyEnglish = /^[A-Za-z]+$/;
 
-        if (!onlyEnglish.test(inputValue)) {
-            event.target.value = inputValue.replace(/[^A-Za-z]/g, '');
-        }
+    if (!onlyEnglish.test(inputValue)) {
+        event.target.value = inputValue.replace(/[^A-Za-z]/g, '');
     }
+}
 
 
-    /**한국어 유효성 검사 */
-    KoreanName.addEventListener('input', (event) => {
-        const inputValue = event.target.value;
-        const onlyHangul = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
+/**한국어 유효성 검사 */
+KoreanName.addEventListener('input', (event) => {
+    const inputValue = event.target.value;
+    const onlyHangul = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
 
-        if (!onlyHangul.test(inputValue)) {
-            event.target.value = inputValue.replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]+/g, '');
-        }
-    });
-
-    /**휴대폰 유효성 검사 */
-    phone.addEventListener('input', (event) => {
-        const inputValue = event.target.value;
-        const onlyNumbers = /^[0-9]+$/;
-
-        if (!onlyNumbers.test(inputValue)) {
-            event.target.value = inputValue.replace(/\D/g, '');
-        }
-    });
-
-    /**phone input 첫글자는 무조건 0으로 */
-    function checkFirstDigit(event) {
-        const inputValue = event.target.value;
-        if (inputValue.length > 0 && inputValue[0] !== '0') {
-            event.target.value = '';
-        }
+    if (!onlyHangul.test(inputValue)) {
+        event.target.value = inputValue.replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]+/g, '');
     }
+});
 
-    email_3.addEventListener("click", () => {
-        email_2.value = email_3.options[email_3.selectedIndex].value
-    })
+/**휴대폰 유효성 검사 */
+phone.addEventListener('input', (event) => {
+    const inputValue = event.target.value;
+    const onlyNumbers = /^[0-9]+$/;
+
+    if (!onlyNumbers.test(inputValue)) {
+        event.target.value = inputValue.replace(/\D/g, '');
+    }
+});
+
+/**phone input 첫글자는 무조건 0으로 */
+function checkFirstDigit(event) {
+    const inputValue = event.target.value;
+    if (inputValue.length > 0 && inputValue[0] !== '0') {
+        event.target.value = '';
+    }
+}
+
+email_3.addEventListener("click", () => {
+    email_2.value = email_3.options[email_3.selectedIndex].value
+})
 
 
-    categorySelect.addEventListener("click", () => {
-        const categoryValue = categorySelect.options[categorySelect.selectedIndex].value;
-        if (categoryValue === "Others") {
-            categoryOthers.style.display = "";
+categorySelect.addEventListener("click", () => {
+    const categoryValue = categorySelect.options[categorySelect.selectedIndex].value;
+    if (categoryValue === "Others") {
+        categoryOthers.style.display = "";
+    } else {
+        categoryOthers.style.display = "none";
+    }
+})
+
+nonNeed.addEventListener("click", () => {
+    if (nonNeed.checked) {
+        need.checked = false;
+        doctor.disabled = true;
+        specialist.disabled = true;
+    } else {
+        need.checked = true
+        doctor.disabled = false;
+        specialist.disabled = false;
+    }
+})
+
+need.addEventListener("click", () => {
+    if (need.checked) {
+        nonNeed.checked = false;
+        doctor.disabled = false;
+        specialist.disabled = false;
+    }
+})
+
+const numArray = [1, 2, 3, 4, 5];
+let one = false;
+let two = false;
+let three = false;
+let four = false;
+let five = false;
+
+let first = false;
+let second = false;
+let third = false;
+let fourth = false;
+let fiveth = false;
+
+type1.addEventListener("click", () => {
+
+    if (type1.checked) {
+        type2.checked = false
+        type3.checked = false
+        type4.checked = false
+        type5.checked = false
+        type6.checked = false
+        type.style.display = "";
+        oneBox.style.display = "";
+        twoBox.style.display = "none"
+    }
+})
+
+type2.addEventListener("click", () => {
+    if (type2.checked) {
+        type1.checked = false
+        type3.checked = false
+        type4.checked = false
+        type5.checked = false
+        type6.checked = false
+        type.style.display = "";
+        oneBox.style.display = "";
+        twoBox.style.display = "none"
+    }
+})
+
+type3.addEventListener("click", () => {
+    if (type3.checked) {
+        type2.checked = false
+        type1.checked = false
+        type4.checked = false
+        type5.checked = false
+        type6.checked = false
+        type.style.display = "none";
+        oneBox.style.display = "none";
+        twoBox.style.display = "none"
+    }
+})
+
+type4.addEventListener("click", () => {
+    if (type4.checked) {
+        type2.checked = false
+        type1.checked = false
+        type3.checked = false
+        type5.checked = false
+        type6.checked = false
+        type.style.display = "none";
+        oneBox.style.display = "none";
+        twoBox.style.display = "none"
+    }
+})
+
+type5.addEventListener("click", () => {
+    if (type5.checked) {
+        type1.checked = false
+        type3.checked = false
+        type4.checked = false
+        type2.checked = false
+        type6.checked = false
+        type.style.display = "";
+        oneBox.style.display = "none";
+        twoBox.style.display = ""
+    }
+})
+
+type6.addEventListener("click", () => {
+    if (type6.checked) {
+        type1.checked = false
+        type3.checked = false
+        type4.checked = false
+        type2.checked = false
+        type5.checked = false
+        type.style.display = "";
+        oneBox.style.display = "none";
+        twoBox.style.display = ""
+    }
+})
+
+type7.addEventListener("click", () => {
+    if (type7.checked) {
+        type8.checked = false
+        type9.checked = false
+        type10.checked = false
+    }
+})
+type8.addEventListener("click", () => {
+    if (type8.checked) {
+        type7.checked = false
+        type9.checked = false
+        type10.checked = false
+    }
+})
+type9.addEventListener("click", () => {
+    if (type9.checked) {
+        type8.checked = false
+        type7.checked = false
+        type10.checked = false
+    }
+})
+type10.addEventListener("click", () => {
+    if (type10.checked) {
+        type8.checked = false
+        type9.checked = false
+        type7.checked = false
+    }
+})
+
+type11.addEventListener("click", () => {
+    if (type11.checked) {
+        type12.checked = false
+        type13.checked = false
+        type14.checked = false
+        type15.checked = false
+        otherInput.disabled = true
+    }
+})
+type12.addEventListener("click", () => {
+    if (type12.checked) {
+        type11.checked = false
+        type13.checked = false
+        type14.checked = false
+        type15.checked = false
+        otherInput.disabled = true
+    }
+})
+type13.addEventListener("click", () => {
+    if (type13.checked) {
+        type12.checked = false
+        type11.checked = false
+        type14.checked = false
+        type15.checked = false
+        otherInput.disabled = true
+    }
+})
+type14.addEventListener("click", () => {
+    if (type14.checked) {
+        type12.checked = false
+        type13.checked = false
+        type11.checked = false
+        type15.checked = false
+        otherInput.disabled = true
+    }
+})
+type15.addEventListener("click", () => {
+    if (type15.checked) {
+        type12.checked = false
+        type13.checked = false
+        type14.checked = false
+        type11.checked = false
+        otherInput.disabled = false
+    }
+})
+
+numArray.forEach((num) => {
+    const yes_num = document.getElementById(`yes_${num}`);
+    const no_num = document.getElementById(`no_${num}`);
+
+    yes_num.addEventListener("click", () => {
+        if (yes_num.checked) {
+            no_num.checked = false;
         } else {
-            categoryOthers.style.display = "none";
+            yes_num.checked = true;
         }
-    })
-
-    nonNeed.addEventListener("click", () => {
-        if (nonNeed.checked) {
-            need.checked = false;
-            doctor.disabled = true;
-            specialist.disabled = true;
-        } else {
-            need.checked = true
-            doctor.disabled = false;
-            specialist.disabled = false;
+        if (num === 1 && yes_num.checked) {
+            one = true;
+            first = true;
+            return;
         }
-    })
-
-    need.addEventListener("click", () => {
-        if (need.checked) {
-            nonNeed.checked = false;
-            doctor.disabled = false;
-            specialist.disabled = false;
+        if (num === 2 && yes_num.checked) {
+            two = true;
+            second = true;
+            return;
         }
-    })
-
-    const numArray = [1, 2, 3, 4, 5];
-    let one = false;
-    let two = false;
-    let three = false;
-    let four = false;
-    let five = false;
-
-    let first = false;
-    let second = false;
-    let third = false;
-    let fourth = false;
-    let fiveth = false;
-
-    type1.addEventListener("click", () => {
-
-        if (type1.checked) {
-            type2.checked = false
-            type3.checked = false
-            type4.checked = false
-            type5.checked = false
-            type6.checked = false
-            type.style.display = "";
-            oneBox.style.display = "";
-            twoBox.style.display = "none"
+        if (num === 3 && yes_num.checked) {
+            three = true;
+            third = true;
+            return;
         }
-    })
-
-    type2.addEventListener("click", () => {
-        if (type2.checked) {
-            type1.checked = false
-            type3.checked = false
-            type4.checked = false
-            type5.checked = false
-            type6.checked = false
-            type.style.display = "";
-            oneBox.style.display = "";
-            twoBox.style.display = "none"
+        if (num === 4 && yes_num.checked) {
+            four = true;
+            fourth = true;
+            return;
         }
-    })
-
-    type3.addEventListener("click", () => {
-        if (type3.checked) {
-            type2.checked = false
-            type1.checked = false
-            type4.checked = false
-            type5.checked = false
-            type6.checked = false
-            type.style.display = "none";
-            oneBox.style.display = "none";
-            twoBox.style.display = "none"
+        if (num === 5 && yes_num.checked) {
+            five = true;
+            fiveth = true;
+            return;
         }
-    })
-
-    type4.addEventListener("click", () => {
-        if (type4.checked) {
-            type2.checked = false
-            type1.checked = false
-            type3.checked = false
-            type5.checked = false
-            type6.checked = false
-            type.style.display = "none";
-            oneBox.style.display = "none";
-            twoBox.style.display = "none"
-        }
-    })
-
-    type5.addEventListener("click", () => {
-        if (type5.checked) {
-            type1.checked = false
-            type3.checked = false
-            type4.checked = false
-            type2.checked = false
-            type6.checked = false
-            type.style.display = "";
-            oneBox.style.display = "none";
-            twoBox.style.display = ""
-        }
-    })
-
-    type6.addEventListener("click", () => {
-        if (type6.checked) {
-            type1.checked = false
-            type3.checked = false
-            type4.checked = false
-            type2.checked = false
-            type5.checked = false
-            type.style.display = "";
-            oneBox.style.display = "none";
-            twoBox.style.display = ""
-        }
-    })
-
-    type7.addEventListener("click", () => {
-        if (type7.checked) {
-            type8.checked = false
-            type9.checked = false
-            type10.checked = false
-        }
-    })
-    type8.addEventListener("click", () => {
-        if (type8.checked) {
-            type7.checked = false
-            type9.checked = false
-            type10.checked = false
-        }
-    })
-    type9.addEventListener("click", () => {
-        if (type9.checked) {
-            type8.checked = false
-            type7.checked = false
-            type10.checked = false
-        }
-    })
-    type10.addEventListener("click", () => {
-        if (type10.checked) {
-            type8.checked = false
-            type9.checked = false
-            type7.checked = false
-        }
-    })
-
-    type11.addEventListener("click", () => {
-        if (type11.checked) {
-            type12.checked = false
-            type13.checked = false
-            type14.checked = false
-            type15.checked = false
-            otherInput.disabled = true
-        }
-    })
-    type12.addEventListener("click", () => {
-        if (type12.checked) {
-            type11.checked = false
-            type13.checked = false
-            type14.checked = false
-            type15.checked = false
-            otherInput.disabled = true
-        }
-    })
-    type13.addEventListener("click", () => {
-        if (type13.checked) {
-            type12.checked = false
-            type11.checked = false
-            type14.checked = false
-            type15.checked = false
-            otherInput.disabled = true
-        }
-    })
-    type14.addEventListener("click", () => {
-        if (type14.checked) {
-            type12.checked = false
-            type13.checked = false
-            type11.checked = false
-            type15.checked = false
-            otherInput.disabled = true
-        }
-    })
-    type15.addEventListener("click", () => {
-        if (type15.checked) {
-            type12.checked = false
-            type13.checked = false
-            type14.checked = false
-            type11.checked = false
-            otherInput.disabled = false
-        }
-    })
-
-    numArray.forEach((num) => {
-        const yes_num = document.getElementById(`yes_${num}`);
-        const no_num = document.getElementById(`no_${num}`);
-
-        yes_num.addEventListener("click", () => {
-            if (yes_num.checked) {
-                no_num.checked = false;
-            } else {
-                yes_num.checked = true;
-            }
-            if (num === 1 && yes_num.checked) {
-                one = true;
-                first = true;
-                return;
-            }
-            if (num === 2 && yes_num.checked) {
-                two = true;
-                second = true;
-                return;
-            }
-            if (num === 3 && yes_num.checked) {
-                three = true;
-                third = true;
-                return;
-            }
-            if (num === 4 && yes_num.checked) {
-                four = true;
-                fourth = true;
-                return;
-            }
-            if (num === 5 && yes_num.checked) {
-                five = true;
-                fiveth = true;
-                return;
-            }
-        });
-
-        no_num.addEventListener("click", () => {
-            if (no_num.checked) {
-                yes_num.checked = false;
-            } else {
-                no_num.checked = true;
-            }
-            if (num === 1 && no_num.checked) {
-                one = true;
-                return;
-            }
-            if (num === 2 && no_num.checked) {
-                two = true;
-                return;
-            }
-            if (num === 3 && no_num.checked) {
-                three = true;
-                return;
-            }
-            if (num === 4 && no_num.checked) {
-                four = true;
-                return;
-            }
-            if (num === 5 && no_num.checked) {
-                five = true;
-                return;
-            }
-        });
     });
 
-    let checkedArr = []
+    no_num.addEventListener("click", () => {
+        if (no_num.checked) {
+            yes_num.checked = false;
+        } else {
+            no_num.checked = true;
+        }
+        if (num === 1 && no_num.checked) {
+            one = true;
+            return;
+        }
+        if (num === 2 && no_num.checked) {
+            two = true;
+            return;
+        }
+        if (num === 3 && no_num.checked) {
+            three = true;
+            return;
+        }
+        if (num === 4 && no_num.checked) {
+            four = true;
+            return;
+        }
+        if (num === 5 && no_num.checked) {
+            five = true;
+            return;
+        }
+    });
+});
 
-    firstPageBtn.addEventListener("click", (e) => {
-        e.preventDefault()
-        onSubmit()
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+let checkedArr = []
+
+firstPageBtn.addEventListener("click", (e) => {
+    e.preventDefault()
+    onSubmit()
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+})
+allCheck.addEventListener("click", () => selectAll());
+/**모두 체크 눌렀을 때 */
+function selectAll() {
+    checkedbox2.forEach((checkbox) => {
+        checkbox.checked = allCheck.checked
     })
-    allCheck.addEventListener("click", () => selectAll());
-    /**모두 체크 눌렀을 때 */
-    function selectAll() {
-        checkedbox2.forEach((checkbox) => {
-            checkbox.checked = allCheck.checked
-        })
-        checkedArr = [firstCheck.checked, secondCheck.checked, thirdCheck.checked, fourthCheck.checked];
+    checkedArr = [firstCheck.checked, secondCheck.checked, thirdCheck.checked, fourthCheck.checked];
+}
+
+
+finalButton.addEventListener("submit", (e) => {
+    e.preventDefault()
+    onClickSubmit()
+})
+
+function onSubmit() {
+
+    if (!KoreanName.value) {
+        alert("invaild Name");
+        firstName.focus()
+        return;
     }
 
+    if (!affilation.value) {
+        alert("invaild affilation");
+        affilation.focus()
+        return;
+    }
+    if (!phone.value) {
+        alert("invaild phone");
+        phone.focus()
+        return;
+    }
+    if (!email_1.value || !email_2.value) {
+        alert("invaild email");
+        email_1.focus()
+        return;
+    }
 
-    finalButton.addEventListener("submit", (e) => {
-        e.preventDefault()
-        onClickSubmit()
+    if (!participationSelect.options[participationSelect.selectedIndex].value) {
+        alert("invaild participation");
+        participationSelect.focus()
+        return;
+    }
+
+    if (categorySelect.options[categorySelect.selectedIndex].value === "Others" && !categoryOthers.value) {
+        alert("invaild category");
+        categoryOthers.focus()
+        return;
+    }
+    if (!need.checked && !nonNeed.checked) {
+        alert("invaild grade");
+        need.focus()
+        return;
+    }
+
+    if (need.checked && !doctor.value) {
+        alert("invaild grade");
+        need.focus()
+        return;
+    }
+
+    if (!type1.checked && !type2.checked && !type3.checked && !type4.checked && !type5.checked && !type6.checked) {
+        alert("invaild category")
+        type1.focus()
+        return;
+    }
+    if (type1.checked && !type7.checked && !type8.checked && !type9.checked && !type10.checked) {
+        alert("invaild category")
+        type1.focus()
+        return;
+    }
+    if (type2.checked && !type7.checked && !type8.checked && !type9.checked && !type10.checked) {
+        alert("invaild category")
+        type1.focus()
+        return;
+    }
+    if (type5.checked && !type11.checked && !type12.checked && !type13.checked && !type14.checked && !type15.checked) {
+        alert("invaild category")
+        type1.focus()
+        return;
+    }
+    if (type6.checked && !type11.checked && !type12.checked && !type13.checked && !type14.checked && !type15.checked) {
+        alert("invaild category")
+        type1.focus()
+        return;
+    }
+
+    wrap_1.style.display = "none"
+    wrap_2.style.display = "none"
+    wrap_3.style.display = "none"
+    wrap_4.style.display = ""
+    allCheck.focus()
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+function onClickSubmit() {
+
+    const checkArray = []
+    checkboxes.forEach((check) => {
+        checkArray.push(check.checked)
     })
 
-    function onSubmit() {
-
-        if (!KoreanName.value) {
-            alert("invaild Name");
-            firstName.focus()
-            return;
-        }
-
-        if (!affilation.value) {
-            alert("invaild affilation");
-            affilation.focus()
-            return;
-        }
-        if (!phone.value) {
-            alert("invaild phone");
-            phone.focus()
-            return;
-        }
-        if (!email_1.value || !email_2.value) {
-            alert("invaild email");
-            email_1.focus()
-            return;
-        }
-
-        if (!participationSelect.options[participationSelect.selectedIndex].value) {
-            alert("invaild participation");
-            participationSelect.focus()
-            return;
-        }
-
-        if (categorySelect.options[categorySelect.selectedIndex].value === "Others" && !categoryOthers.value) {
-            alert("invaild category");
-            categoryOthers.focus()
-            return;
-        }
-        if (!need.checked && !nonNeed.checked) {
-            alert("invaild grade");
-            need.focus()
-            return;
-        }
-
-        if (need.checked && !doctor.value) {
-            alert("invaild grade");
-            need.focus()
-            return;
-        }
-
-        if (!type1.checked && !type2.checked && !type3.checked && !type4.checked && !type5.checked && !type6.checked) {
-            alert("invaild category")
-            type1.focus()
-            return;
-        }
-        if (type1.checked && !type7.checked && !type8.checked && !type9.checked && !type10.checked) {
-            alert("invaild category")
-            type1.focus()
-            return;
-        }
-        if (type2.checked && !type7.checked && !type8.checked && !type9.checked && !type10.checked) {
-            alert("invaild category")
-            type1.focus()
-            return;
-        }
-        if (type5.checked && !type11.checked && !type12.checked && !type13.checked && !type14.checked && !type15.checked) {
-            alert("invaild category")
-            type1.focus()
-            return;
-        }
-        if (type6.checked && !type11.checked && !type12.checked && !type13.checked && !type14.checked && !type15.checked) {
-            alert("invaild category")
-            type1.focus()
-            return;
-        }
-
-        wrap_1.style.display = "none"
-        wrap_2.style.display = "none"
-        wrap_3.style.display = "none"
-        wrap_4.style.display = ""
-        allCheck.focus()
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+    let fee = 0;
+    if (type1.checked) {
+        fee = 90000
+    }
+    if (type2.checked) {
+        fee = 110000
+    }
+    if (type3.checked || type5.checked) {
+        fee = 70000
+    }
+    if (type4.checked || type6.ckeked) {
+        fee = 90000
     }
 
-    function onClickSubmit() {
+    window.location.href = `/onSite/success?fee=${fee}`;
 
-        const checkArray = []
-        checkboxes.forEach((check) => {
-            checkArray.push(check.checked)
-        })
-
-        let fee = 0;
-        if (type1.checked) {
-            fee = 90000
-        }
-        if (type2.checked) {
-            fee = 110000
-        }
-        if (type3.checked || type5.checked) {
-            fee = 70000
-        }
-        if (type4.checked || type6.ckeked) {
-            fee = 90000
-        }
-
-        window.location.href = `/onSite/success?fee=${fee}`;
-
-    }
+}
 </script>
 
 </html>
