@@ -3,6 +3,8 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,13 +48,9 @@
         }
 
         .text_box {
-            margin-top: 10rem;
-            font-size: 2.25rem;
-            line-height: 2.5rem;
-        }
-
-        p {
-            line-height: 80px;
+            margin-top: 0rem;
+            font-size: 1.1rem;
+            line-height: 1.5rem;
         }
 
         .pre_btn {
@@ -60,15 +58,24 @@
             margin-top: 100px;
             font-size: 2rem;
         }
-    }
+
+        .header_img {
+            height: 80%;
+        }
+
+        .pre_btn {
+            width: 25%;
+            margin-top: 0;
+            font-size: 1rem;
+        }
     </style>
 </head>
 
-<body>
+<body class="flex items-center justify-center">
     <div id="success_container">
         <div>
             <div class="w-full h-80 sm:h-1/3">
-                <img src="../../assets/images/access_header.png" class="h-full w-full" />
+                <img class="header_img" src="../../assets/images/access_header.png" class="h-full w-full" />
             </div>
             <div>
                 <!-- <div class="text-zinc-400 text-xl sm:text-4xl">
