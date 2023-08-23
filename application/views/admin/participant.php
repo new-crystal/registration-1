@@ -1,24 +1,24 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-    th,
-    td {
-        text-align: center !important;
-        border: 2px solid rgb(163 163 163);
-        font-weight: 600;
-        font-size: 1.5rem;
-        line-height: 2rem;
-    }
+th,
+td {
+    text-align: center !important;
+    border: 2px solid rgb(163 163 163);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
 
-    tr {
-        height: 4.5rem;
-        border: 2px solid rgb(163 163 163);
-        font-weight: 600;
-        font-size: 1.5rem;
-        line-height: 2rem;
-    }
+tr {
+    height: 4.5rem;
+    border: 2px solid rgb(163 163 163);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
 </style>
 <div class="text-center flex flex-col items-center justify-center">
-    <h1 class="text-6xl font-semibold text-orange-600 my-10">***학회_2023 ****</h1>
+    <h1 class="text-6xl font-semibold text-orange-600 my-10">대한내분비학회 2023년 개원의연수강좌</h1>
     <h6 class="text-3xl font-semibold mb-20 ">현장 참석자 데이터</h6>
     <?php
     // print_r($statistics);
@@ -26,116 +26,117 @@
     $total_2 = 0;
     $total_3 = 0;
     for ($i = 0; $i < count($statistics); $i++) {
-        $total_1 += $statistics[$i]['202303_R_2023-07-11'] + $statistics[$i]['202303_A_2023-07-11'];
-        $total_2 += $statistics[$i]['202303_R_2023-07-12'] + $statistics[$i]['202303_A_2023-07-12'];
-        $total_3 += $statistics[$i]['202303_R_2023-07-13'] + $statistics[$i]['202303_A_2023-07-13'];
+        $total_1 += $statistics[$i]['202303_R_2023-08-18'] + $statistics[$i]['202303_A_2023-08-18'];
+        // $total_2 += $statistics[$i]['202303_R_2023-07-12'] + $statistics[$i]['202303_A_2023-07-12'];
+        // $total_3 += $statistics[$i]['202303_R_2023-07-13'] + $statistics[$i]['202303_A_2023-07-13'];
     }
 
     ?>
+    <!-- <?php print_r($statistics) ?> -->
     <table class="w-9/12 text-2xl mb-20">
         <tr class="bg-green-300 text-black">
             <th colspan="2">등록구분</th>
-            <th>7월 11일(목)</th>
-            <th>7월 12일(금)</th>
-            <th>7월 13일(토)</th>
+            <th>9월 3일(일)</th>
+            <!-- <th>7월 12일(금)</th>
+            <th>7월 13일(토)</th> -->
         </tr>
         <tr>
             <th class="bg-red-100" rowspan="5">사전등록</th>
             <th class="bg-red-100">좌장</th>
-            <td><?php echo isset($statistics[3]['202303_R_2023-07-11']) ? $statistics[3]['202303_R_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[3]['202303_R_2023-08-18']) ? $statistics[3]['202303_R_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[3]['202303_R_2023-07-12']) ? $statistics[3]['202303_R_2023-07-12'] : 0; ?>
+            <!-- <td><?php echo isset($statistics[3]['202303_R_2023-07-12']) ? $statistics[3]['202303_R_2023-07-12'] : 0; ?>
             </td>
             <td><?php echo isset($statistics[3]['202303_R_2023-07-13']) ? $statistics[3]['202303_R_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr>
             <th class="bg-red-100">연자</th>
-            <td><?php echo isset($statistics[0]['202303_R_2023-07-11']) ? $statistics[0]['202303_R_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[0]['202303_R_2023-08-18']) ? $statistics[0]['202303_R_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[0]['202303_R_2023-07-12']) ? $statistics[0]['202303_R_2023-07-12'] : 0; ?>
+            <!-- <td><?php echo isset($statistics[0]['202303_R_2023-07-12']) ? $statistics[0]['202303_R_2023-07-12'] : 0; ?>
             </td>
             <td><?php echo isset($statistics[0]['202303_R_2023-07-13']) ? $statistics[0]['202303_R_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr>
             <th class="bg-red-100">패널</th>
-            <td><?php echo isset($statistics[4]['202303_R_2023-07-11']) ? $statistics[4]['202303_R_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[4]['202303_R_2023-08-18']) ? $statistics[4]['202303_R_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[4]['202303_R_2023-07-12']) ? $statistics[4]['202303_R_2023-07-12'] : 0; ?>
-            </td>
+            <!-- <td><?php echo isset($statistics[4]['202303_R_2023-07-12']) ? $statistics[4]['202303_R_2023-07-12'] : 0; ?> -->
+            <!-- </td>
             <td><?php echo isset($statistics[4]['202303_R_2023-07-13']) ? $statistics[4]['202303_R_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr>
             <th class="bg-red-100">임원</th>
-            <td><?php echo isset($statistics[2]['202303_R_2023-07-11']) ? $statistics[2]['202303_R_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[2]['202303_R_2023-08-18']) ? $statistics[2]['202303_R_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[2]['202303_R_2023-07-12']) ? $statistics[2]['202303_R_2023-07-12'] : 0; ?>
+            <!-- <td><?php echo isset($statistics[2]['202303_R_2023-07-12']) ? $statistics[2]['202303_R_2023-07-12'] : 0; ?>
             </td>
             <td><?php echo isset($statistics[2]['202303_R_2023-07-13']) ? $statistics[2]['202303_R_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr>
             <th class="bg-red-100">일반 참가자</th>
-            <td><?php echo isset($statistics[1]['202303_R_2023-07-11']) ? $statistics[1]['202303_R_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[1]['202303_R_2023-08-18']) ? $statistics[1]['202303_R_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[1]['202303_R_2023-07-12']) ? $statistics[1]['202303_R_2023-07-12'] : 0; ?>
+            <!-- <td><?php echo isset($statistics[1]['202303_R_2023-07-12']) ? $statistics[1]['202303_R_2023-07-12'] : 0; ?>
             </td>
             <td><?php echo isset($statistics[1]['202303_R_2023-07-13']) ? $statistics[1]['202303_R_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr>
             <th class="bg-sky-200" rowspan="5">현장등록</th>
             <th class="bg-sky-200">좌장</th>
-            <td><?php echo isset($statistics[3]['202303_A_2023-07-11']) ? $statistics[3]['202303_A_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[3]['202303_A_2023-08-18']) ? $statistics[3]['202303_A_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[3]['202303_A_2023-07-12']) ? $statistics[3]['202303_A_2023-07-12'] : 0; ?>
+            <!-- <td><?php echo isset($statistics[3]['202303_A_2023-07-12']) ? $statistics[3]['202303_A_2023-07-12'] : 0; ?>
             </td>
             <td><?php echo isset($statistics[3]['202303_A_2023-07-13']) ? $statistics[3]['202303_A_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr>
             <th class="bg-sky-200">연자</th>
-            <td><?php echo isset($statistics[0]['202303_A_2023-07-11']) ? $statistics[0]['202303_A_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[0]['202303_A_2023-08-18']) ? $statistics[0]['202303_A_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[0]['202303_A_2023-07-12']) ? $statistics[0]['202303_A_2023-07-12'] : 0; ?>
+            <!-- <td><?php echo isset($statistics[0]['202303_A_2023-07-12']) ? $statistics[0]['202303_A_2023-07-12'] : 0; ?>
             </td>
             <td><?php echo isset($statistics[0]['202303_A_2023-07-13']) ? $statistics[0]['202303_A_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr>
             <th class="bg-sky-200">패널</th>
-            <td><?php echo isset($statistics[4]['202303_A_2023-07-11']) ? $statistics[4]['202303_A_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[4]['202303_A_2023-08-18']) ? $statistics[4]['202303_A_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[4]['202303_A_2023-07-12']) ? $statistics[4]['202303_A_2023-07-12'] : 0; ?>
+            <!-- <td><?php echo isset($statistics[4]['202303_A_2023-07-12']) ? $statistics[4]['202303_A_2023-07-12'] : 0; ?>
             </td>
             <td><?php echo isset($statistics[4]['202303_A_2023-07-13']) ? $statistics[4]['202303_A_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr>
             <th class="bg-sky-200">임원</th>
-            <td><?php echo isset($statistics[2]['202303_A_2023-07-11']) ? $statistics[2]['202303_A_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[2]['202303_A_2023-08-18']) ? $statistics[2]['202303_A_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[2]['202303_A_2023-07-12']) ? $statistics[2]['202303_A_2023-07-12'] : 0; ?>
+            <!-- <td><?php echo isset($statistics[2]['202303_A_2023-07-12']) ? $statistics[2]['202303_A_2023-07-12'] : 0; ?>
             </td>
             <td><?php echo isset($statistics[2]['202303_A_2023-07-13']) ? $statistics[2]['202303_A_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr>
             <th class="bg-sky-200">일반 참가자</th>
-            <td><?php echo isset($statistics[1]['202303_A_2023-07-11']) ? $statistics[1]['202303_A_2023-07-11'] : 0; ?>
+            <td><?php echo isset($statistics[1]['202303_A_2023-08-18']) ? $statistics[1]['202303_A_2023-08-18'] : 0; ?>
             </td>
-            <td><?php echo isset($statistics[1]['202303_A_2023-07-12']) ? $statistics[1]['202303_A_2023-07-12'] : 0; ?>
+            <!-- <td><?php echo isset($statistics[1]['202303_A_2023-07-12']) ? $statistics[1]['202303_A_2023-07-12'] : 0; ?>
             </td>
             <td><?php echo isset($statistics[1]['202303_A_2023-07-13']) ? $statistics[1]['202303_A_2023-07-13'] : 0; ?>
-            </td>
+            </td> -->
         </tr>
         <tr class="bg-green-300 text-black">
             <th colspan="2">합계</th>
             <th><?php echo $total_1; ?></th>
-            <th><?php echo $total_2; ?></th>
-            <th><?php echo $total_3; ?></th>
+            <!-- <th><?php echo $total_2; ?></th>
+            <th><?php echo $total_3; ?></th> -->
         </tr>
     </table>
 </div>

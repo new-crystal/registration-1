@@ -137,71 +137,71 @@ class OnSite extends CI_Controller
             if ($category_1) {
                 $fee = 90000;
                 $type3 = "회원";
-                $type1 = "전문의";
+                $type = "전문의";
             }
             if ($category_2) {
                 $fee = 110000;
                 $type3 = "비회원";
-                $type1 = "전문의";
+                $type = "전문의";
             }
             if ($category_3) {
                 $fee = 70000;
                 $type3 = "회원";
-                $type1 = "전공의";
+                $type = "전공의";
             }
             if ($category_4) {
                 $fee = 90000;
                 $type3 = "비회원";
-                $type1 = "전공의";
+                $type = "전공의";
             }
             if ($category_5) {
                 $fee = 70000;
                 $type3 = "회원";
-                $type1 = "기타";
+                $type = "기타";
             }
             if ($category_6) {
                 $fee = 90000;
                 $type3 = "비회원";
-                $type1 = "기타";
+                $type = "기타";
             }
             if ($category_7) {
-                $type2 = "개원의";
-                $type1 = "기타";
+                $type = "전문의";
+                $type1 = "개원의";
             }
             if ($category_8) {
-                $type2 = "봉직의";
-                $type1 = "기타";
+                $type = "전문의";
+                $type1 = "봉직의";
             }
             if ($category_9) {
-                $type2 = "교수";
-                $type1 = "기타";
+                $type = "전문의";
+                $type1 = "교수";
             }
             if ($category_10) {
-                $type2 = "전임의";
-                $type1 = "기타";
+                $type = "전문의";
+                $type1 = "전임의";
             }
             if ($category_11) {
-                $type2 = "기초의학자";
-                $type1 = "기타";
+                $type = "기타";
+                $type1 = "기초의학자";
             }
             if ($category_12) {
-                $type2 = "간호사";
-                $type1 = "기타";
+                $type = "기타";
+                $type1 = "간호사";
             }
             if ($category_13) {
-                $type2 = "약사";
-                $type1 = "기타";
+                $type = "기타";
+                $type1 = "약사";
             }
             if ($category_14) {
-                $type2 = "군의관";
-                $type1 = "기타";
+                $type = "기타";
+                $type1 = "군의관";
             }
             if ($category_15) {
-                $type2 = "간호사";
+                $type = "기타";
                 $type1 = "기타";
             }
             if ($category_16) {
-                $type2 = $category_16;
+                $type1 = $category_16;
             }
 
             if ($fee == 0)
@@ -232,7 +232,7 @@ class OnSite extends CI_Controller
                 'email' => preg_replace("/\s+/", "", $email),
                 'type' => trim($type),
                 'type1' => trim($type1),
-                'type2' => trim($type2),
+                'type2' => $type2,
                 'type3' => trim($type3),
                 'fee' => $fee,
                 'time' => $time,

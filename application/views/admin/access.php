@@ -223,7 +223,7 @@ function fetchData(qrcode) {
         }).then((data) => {
             executeFunctionInChildWindow(qrcode);
         }).then(() => {
-            window.open(`https://kscp.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
+            window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
         })
         .catch(error => {
             console.error('Error fetching data:', error);

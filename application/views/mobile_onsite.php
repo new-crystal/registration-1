@@ -221,6 +221,24 @@
     .mo-table {
         margin-top: 5rem;
     }
+
+    @media screen and (max-width:390px) {
+        p {
+            font-size: 0.9rem !important;
+        }
+
+        .ln {
+            font-size: 0.65rem !important;
+        }
+
+        .mo-table td {
+            padding: 0;
+        }
+
+        .right {
+            margin-right: 2.9rem;
+        }
+    }
     </style>
 </head>
 
@@ -529,13 +547,13 @@
                                 <p class="inline-block">Type of Participation(참석유형)<span>*</span></p>
                                 <div class="flex justify-between items-center">
                                     <select id="Participation_1" style="background-color:#ffffff;"
-                                        class="px-2 py-1 w-full h-9 border" name="type1">
+                                        class="px-2 py-1 w-full h-9 border" name="type2">
                                         <option value="" selected="selected">* 필수 선택사항</option>
                                         <option value="임원">Committee</option>
                                         <option value="연자">Speaker</option>
                                         <option value="좌장">Chairperson</option>
                                         <option value="패널">Panel</option>
-                                        <option value="일반참가자">Paticipants</option>
+                                        <option value="일반참석자">Paticipants</option>
                                     </select>
                                 </div>
                             </div>
@@ -545,7 +563,7 @@
                                 <p class="inline-block">Category(참석자 구분)<span>*</span></p>
                                 <div class="flex justify-between items-center">
                                     <select id="Category_1" style="background-color:#ffffff;"
-                                        class="px-2 py-1 w-full h-9 border" name="type2">
+                                        class="px-2 py-1 w-full h-9 border">
                                         <option value="" selected="selected">* 필수 선택사항</option>
                                         <option value="개원의">Certified M.D.</option>
                                         <option value="전임의">Fellow</option>
@@ -576,11 +594,11 @@
                                 </div>
                                 <div class="flex items-center w-12/12 justify-left flex-wrap">
                                     <div class="flex items-center">
-                                        <p class="mx-2 text-xs">의사면허번호</p>
+                                        <p class="mx-2 text-xs ln">의사면허번호</p>
                                         <input name="ln" id="doctor" type="text" class="mx-2" />
                                     </div>
                                     <div class="flex items-center mt-2">
-                                        <p class="mr-[1.3rem] ml-4 text-xs"> 전문의번호 </p>
+                                        <p class="mr-[1.3rem] ml-4 text-xs ln"> 전문의번호 </p>
                                         <input name="sn" id="specialist" type="text" />
                                     </div>
                                     <span class="text-sm mt-5">*의사면허번호를 정확하게 입력하시지 않으시면, 의협보고시 누락될 수 있습니다.<br>
@@ -634,7 +652,7 @@
                                                 <input type="radio" id="type_7" class="type-2" name="category-7" />
                                                 <label for="type_7">개원의</label>
                                                 <input type="radio" id="type_8" class="type-2" name="category-8" />
-                                                <label for="type_8">봉직의</label>
+                                                <label for="type_8" class="right">봉직의</label>
                                                 <input type="radio" id="type_9" class="type-2" name="category-9" />
                                                 <label for="type_9">교수</label>
                                                 <input type="radio" id="type_10" class="type-2" name="category-10" />
@@ -648,7 +666,7 @@
                                                 <input type="radio" id="type_13" class="type-3" name="category-13" />
                                                 <label for="type_13">약사</label>
                                                 <input type="radio" id="type_14" class="type-3" name="category-14" />
-                                                <label for="type_14">군의관</label>
+                                                <label for="type_14" class="right">군의관</label>
                                                 <input type="radio" id="type_15" class="type-3" name="category-15" />
                                                 <label for="type_15">기타</label>
                                                 <input class="border" id="other" name="category-16" />
@@ -1392,7 +1410,7 @@ function onSubmit() {
         type1.focus()
         return;
     }
-    if (type5.checked && !type11.checked && !type12.checked && !type13.checked && !type14.checked && type15.checked) {
+    if (type5.checked && !type11.checked && !type12.checked && !type13.checked && !type14.checked && !type15.checked) {
         alert("invaild category")
         type1.focus()
         return;

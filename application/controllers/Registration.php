@@ -1,12 +1,13 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 require __DIR__ . '/../../vendor/autoload.php';
 
-class Registration extends CI_Controller {
-	private $sheets;
-	private $data;
+class Registration extends CI_Controller
+{
+    private $sheets;
+    private $data;
 
-	public function __construct()
+    public function __construct()
     {
         parent::__construct();
 
@@ -19,60 +20,57 @@ class Registration extends CI_Controller {
         ini_set('memory_limit', '-1');
     }
 
-	public function index()
-	{
-		$this->load->view('header');
+    public function index()
+    {
+        $this->load->view('header');
         $where = array(
-            'type' => '일반참가자'
-        //    'deposit !=' => '미결제'
+            'type2' => '일반참석자'
+            //    'deposit !=' => '미결제'
         );
         $data['user_chk'] = $this->users->num_row($where);
         $data['limit_count'] = $this->config->item('limit_count');
-		$this->load->view('registration/info', $data);
-		$this->load->view('footer');
-	}
+        $this->load->view('registration/info', $data);
+        $this->load->view('footer');
+    }
 
-	public function info()
-	{
-		$this->load->view('header');
+    public function info()
+    {
+        $this->load->view('header');
         $where = array(
-            'type' => '일반참가자'
-        //'deposit !=' => '미결제'
+            'type2' => '일반참석자'
+            //'deposit !=' => '미결제'
         );
         $data['user_chk'] = $this->users->num_row($where);
         $data['limit_count'] = $this->config->item('limit_count');
-		$this->load->view('registration/info', $data);
-		$this->load->view('footer');
-	}
+        $this->load->view('registration/info', $data);
+        $this->load->view('footer');
+    }
 
-	public function search()
-	{
+    public function search()
+    {
         $this->load->helper('form');
         $this->load->helper('url');
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('name', '성명', 'required');
         $this->form_validation->set_rules('email', '이메일', 'required');
-//        $this->form_validation->set_rules('license', 'sn', 'required');
-//        $this->form_validation->set_rules('license', 'sn', 'callback_sn_check');
-//        $this->form_validation->set_message('sn_check', '<p style="color:red; text-align: center;">※ 사전등록된 내용이 없습니다. 사전등록을 진행 해 주세요.</p>');
+        //        $this->form_validation->set_rules('license', 'sn', 'required');
+        //        $this->form_validation->set_rules('license', 'sn', 'callback_sn_check');
+        //        $this->form_validation->set_message('sn_check', '<p style="color:red; text-align: center;">※ 사전등록된 내용이 없습니다. 사전등록을 진행 해 주세요.</p>');
 
-        if ($this->form_validation->run() === FALSE)
-        {
+        if ($this->form_validation->run() === FALSE) {
             $this->form_validation->set_message('name', '<p style="color:red; text-align: center;">※ 성명을 입력해 주세요.</p>');
             $this->form_validation->set_message('email', '<p style="color:red; text-align: center;">※ 이메일을 입력해 주세요.</p>');
 
-//            $license = $this->input->post('license');
-//            if(!empty($license)){
-//                echo "<script type='text/javascript'> alert('※ 사전등록된 내용이 없습니다. 사전등록을 진행 해 주세요.');</script>";
-//            }
+            //            $license = $this->input->post('license');
+            //            if(!empty($license)){
+            //                echo "<script type='text/javascript'> alert('※ 사전등록된 내용이 없습니다. 사전등록을 진행 해 주세요.');</script>";
+            //            }
 
             $this->load->view('header');
             $this->load->view('registration/search');
             $this->load->view('footer');
-        }
-        else
-        {
+        } else {
             $name = $this->input->post('name');
             $email = $this->input->post('email');
 
@@ -83,38 +81,37 @@ class Registration extends CI_Controller {
 
             $this->load->view('header');
             $this->data['users'] = $this->users->get_user($info);
-            if(!empty($this->data['users'])){
+            if (!empty($this->data['users'])) {
                 $this->load->view('registration/show', $this->data);
-//                echo var_export($this->data['users']);
-            }else{
+                //                echo var_export($this->data['users']);
+            } else {
                 echo "<script type='text/javascript'> alert('※ 일치하는 내용이 없습니다.');</script>";
                 $this->load->view('registration/search', $this->data);
             }
             $this->load->view('footer');
         }
-
-	}
+    }
 
 
     public function sn_check($sn)
     {
 
-        $info = array (
+        $info = array(
             'sn' => preg_replace("/\s+/", "", $sn)
         );
 
         $rows = $this->users->num_row($info);
 
-        if ($rows == 0){
+        if ($rows == 0) {
             return FALSE;
-        }
-        else{
+        } else {
             return TRUE;
         }
     }
 
 
-    function _sendEmail($email, $name) {
+    function _sendEmail($email, $name)
+    {
         $mail = $this->phpmailer_lib->load();
         $mail->IsSMTP();
         try {
@@ -124,7 +121,7 @@ class Registration extends CI_Controller {
             $mail->SMTPSecure = "tls";
             $mail->Username   = "intoonit@gmail.com";
             $mail->Password   = "intoon2285!!";
-//          $mail->SMTPDebug = 2;
+            //          $mail->SMTPDebug = 2;
             $mail->CharSet = "utf-8";
             $mail->SetFrom('kscpmd@kscpmd.or.kr', '대한심뇌혈관질환예방학회');
             $mail->AddReplyTo('kscpmd@kscpmd.or.kr', '대한심뇌혈관질환예방학회');
@@ -143,19 +140,19 @@ class Registration extends CI_Controller {
             //$mail->MsgHTML((string)$random);
             $mail->Send();
         } catch (phpmailerException $e) {
-//          echo $e->errorMessage();
+            //          echo $e->errorMessage();
             error_log(print_r($e->errorMessage(), TRUE), 3, '/tmp/errors.log');
             return false;
         } catch (Exception $e) {
-//          echo $e->getMessage();
+            //          echo $e->getMessage();
             error_log(print_r($e->errorMessage(), TRUE), 3, '/tmp/errors.log');
             return false;
         }
         return true;
     }
 
-	public function enroll()
-	{
+    public function enroll()
+    {
         $this->load->helper('form');
         $this->load->library('form_validation');
 
@@ -173,20 +170,17 @@ class Registration extends CI_Controller {
         $this->form_validation->set_rules('phone', '전화번호', 'callback_double_check');
         $this->form_validation->set_message('double_check', '<p style="color:red; text-align: center;">※ 이미 사전등록 완료된 내용이 있습니다.</p>');
 
-        if ($this->form_validation->run() === FALSE)
-        {
+        if ($this->form_validation->run() === FALSE) {
             $this->load->view('header');
             $where = array(
-                'type' => '일반참가자'
+                'type2' => '일반참석자'
                 //'deposit !=' => '미결제'
             );
             $data['user_chk'] = $this->users->num_row($where);
             $data['limit_count'] = $this->config->item('limit_count');
             $this->load->view('registration/enroll', $data);
             $this->load->view('footer');
-        }
-        else
-        {
+        } else {
             $name = $this->input->post('name');
             $license = $this->input->post('license');
             $org = $this->input->post('org');
@@ -208,23 +202,23 @@ class Registration extends CI_Controller {
             $uagent = $this->agent->agent_string();
 
 
-            if($type2 =='개원의' || $type2 =='봉직의' || $type2 =='전문의' || $type2 =='교수' || $type2 =='군의관') {
-                if($type == '좌장'||$type == '연자'||$type == '패널'){
+            if ($type2 == '개원의' || $type2 == '봉직의' || $type2 == '전문의' || $type2 == '교수' || $type2 == '군의관') {
+                if ($type == '좌장' || $type == '연자' || $type == '패널') {
                     $fee = 0;
-                }else{
-                    if($type3 == '비회원'){
+                } else {
+                    if ($type3 == '비회원') {
                         $fee = 50000;
-                    }else{
+                    } else {
                         $fee = 30000;
                     }
                 }
-            } else if($type2 =='간호사' || $type2 =='영양사' || $type2 =='약사' || $type2 =='운동처방사' || $type2 =='연구원') {
-                if($type == '좌장'||$type == '연자'||$type == '패널'){
+            } else if ($type2 == '간호사' || $type2 == '영양사' || $type2 == '약사' || $type2 == '운동처방사' || $type2 == '연구원') {
+                if ($type == '좌장' || $type == '연자' || $type == '패널') {
                     $fee = 0;
-                }else{
-                    if($type3 == '비회원'){
+                } else {
+                    if ($type3 == '비회원') {
                         $fee = 40000;
-                    }else{
+                    } else {
                         $fee = 20000;
                     }
                 }
@@ -237,7 +231,7 @@ class Registration extends CI_Controller {
             else
                 $deposit = '미결제';
 
-//            error_log(print_r($name, TRUE), 3, '/tmp/errors.log');
+            //            error_log(print_r($name, TRUE), 3, '/tmp/errors.log');
 
             $info = array(
                 'nick_name' => preg_replace("/\s+/", "", $name),
@@ -261,38 +255,38 @@ class Registration extends CI_Controller {
 
             $this->load->view('header');
             $this->users->add_user($info);
-			$data['users'] = $this->users->get_user($info);
+            $data['users'] = $this->users->get_user($info);
             $this->load->view('registration/show', $data);
-//            $this->load->view('registration/success');
-//            $this->_sendEmail(trim($email), trim($name));
+            //            $this->load->view('registration/success');
+            //            $this->_sendEmail(trim($email), trim($name));
             $this->load->view('footer');
         }
-	}
+    }
 
     public function double_check($phone)
     {
 
-        $info = array (
+        $info = array(
             'phone' => preg_replace("/\s+/", "", $phone)
         );
 
         $rows = $this->users->num_row($info);
 
-        if ($rows == 0){
+        if ($rows == 0) {
             return TRUE;
-        }
-        else{
+        } else {
             echo "<script type='text/javascript'> alert('※ 이미 사전등록 완료된 내용이 있습니다.');</script>";
             return FALSE;
         }
     }
 
 
-	public function init_(){
+    public function init_()
+    {
+    }
 
-	}
-
-	public function get_pagination($total_rows, $per_page = PER_PAGE_COUNT){
+    public function get_pagination($total_rows, $per_page = PER_PAGE_COUNT)
+    {
         $this->load->library('pagination');
 
         $config['total_rows'] = $total_rows;
@@ -300,9 +294,9 @@ class Registration extends CI_Controller {
         $config['num_links'] = 2;
 
         $config['page_query_string'] = TRUE;
-   
+
         $config['base_url'] = site_url();
-         
+
         $config['use_page_numbers'] = TRUE;
         $config['full_tag_open'] = '<div class="row" style="text-align: center; padding: 10px;"><ul class="pagination pagination-sm no-margin">';
         $config['full_tag_close'] = '</ul></div>';

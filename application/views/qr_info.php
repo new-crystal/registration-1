@@ -1,58 +1,58 @@
 <style>
-.qr-info-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .qr-info-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.qr-info-table {
-    margin-top: 10rem;
-    border: 2px solid #eee;
-    border-collapse: collapse;
-    width: 60%;
-}
+    .qr-info-table {
+        margin-top: 10rem;
+        border: 2px solid #eee;
+        border-collapse: collapse;
+        width: 60%;
+    }
 
-.qr-info-table th {
-    background-color: #6c90fe;
-    border-color: #6c90fe;
-    color: #fff !important;
-}
+    .qr-info-table th {
+        background-color: #6c90fe;
+        border-color: #6c90fe;
+        color: #fff !important;
+    }
 
-.qr-info-table>tr,
-.qr-info-table th,
-.qr-info-table td {
-    border: 2px solid #eee;
-    text-align: center;
-    font-size: 1.25rem;
-    line-height: 2.5rem;
-}
+    .qr-info-table>tr,
+    .qr-info-table th,
+    .qr-info-table td {
+        border: 2px solid #eee;
+        text-align: center;
+        font-size: 1.25rem;
+        line-height: 2.5rem;
+    }
 
-.qr-info-table tr {
-    height: 3rem;
-    padding: 4px 8px;
-}
+    .qr-info-table tr {
+        height: 3rem;
+        padding: 4px 8px;
+    }
 
-.submit-box {
-    width: 100%;
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .submit-box {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.submit_btn {
-    padding: 4px 8px;
-    height: 50px;
-}
+    .submit_btn {
+        padding: 4px 8px;
+        height: 50px;
+    }
 </style>
 <script type="text/javascript">
-$(function() {
-    <?php
-        $url = "https://kscp.webeon.net/qrcode/print_file?registration_no=" . $user['registration_no'] . "\"";
+    $(function() {
+        <?php
+        $url = "https://reg1.webeon.net/qrcode/print_file?registration_no=" . $user['registration_no'] . "\"";
         echo "window.open(\"" . $url . ", \"_blank\");"
         ?>
-});
+    });
 </script>
 <div class="qr-info-container">
     <table class="qr-info-table">
@@ -128,12 +128,10 @@ $(function() {
     </div>
 </dl> -->
 
-<form action="https://kscp.webeon.net/index.php/qrcode" id="accessForm" name="accessForm" method="post"
-    accept-charset="utf-8">
+<form action="https://reg1.webeon.net/index.php/qrcode" id="accessForm" name="accessForm" method="post" accept-charset="utf-8">
     <fieldset>
         <div class="btn btnSubm submit-box">
-            <input type="submit" value="돌아가기" class="btnPoint"
-                style="padding:8px;height: 50px;font-size: 1rem;width: 100px;">
+            <input type="submit" value="돌아가기" class="btnPoint" style="padding:8px;height: 50px;font-size: 1rem;width: 100px;">
         </div>
         </div>
     </fieldset>

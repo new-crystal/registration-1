@@ -443,7 +443,7 @@
                     </div>
                     <div class="mo_wrap">
                         <img src="../../assets/images/circle.png" class="inline-block" />
-                        <p class="inline-block">Mobile Phone Number(휴대전화번호)<span>*</span></p>
+                        <p id="mobile" class="inline-block">Mobile Phone Number(휴대전화번호)<span>*</span></p>
                         <input type="text" id="phoneNumber" name="phone" class="w-full"
                             placeholder="* -를 제외한 숫자만 입력해주세요">
                     </div>
@@ -498,7 +498,7 @@
                                     <option value="연자">Speaker</option>
                                     <option value="좌장">Chairperson</option>
                                     <option value="패널">Panel</option>
-                                    <option value="일반참가자">Paticipants</option>
+                                    <option value="일반참석자">Paticipants</option>
                                 </select>
                             </div>
                         </div>

@@ -405,7 +405,7 @@ class Admin extends CI_Controller
             );
         } else {
             if ($userType == '01') {
-                $userType = '일반참가자';
+                $userType = '일반참석자';
             } else if ($userType == '02') {
                 $userType = '임원';
             } else if ($userType == '04') {
@@ -1136,13 +1136,12 @@ class Admin extends CI_Controller
             $userId = $_GET['n'];
             $where = array(
                 'registration_no' => $userId,
-                'QR_MAIL_SEND_YN' =>  'N'
             );
             $info = array(
                 'QR_MAIL_SEND_YN' =>  'Y'
             );
-            $this->users->update_msm_status($info, $where);
             $data['users'] = $this->users->get_user($where);
+            // $this->users->update_msm_status($info, $where);
             $this->load->view('admin/qr_mail', $data);
         }
     }

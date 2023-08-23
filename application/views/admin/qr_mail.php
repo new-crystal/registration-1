@@ -89,7 +89,7 @@
             event.preventDefault();
 
             const registrationNo = sendMailLink.getAttribute("data-registration-no");
-            const url = `https://kscp.webeon.net/admin/sendmail?n=${registrationNo}`;
+            const url = `https://reg1.webeon.net/admin/sendmail?n=${registrationNo}`;
 
             fetch(url, {
                     method: 'POST',
