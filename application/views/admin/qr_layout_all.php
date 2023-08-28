@@ -3,33 +3,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 
 <style>
-@page {
-    size: 10cm 24cm;
-    margin: 0;
-}
+    @page {
+        size: 10cm 24cm;
+        margin: 0;
+    }
 
-@font-face {
-    font-family: NanumSquare;
-    src: url("../../../assets/font/NanumSquare-Hv.otf");
-}
+    @font-face {
+        font-family: NanumSquare;
+        src: url("../../../assets/font/NanumSquare-Hv.otf");
+    }
 
-#nick_name {
-    font-family: NanumSquare;
-}
+    #nick_name {
+        font-family: NanumSquare;
+    }
 
-#printThis {
-    width: 10cm;
-    height: 24cm;
-    margin: 0;
-    padding: 0;
-}
+    #printThis {
+        width: 10cm;
+        height: 24cm;
+        margin: 0;
+        padding: 0;
+    }
 </style>
 
 <!-- Main content -->
 <div id="nametag_wrapper">
     <div class="edit_wrapper">
-        <button id="btnPrint" type="button" class="btn btn-primary"
-            style="margin-left:20px;">Print<?php $num_row ?></button>
+        <button id="btnPrint" type="button" class="btn btn-primary" style="margin-left:20px;">Print<?php $num_row ?></button>
     </div>
 
     <!-- Content area -->
@@ -81,31 +80,31 @@
 </div>
 <!-- /page container -->
 <style>
-body {
-    background-color: #fff;
-}
+    body {
+        background-color: #fff;
+    }
 </style>
 <script>
-document.getElementById("btnPrint").onclick = function() {
-    printElement(document.getElementById("printThis"));
-}
-
-function printElement(elem) {
-    var domClone = elem.cloneNode(true);
-
-    var $printSection = document.getElementById("printSection");
-
-    if (!$printSection) {
-        var $printSection = document.createElement("div");
-        $printSection.style.width = "10cm";
-        $printSection.style.height = "24cm";
-        $printSection.id = "printSection";
-        document.body.appendChild($printSection);
+    document.getElementById("btnPrint").onclick = function() {
+        printElement(document.getElementById("printThis"));
     }
 
-    $printSection.innerHTML = "";
-    $printSection.appendChild(domClone);
-    window.print();
-}
+    function printElement(elem) {
+        var domClone = elem.cloneNode(true);
+
+        var $printSection = document.getElementById("printSection");
+
+        if (!$printSection) {
+            var $printSection = document.createElement("div");
+            $printSection.style.width = "10cm";
+            $printSection.style.height = "24cm";
+            $printSection.id = "printSection";
+            document.body.appendChild($printSection);
+        }
+
+        $printSection.innerHTML = "";
+        $printSection.appendChild(domClone);
+        window.print();
+    }
 </script>
 </body>
