@@ -14,7 +14,7 @@
                                 <label class="col-sm-2 control-label">구분 1</label>
                                 <div class="col-sm-10">
                                     <select class="form-control input-lg m-bot15" name="type1" id="type1">
-                                        <option value="일반참석자">일반참가자</option>
+                                        <option value="일반참가자">일반참가자</option>
                                         <option value="좌장">좌장</option>
                                         <option value="연자">연자</option>
                                         <option value="패널">패널</option>
