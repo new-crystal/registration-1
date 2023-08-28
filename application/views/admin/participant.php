@@ -21,12 +21,12 @@ tr {
     <h1 class="text-6xl font-semibold text-orange-600 my-10">대한내분비학회 2023년 개원의연수강좌</h1>
     <h6 class="text-3xl font-semibold mb-20 ">현장 참석자 데이터</h6>
     <?php
-   // print_r($statistics);
+    // print_r($statistics);
     $total_1 = 0;
     $total_2 = 0;
     $total_3 = 0;
     for ($i = 0; $i < count($statistics); $i++) {
-        $total_1 += $statistics[$i]['A_03'] + $statistics[$i]['R_03'] + $statistics[3]['M_03'];
+        $total_1 += $statistics[$i]['A_03'] + $statistics[$i]['R_03'] + $statistics[$i]['M_03'];
     }
 
     ?>
@@ -102,8 +102,6 @@ tr {
         <tr class="bg-green-300 text-black">
             <th colspan="2">합계</th>
             <th><?php echo $total_1; ?></th>
-            <!-- <th><?php echo $total_2; ?></th>
-            <th><?php echo $total_3; ?></th> -->
         </tr>
     </table>
 </div>
