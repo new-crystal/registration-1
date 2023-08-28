@@ -56,9 +56,9 @@ body {
                 }
                 if ($lang == 0) {
                     echo '<div class="nick_name lang_en" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if ($lang !== 0 && $nicknameLength == 3) {
+                } else if ($nicknameLength <= 3) {
                     echo '<div class="nick_name" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if ($lang !== 0 && $nicknameLength > 3) {
+                } else if ($nicknameLength > 3) {
                     echo '<div class="small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
                 }
                 echo '<div class="org" id="org">' . $users['org_nametag'] . '</div>';
