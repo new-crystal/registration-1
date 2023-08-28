@@ -24,7 +24,7 @@ class Registration extends CI_Controller
     {
         $this->load->view('header');
         $where = array(
-            'type2' => '일반참석자'
+            'type2' => '일반참가자'
             //    'deposit !=' => '미결제'
         );
         $data['user_chk'] = $this->users->num_row($where);
@@ -37,7 +37,7 @@ class Registration extends CI_Controller
     {
         $this->load->view('header');
         $where = array(
-            'type2' => '일반참석자'
+            'type2' => '일반참가자'
             //'deposit !=' => '미결제'
         );
         $data['user_chk'] = $this->users->num_row($where);
@@ -173,7 +173,7 @@ class Registration extends CI_Controller
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('header');
             $where = array(
-                'type2' => '일반참석자'
+                'type2' => '일반참가자'
                 //'deposit !=' => '미결제'
             );
             $data['user_chk'] = $this->users->num_row($where);
