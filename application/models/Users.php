@@ -256,21 +256,16 @@ class Users extends CI_Model
 		//'202303_A'로 시작하는 것과  '202303_R'로 시작하는 것으로 구분하는 경우
 		$query = $this->db->query("
 		SELECT
-    u.type2,
-    COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-08-16' AND a.registration_no LIKE '202303_A%' THEN a.registration_no END) AS '202303_A_2023-08-16',
-    COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-08-16' AND a.registration_no LIKE '202303_R%' THEN a.registration_no END) AS '202303_R_2023-08-16',
-    COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-08-17' AND a.registration_no LIKE '202303_A%' THEN a.registration_no END) AS '202303_A_2023-08-17',
-    COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-08-17' AND a.registration_no LIKE '202303_R%' THEN a.registration_no END) AS '202303_R_2023-08-17',
-    COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-08-18' AND a.registration_no LIKE '202303_A%' THEN a.registration_no END) AS '202303_A_2023-08-18',
-    COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-08-18' AND a.registration_no LIKE '202303_R%' THEN a.registration_no END) AS '202303_R_2023-08-18'
-FROM
-    users u
-JOIN
-    access a ON u.registration_no = a.registration_no
-GROUP BY
-    u.type2;
-
-        ");
+		u.type2,
+		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.registration_no LIKE '202303_A%' THEN a.registration_no END) AS 'A_03',
+		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.registration_no LIKE '202303_R%' THEN a.registration_no END) AS 'R_03',
+		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.registration_no LIKE '202303_M%' THEN a.registration_no END) AS 'M_03'
+	FROM
+		users u
+	JOIN
+		access a ON u.registration_no = a.registration_no
+	GROUP BY
+		u.type2;");
 		return $query->result_array();
 	}
 }
