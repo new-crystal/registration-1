@@ -573,7 +573,7 @@
                                         <option value="연자">Speaker</option>
                                         <option value="좌장">Chairperson</option>
                                         <option value="패널">Panel</option>
-                                        <option value="일반참석자">Paticipants</option>
+                                        <option value="일반참가자">Paticipants</option>
                                     </select>
                                 </div>
                             </div>
