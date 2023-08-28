@@ -1007,6 +1007,7 @@ class Admin extends CI_Controller
             $data['users'] = array(); // 배열로 초기화
             $wheres = array(
                 'QR_SMS_SEND_YN' => 'N',
+                'qr_generated' => 'Y'
             );
             $users = $this->users->get_msm_user($wheres);
             $data['users'] = array_merge($data['users'], $users);
