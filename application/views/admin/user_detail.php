@@ -22,7 +22,7 @@
                                         <option value="후원사">후원사</option>
                                     </select>
 -->
-                                    <input class="form-control" type="text" value="<?php echo $item['type2']; ?>" name="type1" id="type1">
+                                    <input class="form-control" type="text" value="<?php echo $item['type2']; ?>" name="type2" id="type2">
 
                                 </div>
                             </div>
@@ -45,13 +45,13 @@
                                         <option value="기타">기타</option>
                                     </select>
 -->
-                                    <input class="form-control" type="text" value="<?php echo $item['type']; ?>" name="type2" id="type2">
+                                    <input class="form-control" type="text" value="<?php echo $item['type']; ?>" name="type1" id="type1">
                                 </div>
                             </div>
-                            <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">구분 3</label>
-                                <div class="col-sm-10">
-                                    <!--
+                            <!-- <div class="form-group form-inline"> -->
+                            <!-- <label class="col-sm-2 control-label">구분 3</label>
+                                <div class="col-sm-10"> -->
+                            <!--
                                     <select class="form-control input-lg m-bot15" name="type2" id="type2" data-select="<?php echo $item['type2']; ?>">
                                         <option value="개원의">개원의</option>
                                         <option value="봉직의">봉직의</option>
@@ -67,9 +67,9 @@
                                         <option value="기타">기타</option>
                                     </select>
 -->
-                                    <input class="form-control" type="text" value="<?php echo $item['type1']; ?>" name="type2" id="type2">
+                            <!-- <input class="form-control" type="text" value="<?php echo $item['type1']; ?>" name="type1" id="type1">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="form-group form-inline">
                                 <label class="col-sm-2 control-label">회원여부</label>
                                 <div class="col-sm-10">
@@ -82,7 +82,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">평점신청여부</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?php echo $item['etc1']; ?>" name="ln" id="ln">
+                                    <input type="text" class="form-control" value="<?php echo $item['etc1']; ?>" name="etc1" id="etc1">
                                 </div>
                             </div>
                             <div class="form-group">

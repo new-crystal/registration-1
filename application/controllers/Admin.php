@@ -687,6 +687,7 @@ class Admin extends CI_Controller
                 $type2 = $this->input->post('type2');
                 $type3 = $this->input->post('type3');
                 $ln = $this->input->post('ln');
+                $sn = $this->input->post('sn');
                 $nick_name = $this->input->post('nick_name');
                 $phone = $this->input->post('phone');
                 $email = $this->input->post('email');
@@ -759,6 +760,7 @@ class Admin extends CI_Controller
                     'type3' => $type3,
                     'fee' => $fee,
                     'ln' => preg_replace("/\s+/", "", $ln),
+                    'sn' => preg_replace("/\s+/", "", $sn),
                     'nick_name' => preg_replace("/\s+/", "", $nick_name),
                     'phone' => preg_replace("/\s+/", "", $phone),
                     'email' => preg_replace("/\s+/", "", $email),
