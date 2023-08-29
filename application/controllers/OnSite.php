@@ -42,9 +42,6 @@ class OnSite extends CI_Controller
             } else {
                 $type3 = "비회원";
             }
-            if ($license == "") {
-                $license = "00000";
-            }
             if ($type2 == '개원의' || $type2 == '봉직의' || $type2 == '전문의' || $type2 == '교수' || $type2 == '군의관') {
                 if ($type == '좌장' || $type == '연자' || $type == '패널') {
                     $fee = 0;
@@ -214,9 +211,6 @@ class OnSite extends CI_Controller
                 $etc1 = "신청";
             } else {
                 $etc1 = "미신청";
-            }
-            if ($license == "") {
-                $license = "00000";
             }
             // $uagent = $this->agent->agent_string();
 
