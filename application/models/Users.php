@@ -257,9 +257,8 @@ class Users extends CI_Model
 		$query = $this->db->query("
 		SELECT
 		u.type2,
-		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.registration_no LIKE '202303_A%' THEN a.registration_no END) AS 'A_03',
-		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.registration_no LIKE '202303_R%' THEN a.registration_no END) AS 'R_03',
-		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.registration_no LIKE '202303_M%' THEN a.registration_no END) AS 'M_03'
+		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.onsite_reg LIKE '1' THEN a.registration_no END) AS 'A_03',
+		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.onsite_reg LIKE '0' THEN a.registration_no END) AS 'R_03',
 	FROM
 		users u
 	JOIN
