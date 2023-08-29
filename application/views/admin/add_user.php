@@ -11,22 +11,19 @@
                     <div class="panel-body">
                         <div class="col-lg-6">
                             <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">구분 1</label>
+                                <label class="col-sm-2 control-label">구분</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control input-lg m-bot15" name="type1" id="type1">
-                                        <option value="일반참가자">일반참가자</option>
-                                        <option value="좌장">좌장</option>
-                                        <option value="연자">연자</option>
-                                        <option value="패널">패널</option>
-                                        <option value="임원">임원</option>
-                                        <option value="후원사">후원사</option>
+                                    <select class="form-control input-lg m-bot15" name="type" id="type">
+                                        <option value="전문의">전문의</option>
+                                        <option value="전공의">전공의</option>
+                                        <option value="기타">기타</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">구분 2</label>
+                                <label class="col-sm-2 control-label">구분 detail</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control input-lg m-bot15" name="type2" id="type2">
+                                    <select class="form-control input-lg m-bot15" name="type1" id="type1">
                                         <option value="개원의">개원의</option>
                                         <option value="봉직의">봉직의</option>
                                         <option value="전공의">전공의</option>
@@ -43,6 +40,20 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group form-inline">
+                                <label class="col-sm-2 control-label">구분 2</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control input-lg m-bot15" name="type2" id="type2">
+                                        <option value="일반참가자">일반참가자</option>
+                                        <option value="좌장">좌장</option>
+                                        <option value="연자">연자</option>
+                                        <option value="패널">패널</option>
+                                        <option value="임원">임원</option>
+                                        <option value="후원사">후원사</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group form-inline">
                                 <label class="col-sm-2 control-label">회원여부</label>
                                 <div class="col-sm-10">
