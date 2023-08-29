@@ -541,6 +541,8 @@ class Access extends CI_Controller
                     $this->data['nick_name'] = $userName['nick_name'];
                     $this->data['entrance_org'] = $userName['org'];
 
+
+
                     $list = $this->entrance->access($where);
                     $enter = $list['min_time'];
                     $leave = $list['max_time'];

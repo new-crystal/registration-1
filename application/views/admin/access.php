@@ -1,51 +1,51 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script type="text/javascript" src="/assets/js/admin/lecture_history.js"></script>
 <style>
-    .qr-info-table {
-        margin-top: 1rem;
-        border: 2px solid #eee;
-        border-collapse: collapse;
-        width: 50%;
-    }
+.qr-info-table {
+    margin-top: 1rem;
+    border: 2px solid #eee;
+    border-collapse: collapse;
+    width: 50%;
+}
 
-    .qr-info-table th {
-        background-color: #1d3557;
-        border-color: #1d3557;
-        color: #fff !important;
-        font-size: 1.7rem;
-        line-height: 2.5rem;
-        font-weight: 600;
-    }
+.qr-info-table th {
+    background-color: #1d3557;
+    border-color: #1d3557;
+    color: #fff !important;
+    font-size: 1.7rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+}
 
-    .qr-info-table>tr,
-    .qr-info-table th {
-        border: 2px solid #eee;
-        text-align: center;
-        font-size: 1.25rem;
-        line-height: 2.5rem;
-    }
+.qr-info-table>tr,
+.qr-info-table th {
+    border: 2px solid #eee;
+    text-align: center;
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+}
 
-    .qr-info-table td {
-        border: 1px solid #eee;
-        text-align: left;
-        font-size: 1.5rem;
-        line-height: 2.5rem;
-        padding-left: 4rem;
-        display: flex;
-        align-items: center;
-        height: 5rem;
-        font-weight: bold;
-    }
+.qr-info-table td {
+    border: 1px solid #eee;
+    text-align: left;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    padding-left: 4rem;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    font-weight: bold;
+}
 
-    .qr-info-table tr {
-        height: 5rem;
-        padding: 4px 8px;
-    }
+.qr-info-table tr {
+    height: 5rem;
+    padding: 4px 8px;
+}
 
-    #open {
-        background-color: #1d3557;
-        float: right;
-    }
+#open {
+    background-color: #1d3557;
+    float: right;
+}
 </style>
 
 <div class="page-container">
@@ -61,17 +61,22 @@
         <div class="content">
             <div class="panel panel-flat">
                 <div>
-                    <button class="w-[150px] h-[40px] bg-slate-300 mt-20 hover:bg-slate-400 active:bg-slate-500" type="button" id="open">새창</button>
+                    <button class="w-[150px] h-[40px] bg-slate-300 mt-20 hover:bg-slate-400 active:bg-slate-500"
+                        type="button" id="open">새창</button>
                 </div>
-                <form action="/admin/access" id="qr_form" name="qr_form" class="w-full h-screen flex flex-col items-center justify-center bg-slate-50">
+                <form action="/admin/access" id="qr_form" name="qr_form"
+                    class="w-full h-screen flex flex-col items-center justify-center bg-slate-50">
 
                     <div class="w-2/5 flex flex-col items-center justify-center translate-y-60">
 
                         <h1 class="text-5xl mt-32 font-semibold -translate-y-20">QR CODE 입력 </h1>
                         <h6 class="text-3xl mt-20 -translate-y-20">커서를 텍스트박스 안에 놓고 QR 코드 스캐너를 사용하세요.</h6>
-                        <input id="qrcode" name="qrcode" class="w-[400px] h-[50px] mt-20 p-3 -translate-y-20" type="text" autofocus />
+                        <input id="qrcode" name="qrcode" class="w-[400px] h-[50px] mt-20 p-3 -translate-y-20"
+                            type="text" autofocus />
 
-                        <button class="w-[150px] h-[40px] bg-slate-300 mt-20 mb-20 hover:bg-slate-400 active:bg-slate-500 -translate-y-20 text-black" type="submit" id="submit">등록</button>
+                        <button
+                            class="w-[150px] h-[40px] bg-slate-300 mt-20 mb-20 hover:bg-slate-400 active:bg-slate-500 -translate-y-20 text-black"
+                            type="submit" id="submit">등록</button>
 
                     </div>
 
@@ -146,129 +151,128 @@
 <!-- /page container -->
 
 <script>
-    const form = document.querySelector("#qr_form");
-    const qrcode = document.querySelector("#qrcode");
-    const submit = document.querySelector("#submit");
-    const qrTexts = document.querySelectorAll(".qr_text")
-    const table = document.querySelector(".qr-info-table")
-    const open = document.querySelector("#open")
-    const name = document.querySelector("#name")
-    const org = document.querySelector("#org")
-    const category = document.querySelector("#category")
-    const memo = document.querySelector("#memo")
-    const number = document.querySelector("#number")
-    const etc1 = document.querySelector("#etc1")
-    const etc2 = document.querySelector("#etc2")
-    const type2 = document.querySelector("#type2")
-    var childWindow;
-    let qrvalue = "";
+const form = document.querySelector("#qr_form");
+const qrcode = document.querySelector("#qrcode");
+const submit = document.querySelector("#submit");
+const qrTexts = document.querySelectorAll(".qr_text")
+const table = document.querySelector(".qr-info-table")
+const open = document.querySelector("#open")
+const name = document.querySelector("#name")
+const org = document.querySelector("#org")
+const category = document.querySelector("#category")
+const memo = document.querySelector("#memo")
+const number = document.querySelector("#number")
+const etc1 = document.querySelector("#etc1")
+const etc2 = document.querySelector("#etc2")
+const type2 = document.querySelector("#type2")
+var childWindow;
+let qrvalue = "";
 
+qrcode.focus();
+
+
+function openQR() {
+    const url = `/qrcode/open`
+    if (childWindow && !childWindow.closed) {
+        childWindow = null;
+    } else {
+        childWindow = window.open(url, 'ChildWindow', 'width=400,height=300');
+    }
+}
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    qrvalue = qrcode.value
+    fetchData(qrcode.value)
+    qrcode.value = "";
     qrcode.focus();
+})
 
-
-    function openQR() {
-        const url = `/qrcode/open`
-        if (childWindow && !childWindow.closed) {
-            childWindow = null;
-        } else {
-            childWindow = window.open(url, 'ChildWindow', 'width=400,height=300');
-        }
-    }
-
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        qrvalue = qrcode.value
-        fetchData(qrcode.value)
-        qrcode.value = "";
-        qrcode.focus();
-    })
-
-    function fetchData(qrcode) {
-        // Ajax 요청 수행
-        fetch(`/admin/access?qrcode=${qrcode}`)
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const htmlDocument = parser.parseFromString(data, 'text/html');
-                if (htmlDocument.querySelector("#number").innerText.replace(/<br\s*\/?>/gi, "").replace(/\s/g,
-                        "")) {
-                    number.innerText = htmlDocument.querySelector("#number").innerText.replace(/<br\s*\/?>/gi, "")
-                        .replace(
-                            /\s/g, "");
-                    name.innerText = htmlDocument.querySelector("#name").innerText.replace(/<br\s*\/?>/gi, "").replace(
+function fetchData(qrcode) {
+    // Ajax 요청 수행
+    fetch(`/admin/access?qrcode=${qrcode}`)
+        .then(response => response.text())
+        .then(data => {
+            const parser = new DOMParser();
+            const htmlDocument = parser.parseFromString(data, 'text/html');
+            if (htmlDocument.querySelector("#number").innerText.replace(/<br\s*\/?>/gi, "").replace(/\s/g,
+                    "")) {
+                number.innerText = htmlDocument.querySelector("#number").innerText.replace(/<br\s*\/?>/gi, "")
+                    .replace(
                         /\s/g, "");
-                    org.innerText = htmlDocument.querySelector("#org").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                        /\s/g,
-                        "");
-                    category.innerText = htmlDocument.querySelector("#category").innerText.replace(/<br\s*\/?>/gi, "")
-                        .replace(/\s/g, "");
-                    memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                name.innerText = htmlDocument.querySelector("#name").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                org.innerText = htmlDocument.querySelector("#org").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                category.innerText = htmlDocument.querySelector("#category").innerText.replace(/<br\s*\/?>/gi, "")
+                    .replace(/\s/g, "");
+                memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                etc1.innerText = htmlDocument.querySelector("#etc1").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                etc2.innerText = htmlDocument.querySelector("#etc2").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                type2.innerText = htmlDocument.querySelector("#type2").innerText.replace(/<br\s*\/?>/gi, "")
+                    .replace(
                         /\s/g, "");
-                    etc1.innerText = htmlDocument.querySelector("#etc1").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                        /\s/g, "");
-                    etc2.innerText = htmlDocument.querySelector("#etc2").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                        /\s/g, "");
-                    type2.innerText = htmlDocument.querySelector("#type2").innerText.replace(/<br\s*\/?>/gi, "")
-                        .replace(
-                            /\s/g, "");
-                } else {
-                    number.innerText = qrvalue
-                    name.innerText = "없는 QR입니다."
-                    org.innerText = ""
-                    category.innerText = ""
-                    etc1.innerText = ""
-                    throw new Error("없는 QR입니다.");
-                }
-            }).then((data) => {
-                executeFunctionInChildWindow(qrcode);
-            }).then(() => {
-                window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    }
-
-
-    function executeFunctionInChildWindow(data) {
-
-        if (childWindow && !childWindow.closed) {
-            childWindow.postMessage({
-                qrcode: data
-            }, '*');
-        } else {
-
-        }
-    }
-
-    // 자식 창으로부터의 메시지를 받아 처리하는 함수
-    function receiveMessage(event) {
-        if (event.data === "child") {
-
-        }
-    }
-
-
-    function hideText() {
-        qrTexts.forEach((text) => {
-            text.textContent = "";
+            } else {
+                number.innerText = qrvalue
+                name.innerText = "없는 QR입니다."
+                org.innerText = ""
+                category.innerText = ""
+                etc1.innerText = ""
+                throw new Error("없는 QR입니다.");
+            }
+        }).then((data) => {
+            executeFunctionInChildWindow(qrcode);
+        }).then(() => {
+            window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
         })
-    }
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
 
-    open.addEventListener("click", () => {
-        openQR()
+
+function executeFunctionInChildWindow(data) {
+
+    if (childWindow && !childWindow.closed) {
+        childWindow.postMessage({
+            qrcode: data
+        }, '*');
+    } else {
+
+    }
+}
+
+// 자식 창으로부터의 메시지를 받아 처리하는 함수
+function receiveMessage(event) {
+    if (event.data === "child") {
+
+    }
+}
+
+
+function hideText() {
+    qrTexts.forEach((text) => {
+        text.textContent = "";
     })
+}
 
-    // 메시지 이벤트 리스너 등록
-    window.addEventListener('message', (e) => {
-        // childWindow = null;
-        receiveMessage(e)
-    }, false);
+open.addEventListener("click", () => {
+    openQR()
+})
 
-    window.onload = () => {
-        if (qrvalue) {
-            number.innerText = qrvalue
-        }
+// 메시지 이벤트 리스너 등록
+window.addEventListener('message', (e) => {
+    // childWindow = null;
+    receiveMessage(e)
+}, false);
+
+window.onload = () => {
+    if (qrvalue) {
+        number.innerText = qrvalue
     }
+}
 </script>
 </body>
