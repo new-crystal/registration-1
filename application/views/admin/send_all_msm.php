@@ -62,7 +62,7 @@ if ($err) {
 기타 문의 사항은 02-2285-2579로 연락 주시면 감사하겠습니다.
             
 -운영사무국 드림-
-                ','refkey' => 'RESTAPITEST1548722798', 'subject' => 'QR 네임택 시스템 테스트 도움요청', 'image_cnt' =>
+                ','refkey' => 'RESTAPITEST1548722798', 'subject' =>'대한내분비학회 2023년 개원의 연수강좌 안내', 'image_cnt' =>
                 '1', '
              images0' => new CURLFILE('assets/images/QR/qrcode_' . $item['registration_no'] . '.jpg')
             ),
