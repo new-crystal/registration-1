@@ -46,7 +46,7 @@ if ($err) {
                 'callback' => '01090224867',
 
                 'phone' =>  $phone, 'callback' => '01090224867', 'message' => '
-안녕하세요. ' . $nick_name . '선생님.'  .
+안녕하세요. ' .$item['$nick_name'] . '선생님.'  .
 '
 본 연수강좌에 참석 해주셔서 감사합니다.
             
