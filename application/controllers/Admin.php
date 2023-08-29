@@ -686,6 +686,7 @@ class Admin extends CI_Controller
                 $type = $this->input->post('type1');
                 $type2 = $this->input->post('type2');
                 $type3 = $this->input->post('type3');
+                $ln = $this->input->post('ln');
                 $sn = $this->input->post('sn');
                 $nick_name = $this->input->post('nick_name');
                 $phone = $this->input->post('phone');
@@ -697,28 +698,29 @@ class Admin extends CI_Controller
                 $deposit_name = $this->input->post('deposit_name');
                 $memo = $this->input->post('memo');
                 $time = $this->input->post('time');
+                $fee = $this->input->post('fee');
                 if ($memo == "") {
                     $memo = null;
                 }
-                if ($type2 == '개원의' || $type2 == '봉직의' || $type2 == '전임의' || $type2 == '교수') {
-                    if ($type3 == '비회원') {
-                        $fee = 110000;
-                    } else {
-                        $fee = 90000;
-                    }
-                } else if ($type2 == '간호사' || $type2 == '기초의학자' || $type2 == '약사' || $type2 == '군의관') {
-                    if ($type3 == '비회원') {
-                        $fee = 90000;
-                    } else {
-                        $fee = 70000;
-                    }
-                } else if ($type2 == '전공의') {
-                    if ($type3 == '비회원') {
-                        $fee = 90000;
-                    } else {
-                        $fee = 70000;
-                    }
-                }
+                // if ($type2 == '개원의' || $type2 == '봉직의' || $type2 == '전임의' || $type2 == '교수') {
+                //     if ($type3 == '비회원') {
+                //         $fee = 110000;
+                //     } else {
+                //         $fee = 90000;
+                //     }
+                // } else if ($type2 == '간호사' || $type2 == '기초의학자' || $type2 == '약사' || $type2 == '군의관') {
+                //     if ($type3 == '비회원') {
+                //         $fee = 90000;
+                //     } else {
+                //         $fee = 70000;
+                //     }
+                // } else if ($type2 == '전공의') {
+                //     if ($type3 == '비회원') {
+                //         $fee = 90000;
+                //     } else {
+                //         $fee = 70000;
+                //     }
+                // }
                 //기존코드
                 // if ($type2 == '개원의' || $type2 == '봉직의' || $type2 == '전문의' || $type2 == '교수' || $type2 == '군의관') {
                 //     if ($type == '좌장' || $type == '연자' || $type == '패널') {
@@ -757,6 +759,7 @@ class Admin extends CI_Controller
                     'type2' => $type2,
                     'type3' => $type3,
                     'fee' => $fee,
+                    'ln' => preg_replace("/\s+/", "", $ln),
                     'sn' => preg_replace("/\s+/", "", $sn),
                     'nick_name' => preg_replace("/\s+/", "", $nick_name),
                     'phone' => preg_replace("/\s+/", "", $phone),
