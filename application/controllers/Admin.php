@@ -432,7 +432,8 @@ class Admin extends CI_Controller
             //     $this->load->view('admin/qr_layout_all', array('users' => $result));
             // } else {
             $where = array(
-                'type2' => $userType
+                'type2' => $userType,
+                'qr_generated' => "Y"
             );
             $data['users'] = $this->users->get_users_order('nick_name', $where);
             $this->load->view('admin/qr_layout_all', $data);
@@ -873,7 +874,7 @@ class Admin extends CI_Controller
             $object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, $row['d_format']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, hoursandmins($spent));
             $object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $score);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, '');
+            $object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row['memo']);
 
             $excel_row++;
         }
