@@ -1,21 +1,21 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-th,
-td {
-    text-align: center !important;
-    border: 2px solid rgb(163 163 163);
-    font-weight: 600;
-    font-size: 1.5rem;
-    line-height: 2rem;
-}
+    th,
+    td {
+        text-align: center !important;
+        border: 2px solid rgb(163 163 163);
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
 
-tr {
-    height: 4.5rem;
-    border: 2px solid rgb(163 163 163);
-    font-weight: 600;
-    font-size: 1.5rem;
-    line-height: 2rem;
-}
+    tr {
+        height: 4.5rem;
+        border: 2px solid rgb(163 163 163);
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
 </style>
 <div class="text-center flex flex-col items-center justify-center">
     <h1 class="text-6xl font-semibold text-orange-600 my-10">대한내분비학회 2023년 개원의연수강좌</h1>
@@ -46,25 +46,25 @@ tr {
         </tr>
         <tr>
             <th class="bg-red-100">연자</th>
-            <td><?php echo isset($statistics[0]['R_03']) ? $statistics[0]['R_03'] + $statistics[3]['M_03'] : 0; ?>
+            <td><?php echo isset($statistics[0]['R_03']) ? $statistics[0]['R_03'] + $statistics[0]['M_03'] : 0; ?>
             </td>
 
         </tr>
         <tr>
             <th class="bg-red-100">패널</th>
-            <td><?php echo isset($statistics[4]['R_03']) ? $statistics[4]['R_03'] + $statistics[3]['M_03'] : 0; ?>
+            <td><?php echo isset($statistics[4]['R_03']) ? $statistics[4]['R_03'] + $statistics[4]['M_03'] : 0; ?>
             </td>
 
         </tr>
         <tr>
             <th class="bg-red-100">임원</th>
-            <td><?php echo isset($statistics[2]['R_03']) ? $statistics[2]['R_03'] + $statistics[3]['M_03'] : 0; ?>
+            <td><?php echo isset($statistics[2]['R_03']) ? $statistics[2]['R_03'] + $statistics[2]['M_03'] : 0; ?>
             </td>
 
         </tr>
         <tr>
             <th class="bg-red-100">일반 참가자</th>
-            <td><?php echo isset($statistics[1]['R_03']) ? $statistics[1]['R_03'] + $statistics[3]['M_03'] : 0; ?>
+            <td><?php echo isset($statistics[1]['R_03']) ? $statistics[1]['R_03'] + $statistics[1]['M_03'] : 0; ?>
             </td>
 
         </tr>
