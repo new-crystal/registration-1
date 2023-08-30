@@ -996,9 +996,9 @@ class Admin extends CI_Controller
             $info = array(
                 'QR_SMS_SEND_YN' =>  'Y'
             );
-            $this->users->update_msm_status($info, $where);
             $data['users'] = $this->users->get_user($where);
             $this->load->view('admin/send_msm', $data);
+            $this->users->update_msm_status($info, $where);
         }
     }
 

@@ -74,6 +74,7 @@ class Users extends CI_Model
 				MIN(time) as mintime,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
+			WHERE DATE(TIME) = CURDATE()
 			GROUP BY registration_no
 		) b ON a.registration_no = b.qr_registration_no
 		WHERE a.qr_generated = 'Y' AND a.deposit = '입금완료'
