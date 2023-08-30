@@ -44,10 +44,9 @@ if ($err) {
             CURLOPT_POSTFIELDS => array(
                 'phone' =>  $item['phone'],
                 'callback' => '01090224867',
-
- 'message' => '
-안녕하세요. ' .$item['nick_name'] . '선생님.'  .
-'
+                'message' => '
+안녕하세요. ' . $item['nick_name'] . '선생님.'  .
+                    '
 본 연수강좌에 참석 해주셔서 감사합니다.
             
 연수강좌 관련 사전 안내 드립니다.
@@ -63,7 +62,7 @@ if ($err) {
 기타 문의 사항은 02-2285-2579로 연락 주시면 감사하겠습니다.
             
 -운영사무국 드림-
-                ','refkey' => 'RESTAPITEST1548722798', 'subject' =>'대한내분비학회 2023년 개원의 연수강좌 안내', 'image_cnt' =>
+                ', 'refkey' => 'RESTAPITEST1548722798', 'subject' => '대한내분비학회 2023년 개원의 연수강좌 안내', 'image_cnt' =>
                 '1', '
              images0' => new CURLFILE('assets/images/QR/qrcode_' . $item['registration_no'] . '.jpg')
             ),
