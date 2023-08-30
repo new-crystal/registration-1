@@ -45,7 +45,29 @@
                                         <option value="기타">기타</option>
                                     </select>
 -->
-                                    <input class="form-control" type="text" value="<?php echo $item['type']; ?>" name="type1" id="type1">
+                                    <input class="form-control" type="text" value="<?php echo $item['type']; ?>" name="type" id="type">
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="col-sm-2 control-label">구분 3</label>
+                                <div class="col-sm-10">
+                                    <!--
+                                    <select class="form-control input-lg m-bot15" name="type2" id="type2" data-select="<?php echo $item['type2']; ?>">
+                                        <option value="개원의">개원의</option>
+                                        <option value="봉직의">봉직의</option>
+                                        <option value="전공의">전공의</option>
+                                        <option value="전문의">전문의</option>
+                                        <option value="교수">교수</option>
+                                        <option value="사회복지사">사회복지사</option>
+                                        <option value="약사">약사</option>
+                                        <option value="간호사">간호사</option>
+                                        <option value="영양사">영양사</option>
+                                        <option value="연구원">연구원</option>
+                                        <option value="운동처방사">운동처방사</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+-->
+                                    <input class="form-control" type="text" value="<?php echo $item['type1']; ?>" name="type1" id="type1">
                                 </div>
                             </div>
                             <!-- <div class="form-group form-inline"> -->

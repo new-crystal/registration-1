@@ -476,7 +476,7 @@ class Admin extends CI_Controller
             //            var_dump($data['item2']);
 
             $this->load->view('admin/left_side.php', $data);
-            $this->load->view('admin/user_detail_test', $data);
+            $this->load->view('admin/user_detail', $data);
         }
         $this->load->view('footer');
     }
@@ -532,7 +532,8 @@ class Admin extends CI_Controller
                 $org = $this->input->post('org');
                 $phone = $this->input->post('phone');
                 $email = $this->input->post('email');
-                $type = $this->input->post('type1');
+                $type = $this->input->post('type');
+                $type1 = $this->input->post('type1');
                 $type2 = $this->input->post('type2');
                 $type3 = $this->input->post('type3');
                 $postcode = $this->input->post('postcode');
@@ -584,6 +585,7 @@ class Admin extends CI_Controller
                     'postcode' => trim($postcode),
                     'addr' => trim($addr),
                     'type' => trim($type),
+                    'type1' => trim($type1),
                     'type2' => trim($type2),
                     'type3' => trim($type3),
                     'fee' => $fee,
@@ -679,12 +681,13 @@ class Admin extends CI_Controller
 
             $this->form_validation->set_rules('nick_name', '이름', 'required');
             $this->form_validation->set_rules('phone', '전화번호', 'required');
-            $this->form_validation->set_rules('org', '소속', 'required');
+            // $this->form_validation->set_rules('org', '소속', 'required');
 
             if ($this->form_validation->run() === FALSE) {
                 //                $this->load->view('admin');
             } else {
-                $type = $this->input->post('type1');
+                $type = $this->input->post('type');
+                $type1 = $this->input->post('type1');
                 $type2 = $this->input->post('type2');
                 $type3 = $this->input->post('type3');
                 $ln = $this->input->post('ln');
@@ -700,65 +703,17 @@ class Admin extends CI_Controller
                 $memo = $this->input->post('memo');
                 $time = $this->input->post('time');
                 $fee = $this->input->post('fee');
+                $etc1 = $this->input->post('etc1');
                 if ($memo == "") {
                     $memo = null;
                 }
-                // if ($type2 == '개원의' || $type2 == '봉직의' || $type2 == '전임의' || $type2 == '교수') {
-                //     if ($type3 == '비회원') {
-                //         $fee = 110000;
-                //     } else {
-                //         $fee = 90000;
-                //     }
-                // } else if ($type2 == '간호사' || $type2 == '기초의학자' || $type2 == '약사' || $type2 == '군의관') {
-                //     if ($type3 == '비회원') {
-                //         $fee = 90000;
-                //     } else {
-                //         $fee = 70000;
-                //     }
-                // } else if ($type2 == '전공의') {
-                //     if ($type3 == '비회원') {
-                //         $fee = 90000;
-                //     } else {
-                //         $fee = 70000;
-                //     }
-                // }
-                //기존코드
-                // if ($type2 == '개원의' || $type2 == '봉직의' || $type2 == '전문의' || $type2 == '교수' || $type2 == '군의관') {
-                //     if ($type == '좌장' || $type == '연자' || $type == '패널') {
-                //         $fee = 0;
-                //     } else {
-                //         if ($type3 == '비회원') {
-                //             $fee = 50000;
-                //         } else {
-                //             $fee = 30000;
-                //         }
-                //     }
-                // } else if ($type2 == '간호사' || $type2 == '영양사' || $type2 == '약사' || $type2 == '운동처방사' || $type2 == '연구원') {
-                //     if ($type == '좌장' || $type == '연자' || $type == '패널') {
-                //         $fee = 0;
-                //     } else {
-                //         if ($type3 == '비회원') {
-                //             $fee = 40000;
-                //         } else {
-                //             $fee = 20000;
-                //         }
-                //     }
-                // } else {
-                //     $fee = 0;
-                // }
-
-                if ($fee == 0)
-                    $deposit = '미결제';
-                else
-                    $deposit = '미결제';
-
                 $updateTime = date("Y-m-d H:i:s");
-
-
                 $info = array(
                     'type' => $type,
+                    'type1' => $type1,
                     'type2' => $type2,
                     'type3' => $type3,
+                    'etc1' => $etc1,
                     'fee' => $fee,
                     'ln' => preg_replace("/\s+/", "", $ln),
                     'sn' => preg_replace("/\s+/", "", $sn),
