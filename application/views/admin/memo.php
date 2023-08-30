@@ -49,21 +49,29 @@ async function saveMemo() {
             alert("메모 저장 성공");
             const parentWindow = window.opener;
             const buttons = parentWindow.document.querySelectorAll('.qr_btn.memo');
-            buttons.forEach((button) => {
-                if (button.dataset.id === registration_no && memoValue === "") {
-                    button.classList.remove('bg-indigo-800');
-                    button.classList.remove('text-white');
-                    button.classList.add('bg-white');
-                    button.classList.add('text-indigo-800');
-                    button.classList.add('border-indigo-800');
+            console.log(buttons)
+            if (buttons.length !== 0) {
+                buttons.forEach((button) => {
+                    if (button.dataset.id === registration_no && memoValue === "") {
+                        button.classList.remove('bg-indigo-800');
+                        button.classList.remove('text-white');
+                        button.classList.add('bg-white');
+                        button.classList.add('text-indigo-800');
+                        button.classList.add('border-indigo-800');
+                        window.close();
 
-                } else if (button.dataset.id === registration_no && memoValue !== "") {
-                    button.classList.remove('bg-white');
-                    button.classList.add('bg-indigo-800');
-                    button.classList.add('text-white');
-                }
+                    } else if (button.dataset.id === registration_no && memoValue !== "") {
+                        button.classList.remove('bg-white');
+                        button.classList.add('bg-indigo-800');
+                        button.classList.add('text-white');
+                        window.close();
+                    }
+                });
+            } else if (buttons.length === 0) {
+                window.opener.postMessage(memoValue, "*");
                 window.close();
-            });
+            }
+
         } else {
             // 메모 저장 실패
             alert("메모 저장 실패");
