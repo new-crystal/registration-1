@@ -190,19 +190,19 @@
 
 #printThis .small_nick{
   position: relative;
-  top: 270px;
+  top: 268px;
   font-size: 10px;
   right: 278px;
 }
 #printThis .smaill_ln{
   position: relative;
-  top:  255px;
-  right: 71px;
+  top: 253px;
+  right: 76px;
   font-size: 10px;
 }
 #printThis .small_sn{
   position: relative;
-  top: 260px;
+  top: 257px;
   right: 238px;
   font-size: 10px;
 }
