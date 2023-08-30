@@ -257,14 +257,20 @@ class Users extends CI_Model
 		$query = $this->db->query("
 		SELECT
 		u.type2,
-		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.onsite_reg LIKE '1' THEN a.registration_no END) AS 'A_03',
-		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND a.onsite_reg LIKE '0' THEN a.registration_no END) AS 'R_03',
+		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND u.onsite_reg = '1' THEN u.registration_no END) AS 'A_03',
+		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-09-03' AND u.onsite_reg = '0' THEN u.registration_no END) AS 'R_03'
 	FROM
 		users u
 	JOIN
 		access a ON u.registration_no = a.registration_no
 	GROUP BY
-		u.type2;");
+		u.type2;
+		");
 		return $query->result_array();
 	}
 }
+/* SQL 오류 (1064): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM
+		users u
+	JOIN
+		access a ON u.registration_no = a.registration_no
+	GR' at line 5 */

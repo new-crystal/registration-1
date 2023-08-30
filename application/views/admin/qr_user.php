@@ -191,31 +191,45 @@
         }
     })
 
-    $('#depositForm').click(function() {
-        var formName4 = $('#depositForm');
-        $('.depositChk').prop('checked', true).each(function() {
-            const loading = document.querySelector(".loading_box")
-            loading.style.display = ""
-            var userId = $(this).val();
-            console.log(userId)
-            var checkHtml = '<input type="hidden" class="userId user' + userId +
-                '" name="userId[]" value="' + userId +
-                '" id="">';
-            formName4.append(checkHtml);
-        });
+    $('#depositForm').click(function(e) {
+        e.preventDefault()
+        if (window.confirm("※ 전체 문자 전송을 하시겠습니까?")) {
+            var formName4 = $('#depositForm');
+            $('.depositChk').prop('checked', true).each(function() {
+                const loading = document.querySelector(".loading_box")
+                loading.style.display = ""
+                var userId = $(this).val();
+                console.log(userId)
+                var checkHtml = '<input type="hidden" class="userId user' + userId +
+                    '" name="userId[]" value="' + userId +
+                    '" id="">';
+                formName4.append(checkHtml);
+                formName4.submit()
+            });
+        } else {
+            window.location = "/admin/qr_user";
+
+        }
     });
 
     $('#deposit_mail_Form').click(function(e) {
-        var formName6 = $('#deposit_mail_Form');
-        $('.depositChk').prop('checked', true).each(function() {
-            const loading = document.querySelector(".loading_box")
-            loading.style.display = ""
-            var userId = $(this).val();
-            var checkHtml = '<input type="hidden" class="userId user' + userId +
-                '" name="userId[]" value="' + userId +
-                '" id="">';
-            formName6.append(checkHtml);
-        });
+        e.preventDefault()
+        if (window.confirm("※ 전체 메일 발송을 하시겠습니까?")) {
+            var formName6 = $('#deposit_mail_Form');
+            $('.depositChk').prop('checked', true).each(function() {
+                const loading = document.querySelector(".loading_box")
+                loading.style.display = ""
+                var userId = $(this).val();
+                var checkHtml = '<input type="hidden" class="userId user' + userId +
+                    '" name="userId[]" value="' + userId +
+                    '" id="">';
+                formName6.append(checkHtml);
+                formName6.submit()
+            });
+        } else {
+            window.location = "/admin/qr_user";
+
+        }
     });
 </script>
 </body>
