@@ -3,32 +3,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 
 <style>
-    @page {
-        size: 10cm 24cm;
-        margin: 0;
-    }
+@page {
+    size: 10cm 24cm;
+    margin: 0;
+}
 
-    @font-face {
-        font-family: NanumSquare;
-        src: url("../../../assets/font/NanumSquare-Hv.otf");
-    }
+@font-face {
+    font-family: NanumSquare;
+    src: url("../../../assets/font/NanumSquare-Hv.otf");
+}
 
-    #nick_name {
-        font-family: NanumSquare;
-    }
+#nick_name {
+    font-family: NanumSquare;
+}
 
-    #printThis {
-        width: 10cm;
-        height: 24cm;
-        margin: 0;
-        padding: 0;
-    }
+#printThis {
+    width: 10cm;
+    height: 24cm;
+    margin: 0;
+    padding: 0;
+}
+
+.small_receipt {
+    position: relative;
+    top: 37px;
+}
 </style>
 
 <!-- Main content -->
 <div id="nametag_wrapper">
     <div class="edit_wrapper">
-        <button id="btnPrint" type="button" class="btn btn-primary" style="margin-left:20px;">Print<?php $num_row ?></button>
+        <button id="btnPrint" type="button" class="btn btn-primary"
+            style="margin-left:20px;">Print<?php $num_row ?></button>
     </div>
 
     <!-- Content area -->
@@ -54,6 +60,9 @@
                 }
                 echo '<div class="org" id="org">' . $item['org_nametag'] . '</div>';
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $item['registration_no'] . '.jpg"></div>';
+                if ($nicknameLength > 3) {
+                    echo '<div class="small_receipt">';
+                }
                 echo '<div class="receipt receipt_num_1">' . $item['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_name">' . $item['nick_name'] . '</div>';
                 echo '<div class="receipt receipt_price">' . number_format($item['fee']) . '</div>';
@@ -61,6 +70,9 @@
                 echo '<div class="receipt receipt_small small_nick">' . $item['nick_name'] . '</div>';
                 echo '<div class="receipt receipt_small smaill_ln">' . $item['ln'] . '</div>';
                 echo '<div class="receipt receipt_small small_sn">' . $item['sn'] . '</div>';
+                if ($nicknameLength > 3) {
+                    echo '</div>';
+                }
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
@@ -80,31 +92,31 @@
 </div>
 <!-- /page container -->
 <style>
-    body {
-        background-color: #fff;
-    }
+body {
+    background-color: #fff;
+}
 </style>
 <script>
-    document.getElementById("btnPrint").onclick = function() {
-        printElement(document.getElementById("printThis"));
+document.getElementById("btnPrint").onclick = function() {
+    printElement(document.getElementById("printThis"));
+}
+
+function printElement(elem) {
+    var domClone = elem.cloneNode(true);
+
+    var $printSection = document.getElementById("printSection");
+
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.style.width = "10cm";
+        $printSection.style.height = "24cm";
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
     }
 
-    function printElement(elem) {
-        var domClone = elem.cloneNode(true);
-
-        var $printSection = document.getElementById("printSection");
-
-        if (!$printSection) {
-            var $printSection = document.createElement("div");
-            $printSection.style.width = "10cm";
-            $printSection.style.height = "24cm";
-            $printSection.id = "printSection";
-            document.body.appendChild($printSection);
-        }
-
-        $printSection.innerHTML = "";
-        $printSection.appendChild(domClone);
-        window.print();
-    }
+    $printSection.innerHTML = "";
+    $printSection.appendChild(domClone);
+    window.print();
+}
 </script>
 </body>
