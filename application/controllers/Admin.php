@@ -476,7 +476,7 @@ class Admin extends CI_Controller
             //            var_dump($data['item2']);
 
             $this->load->view('admin/left_side.php', $data);
-            $this->load->view('admin/user_detail', $data);
+            $this->load->view('admin/user_detail_test', $data);
         }
         $this->load->view('footer');
     }

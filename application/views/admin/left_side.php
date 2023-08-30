@@ -41,8 +41,10 @@
                             <ul class="navigation navigation-main navigation-accordion">
 
                                 <!-- Main -->
-                                <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-                                <li style="margin-bottom: 2rem;" <?php if ($primary_menu == 'users') echo 'class="active"' ?>>
+                                <li class="navigation-header"><span>Main</span> <i class="icon-menu"
+                                        title="Main pages"></i></li>
+                                <li style="margin-bottom: 2rem;"
+                                    <?php if ($primary_menu == 'users') echo 'class="active"' ?>>
                                     <a href="/admin">
                                         <i class="icon-list-unordered"></i>
                                         <span> 등록 관리
@@ -50,14 +52,16 @@
                                     </a>
                                 </li>
 
-                                <li style="margin-bottom: 2rem;" <?php if ($primary_menu == 'user_qr') echo 'class="active"' ?>>
+                                <li style="margin-bottom: 2rem;"
+                                    <?php if ($primary_menu == 'user_qr') echo 'class="active"' ?>>
                                     <a href="/admin/qr_user">
                                         <i class="icon-list-unordered"></i>
                                         <span>QR 관리
                                         </span>
                                     </a>
                                 </li>
-                                <li style="margin-bottom: 2rem;" <?php if ($primary_menu == 'qrcode') echo 'class="active"' ?>>
+                                <li style="margin-bottom: 2rem;"
+                                    <?php if ($primary_menu == 'qrcode') echo 'class="active"' ?>>
                                     <a href="/admin/access">
                                         <i class="icon-list-unordered"></i>
                                         <span> QR code
@@ -100,14 +104,15 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="/admin/qr_layout_all?type=07" target="_blank">
                                         <i class="icon-printer2"></i>
                                         <span>후원사 QR생성
                                         </span>
                                     </a>
-                                </li>
-                                <li style="margin-bottom: 2rem;" <?php if ($primary_menu == 'participant') echo 'class="active"' ?>>
+                                </li> -->
+                                <li style="margin-bottom: 2rem;"
+                                    <?php if ($primary_menu == 'participant') echo 'class="active"' ?>>
                                     <a href="/admin/participant">
                                         <i class="icon-list-unordered"></i>
                                         <span>참석자 현황
