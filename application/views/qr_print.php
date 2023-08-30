@@ -28,6 +28,11 @@
         margin: 0;
         padding: 0;
     }
+
+    .small_receipt {
+        position: relative;
+        top: 37px;
+    }
 </style>
 
 <!-- Main content -->
@@ -64,6 +69,9 @@
                 }
                 echo '<div class="org" id="org">' . $users['org_nametag'] . '</div>';
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
+                if ($nicknameLength > 3) {
+                    echo '<div class="small_receipt">';
+                }
                 echo '<div class="receipt receipt_num_1">' . $users['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
                 echo '<div class="receipt receipt_price">' . number_format($users['fee']) . '</div>';
@@ -71,6 +79,9 @@
                 echo '<div class="receipt receipt_small small_nick">' . $users['nick_name'] . '</div>';
                 echo '<div class="receipt receipt_small smaill_ln">' . $users['ln'] . '</div>';
                 echo '<div class="receipt receipt_small small_sn">' . $users['sn'] . '</div>';
+                if ($nicknameLength > 3) {
+                    echo '</div>';
+                }
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';

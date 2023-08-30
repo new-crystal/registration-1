@@ -16,26 +16,34 @@
             <td>
                 <div>
 
-                    <table width='586' style='width:586px; border-collapse:collapse; border-top:2px solid #000; width:100%; margin:17px 0;'>
+                    <table width='586'
+                        style='width:586px; border-collapse:collapse; border-top:2px solid #000; width:100%; margin:17px 0;'>
                         <tbody>
                             <tr>
-                                <th style='width:150px; text-align:left; font-size:14px; padding:10px; border-bottom:1px solid #000;'>
+                                <th
+                                    style='width:150px; text-align:left; font-size:14px; padding:10px; border-bottom:1px solid #000;'>
                                     이름</th>
-                                <td colspan='2' style='font-size:14px; padding:10px; border-left:1px solid #000; border-bottom:1px solid #000;'>
-                                    <a href='mailto:{$to}' class='link font_inherit'><?php echo $users['nick_name'] ?></a>
+                                <td colspan='2'
+                                    style='font-size:14px; padding:10px; border-left:1px solid #000; border-bottom:1px solid #000;'>
+                                    <a href='mailto:{$to}'
+                                        class='link font_inherit'><?php echo $users['nick_name'] ?></a>
                                 </td>
                             </tr>
                             <tr>
-                                <th style='width:150px; text-align:left; font-size:14px; padding:10px; border-bottom:1px solid #000;'>
+                                <th
+                                    style='width:150px; text-align:left; font-size:14px; padding:10px; border-bottom:1px solid #000;'>
                                     소속</th>
-                                <td colspan='2' style='font-size:14px; padding:10px; border-left:1px solid #000; width:165px; border-bottom:1px solid #000;'>
+                                <td colspan='2'
+                                    style='font-size:14px; padding:10px; border-left:1px solid #000; width:165px; border-bottom:1px solid #000;'>
                                     <?php echo $users['org'] ?></td>
 
                             </tr>
                             <tr>
-                                <th style='width:150px; text-align:left; font-size:14px; padding:10px; border-bottom:1px solid #000;'>
+                                <th
+                                    style='width:150px; text-align:left; font-size:14px; padding:10px; border-bottom:1px solid #000;'>
                                     접수번호</th>
-                                <td colspan='2' style='font-size:14px; padding:10px; border-left:1px solid #000; width:165px; border-bottom:1px solid #000;'>
+                                <td colspan='2'
+                                    style='font-size:14px; padding:10px; border-left:1px solid #000; width:165px; border-bottom:1px solid #000;'>
                                     <?php echo $users['registration_no'] ?></td>
 
                             </tr>
@@ -55,7 +63,9 @@
         </tr>
         <tr>
             <td colspan='3' style="text-align: center;">
-                <img width="300px" height="300px" src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents(getcwd() . '/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg')); ?>" alt="" />
+                <img width="300px" height="300px"
+                    src="data:image/jpg;base64,<?php echo base64_encode(file_get_contents(getcwd() . '/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg')); ?>"
+                    alt="" />
                 <?php /*src="<?php echo '../assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg'; ?>" alt=""
                 />*/ ?>
             </td>
@@ -76,32 +86,35 @@
     </tbody>
 </table>
 <div style="width:750px;display:flex; justify-content:center;">
-    <button style="background-color: #fff; padding: 4px 8px; border:1px solid #ddd; cursor:pointer"> <a id="sendMailLink" data-registration-no="<?php echo $users['registration_no'] ?>" href="#" style="text-decoration:none">메일발송</a></button>
+    <button style="background-color: #fff; padding: 4px 8px; border:1px solid #ddd; cursor:pointer"> <a
+            id="sendMailLink" data-registration-no="<?php echo $users['registration_no'] ?>" href="#"
+            style="text-decoration:none">메일발송</a></button>
 
 
 </div>
 
 <script>
-    // JavaScript 코드
-    document.addEventListener("DOMContentLoaded", function() {
-        const sendMailLink = document.getElementById("sendMailLink");
-        sendMailLink.addEventListener("click", function(event) {
-            event.preventDefault();
+// JavaScript 코드
+document.addEventListener("DOMContentLoaded", function() {
+    const sendMailLink = document.getElementById("sendMailLink");
+    sendMailLink.addEventListener("click", function(event) {
+        event.preventDefault();
 
-            const registrationNo = sendMailLink.getAttribute("data-registration-no");
-            const url = `https://reg1.webeon.net/admin/sendmail?n=${registrationNo}`;
+        const registrationNo = sendMailLink.getAttribute("data-registration-no");
+        const url = `https://reg1.webeon.net/admin/sendmail?n=${registrationNo}`;
 
-            fetch(url, {
-                    method: 'POST',
-                })
-                .then(response => {
-                    // 응답 처리
-                    console.log("POST 요청 성공");
-                })
-                .catch(error => {
-                    // 에러 처리
-                    console.error("POST 요청 실패", error);
-                });
-        });
+        fetch(url, {
+                method: 'POST',
+            })
+            .then(response => {
+                // 응답 처리
+                alert("email 발송 완료")
+                console.log("POST 요청 성공");
+            })
+            .catch(error => {
+                // 에러 처리
+                console.error("POST 요청 실패", error);
+            });
     });
+});
 </script>
