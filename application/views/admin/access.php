@@ -78,6 +78,9 @@
                             <button
                                 class="w-[150px] h-[50px] bg-slate-300 hover:bg-slate-400 active:bg-slate-500  text-black -translate-y-20"
                                 type="submit" id="submit">등록</button>
+                            <button
+                                class="w-[150px] h-[50px] bg-indigo-950 mt-20 mb-20 hover:bg-slate-300 active:bg-slate-300 text-white -translate-y-20"
+                                type="button" id="memo_btn">메모</button>
                         </div>
                     </div>
 
@@ -166,6 +169,7 @@ const number = document.querySelector("#number")
 const etc1 = document.querySelector("#etc1")
 const etc2 = document.querySelector("#etc2")
 const type2 = document.querySelector("#type2")
+const memoBtn = document.querySelector("#memo_btn")
 var childWindow;
 let qrvalue = "";
 
@@ -275,5 +279,20 @@ window.onload = () => {
         number.innerText = qrvalue
     }
 }
+
+memoBtn.addEventListener("click", () => {
+    const registerNum = number.innerText;
+    const url = `/admin/memo?n=${registerNum}`;
+    if (registerNum) {
+        const memoWindow = window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
+
+        window.addEventListener("message", (event) => {
+            if (event.source === memoWindow) {
+                const childInputValue = event.data;
+                memo.innerText = childInputValue;
+            }
+        });
+    }
+})
 </script>
 </body>

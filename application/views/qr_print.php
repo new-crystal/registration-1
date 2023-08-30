@@ -3,36 +3,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 
 <style>
-    @page {
-        size: 10cm 24cm;
-        margin: 0;
-    }
+@page {
+    size: 10cm 24cm;
+    margin: 0;
+}
 
-    body {
-        margin: 0;
-        padding: 0;
-    }
+body {
+    margin: 0;
+    padding: 0;
+}
 
-    @font-face {
-        font-family: NanumSquare;
-        src: url("../../../assets/font/NanumSquare-Hv.otf");
-    }
+@font-face {
+    font-family: NanumSquare;
+    src: url("../../../assets/font/NanumSquare-Hv.otf");
+}
 
-    #nick_name {
-        font-family: NanumSquare, "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
-    }
+#nick_name {
+    font-family: NanumSquare, "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
+}
 
-    #printThis {
-        width: 10cm;
-        height: 24cm;
-        margin: 0;
-        padding: 0;
-    }
+#printThis {
+    width: 10cm;
+    height: 24cm;
+    margin: 0;
+    padding: 0;
+}
 
-    .small_receipt {
-        position: relative;
-        top: 37px;
-    }
+.small_receipt {
+    position: relative;
+    top: 37px;
+}
 </style>
 
 <!-- Main content -->
@@ -62,7 +62,7 @@
                 }
                 if ($lang == 0) {
                     echo '<div class="nick_name lang_en" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if ($lang !== 0 && $nicknameLength == 3) {
+                } else if ($lang !== 0 && $nicknameLength <= 3) {
                     echo '<div class="nick_name" id="nick_name">' . $users['nick_name'] . '</div>';
                 } else if ($lang !== 0 && $nicknameLength > 3) {
                     echo '<div class="small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
@@ -101,113 +101,113 @@
 </div>
 <!-- /page container -->
 <style>
-    body {
-        background-color: #fff;
-    }
+body {
+    background-color: #fff;
+}
 </style>
 <script>
-    document.getElementById("btnPrint").onclick = function() {
-        printElement(document.getElementById("printThis"));
-        //window.close();
+document.getElementById("btnPrint").onclick = function() {
+    printElement(document.getElementById("printThis"));
+    //window.close();
+}
+
+function printElement(elem) {
+    var domClone = elem.cloneNode(true);
+
+    var $printSection = document.getElementById("printSection");
+
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.style.width = "10cm";
+        $printSection.style.height = "24cm";
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
     }
 
-    function printElement(elem) {
-        var domClone = elem.cloneNode(true);
+    $printSection.innerHTML = "";
+    $printSection.appendChild(domClone);
+    //            console.log($printSection);
+    window.print();
+}
 
-        var $printSection = document.getElementById("printSection");
 
-        if (!$printSection) {
-            var $printSection = document.createElement("div");
-            $printSection.style.width = "10cm";
-            $printSection.style.height = "24cm";
-            $printSection.id = "printSection";
-            document.body.appendChild($printSection);
-        }
 
-        $printSection.innerHTML = "";
-        $printSection.appendChild(domClone);
-        //            console.log($printSection);
-        window.print();
+
+$(function() {
+    $("#btnPrint").trigger("click");
+
+
+    if (window.matchMedia) {
+        var mediaQueryList = window.matchMedia('print');
+        mediaQueryList.addListener(function(mql) {
+            if (mql.matches) {
+                console.log('프린트 이전에 호출됩니다.');
+            } else {
+                console.log('프린트 이후에 호출됩니다.');
+                window.close();
+            }
+        });
     }
-
-
-
-
-    $(function() {
-        $("#btnPrint").trigger("click");
-
-
-        if (window.matchMedia) {
-            var mediaQueryList = window.matchMedia('print');
-            mediaQueryList.addListener(function(mql) {
-                if (mql.matches) {
-                    console.log('프린트 이전에 호출됩니다.');
-                } else {
-                    console.log('프린트 이후에 호출됩니다.');
-                    window.close();
-                }
-            });
-        }
-    });
+});
 </script>
 <script>
-    //Make the DIV element draggagle:
-    dragElement(document.getElementById("qrcode"));
-    dragElement(document.getElementById("org"));
-    dragElement(document.getElementById("nick_name"));
+//Make the DIV element draggagle:
+dragElement(document.getElementById("qrcode"));
+dragElement(document.getElementById("org"));
+dragElement(document.getElementById("nick_name"));
 
-    function dragElement(elmnt) {
-        var pos1 = 0,
-            pos2 = 0,
-            pos3 = 0,
-            pos4 = 0;
-        if (document.getElementById(elmnt.id)) {
-            /* if present, the header is where you move the DIV from:*/
-            document.getElementById(elmnt.id).onmousedown = dragMouseDown;
-        } else {
-            /* otherwise, move the DIV from anywhere inside the DIV:*/
-            elmnt.onmousedown = dragMouseDown;
-        }
-
-        function dragMouseDown(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // get the mouse cursor position at startup:
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            // call a function whenever the cursor moves:
-            document.onmousemove = elementDrag;
-        }
-
-        function elementDrag(e) {
-            e = e || window.event;
-            e.preventDefault();
-            // calculate the new cursor position:
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            // set the element's new position:
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
-
-        function closeDragElement() {
-            /* stop moving when mouse button is released:*/
-            document.onmouseup = null;
-            document.onmousemove = null;
-        }
+function dragElement(elmnt) {
+    var pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
+    if (document.getElementById(elmnt.id)) {
+        /* if present, the header is where you move the DIV from:*/
+        document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+    } else {
+        /* otherwise, move the DIV from anywhere inside the DIV:*/
+        elmnt.onmousedown = dragMouseDown;
     }
+
+    function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        // set the element's new position:
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+        /* stop moving when mouse button is released:*/
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
 </script>
 <script src="/ckeditor/ckeditor.js"></script>
 <script>
-    // Replace the <textarea id="editor1"> with a CKEditor 4
-    // instance, using default configuration.
-    //        CKEDITOR.replace( 'editor1' );
+// Replace the <textarea id="editor1"> with a CKEditor 4
+// instance, using default configuration.
+//        CKEDITOR.replace( 'editor1' );
 
-    // Turn off automatic editor creation first.
-    CKEDITOR.disableAutoInline = true;
-    CKEDITOR.inline('editor1');
+// Turn off automatic editor creation first.
+CKEDITOR.disableAutoInline = true;
+CKEDITOR.inline('editor1');
 </script>
 </body>
