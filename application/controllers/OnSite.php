@@ -127,10 +127,18 @@ class OnSite extends CI_Controller
             $category_14 = isset($_GET['category-14']) ? $_GET['category-14'] : null;
             $category_15 = isset($_GET['category-15']) ? $_GET['category-15'] : null;
             $category_16 = isset($_GET['category-16']) ? $_GET['category-16'] : null;
+            $agree1 = isset($_GET['agree1']) ? $_GET['agree1'] : null;
+            $agree2 = isset($_GET['agree2']) ? $_GET['agree2'] : null;
             $fee = 0;
             $type3 = 0;
             $etc1 = "신청";
             $type1 = "";
+            if ($agree1 == "on") {
+                $agree1 = 1;
+            }
+            if ($agree2 == "on") {
+                $agree2 = 1;
+            }
             if ($category_1) {
                 $fee = 90000;
                 $type3 = "회원";
