@@ -97,11 +97,7 @@ class OnSite extends CI_Controller
 
     public function mobile()
     {
-
-
         if (isset($_GET['nick_name'])) {
-
-
             $type = isset($_GET['type1']) ? $_GET['type1'] : null;
             $type2 = isset($_GET['type2']) ? $_GET['type2'] : null;
             $name = isset($_GET['nick_name']) ? $_GET['nick_name'] : null;
@@ -222,9 +218,9 @@ class OnSite extends CI_Controller
 
             $time = date("Y-m-d H:i:s");
             if ($license) {
-                $etc1 = "신청";
+                $etc1 = "필요";
             } else {
-                $etc1 = "미신청";
+                $etc1 = "불필요";
             }
             // $uagent = $this->agent->agent_string();
 
