@@ -49,7 +49,7 @@ async function saveMemo() {
             alert("메모 저장 성공");
             const parentWindow = window.opener;
             const buttons = parentWindow.document.querySelectorAll('.qr_btn.memo');
-            console.log(buttons)
+
             if (buttons.length !== 0) {
                 buttons.forEach((button) => {
                     if (button.dataset.id === registration_no && memoValue === "") {
