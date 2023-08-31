@@ -139,6 +139,12 @@ class OnSite extends CI_Controller
             if ($agree2 == "on") {
                 $agree2 = 1;
             }
+            if ($agree1 == null) {
+                $agree1 = 0;
+            }
+            if ($agree2 == null) {
+                $agree2 = 0;
+            }
             if ($category_1) {
                 $fee = 90000;
                 $type3 = "회원";
@@ -240,6 +246,8 @@ class OnSite extends CI_Controller
                 'time' => $time,
                 'deposit' => $deposit,
                 'etc1' => $etc1,
+                'agree1' => $agree1,
+                'agree2' => $agree2,
                 // 'uagent' => $uagent,
             );
             $this->users->add_onsite_user($info);
