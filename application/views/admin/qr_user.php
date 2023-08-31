@@ -104,7 +104,7 @@ table th {
                         echo '<td>' . $item['registration_no'] . '</td>';
                         echo '<td>' . $item['type'] . '</td>';
                         echo '<td>' . $item['type2'] . '</td>';
-                        echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_blank">' . $item['nick_name'] . '</a></td>';
+                        echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['nick_name'] . '</a></td>';
                         echo '<td>' . $item['org'] . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td>' . $item['phone'] . '</td>';

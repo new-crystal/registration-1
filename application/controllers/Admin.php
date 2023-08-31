@@ -679,8 +679,8 @@ class Admin extends CI_Controller
             );
             $this->load->view('admin/left_side.php', $data);
 
-            $this->form_validation->set_rules('nick_name', '이름', 'required');
-            $this->form_validation->set_rules('phone', '전화번호', 'required');
+            $this->form_validation->set_rules('registration_no', '등록번호', 'required');
+            // $this->form_validation->set_rules('phone', '전화번호', 'required');
             // $this->form_validation->set_rules('org', '소속', 'required');
 
             if ($this->form_validation->run() === FALSE) {
