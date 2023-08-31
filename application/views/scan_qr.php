@@ -144,10 +144,18 @@ body {
                                         </div>
                                         <div id="qr_org" class="qr_info_wrap">
                                             <div class="info_name">소 속</div>
+                                            <?php if (mb_strlen($entrance_org) >= 13) { ?>
+                                            <div class="info_content"> <input type="text" style="font-size:2rem"
+                                                    class="qr_info input"
+                                                    value="<?php if (isset($entrance_org)) echo $entrance_org ?>"
+                                                    readonly>
+                                            </div>
+                                            <?php } else { ?>
                                             <div class="info_content"> <input type="text" class="qr_info input"
                                                     value="<?php if (isset($entrance_org)) echo $entrance_org ?>"
                                                     readonly>
                                             </div>
+                                            <?php } ?>
                                         </div>
                                     </dl>
 
