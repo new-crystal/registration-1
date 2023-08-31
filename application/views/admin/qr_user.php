@@ -1,40 +1,45 @@
 <script type="text/javascript" src="/assets/js/admin/lecture_history.js"></script>
 <style>
-    table th {
-        padding: 0;
-        font-size: 1.2rem;
-    }
+table th {
+    padding: 0;
+    font-size: 1.2rem;
+}
 
-    .loading_box {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        transform: translateX(-200px);
-        z-index: 9999;
-    }
+.loading_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateX(-200px);
+    z-index: 9999;
+}
 
-    .loading {
-        position: absolute;
-        top: 20%;
-        left: 52%;
-        transform: translate(-50%, -50%);
-    }
+.loading {
+    position: absolute;
+    top: 20%;
+    left: 52%;
+    transform: translate(-50%, -50%);
+}
 </style>
 <!-- Main content -->
 <div class="content-wrapper">
     <!-- Page header -->
     <div style="display: none;" class="loading_box" onclick="alert('진행중입니다.')">
 
-        <svg class="loading" version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve" width="70px" height="70px">
+        <svg class="loading" version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
+            enable-background="new 0 0 0 0" xml:space="preserve" width="70px" height="70px">
             <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
-                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 15 ; 0 -15; 0 15" repeatCount="indefinite" begin="0.1" />
+                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 15 ; 0 -15; 0 15"
+                    repeatCount="indefinite" begin="0.1" />
             </circle>
             <circle fill="#fff" stroke="none" cx="30" cy="50" r="6">
-                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 10 ; 0 -10; 0 10" repeatCount="indefinite" begin="0.2" />
+                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 10 ; 0 -10; 0 10"
+                    repeatCount="indefinite" begin="0.2" />
             </circle>
             <circle fill="#fff" stroke="none" cx="54" cy="50" r="6">
-                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.3" />
+                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5"
+                    repeatCount="indefinite" begin="0.3" />
             </circle>
         </svg>
     </div>
@@ -106,9 +111,9 @@
                         echo '<td>';
 
                         if ($item['QR_SMS_SEND_YN'] == "Y") {
-                            echo '<a href="/admin/send_msm?n=' . $item['registration_no'] . '" target="_blank"><div class="btn btn-success qr_btn">문자발송</div></a>';
+                            echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-success qr_btn"  data-id="' . $item['registration_no'] . '">문자발송</div></button>';
                         } else {
-                            echo '<a href="/admin/send_msm?n=' . $item['registration_no'] . '"target="_blank" ><div class="btn btn-non-success qr_btn">문자발송</div></a>';
+                            echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-non-success qr_btn" data-id="' . $item['registration_no'] . '">문자발송</div></button>';
                         }
                         echo '</td>';
                         echo '<td>';
@@ -124,22 +129,6 @@
                         echo '<td>';
                         echo '<a  href="/admin/qr_layout?n=' . $item['registration_no'] . '" target="_blank"><div class="btn btn-info qr_btn" >QR보기</div></a>';
                         echo '</td>';
-
-                        // echo $item['deposit'] . '</td>';
-                        // if ($item['qr_chk'] == "N") {
-                        //     echo '<td style="color:red;">';
-                        //     echo '<a href="/admin/qr_generate?n=' . $item['phone'] . '"><div class="btn btn-danger qr_btn" >QR 생성</div></a>';
-                        //     echo '</td>';
-                        // } else {
-                        //     echo '<td style="color:red;">';
-                        //     echo '<a href="/admin/qr_layout?n=' . $item['phone'] . '"><div class="btn btn-success" >QR 보기</div></a>';
-                        //     echo '</td>';
-                        // }
-
-
-                        // echo '<td>' . $item['mintime'] . '</td>';
-                        // echo '<td>' . $item['maxtime'] . '</td>';
-                        // echo '<td>' . $item['memo'] . '</td>';
                         echo '</tr>';
                     }
                     ?>
@@ -163,73 +152,72 @@
 </div>
 <!-- /page container -->
 <script>
-    //        $('#allChk').click(function(){
-    //            if($('input:checkbox[id="allChk"]').prop('checked')){
-    //                $('input[type=checkbox]').prop('checked',true);
-    //            }else{
-    //                $('input[type=checkbox]').prop('checked',false);
-    //            }
-    //        })
+function onClickMsm(number) {
+    const url = `/admin/send_msm?n=${number}`
+    window.open(url, "Certificate", "width=800, height=1000, top=30, left=30")
+}
 
 
-    $('.depositChk').click(function() {
-        // var formName = $('#depositForm');
+$('.depositChk').click(function() {
+    // var formName = $('#depositForm');
 
-        // var formName2 = $('#nametagForm');
-        // var formName3 = $('#deposit_mail_Form');
-        var userId = $(this).val();
-        var checkHtml = '<input type="hidden" class="userId user' + userId + '" name="userId[]" value="' + userId +
-            '" id="">'
+    // var formName2 = $('#nametagForm');
+    // var formName3 = $('#deposit_mail_Form');
+    var userId = $(this).val();
+    var checkHtml = '<input type="hidden" class="userId user' + userId + '" name="userId[]" value="' + userId +
+        '" id="">'
 
-        if ($(this).prop('checked')) {
-            const loading = document.querySelector(".loading")
+    if ($(this).prop('checked')) {
+        const loading = document.querySelector(".loading")
+        loading.style.display = ""
+        // formName.append(checkHtml);
+        // formName3.append(checkHtml);
+    } else {
+        $('.user' + userId).remove();
+    }
+})
+
+$('#depositForm').click(function(e) {
+    e.preventDefault()
+    if (window.confirm("※ 전체 문자 전송을 하시겠습니까?")) {
+        var formName4 = $('#depositForm');
+        $('.depositChk').prop('checked', true).each(function() {
+            const loading = document.querySelector(".loading_box")
             loading.style.display = ""
-            // formName.append(checkHtml);
-            // formName3.append(checkHtml);
-        } else {
-            $('.user' + userId).remove();
-        }
-    })
+            var userId = $(this).val();
+            console.log(userId)
+            var checkHtml = '<input type="hidden" class="userId user' + userId +
+                '" name="userId[]" value="' + userId +
+                '" id="">';
+            formName4.append(checkHtml);
+            formName4.submit()
+        });
+    } else {
+        window.location = "/admin/qr_user";
 
-    $('#depositForm').click(function(e) {
-        e.preventDefault()
-        if (window.confirm("※ 전체 문자 전송을 하시겠습니까?")) {
-            var formName4 = $('#depositForm');
-            $('.depositChk').prop('checked', true).each(function() {
-                const loading = document.querySelector(".loading_box")
-                loading.style.display = ""
-                var userId = $(this).val();
-                console.log(userId)
-                var checkHtml = '<input type="hidden" class="userId user' + userId +
-                    '" name="userId[]" value="' + userId +
-                    '" id="">';
-                formName4.append(checkHtml);
-                formName4.submit()
-            });
-        } else {
-            window.location = "/admin/qr_user";
+    }
+});
 
-        }
-    });
+$('#deposit_mail_Form').click(function(e) {
+    e.preventDefault()
+    if (window.confirm("※ 전체 메일 발송을 하시겠습니까?")) {
+        var formName6 = $('#deposit_mail_Form');
+        $('.depositChk').prop('checked', true).each(function() {
+            const loading = document.querySelector(".loading_box")
+            loading.style.display = ""
+            var userId = $(this).val();
+            var checkHtml = '<input type="hidden" class="userId user' + userId +
+                '" name="userId[]" value="' + userId +
+                '" id="">';
+            formName6.append(checkHtml);
+            formName6.submit()
+        });
+    } else {
+        window.location = "/admin/qr_user";
 
-    $('#deposit_mail_Form').click(function(e) {
-        e.preventDefault()
-        if (window.confirm("※ 전체 메일 발송을 하시겠습니까?")) {
-            var formName6 = $('#deposit_mail_Form');
-            $('.depositChk').prop('checked', true).each(function() {
-                const loading = document.querySelector(".loading_box")
-                loading.style.display = ""
-                var userId = $(this).val();
-                var checkHtml = '<input type="hidden" class="userId user' + userId +
-                    '" name="userId[]" value="' + userId +
-                    '" id="">';
-                formName6.append(checkHtml);
-                formName6.submit()
-            });
-        } else {
-            window.location = "/admin/qr_user";
+    }
 
-        }
-    });
+
+});
 </script>
 </body>

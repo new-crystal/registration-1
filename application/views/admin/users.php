@@ -1,45 +1,40 @@
 <script type="text/javascript" src="/assets/js/admin/lecture_history.js"></script>
 <style>
-table th {
-    padding: 0;
-    font-size: 1.2rem;
-}
+    table th {
+        padding: 0;
+        font-size: 1.2rem;
+    }
 
-.loading_box {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: translateX(-200px);
-    z-index: 9999;
-}
+    .loading_box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: translateX(-200px);
+        z-index: 9999;
+    }
 
-.loading {
-    position: absolute;
-    top: 20%;
-    left: 52%;
-    transform: translate(-50%, -50%);
-}
+    .loading {
+        position: absolute;
+        top: 20%;
+        left: 52%;
+        transform: translate(-50%, -50%);
+    }
 </style>
 <!-- Main content -->
 <div class="content-wrapper">
     <!-- Page header -->
     <div style="display: none;" class="loading_box" onclick="alert('진행중입니다.')">
 
-        <svg class="loading" version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100"
-            enable-background="new 0 0 0 0" xml:space="preserve" width="70px" height="70px">
+        <svg class="loading" version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve" width="70px" height="70px">
             <circle fill="#fff" stroke="none" cx="6" cy="50" r="6">
-                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 15 ; 0 -15; 0 15"
-                    repeatCount="indefinite" begin="0.1" />
+                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 15 ; 0 -15; 0 15" repeatCount="indefinite" begin="0.1" />
             </circle>
             <circle fill="#fff" stroke="none" cx="30" cy="50" r="6">
-                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 10 ; 0 -10; 0 10"
-                    repeatCount="indefinite" begin="0.2" />
+                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 10 ; 0 -10; 0 10" repeatCount="indefinite" begin="0.2" />
             </circle>
             <circle fill="#fff" stroke="none" cx="54" cy="50" r="6">
-                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5"
-                    repeatCount="indefinite" begin="0.3" />
+                <animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite" begin="0.3" />
             </circle>
         </svg>
     </div>
@@ -74,44 +69,13 @@ table th {
                     <form action="/admin/non_deposit_check" method="post" id="non_depositForm">
                         <button class="btn btn-danger pull-right"><i class="icon-checkmark"></i> 미결제처리</button>
                     </form>
-                    <!-- <form action="/admin/qr_layout_post" method="post" id="nametagForm">
-                        <button class="btn btn-primary pull-right"><i class="icon-printer2"></i> 네임택 출력</button>
-                    </form> -->
                     <a class="btn btn-primary pull-right" href="/admin/add_user"><i class="icon-add"></i> 등록</a>
-                    <!--
-                                <a class="btn btn-primary pull-right" href="/admin/qr_layout_all?type=좌장"><i class="icon-printer2"></i> 좌장</a>
-                                <a class="btn btn-primary pull-right" href="/admin/qr_layout_all?type=연자"><i class="icon-printer2"></i> 연자</a>
-                                <a class="btn btn-primary pull-right" href="/admin/qr_layout_all?type=패널"><i class="icon-printer2"></i> 패널</a>
-                                <a class="btn btn-primary pull-right" href="/admin/qr_layout_all?type=president"><i class="icon-printer2"></i> president</a>
-                                <a class="btn btn-primary pull-right" href="/admin/qr_layout_all?type=임원"><i class="icon-printer2"></i> 임원</a>
-                                <a class="btn btn-primary pull-right" href="/admin/qr_layout_all?type=일반참가자"><i class="icon-printer2"></i> 일반</a>
-                                <a class="btn btn-primary pull-right" href="/admin/qr_layout_all?type=후원사"><i class="icon-printer2"></i> 후원</a>
--->
                 </div>
             </div>
 
             <table class="table datatable-basic">
                 <thead>
                     <tr>
-                        <!--									<th style="text-align: center;"><input type="checkbox" id="allChk" value="입금완료th"></th>-->
-                        <!-- <th></th>
-                        <th>회원여부</th>
-                        <th>접수번호</th>
-                        <th>구분1</th>
-                        <th>구분2</th>
-                        <th style="min-width: 100px">면허번호</th>
-                        <th>이름</th>
-                        <th>전화번호</th>
-                        <th>이메일</th>
-                        <th>소속</th>
-                        <th>등록비</th>
-                        <th>입금자명</th>
-                        <th>입금여부</th>
-                        <th>QR 생성여부</th>
-                        <th>입장시간</th>
-                        <th>퇴장시간</th>
-                        <th>메모</th> -->
-
                         <th></th>
                         <th style="min-width: 90px">회원여부</th>
                         <th>등록시간</th>
@@ -122,8 +86,6 @@ table th {
                         <th>소속</th>
                         <th>이메일</th>
                         <th>전화번호</th>
-                        <!-- <th>영수증출력</th>
-                        <th>메일전송</th> -->
                         <th>등록비</th>
                         <th>입금여부</th>
                         <th>메모</th>
@@ -209,62 +171,62 @@ table th {
 </div>
 <!-- /page container -->
 <script>
-//        $('#allChk').click(function(){
-//            if($('input:checkbox[id="allChk"]').prop('checked')){
-//                $('input[type=checkbox]').prop('checked',true);
-//            }else{
-//                $('input[type=checkbox]').prop('checked',false);
-//            }
-//        })
+    //        $('#allChk').click(function(){
+    //            if($('input:checkbox[id="allChk"]').prop('checked')){
+    //                $('input[type=checkbox]').prop('checked',true);
+    //            }else{
+    //                $('input[type=checkbox]').prop('checked',false);
+    //            }
+    //        })
 
 
-function onClickMemo(id) {
-    const url = `/admin/memo?n=${id}`;
-    window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
-}
-
-function onClickReceipt(id) {
-    const url = `/admin/receipt?n=${id}`
-    window.open(url, "Certificate", "width=500, height=300, top=30, left=30")
-}
-
-
-$('.depositChk').click(function() {
-    var formName = $('#depositForm');
-    var formName2 = $('#nametagForm');
-    var formName3 = $('#non_depositForm');
-    // var formName4 = $('#all_depositForm');
-    var userId = $(this).val();
-    var checkHtml = '<input type="hidden" class="userId user' + userId + '" name="userId[]" value="' + userId +
-        '" id="">'
-    if ($(this).prop('checked')) {
-        formName.append(checkHtml);
-        formName2.append(checkHtml);
-        formName3.append(checkHtml);
-        // formName4.append(checkHtml)
-    } else {
-        $('.user' + userId).remove();
+    function onClickMemo(id) {
+        const url = `/admin/memo?n=${id}`;
+        window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
     }
-})
 
-$('#all_depositForm').click(function(event) {
-    event.preventDefault();
-    if (window.confirm("※ 일괄 입금 완료처리를 하시겠습니까?")) {
-        var formName4 = $('#all_depositForm');
-        $('.depositChk').prop('checked', true).each(function() {
-            const loading = document.querySelector(".loading_box")
-            loading.style.display = ""
-            var userId = $(this).val();
-            var checkHtml = '<input type="hidden" class="userId user' + userId +
-                '" name="userId[]" value="' + userId +
-                '" id="">';
-            formName4.append(checkHtml);
-            formName4.submit()
-        });
-    } else {
-        window.location = "/admin";
-
+    function onClickReceipt(id) {
+        const url = `/admin/receipt?n=${id}`
+        window.open(url, "Certificate", "width=500, height=300, top=30, left=30")
     }
-});
+
+
+    $('.depositChk').click(function() {
+        var formName = $('#depositForm');
+        var formName2 = $('#nametagForm');
+        var formName3 = $('#non_depositForm');
+        // var formName4 = $('#all_depositForm');
+        var userId = $(this).val();
+        var checkHtml = '<input type="hidden" class="userId user' + userId + '" name="userId[]" value="' + userId +
+            '" id="">'
+        if ($(this).prop('checked')) {
+            formName.append(checkHtml);
+            formName2.append(checkHtml);
+            formName3.append(checkHtml);
+            // formName4.append(checkHtml)
+        } else {
+            $('.user' + userId).remove();
+        }
+    })
+
+    $('#all_depositForm').click(function(event) {
+        event.preventDefault();
+        if (window.confirm("※ 일괄 입금 완료처리를 하시겠습니까?")) {
+            var formName4 = $('#all_depositForm');
+            $('.depositChk').prop('checked', true).each(function() {
+                const loading = document.querySelector(".loading_box")
+                loading.style.display = ""
+                var userId = $(this).val();
+                var checkHtml = '<input type="hidden" class="userId user' + userId +
+                    '" name="userId[]" value="' + userId +
+                    '" id="">';
+                formName4.append(checkHtml);
+                formName4.submit()
+            });
+        } else {
+            window.location = "/admin";
+
+        }
+    });
 </script>
 </body>
