@@ -473,7 +473,7 @@ class Access extends CI_Controller
                     //                  var_dump($userName['nick_name']);
                     $this->data['entrance'] =  "";
                     $this->data['nick_name'] = $userName['nick_name'];
-                    $this->data['entrance_org'] = $userName['org'];
+                    $this->data['entrance_org'] = $userName['org_nametag'];
 
                     $list = $this->entrance->access($where);
                     $enter = $list['min_time'];
