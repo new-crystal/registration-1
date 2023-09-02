@@ -561,6 +561,8 @@ class Admin extends CI_Controller
                     } else {
                         $fee = 70000;
                     }
+                } else {
+                    $fee = 0;
                 }
 
                 if ($fee == 0)
