@@ -28,6 +28,7 @@ tr {
     for ($i = 0; $i < count($statistics); $i++) {
         $total_1 += $statistics[$i]['A_03'] + $statistics[$i]['R_03'];
     }
+    print_r($statistics)
     ?>
 
     <table class="w-9/12 text-2xl mb-20">
@@ -44,7 +45,7 @@ tr {
             </td>
         </tr>
         <tr>
-            <th class="bg-red-100">연자</th>
+            <th class="bg-red-100">고문</th>
             <td><?php echo isset($statistics[0]['R_03']) ? $statistics[0]['R_03'] : 0; ?>
             </td>
 
@@ -75,10 +76,9 @@ tr {
 
         </tr>
         <tr>
-            <th class="bg-sky-200">연자</th>
+            <th class="bg-sky-200">고문</th>
             <td><?php echo isset($statistics[0]['A_03']) ? $statistics[0]['A_03'] : 0; ?>
             </td>
-
         </tr>
         <tr>
             <th class="bg-sky-200">패널</th>
