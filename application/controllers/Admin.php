@@ -758,7 +758,7 @@ class Admin extends CI_Controller
         $object = new PHPExcel();
         $object->setActiveSheetIndex(0);
 
-        $table_columns = array("NO", "등록번호", "참석여부", "구분1", "구분2", "이름", "의사면허번호", "전문의번호", "소속", "우편번호", "주소", "핸드폰", "이메일", "등록비", "입실", "퇴실", "체류시간", "평점 인정시간 (점심, 휴식시간 제외)", "평점", "메모");
+        $table_columns = array("NO", "등록번호", "참석여부", "구분1", "구분2", "구분3", "이름", "의사면허번호", "전문의번호", "소속", "우편번호", "주소", "핸드폰", "이메일", "등록비", "입실", "퇴실", "체류시간", "평점 인정시간 (점심, 휴식시간 제외)", "평점", "메모");
 
         $column = 0;
 
@@ -818,22 +818,23 @@ class Admin extends CI_Controller
             $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row['registration_no']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $chk);
             $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row['type']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row['type2']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['nick_name']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, (string)$row['ln']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, (string)$row['sn']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row['org']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, (string)$row['postcode']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $row['addr']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row['phone']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(12, $excel_row, $row['email']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, number_format($row['fee']));
-            $object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, date("H:i", strtotime($enter)));
-            $object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, date("H:i", strtotime($leave)));
-            $object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $row['d_format']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, hoursandmins($spent));
-            $object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $score);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $row['memo']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row['type1']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['type2']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row['nick_name']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, (string)$row['ln']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, (string)$row['sn']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $row['org']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, (string)$row['postcode']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row['addr']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(12, $excel_row, $row['phone']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, $row['email']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, number_format($row['fee']));
+            $object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, date("H:i", strtotime($enter)));
+            $object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, date("H:i", strtotime($leave)));
+            $object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row['d_format']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, hoursandmins($spent));
+            $object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $score);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $row['memo']);
 
             $excel_row++;
         }
