@@ -5,6 +5,7 @@ $registration_no = $users['registration_no'] ?? '';
 $nick_name = $users['nick_name'] ?? '';
 $curl = curl_init();
 $error = "";
+$code = "";
 
 curl_setopt_array($curl, array(
     CURLOPT_URL => "https://sms.gabia.com/oauth/token",
@@ -65,7 +66,7 @@ if ($err) {
 기타 문의 사항은 02-2285-2579로 연락 주시면 감사하겠습니다.
             
 -운영사무국 드림-
-                ', 'refkey' => 'RESTAPITEST1548722798', 'subject' => '대한내분비학회 2023년 개원의 연수강좌 안내', 'image_cnt' =>
+                ', 'refkey' => 'RESTAPITEST1548722798', 'subject' => '제59차 대한비만학회 춘계학술대회 안내', 'image_cnt' =>
             '1', '
              images0' => new CURLFILE('assets/images/QR/qrcode_' . $registration_no . '.jpg')
         ),

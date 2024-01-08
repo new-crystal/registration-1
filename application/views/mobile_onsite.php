@@ -801,7 +801,7 @@
                         <button type="button" id="page_3_btn" class="mx-auto w-60 h-15 bg-sky-900 text-white p-3 my-5 text-lg flex items-center justify-center mt-20">Next</button>
                     </div>
                     <!-- ================================================================================================/ -->
-                    <div id="page_4" class="wrap_2" style="display: none;">
+                    <div id="page_4" class="wrap_2">
                         <div class="confirm_box mt-10">
                             <div class="confirm_box_title flex items-center justify-center">
                                 <h1 class="text-sm">Use of Personal Information <br>(개인정보활용동의)</h1>

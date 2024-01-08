@@ -62,6 +62,11 @@ class Users extends CI_Model
 		$this->db->where($where);
 		return $this->db->get($this->users)->row_array();
 	}
+	public function get_qr_print_user($where)
+	{
+		$this->db->where($where);
+		return $this->db->get($this->users)->result_array();
+	}
 
 	public function get_qr_user()
 	{
@@ -77,7 +82,7 @@ class Users extends CI_Model
 			WHERE DATE(TIME) = CURDATE()
 			GROUP BY registration_no
 		) b ON a.registration_no = b.qr_registration_no
-		WHERE a.qr_generated = 'Y' AND a.deposit = '입금완료'
+		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료'
 		ORDER BY a.id ASC
 ");
 		return $query->result_array();
@@ -230,45 +235,31 @@ class Users extends CI_Model
 		return $this->db->get($this->users)->result_array();
 	}
 
-	public function get_access_statistics()
-	{
-		//기존 코드
-		// SELECT u.type,
-		//     COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-07-11' THEN a.registration_no END) AS '2023-07-11',
-		//     COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-07-12' THEN a.registration_no END) AS '2023-07-12',
-		//     COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-07-13' THEN a.registration_no END) AS '2023-07-13'
-		// FROM users u
-		// JOIN access a
-		// ON u.registration_no = a.registration_no
-		// GROUP BY u.type;
-
-		//현장등록 반영한 코드 -> A와 B로 시작할 경우
-		// SELECT u.type,
-		// 		 COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-07-11' AND a.registration_no LIKE 'A%' THEN a.registration_no END) AS '2023-07-11_A',
-		// 		 COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-07-11' AND a.registration_no LIKE 'B%' THEN a.registration_no END) AS '2023-07-11_B',
-		// 		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-07-12' AND a.registration_no LIKE 'A%' THEN a.registration_no END) AS '2023-07-12_A',
-		// 		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-07-12' AND a.registration_no LIKE 'B%' THEN a.registration_no END) AS '2023-07-12_B',
-		// 		COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-07-13' AND a.registration_no LIKE 'A%' THEN a.registration_no END) AS '2023-07-13_A',
-		// 		 COUNT(DISTINCT CASE WHEN DATE(a.time) = '2023-07-13' AND a.registration_no LIKE 'B%' THEN a.registration_no END) AS '2023-07-13_B'	
-		// 		FROM users u
-		// 		JOIN access a ON u.registration_no = a.registration_no
-		// 		GROUP BY u.type;
-
-		//'202303_A'로 시작하는 것과  '202303_R'로 시작하는 것으로 구분하는 경우
-		$query = $this->db->query("
-		SELECT
-		users.type2,
-		COUNT(DISTINCT CASE WHEN DATE(access.time) = '2023-09-03' AND users.onsite_reg = '1' THEN users.registration_no END) AS 'A_03',
-		COUNT(DISTINCT CASE WHEN DATE(access.time) = '2023-09-03' AND users.onsite_reg = '0' THEN users.registration_no END) AS 'R_03'
-	 FROM
-		users
-	 LEFT JOIN
-		access ON users.registration_no = access.registration_no AND DATE(access.time) = '2023-09-03'
-	 GROUP BY
-		users.type2;
+		/**day 1 access & korean */
+		public function get_access_statistics_1()
+		{
+			$query = $this->db->query("
+		SELECT *
+		FROM users a
+		WHERE a.qr_chk_day_1 = 'Y'
+		ORDER BY a.id ASC
 		");
+			return $query->result_array();
+		}
+
+		
+	/**day 2 access & korean */
+	public function get_access_statistics_2()
+	{
+		$query = $this->db->query("
+	SELECT *
+	FROM users a
+	WHERE a.qr_chk_day_2 = 'Y'
+	ORDER BY a.id ASC
+	");
 		return $query->result_array();
 	}
+
 }
 /* SQL 오류 (1064): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM
 		users u

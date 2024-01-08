@@ -33,12 +33,12 @@
     padding-left: 4rem;
     display: flex;
     align-items: center;
-    height: 5rem;
+    height: 4rem;
     font-weight: bold;
 }
 
 .qr-info-table tr {
-    height: 5rem;
+    height: 4rem;
     padding: 4px 8px;
 }
 
@@ -63,22 +63,25 @@
                 <div>
                     <button class="w-[150px] h-[40px] bg-slate-300 mt-20 hover:bg-slate-400 active:bg-slate-500"
                         type="button" id="open">새창</button>
-                    <?php print_r(json_encode($users)) ?>
                 </div>
                 <form action="/admin/access" id="qr_form" name="qr_form"
                     class="w-full h-screen flex flex-col items-center justify-center bg-slate-50">
 
-                    <div class="w-2/5 flex flex-col items-center justify-center translate-y-60">
+                    <div class="w-2/5 flex flex-col items-center justify-center translate-y-[10rem]">
 
-                        <h1 class="text-5xl mt-32 font-semibold -translate-y-20">QR CODE 입력 </h1>
+                        <h1 class="text-5xl font-semibold -translate-y-20">QR CODE 입력 </h1>
                         <h6 class="text-3xl mt-20 -translate-y-20">커서를 텍스트박스 안에 놓고 QR 코드 스캐너를 사용하세요.</h6>
-                        <input id="qrcode" name="qrcode" class="w-[400px] h-[50px] mt-20 p-3 -translate-y-20"
-                            type="text" autofocus />
+                        <div class="flex items-center mx-10">
+                            <input id="qrcode" name="qrcode" class="w-[400px] h-[50px] mr-5 p-3 -translate-y-20"
+                                type="text" autofocus />
 
-                        <button
-                            class="w-[150px] h-[40px] bg-slate-300 mt-20 mb-20 hover:bg-slate-400 active:bg-slate-500 -translate-y-20 text-black"
-                            type="submit" id="submit">등록</button>
-
+                            <button
+                                class="w-[150px] h-[50px] bg-slate-300 hover:bg-slate-400 active:bg-slate-500  text-black -translate-y-20"
+                                type="submit" id="submit">등록</button>
+                            <button
+                                class="w-[150px] h-[50px] bg-indigo-950 mt-20 mb-20 hover:bg-slate-300 active:bg-slate-300 text-white -translate-y-20"
+                                type="button" id="memo_btn">메모</button>
+                        </div>
                     </div>
 
                     <!-- <div class="w-3/5 h-[1px] bg-slate-400 translate-y-24"></div> -->
@@ -89,9 +92,8 @@
                                 <col />
                             </colgroup>
                             <tr>
-                                <th>접수번호</th>
-                                <td id="number" class="qr_text">
-                                    <?php if (isset($user['registration_no'])) echo $user['registration_no'] ?>
+                                <th>참석유형</th>
+                                <td id="type2" class="qr_text"><?php if (isset($user['type2'])) echo $user['type2'] ?>
                                 </td>
                             </tr>
                             <tr>
@@ -112,13 +114,12 @@
                                 <td id="org" class="qr_text"><?php if (isset($user['org'])) echo $user['org'] ?></td>
                             </tr>
                             <tr>
-                                <th>메모</th>
-                                <td id="memo" class="qr_text"><?php
-                                                                if (isset($user['memo'])) {
-                                                                    echo $user['memo'] == 'null' ? "" : $user['memo'];
-                                                                }
-                                                                ?></td>
+                                <th>접수번호</th>
+                                <td id="number" class="qr_text">
+                                    <?php if (isset($user['registration_no'])) echo $user['registration_no'] ?>
+                                </td>
                             </tr>
+
                             <tr>
                                 <th>평점신청여부</th>
                                 <td id="etc1" class="qr_text"><?php if (isset($user['etc1'])) echo $user['etc1'] ?></td>
@@ -127,9 +128,14 @@
                                 <th>etc2</th>
                                 <td id="etc2" class="qr_text"><?php if (isset($user['etc2'])) echo $user['etc2'] ?></td>
                             </tr>
+
                             <tr>
-                                <th>etc3</th>
-                                <td id="etc3" class="qr_text"><?php if (isset($user['etc3'])) echo $user['etc3'] ?></td>
+                                <th>메모</th>
+                                <td id="memo" class="qr_text"><?php
+                                                                if (isset($user['memo'])) {
+                                                                    echo $user['memo'] == 'null' ? "" : $user['memo'];
+                                                                }
+                                                                ?></td>
                             </tr>
                         </table>
                     </div>
@@ -148,9 +154,6 @@
 </div>
 <!-- /page container -->
 
-// 서버 측에서 PHP 코드를 사용하여 $users 배열을 JSON 형식으로 변환
-
-
 <script>
 const form = document.querySelector("#qr_form");
 const qrcode = document.querySelector("#qrcode");
@@ -165,7 +168,8 @@ const memo = document.querySelector("#memo")
 const number = document.querySelector("#number")
 const etc1 = document.querySelector("#etc1")
 const etc2 = document.querySelector("#etc2")
-const etc3 = document.querySelector("#etc3")
+const type2 = document.querySelector("#type2")
+const memoBtn = document.querySelector("#memo_btn")
 var childWindow;
 let qrvalue = "";
 
@@ -180,52 +184,14 @@ function openQR() {
         childWindow = window.open(url, 'ChildWindow', 'width=400,height=300');
     }
 }
+
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    if (qrcode.value === "") {
-        alert("QR CODE를 입력하세요.");
-        qrcode.focus();
-        return;
-    }
-
-    // PHP에서 JSON으로 변환된 배열을 JavaScript 변수에 할당
-    // let usersArray = <?php echo json_encode($users); ?>;
-    //console.log(usersArray)
-    let validQRCode = false;
-
-
-    if (validQRCode) {
-        // fetchData(qrcode.value);
-    } else {
-        alert("잘못된 QR코드입니다.");
-    }
-
+    qrvalue = qrcode.value.replace(/\s/g, "");
+    fetchData(qrvalue)
     qrcode.value = "";
     qrcode.focus();
-    // window.scrollBy(0, 200);
-});
-// form.addEventListener("submit", (e) => {
-//     e.preventDefault();
-
-//     if (qrcode.value === "") {
-//         alert("QR CODE를 입력하세요.");
-//         qrcode.focus();
-//         return;
-//     }
-
-//     for (let i = 0; i <= <?php mb_strlen($users) ?>; i++) {
-//         console.log(<?php echo $users['registration_no'] ?>[i])
-//         if (<?php echo $users['registration_no'] ?>[i] === qrcode.value) {} else {
-//             alert("잘못된 QR코드입니다.");
-//         }
-//     }
-
-//     qrcode.value = "";
-
-//     qrcode.focus();
-//     // window.scrollBy(0, 200);
-// });
+})
 
 function fetchData(qrcode) {
     // Ajax 요청 수행
@@ -234,30 +200,41 @@ function fetchData(qrcode) {
         .then(data => {
             const parser = new DOMParser();
             const htmlDocument = parser.parseFromString(data, 'text/html');
-            console.log(htmlDocument)
-            number.innerText = htmlDocument.querySelector("#number").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                /\s/g, "");
-            name.innerText = htmlDocument.querySelector("#name").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                /\s/g, "");
-            org.innerText = htmlDocument.querySelector("#org").innerText.replace(/<br\s*\/?>/gi, "").replace(/\s/g,
-                "");
-            category.innerText = htmlDocument.querySelector("#category").innerText.replace(/<br\s*\/?>/gi, "")
-                .replace(/\s/g, "");
-            memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                /\s/g, "");
-            etc1.innerText = htmlDocument.querySelector("#etc1").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                /\s/g, "");
-            etc2.innerText = htmlDocument.querySelector("#etc2").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                /\s/g, "");
-            etc3.innerText = htmlDocument.querySelector("#etc3").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                /\s/g, "");
-
+            if (htmlDocument.querySelector("#number").innerText.replace(/<br\s*\/?>/gi, "").replace(/\s/g,
+                    "")) {
+                number.innerText = htmlDocument.querySelector("#number").innerText.replace(/<br\s*\/?>/gi, "")
+                    .replace(
+                        /\s/g, "");
+                name.innerText = htmlDocument.querySelector("#name").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                org.innerText = htmlDocument.querySelector("#org").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                category.innerText = htmlDocument.querySelector("#category").innerText.replace(/<br\s*\/?>/gi, "")
+                    .replace(/\s/g, "");
+                memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                etc1.innerText = htmlDocument.querySelector("#etc1").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                etc2.innerText = htmlDocument.querySelector("#etc2").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                type2.innerText = htmlDocument.querySelector("#type2").innerText.replace(/<br\s*\/?>/gi, "")
+                    .replace(
+                        /\s/g, "");
+            } else {
+                number.innerText = qrvalue
+                name.innerText = "없는 QR입니다."
+                org.innerText = ""
+                category.innerText = ""
+                etc1.innerText = ""
+                throw new Error("없는 QR입니다.");
+            }
         }).then((data) => {
             executeFunctionInChildWindow(qrcode);
-        }).then(() => window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrcode.value}`,
-            "_blank"))
+        }).then(() => {
+            window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
+        })
         .catch(error => {
-            alert("잘못된 QR코드 입니다.");
+            console.error('Error fetching data:', error);
         });
 }
 
@@ -302,5 +279,20 @@ window.onload = () => {
         number.innerText = qrvalue
     }
 }
+
+memoBtn.addEventListener("click", () => {
+    const registerNum = number.innerText;
+    const url = `/admin/memo?n=${registerNum}`;
+    if (registerNum) {
+        const memoWindow = window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
+
+        window.addEventListener("message", (event) => {
+            if (event.source === memoWindow) {
+                const childInputValue = event.data;
+                memo.innerText = childInputValue;
+            }
+        });
+    }
+})
 </script>
 </body>

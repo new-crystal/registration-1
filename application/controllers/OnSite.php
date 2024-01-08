@@ -18,9 +18,8 @@ class OnSite extends CI_Controller
     public function index()
     {
 
-        $this->load->view('header');
         $this->load->view('on-site', $this->data);
-        $this->load->view('footer');
+        
         $type = isset($_GET['type1']) ? $_GET['type1'] : null;
         $type2 = isset($_GET['type2']) ? $_GET['type2'] : null;
         $type4 = isset($_GET['type4']) ? $_GET['type4'] : null;

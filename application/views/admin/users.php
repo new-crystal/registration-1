@@ -66,15 +66,17 @@ table th {
                             Download</button>
                     </form>
                     <form action="/admin/all_deposit_check" method="post" id="all_depositForm">
-                        <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i>전부 입금확인</button>
+                        <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i>전체 QR생성</button>
                     </form>
                     <form action="/admin/deposit_check" method="post" id="depositForm">
-                        <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i> 입금확인</button>
+                        <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i>QR생성</button>
                     </form>
                     <form action="/admin/non_deposit_check" method="post" id="non_depositForm">
                         <button class="btn btn-danger pull-right"><i class="icon-checkmark"></i> 미결제처리</button>
                     </form>
                     <a class="btn btn-primary pull-right" href="/admin/add_user"><i class="icon-add"></i> 등록</a>
+                    <a class="btn btn-primary pull-right" href="/access/row_scan_qr" target="_blank"><i class="icon-qrcode"></i> 출결
+                        QR</a>
                 </div>
             </div>
 
@@ -82,8 +84,8 @@ table th {
                 <thead>
                     <tr>
                         <th></th>
-                        <th style="min-width: 90px">회원여부</th>
-                        <th>등록시간</th>
+                        <!-- <th style="min-width: 90px">회원여부</th> -->
+                        <!-- <th>등록시간</th> -->
                         <th>접수번호</th>
                         <th style="min-width: 100px">참석자유형</th>
                         <th>참석자구분</th>
@@ -101,12 +103,12 @@ table th {
                     foreach ($users as $item) {
                         echo '<tr>';
                         echo '<td style="text-align: center;"><input type="checkbox" name="depositChk" class="depositChk" value="' .  $item['registration_no'] . '"></td>';
-                        echo '<td>' . $item['type3'] . '</td>';
-                        echo '<td>' . substr($item['time'], 0, 100) . '</td>';
-                        echo '<td>' . $item['registration_no'] . '</td>';
-                        echo '<td>' . $item['type'] . '</td>';
-                        echo '<td>' . $item['type1'] . '</td>';
-                        echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '" target="_self">' . $item['nick_name'] . '</a></td>';
+                        // echo '<td>' . $item['type3'] . '</td>';
+                        // echo '<td>' . substr($item['time'], 0, 100) . '</td>';
+                        echo '<td><a href="/admin/user_detail?n=' . $item['registration_no'] . '" target="_self">' . $item['registration_no'] . '</a></td>';
+                        echo '<td>' . $item['attendance_type'] . '</td>';
+                        echo '<td>' . $item['member_type'] . '</td>';
+                        echo '<td class="user_d">' . $item['nick_name'] . '</td>';
                         echo '<td>' . $item['org'] . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td>' . $item['phone'] . '</td>';
@@ -122,7 +124,7 @@ table th {
                         // }
                         // echo '</td>';
                         echo '<td style="text-align: center;">' . number_format($item['fee']) . '</td>';
-                        if ($item['deposit'] != "입금완료") {
+                        if ($item['deposit'] == "결제대기") {
                             echo '<td style="color:red;">';
                         } else {
                             echo '<td style="color:blue;">';
@@ -137,22 +139,6 @@ table th {
                             echo '<button class="btn qr_btn memo border-indigo-800 text-indigo-800 bg-white" onclick="onClickMemo(\'' . $item['registration_no'] . '\')" data-id="' . $item['registration_no'] . '">메모</button>';
                         }
                         echo '</td>';
-
-                        // echo $item['deposit'] . '</td>';
-                        // if ($item['qr_chk'] == "N") {
-                        //     echo '<td style="color:red;">';
-                        //     echo '<a href="/admin/qr_generate?n=' . $item['phone'] . '"><div class="btn btn-danger qr_btn" >QR 생성</div></a>';
-                        //     echo '</td>';
-                        // } else {
-                        //     echo '<td style="color:red;">';
-                        //     echo '<a href="/admin/qr_layout?n=' . $item['phone'] . '"><div class="btn btn-success" >QR 보기</div></a>';
-                        //     echo '</td>';
-                        // }
-
-
-                        // echo '<td>' . $item['mintime'] . '</td>';
-                        // echo '<td>' . $item['maxtime'] . '</td>';
-                        // echo '<td>' . $item['memo'] . '</td>';
                         echo '</tr>';
                     }
                     ?>
