@@ -1,292 +1,394 @@
+<style>
+    .detail_table {
+        display: flex;
+        align-items: left;
+        justify-content: space-between;
+        margin-top: 5rem;
+    }
+
+    .detail_table>table {
+        width: 48%;
+        border: 1px solid #ddd;
+    }
+
+    .detail_table>table th,
+    .detail_table>table td {
+        border: 1px solid #ddd;
+        padding-left: 15px;
+    }
+
+    .detail_table table th {
+        width: 25%;
+        background-color: #eee;
+    }
+
+    .detail_table>table input {
+        border: none
+    }
+
+    .detail_table>table input:focus {
+        outline: 1px solid #000;
+    }
+
+    select {
+        padding: 4px 8px;
+    }
+</style>
+<?php
+
+?>
 <!-- container section start -->
 <section id="container" class="">
 
     <!--main content start-->
     <?php echo form_open('/admin/update_user?n=' . $item['registration_no'], 'id="updateForm" name="updateForm"') ?>
+
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <section class="panel form-horizontal">
                     <div class="panel-body">
-                        <div class="col-lg-6">
-                            <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">구분 1</label>
-                                <div class="col-sm-10">
-                                    <!--
-                                    <select class="form-control input-lg m-bot15" name="type1" id="type1" data-select="<?php echo $item['type']; ?>">
-                                        <option value="일반참가자">일반참가자</option>
-                                        <option value="좌장">좌장</option>
-                                        <option value="연자">연자</option>
-                                        <option value="패널">패널</option>
-                                        <option value="임원">임원</option>
-                                        <option value="후원사">후원사</option>
-                                    </select>
--->
-                                    <input class="form-control" type="text" value="<?php echo $item['type2']; ?>" name="type2" id="type2">
+                        <div class="detail_table">
+                            <table>
+                                <tr>
+                                    <td colspan="2"><button type="button" class="btn btn-primary" onclick="print('<?php echo $item['registration_no']; ?>')">QR Print</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #fb8500">Remarks 1</th>
+                                    <td><input class="form-control" type="text" name="remark1" id="remark1" value="<?php echo $item['remark1']; ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #fb8500">Remarks 2</th>
+                                    <td>
+                                        <input class="form-control" type="text" value="<?php echo $item['remark2']; ?>" name="remark2" id="remark2">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #fb8500">Remarks 3</th>
+                                    <td><input class="form-control" type="text" name="remark3" value="<?php echo $item['remark3']; ?>" id="remark3">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #fb8500">Remarks 4</th>
+                                    <td><input class="form-control" type="text" value="<?php echo $item['remark4']; ?>" name="remark4" id="remark4">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #fb8500">memo</th>
+                                    <td><input class="form-control" type="text" value="<?php echo $item['memo']; ?>" name="memo" id="memo">
+                                    </td>
+                                </tr>
+                            </table>
 
-                                </div>
-                            </div>
-                            <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">구분 2</label>
-                                <div class="col-sm-10">
-                                    <!--
-                                    <select class="form-control input-lg m-bot15" name="type2" id="type2" data-select="<?php echo $item['type2']; ?>">
-                                        <option value="개원의">개원의</option>
-                                        <option value="봉직의">봉직의</option>
-                                        <option value="전공의">전공의</option>
-                                        <option value="전문의">전문의</option>
-                                        <option value="교수">교수</option>
-                                        <option value="사회복지사">사회복지사</option>
-                                        <option value="약사">약사</option>
-                                        <option value="간호사">간호사</option>
-                                        <option value="영양사">영양사</option>
-                                        <option value="연구원">연구원</option>
-                                        <option value="운동처방사">운동처방사</option>
-                                        <option value="기타">기타</option>
-                                    </select>
--->
-                                    <input class="form-control" type="text" value="<?php echo $item['type']; ?>" name="type" id="type">
-                                </div>
-                            </div>
-                            <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">구분 3</label>
-                                <div class="col-sm-10">
-                                    <!--
-                                    <select class="form-control input-lg m-bot15" name="type2" id="type2" data-select="<?php echo $item['type2']; ?>">
-                                        <option value="개원의">개원의</option>
-                                        <option value="봉직의">봉직의</option>
-                                        <option value="전공의">전공의</option>
-                                        <option value="전문의">전문의</option>
-                                        <option value="교수">교수</option>
-                                        <option value="사회복지사">사회복지사</option>
-                                        <option value="약사">약사</option>
-                                        <option value="간호사">간호사</option>
-                                        <option value="영양사">영양사</option>
-                                        <option value="연구원">연구원</option>
-                                        <option value="운동처방사">운동처방사</option>
-                                        <option value="기타">기타</option>
-                                    </select>
--->
-                                    <input class="form-control" type="text" value="<?php echo $item['type1']; ?>" name="type1" id="type1">
-                                </div>
-                            </div>
-                            <!-- <div class="form-group form-inline"> -->
-                            <!-- <label class="col-sm-2 control-label">구분 3</label>
-                                <div class="col-sm-10"> -->
-                            <!--
-                                    <select class="form-control input-lg m-bot15" name="type2" id="type2" data-select="<?php echo $item['type2']; ?>">
-                                        <option value="개원의">개원의</option>
-                                        <option value="봉직의">봉직의</option>
-                                        <option value="전공의">전공의</option>
-                                        <option value="전문의">전문의</option>
-                                        <option value="교수">교수</option>
-                                        <option value="사회복지사">사회복지사</option>
-                                        <option value="약사">약사</option>
-                                        <option value="간호사">간호사</option>
-                                        <option value="영양사">영양사</option>
-                                        <option value="연구원">연구원</option>
-                                        <option value="운동처방사">운동처방사</option>
-                                        <option value="기타">기타</option>
-                                    </select>
--->
-                            <!-- <input class="form-control" type="text" value="<?php echo $item['type1']; ?>" name="type1" id="type1">
-                                </div>
-                            </div> -->
-                            <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">회원여부</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control input-lg m-bot15" name="type3" id="type3" data-select="<?php echo $item['type3']; ?>">
-                                        <option value="회원">회원</option>
-                                        <option value="비회원">비회원</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">평점신청여부</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?php echo $item['etc1']; ?>" name="etc1" id="etc1">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">면허번호</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?php echo $item['ln']; ?>" name="ln" id="ln">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">전문의번호</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" value="<?php echo $item['sn']; ?>" name="sn" id="sn">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">이름</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="<?php echo $item['nick_name']; ?>" name="nick_name" id="nick_name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">전화번호</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="<?php echo $item['phone']; ?>" name="phone" id="phone">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">등록번호</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="<?php echo $item['registration_no']; ?>" name="registration_no" id="registration_no" readonly>
-                                </div>
-                            </div>
+
+                            <table>
+                                <tr>
+                                    <th>등록비</th>
+                                    <td><input class="form-control" type="text" name="fee" value="<?php echo $item['fee']; ?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Welcome Reception 참석 여부</th>
+                                    <td> <input id="dp1" type="text" value="<?php echo $item['welcome_reception_yn']; ?>" size="16" class="form-control yn" name="welcome_reception_yn">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Satellite Symposium 참석 여부</th>
+                                    <td> <input id="dp1" type="text" value="<?php echo $item['satellite_yn']; ?>" size="16" class="form-control yn" name="satellite_yn">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Breakfast Symposium 참석 여부</th>
+                                    <td> <input id="dp1" type="text" value="<?php echo $item['breakfast_yn']; ?>" size="16" class="form-control yn" name="breakfast_yn">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Luncheon Symposium 참석 여부</th>
+                                    <td> <input id="dp1" type="text" value="<?php echo $item['luncheon_yn']; ?>" size="16" class="form-control yn" name="luncheon_yn">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>참석자구분</th>
+                                    <td>
+                                        <input class="form-control member_type" type="text" value="<?php echo $item['member_type']; ?>" name="member_type" id="member_type">
+                                        <select class="form-control input-lg m-bot15" id="member_type_select">
+                                            <option value="" selected="selected">직접입력</option>
+
+                                            <option value="교수">교수</option>
+                                            <option value="개원의">개원의</option>
+                                            <option value="봉직의">봉직의</option>
+                                            <option value="교직의">교직의</option>
+                                            <option value="전임의">전임의</option>
+                                            <option value="수련의">수련의</option>
+                                            <option value="전공의">전공의</option>
+                                            <option value="영양사">영양사</option>
+                                            <option value="운동사">운동사</option>
+                                            <option value="간호사">간호사</option>
+                                            <option value="군의관">군의관</option>
+                                            <option value="연구원">연구원</option>
+                                            <option value="학생">학생</option>
+                                            <option value="전시(부스)">전시(부스)</option>
+                                            <option value="기타">기타</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>참가유형</th>
+                                    <td>
+                                        <input class="form-control attendance_type" type="text" value="<?php echo $item['attendance_type']; ?>" name="attendance_type" id="attendance_type">
+                                        <select class="form-control input-lg m-bot15" id="attendance_type_select">
+                                            <option value="" selected="selected">직접입력</option>
+
+                                            <option value="일반참석자">일반참석자</option>
+                                            <option value="임원">임원</option>
+                                            <option value="좌장">좌장</option>
+                                            <option value="연자">연자</option>
+                                            <option value="패널">패널</option>
+                                          
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>분야구분</th>
+                                    <td>
+                                        <input class="form-control type1" type="text" value="<?php echo $item['type1']; ?>" name="type1" id="type1">
+                                        <select class="form-control input-lg m-bot15" id="type1_select">
+                                            <option value="" selected="selected">직접입력</option>
+
+                                            <option value="의료">의료</option>
+                                            <option value="영양">영양</option>
+                                            <option value="운동">운동</option>
+                                            <option value="기타">기타</option>
+                                            <option value="전시">전시</option>
+                                           
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="detail_table">
+                            <table>
+                                <tr>
+                                    <th>Registration No.</th>
+                                    <td style="background-color:#fafafa;"> <input class="form-control" type="text" value="<?php echo $item['registration_no']; ?>" name="registration_no" id="registration_no" readonly></td>
+                                </tr>
+
+                                <tr>
+                                    <th>등록시간</th>
+                                    <td> <input id="time" type="text" value="<?php echo substr($item['time'], 0, 10) ?>" size="16" class="form-control" name="time">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>이름</th>
+                                    <td>
+                                       <input class="form-control" type="text" style="width:230px" value="<?php echo $item['nick_name']; ?>" name="nick_name" id="nick_name">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>소속</th>
+                                    <td> <input class="form-control" type="text" value="<?php echo $item['org']; ?>" name="org" id="org">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>네임택용 소속</th>
+                                    <td> <input class="form-control" type="text" value="<?php echo $item['org_nametag']; ?>" name="org_nametag" id="org_nametag">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>회원유무</th>
+                                    <td> <input class="form-control" type="text" value="<?php echo $item['member']; ?>" name="member" id="member">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>소속</th>
+                                    <td>
+                                        <input class="form-control" type="text" value="<?php echo $item['department']; ?>" name="department" id="org">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>의사면허번호</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['licence_number']; ?>" name="licence_number" id="phone">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>전문의번호</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['specialty_number']; ?>" name="specialty_number" id="phone">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>영양사면허번호</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['nutritionist_number']; ?>" name="nutritionist_number" id="nutritionist_number">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>임상영양사자격번호</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['dietitian_number']; ?>" name="dietitian_number" id="dietitian_number">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>생년월일</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['date_of_birth']; ?>" name="date_of_birth" id="date_of_birth">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>운동사 평점신청</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['is_score1']; ?>" name="is_score1" id="is_score1">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>연락처</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['phone']; ?>" name="phone" id="phone">
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>E-mail</th>
+                                    <td><input class="form-control" type="text" value="<?php echo $item['email']; ?>" name="email" id="email"></td>
+                                </tr>
+
+                                <tr>
+                                    <th>qr print 여부</th>
+                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_print']; ?>" name="qr_print" id="phone"></td>
+                                </tr>
+                                <tr>
+                                    <th>day 1 출결여부</th>
+                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_1']; ?>" name="qr_chk_day_1" id="phone">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>day 2 출결여부</th>
+                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_2']; ?>" name="qr_chk_day_2" id="phone">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>개최정보습득방법</th>
+                                    <td><input class="form-control" type="text" value="<?php echo $item['conference_info']; ?>" name="conference_info" id="phone"></td>
+                                </tr>
+                                <tr>
+                                    <th>결제수단</th>
+                                    <td> <input type="text" class="form-control" value="<?php echo $item['deposit_method']; ?>" name="deposit_method" id="etc4"></td>
+                                </tr>
+                                <tr>
+                                    <th>결제상태</th>
+                                    <td> <input type="text" class="form-control" value="<?php echo $item['deposit']; ?>" name="deposit" id="deposit"></td>
+                                </tr>
+                                <tr>
+                                    <th>결제일</th>
+                                    <td> <input id="dp1" type="text" value="<?php echo $item['deposit_date']; ?>" size="16" class="form-control" name="deposit_date">
+
+                                    </td>
+                                </tr>
+                            </table>
 
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">E-mail</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="<?php echo $item['email']; ?>" name="email" id="email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">소속</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="<?php echo $item['org']; ?>" name="org" id="org">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">소속(네임택용)</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="<?php echo $item['org_nametag']; ?>" name="org_nametag" id="org_nametag">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">주소</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="<?php echo $item['addr']; ?>" name="addr" id="addr">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">사전등록비</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="<?php echo $item['fee']; ?>" name="fee" id="fee">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">입금자명</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" value="<?php echo $item['deposit_name']; ?>" name="deposit_name" id="deposit_name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">입금예정일</label>
-                                <div class="col-sm-10">
-                                    <input id="dp1" type="text" value="<?php echo $item['deposit_date']; ?>" size="16" class="form-control" name="deposit_date">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">메모</label>
-                                <div class="col-sm-10">
-                                    <?php if ($item['memo'] == 'null') { ?>
-                                        <input id="memo" type="text" value="" size="16" class="form-control" name="memo">
-                                    <?php  } else { ?>
-                                        <input id="memo" type="text" value="<?php echo $item['memo']; ?>" size="16" class="form-control" name="memo">
-                                    <?php } ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">등록시간</label>
-                                <div class="col-sm-10">
-                                    <input id="time" type="text" value="<?php echo substr($item['time'], 0, 10) ?>" size="16" class="form-control" name="time">
-                                </div>
-                            </div>
-                            <div clss="btn_group" style="float: right;">
-                                <button type="submit" data-toggle="modal" class="btn btn-primary">수정</button>
-                                </form>
-                                <a href="/admin/delete_user?d=<?php echo $item['registration_no']; ?>" class="btn btn-danger">삭제</a>
-                            </div>
+
+                        <div clss="btn_group" style="float: right;">
+                            <button type="submit" data-toggle="modal" class="btn btn-primary">수정</button>
+                            </form>
+                            <button type="button" class="btn btn-danger" onclick="removeUser('<?php echo $item['registration_no']; ?>')">삭제</button>
+
                         </div>
                     </div>
-                </section>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <section class="panel form-horizontal">
-                    <div class="panel-body">
-                        <div class="col-lg-6">
-                            <div class="col-lg-12">
-                                <p class="col-sm-2">입장</p>
-                                <p class="col-sm-10">
-                                    <?php
-                                    if (empty($item2['min_time'])) {
-                                        echo "태깅 기록이 없습니다.";
-                                    } else {
-                                        echo $item2['min_time'];
-                                    };
-                                    ?>
-                                </p>
-                            </div>
-                            <div class="col-lg-12">
-                                <p class="col-sm-2">퇴장</p>
-                                <p class="col-sm-10">
-                                    <?php
-                                    if (empty($item2['max_time'])) {
-                                        echo "태깅 기록이 없습니다.";
-                                    } else {
-                                        echo $item2['max_time'];
-                                    };
-                                    ?>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="col-lg-12">
-                                <p class="col-sm-2">총 시간</p>
-                                <p class="col-sm-10">
-                                    <?php
-                                    if (empty($item2['duration'])) {
-                                        echo "태깅 기록이 없습니다.";
-                                    } else {
-                                        echo $item2['duration'] . '분';
-                                    };
-                                    ?>
-                                </p>
-                            </div>
-                            <div class="col-lg-12">
-                                <p class="col-sm-2">총 평점</p>
-                                <p class="col-sm-10">
-                                    <?php
-                                    if (empty($item2['duration'])) {
-                                        echo "태깅 기록이 없습니다.";
-                                    } else {
-                                        $score = $item2['duration'] / 60;
-                                        echo round($score, 2) . '점';
-                                    };
-                                    ?>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <!-- Basic Forms & Horizontal Forms-->
-
     </section>
+    </div>
+    </div>
+
+    <!-- Basic Forms & Horizontal Forms-->
+
+</section>
 </section>
 <script src="/assets/js/form-component.js"></script>
 <script src="/assets/js/bootstrap-datepicker.js"></script>
 <script>
     $(document).ready(function() {
-        var type1_val = $('select#type1').attr('data-select');
-        $('select#type1 option[value=' + type1_val + ']').attr('selected', 'selected');
-        var type2_val = $('select#type2').attr('data-select');
-        $('select#type2 option[value=' + type2_val + ']').attr('selected', 'selected');
-        var type3_val = $('select#type3').attr('data-select');
-        $('select#type3 option[value=' + type3_val + ']').attr('selected', 'selected');
-
         var registration_no = $('#registration_no').val();
         $("#updateForm").attr("action", "/admin/update_user?n=" + registration_no);
     });
+
+    const attendance = document.querySelector(".attendance_type");
+    const attendance_select = document.querySelector("#attendance_type_select")
+
+    const member_type = document.querySelector(".member_type");
+    const member_type_select = document.querySelector("#member_type_select")
+
+    const ocupation_type = document.querySelector(".type1");
+    const ocupation_type_select = document.querySelector("#type1_select")
+
+    const ynList = document.querySelectorAll(".yn")
+
+
+    /**참가 유형 select box */
+    attendance_select.addEventListener("change", () => {
+        attendance.value = attendance_select.options[attendance_select.selectedIndex].value;
+    })
+
+    /**참가자 구분 select box */
+    member_type_select.addEventListener("change", () => {
+        member_type.value = member_type_select.options[member_type_select.selectedIndex].value;
+    })
+
+    /**분야구분 select box */
+    ocupation_type_select.addEventListener("change", () => {
+        ocupation_type.value = ocupation_type_select.options[ocupation_type_select.selectedIndex].value;
+    })
+
+    function removeUser(reg) {
+        if (window.confirm("삭제하시겠습니까?")) {
+            window.location.href = `/admin/delete_user?d=${reg}`
+        }
+    }
+
+    function print(reg) {
+        const url = `/qrcode/print_file?registration_no=${reg}`
+        fetch(url).then((res) => window.open(res.url))
+    }
+
+    ynList.forEach((yn) => {
+        yn.addEventListener("input", (e) => {
+            ynRegExp(yn.value);
+            e.target.value = yn.value.replace(/[^YN]/g, '');
+        })
+    })
+
+    function ynRegExp(text) {
+        const re = /^[YN]$/;
+        if (!re.test(text)) {
+            alert("Y, N만 입력 가능합니다.")
+        }
+    }
 </script>
 
 
