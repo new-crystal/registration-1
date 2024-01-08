@@ -60,19 +60,17 @@ table th {
             <div class="panel-heading">
                 <h5 class="panel-title">등록 인원</h5>
                 <div class="heading-elements">
-                    <form action="/admin/excel_download" method="post">
+                    <!-- <form action="/admin/excel_download" method="post">
                         <button class="btn btn-primary pull-right"><i class="icon-download4"></i> QR기록 다운로드</button>
-                    </form>
+                    </form> -->
                     <form action="/admin/send_all_mail" method="post" id="deposit_mail_Form">
                         <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i> 전체메일발송</button>
                     </form>
                     <form action="/admin/send_all_msm" method="post" id="depositForm">
                         <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i> 전체문자발송</button>
                     </form>
-
-                    <a class="btn btn-primary pull-right" href="/access/scan_qr"><i class="icon-add"></i> 출결
-                        QR페이지</a>
-
+                    <a class="btn btn-primary pull-right" href="/access/row_scan_qr" target="_blank"><i class="icon-qrcode"></i> 출결
+                        QR</a>
                 </div>
             </div>
 
@@ -89,8 +87,8 @@ table th {
                         <th>전화번호</th>
                         <th>QR 문자 전송</th>
                         <th>메일전송</th>
-                        <th>입장시간</th>
-                        <th>퇴장시간</th>
+                        <!-- <th>입장시간</th>
+                        <th>퇴장시간</th> -->
                         <th>QR생성</th>
                     </tr>
                 </thead>
@@ -102,11 +100,11 @@ table th {
                         // echo '<td>' . $item['type3'] . '</td>';
                         // echo '<td>' . substr($item['time'], 0, 10) . '</td>';
                         echo '<td>' . $item['registration_no'] . '</td>';
-                        echo '<td>' . $item['type'] . '</td>';
-                        echo '<td>' . $item['type2'] . '</td>';
-                        echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['nick_name'] . '</a></td>';
+                        echo '<td>' . $item['attendance_type'] . '</td>';
+                        echo '<td>' . $item['member_type'] . '</td>';
+                        echo '<td class="user_d">' . $item['nick_name'] . '</td>';
                         echo '<td>' . $item['org'] . '</td>';
-                        echo '<td>' . $item['email'] . '</td>';
+                        echo '<td><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['email'] . '</a></td>';
                         echo '<td>' . $item['phone'] . '</td>';
                         echo '<td>';
 
@@ -124,8 +122,8 @@ table th {
                         }
 
                         echo '</td>';
-                        echo '<td style="text-align: center;">' . $item['mintime'] . '</td>';
-                        echo '<td style="text-align: center;">' . $item['maxtime'] . '</td>';
+                        // echo '<td style="text-align: center;">' . $item['mintime'] . '</td>';
+                        // echo '<td style="text-align: center;">' . $item['maxtime'] . '</td>';
                         echo '<td>';
                         echo '<a  href="/admin/qr_layout?n=' . $item['registration_no'] . '" target="_blank"><div class="btn btn-info qr_btn" >QR보기</div></a>';
                         echo '</td>';

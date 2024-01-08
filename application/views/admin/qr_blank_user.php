@@ -1,6 +1,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet"> -->
 
 <style>
 @page {
@@ -14,12 +14,22 @@ body {
 }
 
 @font-face {
-    font-family: NanumSquare;
-    src: url("../../../assets/font/NanumSquare-Hv.otf");
+    font-family: Arial_bold;
+    src: url("../../../assets/font/arial_bold.otf");
 }
 
-#nick_name {
-    font-family: NanumSquare, "Roboto", Helvetica Neue, Helvetica, Arial, sans-serif;
+@font-face {
+    font-family: Arial_italic;
+    src: url("../../../assets/font/Arial_Italic.otf");
+}
+
+.org {
+    font-family: Arial_italic;
+}
+
+.nick_name {
+    font-family: Arial_bold;
+    font-size: 48px;
 }
 
 #printThis {
@@ -29,12 +39,75 @@ body {
     padding: 0;
 }
 
-.small_receipt {
+.receipt {
+    transform: rotate(0.5turn);
+}
+
+
+.text_box>.receipt_name {
+    left: -42px !important;
+}
+
+#last_name {
+    padding: 0 !important;
+}
+
+.text_box {
+    position: absolute;
+    top: 302px;
+}
+
+.kor_box {
+    position: absolute;
+    top: 24px;
+}
+
+.small {
+    font-size: 34px !important;
+    line-height: 64px !important;
+}
+
+.org_small {
+    transform: translateY(7px) !important;
+}
+
+.small_box {
+    top: 302px !important;
+}
+
+.reg {
+    text-align: right !important;
+    transform: translate(-16px, -43px);
+}
+
+/* 
+    .long_nick>.receipt {
+        position: static !important;
+        transform: rotate(0.5turn) !important;
+    }
+
+    .long_nick {
+        padding-top: 249px;
+    } */
+
+.tag_price,
+.tag_name {
+    transform: rotate(0.5turn);
+    width: 77%;
+    margin: 0 auto;
+    text-align: right !important;
+}
+
+.tag_name {
     position: relative;
-    top: 37px;
+    top: 265px;
+}
+
+.tag_price {
+    position: relative;
+    top: 250px;
 }
 </style>
-
 <!-- Main content -->
 <div id="nametag_wrapper">
     <div class="edit_wrapper">
@@ -50,35 +123,16 @@ body {
     <!-- Content area -->
     <div class="content" id="nametag">
         <div id="printThis">
-            <div id="editor1" contenteditable="true">
+            <div id="editor1" contenteditable="true" style="height:24cm;">
                 <?php
-                $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
-                $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
                 echo '<div class="a4_area">';
                 echo '<div class="bg_area">';
                 echo '<div class="txt_con">';
-                if ($lang == 0) {
-                    echo '<div class="nick_name lang_en" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if ($lang !== 0 && $nicknameLength <= 3) {
-                    echo '<div class="nick_name" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if ($lang !== 0 && $nicknameLength > 3) {
-                    echo '<div class="small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
-                }
-                echo '<div class="org" id="org">' . $users['org_nametag'] . '</div>';
-                echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
-                if ($nicknameLength > 3) {
-                    echo '<div class="small_receipt">';
-                }
-                echo '<div class="receipt receipt_num_1">' . $users['registration_no'] . '</div>';
-                echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
-                echo '<div class="receipt receipt_price">' . number_format($users['fee']) . '</div>';
-                echo '<div class="receipt receipt_num_2">' . $users['registration_no'] . '</div>';
-                echo '<div class="receipt receipt_small small_nick">' . $users['nick_name'] . '</div>';
-                // echo '<div class="receipt receipt_small smaill_ln">' . $users['ln'] . '</div>';
-                // echo '<div class="receipt receipt_small small_sn">' . $users['sn'] . '</div>';
-                if ($nicknameLength > 3) {
-                    echo '</div>';
-                }
+
+                echo '<div class="nick_name lang_en" id="first_name">' . '</div>';
+
+                echo '</div>';
+                echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
@@ -104,14 +158,15 @@ body {
 </style>
 <script>
 document.getElementById("btnPrint").onclick = function() {
+
+    // window.location.href = `https://reg3.webeon.net/qrcode/print_file?registration_no=${id}`
     printElement(document.getElementById("printThis"));
-    //window.close();
 }
 
 function printElement(elem) {
     var domClone = elem.cloneNode(true);
 
-    var $printSection = document.getElementById("printSection");
+    // var $printSection = document.getElementById("printSection");
 
     if (!$printSection) {
         var $printSection = document.createElement("div");
@@ -126,27 +181,8 @@ function printElement(elem) {
     //            console.log($printSection);
     window.print();
 }
-
-
-
-
-$(function() {
-    $("#btnPrint").trigger("click");
-
-
-    if (window.matchMedia) {
-        var mediaQueryList = window.matchMedia('print');
-        mediaQueryList.addListener(function(mql) {
-            if (mql.matches) {
-                console.log('프린트 이전에 호출됩니다.');
-            } else {
-                console.log('프린트 이후에 호출됩니다.');
-                window.close();
-            }
-        });
-    }
-});
 </script>
+
 <script>
 //Make the DIV element draggagle:
 dragElement(document.getElementById("qrcode"));

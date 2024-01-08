@@ -35,7 +35,26 @@ class Schedule extends CI_Model
         $query = $this->db->query("SELECT * FROM `breaks` WHERE 1 ORDER BY `id`");
         return $query->result_array();
     }
+    public function get_notice()
+    {
+        $query = $this->db->query("SELECT * FROM `notice` WHERE is_deleted = 'Y' ORDER BY `idx`");
+        return $query->result_array();
+        // return $this->db->get($this->notice)->result_array();
+    }
 
+    public function add_notice($info)
+    {
+        $this->db->insert($this->notice, $info);
+        $idx = $this->db->insert_id();
+        $this->db->where('id', $idx);
+    }
+
+    public function edit_notice($info, $where)
+    {
+        $this->db->where($where);
+        $ret = $this->db->update($this->notice, $info);
+        return $ret;
+    }
 
 }
 
