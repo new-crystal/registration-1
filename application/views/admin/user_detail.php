@@ -35,7 +35,12 @@
     }
 </style>
 <?php
-
+    $onsite = "";
+    if($item['onsite_reg'] == '0'){
+        $onsite = "사전등록";
+    }else if($item['onsite_reg'] == '1'){
+        $onsite = "현장등록";
+    }
 ?>
 <!-- container section start -->
 <section id="container" class="">
@@ -210,12 +215,11 @@
                                 </tr>
 
                                 <tr>
-                                    <th>소속</th>
-                                    <td>
-                                        <input class="form-control" type="text" value="<?php echo $item['department']; ?>" name="department" id="org">
+                                    <th>등록구분(사전등록/현장등록)</th>
+                                    <td> <input id="dp1" type="text" value="<?php echo $onsite; ?>" size="16" class="form-control" name="onsite_reg">
+
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <th>의사면허번호</th>
                                     <td>
@@ -249,7 +253,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>생년월일</th>
+                                    <th>생년월일(YYYY-MM-DD)</th>
                                     <td>
                                         <div style="display:flex;  align-items: center;">
                                             <input class="form-control" type="text" value="<?php echo $item['date_of_birth']; ?>" name="date_of_birth" id="date_of_birth">
@@ -272,23 +276,22 @@
                                         </div>
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <th>E-mail</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['email']; ?>" name="email" id="email"></td>
                                 </tr>
 
                                 <tr>
-                                    <th>qr print 여부</th>
+                                    <th>qr print 여부(N/Y)</th>
                                     <td><input class="form-control yn" type="text" value="<?php echo $item['qr_print']; ?>" name="qr_print" id="phone"></td>
                                 </tr>
                                 <tr>
-                                    <th>day 1 출결여부</th>
+                                    <th>day 1 출결여부(N/Y)</th>
                                     <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_1']; ?>" name="qr_chk_day_1" id="phone">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>day 2 출결여부</th>
+                                    <th>day 2 출결여부(N/Y)</th>
                                     <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_2']; ?>" name="qr_chk_day_2" id="phone">
                                     </td>
                                 </tr>
@@ -297,11 +300,11 @@
                                     <td><input class="form-control" type="text" value="<?php echo $item['conference_info']; ?>" name="conference_info" id="phone"></td>
                                 </tr>
                                 <tr>
-                                    <th>결제수단</th>
+                                    <th>결제수단(신용카드/계좌이체)</th>
                                     <td> <input type="text" class="form-control" value="<?php echo $item['deposit_method']; ?>" name="deposit_method" id="etc4"></td>
                                 </tr>
                                 <tr>
-                                    <th>결제상태</th>
+                                    <th>결제상태(결제대기/결제완료)</th>
                                     <td> <input type="text" class="form-control" value="<?php echo $item['deposit']; ?>" name="deposit" id="deposit"></td>
                                 </tr>
                                 <tr>
@@ -310,6 +313,7 @@
 
                                     </td>
                                 </tr>
+                               
                             </table>
 
                         </div>

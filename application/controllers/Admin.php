@@ -597,7 +597,6 @@ class Admin extends CI_Controller
                     'org_nametag' => trim($org),
                     'phone' => preg_replace("/\s+/", "", $phone),
                     'email' => preg_replace("/\s+/", "", $email),
-
                     'attendance_type' => trim($attendance_type),
                     'type1' => trim($type1),
                     'member_type' => trim($member_type),
@@ -607,6 +606,7 @@ class Admin extends CI_Controller
                     'uagent' => $uagent,
                     'deposit' => $deposit,
                     'memo' => $memo,
+                    'onsite_reg' => '1'
                 );
                 //                var_dump($info);
                 $this->users->add_onsite_user($info);
@@ -739,10 +739,15 @@ class Admin extends CI_Controller
                 $deposit_method = $this->input->post('deposit_method');
                 $deposit = $this->input->post('deposit');
                 $deposit_date = $this->input->post('deposit_date');
-
+                $onsite = $this->input->post('onsite_reg');
 
                 if ($memo == "") {
                     $memo = null;
+                }
+                if($onsite == "현장등록"){
+                    $onsite_reg = '1';
+                }else if($onsite == "사전등록"){
+                    $onsite_reg = '0';
                 }
                 $updateTime = date("Y-m-d H:i:s");
                 $info = array(
@@ -781,6 +786,7 @@ class Admin extends CI_Controller
                     'deposit_date' => $deposit_date,
                     'updatetime' => $updateTime,
                     'memo' => $memo,
+                    'onsite_reg' => $onsite_reg,
                     'time' => substr($time, 0, 10)
                 );
 
@@ -810,7 +816,7 @@ class Admin extends CI_Controller
         $object = new PHPExcel();
         $object->setActiveSheetIndex(0);
 
-        $table_columns = array("번호", "참석여부", "등록번호", "등록일", "이메일", "KSSO 회원 여부", "이름", "소속", "네임택용 소속","부서", "휴대폰번호", "참가유형", "분야구분", "참석구분", "평점신청여부", "의사면허번호", "전문의번호", "영양사자격번호", "임상영양사자격번호", "생년월일", "운동사 평점 신청 여부", "결제상태", "등록비", "결제일","결제방식", "결제 정보 메모", "Welcome Reception", "Satellite Symposium", "Breakfast Symposium", "Luncheon Symposium", "개최 정보 습득 방법", "remark1", "remark2", "remark3", "remark4", "memo", "Day 1 참석여부", "Day 1 입실 시간", "Day 1 퇴실 시간", "체류시간", "Break 제외 시간", "Day 2 참석여부", "Day 2 입실 시간", "Day 2 퇴실 시간", "체류시간", "Break 제외 시간");
+        $table_columns = array("등록구분", "참석여부", "등록번호", "등록일", "이메일", "KSSO 회원 여부", "이름", "소속", "네임택용 소속","부서", "휴대폰번호", "참가유형", "분야구분", "참석구분", "평점신청여부", "의사면허번호", "전문의번호", "영양사자격번호", "임상영양사자격번호", "생년월일", "운동사 평점 신청 여부", "결제상태", "등록비", "결제일","결제방식", "결제 정보 메모", "Welcome Reception", "Satellite Symposium", "Breakfast Symposium", "Luncheon Symposium", "개최 정보 습득 방법", "remark1", "remark2", "remark3", "remark4", "memo", "Day 1 참석여부", "Day 1 입실 시간", "Day 1 퇴실 시간", "체류시간", "Break 제외 시간", "Day 2 참석여부", "Day 2 입실 시간", "Day 2 퇴실 시간", "체류시간", "Break 제외 시간");
 
         $column = 0;
 
@@ -870,11 +876,18 @@ class Admin extends CI_Controller
             $max_score = $this->schedule->get_maxscore();
             $score = min($max_score, $score);
 
+            $onsite = "";
+            if($row['onsite_reg'] == '0'){
+                $onsite = "사전등록";
+            }if($row['onsite_reg'] == '1'){
+                $onsite = "현장등록";
+            }
+
             //            $excel->getActiveSheet()->getRowDimension ( 1 )->setRowHeight ( 35 );
             $object->getActiveSheet()->getStyle("F" . $excel_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
             $object->getActiveSheet()->getStyle("H" . $excel_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 
-            $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $excel_row - 1);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $onsite );
             $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $chk);
             $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row['registration_no']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row['time']);
@@ -1147,13 +1160,14 @@ class Admin extends CI_Controller
             $wheres = array(
                 'qr_chk' => 'Y'
             );
+
             /**모든 유저 */
             $data['users'] = $this->users->get_users();
 
             /**qr access 총 유저 */
             $data['item'] = $this->users->get_qr_print_user($wheres);
 
-            /**day1 ~ day3 access 각각 유저 */
+            /**day1 ~ day2 access 각각 유저 */
             $data['day_1'] = $this->users->get_access_statistics_1();      
             $data['day_2'] = $this->users->get_access_statistics_2();
 
