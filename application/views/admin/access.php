@@ -105,7 +105,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>성함(K)</th>
+                                <th>성함</th>
                                 <td id="name" class="qr_text">
                                     <?php if (isset($user['nick_name'])) echo $user['nick_name'] ?></td>
                             </tr>
@@ -115,13 +115,13 @@
                                     <?php if (isset($user['org'])) echo $user['org'] ?></td>
                             </tr>
                             <tr>
-                                <th>참가자 유형</th>
+                                <th>참석 구분</th>
                                 <td id="member_type" class="qr_text">
                                     <?php if (isset($user['member_type'])) echo $user['member_type']; ?>
                                 </td>
                             </tr>
                             <tr>
-                                <th>참가자 유형</th>
+                                <th>참가 유형</th>
                                 <td id="attendance_type" class="qr_text">
                                     <?php if (isset($user['attendance_type'])) echo $user['attendance_type']; ?>
                                 </td>
