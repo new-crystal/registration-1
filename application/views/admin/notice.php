@@ -25,7 +25,7 @@
     </div>
     <div>
         <?php
-        // print_r($notice) 
+        //print_r($notice); 
         foreach ($notice as $item) {
             echo '<form id="memoForm" action="/admin/edit_notice"><div style="text-align: center;">
             <input  id="notice" class="notice" value="' .  $item['notice'] . '" readonly/><button type="button" id="save" onclick="delNotice(\'' . $item['idx'] . '\')">삭제</button></div></form>';

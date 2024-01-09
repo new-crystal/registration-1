@@ -38,7 +38,7 @@ class Schedule extends CI_Model
     }
     public function get_notice()
     {
-        $query = $this->db->query("SELECT * FROM `notice` WHERE is_deleted = 'Y' ORDER BY `idx`");
+        $query = $this->db->query("SELECT * FROM `notice` WHERE is_deleted = 'N' ORDER BY `idx`");
         return $query->result_array();
         // return $this->db->get($this->notice)->result_array();
     }
