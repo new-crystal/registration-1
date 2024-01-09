@@ -1345,7 +1345,7 @@ class Admin extends CI_Controller
         else {
             $this->load->helper('form');
             $this->load->library('form_validation');
-            $this->form_validation->set_rules('notice', 'notice', 'required');
+            //$this->form_validation->set_rules('notice', 'notice', 'required');
 
             if ($this->form_validation->run() === FALSE) {
                 $this->load->view('admin/add_notice');
@@ -1358,7 +1358,7 @@ class Admin extends CI_Controller
                 } else {
                     $info = array(
                         "notice" => $notice,
-                        "is_deleted" => 'Y'
+                        "is_deleted" => 'N'
                     );
                 }
                 $this->schedule->add_notice($info);
@@ -1411,7 +1411,7 @@ class Admin extends CI_Controller
                 'idx' => $userId
             );
 
-            $info = array("is_deleted" => 'N');
+            $info = array("is_deleted" => 'Y');
 
             $this->schedule->edit_notice($info, $where);
         }

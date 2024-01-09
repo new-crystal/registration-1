@@ -1,13 +1,14 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
-<?php echo form_open('/admin/add_notice', 'id="memoForm" name="memoForm"');
-?>
+<!-- <?php echo form_open('/admin/add_notice', 'id="memoForm" name="memoForm"');
+?> -->
+<form action="/admin/add_notice" method="post" id="memoForm" name="memoForm">
 <div class="flex flex-col items-center justify-center w-full h-full">
     <input id="notice" name="notice" class="w-10/12 h-4/6 border p-5">
     </input>
     <div class="flex items-center justify-center w-full mt-5">
-        <button type="submit" id="save" class="h-8 w-28 bg-pink-600 text-white mx-5">Save</button>
-        <button id="close" type="button" class="h-8 w-28 border border-pink-600 text-pink-600">Close</button>
+        <button type="submit" id="save" class="h-8 w-28 bg-pink-600 text-white mx-5">저장</button>
+        <button id="close" type="button" class="h-8 w-28 border border-pink-600 text-pink-600">닫기</button>
     </div>
 </div>
 </form>
@@ -53,7 +54,7 @@ async function saveMemo() {
             alert("공지사항 저장 실패");
         }
     } catch (error) {
-        console.log("메모 저장 중 오류 발생:", error);
+        console.log("공지사항 저장 중 오류 발생:", error);
     }
 }
 </script>
