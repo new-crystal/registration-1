@@ -159,7 +159,7 @@
 
                                     <dl class="pl-2">
                                         <div id="qr_nick_name" class="qr_info_wrap">
-                                            <div class="info_content"><input type="text" class="qr_info input name" value="<?php if (isset($first_name)) echo $first_name . ' ' . $last_name ?>" readonly>
+                                            <div class="info_content"><input type="text" class="qr_info input name" value="<?php if (isset($nick_name)) echo $nick_name ?>" readonly>
                                             </div>
                                         </div>
 

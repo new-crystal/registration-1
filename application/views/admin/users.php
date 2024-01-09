@@ -72,11 +72,10 @@ table th {
                         <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i>QR생성</button>
                     </form>
                     <form action="/admin/non_deposit_check" method="post" id="non_depositForm">
-                        <button class="btn btn-danger pull-right"><i class="icon-checkmark"></i> 미결제처리</button>
+                        <button class="btn btn-danger pull-right"><i class="icon-cross2"></i> 미결제처리</button>
                     </form>
                     <a class="btn btn-primary pull-right" href="/admin/add_user"><i class="icon-add"></i> 등록</a>
-                    <a class="btn btn-primary pull-right" href="/access/row_scan_qr" target="_blank"><i class="icon-qrcode"></i> 출결
-                        QR</a>
+              
                 </div>
             </div>
 
@@ -148,7 +147,7 @@ table th {
         </div>
         <!-- /basic datatable -->
         <div class="footer text-muted">
-            © 2023. <a href="#">온라인 학술대회</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">(주)인투온</a>
+             <a href="#">온라인 학술대회</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">(주)인투온</a>
         </div>
     </div>
     <!-- /content area -->
