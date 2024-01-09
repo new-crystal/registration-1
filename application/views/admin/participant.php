@@ -18,89 +18,71 @@
     }
 </style>
 <div class="text-center flex flex-col items-center justify-center">
-    <h1 class="text-6xl font-semibold text-orange-600 my-10">대한내분비학회 2023년 개원의연수강좌</h1>
+    <h1 class="text-6xl font-semibold text-orange-600 my-10">제59차 대한비만학회 춘계학술대회</h1>
     <h6 class="text-3xl font-semibold mb-20 ">현장 참석자 데이터</h6>
     <?php
     // print_r($statistics);
     $total_1 = 0;
     $total_2 = 0;
     $total_3 = 0;
-    for ($i = 0; $i < count($statistics); $i++) {
-        $total_1 += $statistics[$i]['A_03'] + $statistics[$i]['R_03'];
-    }
+    // for ($i = 0; $i < count($statistics); $i++) {
+    //     $total_1 += $statistics[$i]['A_03'] + $statistics[$i]['R_03'];
+    // }
     // print_r($statistics)
     ?>
 
     <table class="w-9/12 text-2xl mb-20">
         <tr class="bg-green-300 text-black">
             <th colspan="2">등록구분</th>
-            <th>9월 3일(일)</th>
-            <!-- <th>7월 12일(금)</th>
-            <th>7월 13일(토)</th> -->
+            <th>3월 8일(금)</th>
+            <th>3월 9일(토)</th>
         </tr>
         <tr>
-            <th class="bg-red-100" rowspan="5">사전등록</th>
+            <th class="bg-red-100" rowspan="4">사전등록</th>
             <th class="bg-red-100">좌장</th>
-            <td><?php echo isset($statistics[3]['R_03']) ? $statistics[3]['R_03']  : 0; ?>
-            </td>
-        </tr>
-        <tr>
-            <th class="bg-red-100">고문</th>
-            <td><?php echo isset($statistics[0]['R_03']) ? $statistics[0]['R_03'] : 0; ?>
-            </td>
-
+            <td>0</td>
+            <td>0</td>
         </tr>
         <tr>
             <th class="bg-red-100">패널</th>
-            <td><?php echo isset($statistics[4]['R_03']) ? $statistics[4]['R_03'] : 0; ?>
-            </td>
-
+            <td>0</td>
+            <td>0</td>
         </tr>
         <tr>
             <th class="bg-red-100">임원</th>
-            <td><?php echo isset($statistics[2]['R_03']) ? $statistics[2]['R_03'] : 0; ?>
-            </td>
-
+            <td>0</td>
+            <td>0</td>
         </tr>
         <tr>
             <th class="bg-red-100">일반 참가자</th>
-            <td><?php echo isset($statistics[1]['R_03']) ? $statistics[1]['R_03']  : 0; ?>
-            </td>
-
+            <td>0</td>
+            <td>0</td>
         </tr>
         <tr>
-            <th class="bg-sky-200" rowspan="5">현장등록</th>
+            <th class="bg-sky-200" rowspan="4">현장등록</th>
             <th class="bg-sky-200">좌장</th>
-            <td><?php echo isset($statistics[3]['A_03']) ? $statistics[3]['A_03'] : 0; ?>
-            </td>
-
-        </tr>
-        <tr>
-            <th class="bg-sky-200">고문</th>
-            <td><?php echo isset($statistics[0]['A_03']) ? $statistics[0]['A_03'] : 0; ?>
-            </td>
+            <td>0</td>
+            <td>0</td>
         </tr>
         <tr>
             <th class="bg-sky-200">패널</th>
-            <td><?php echo isset($statistics[4]['A_03']) ? $statistics[4]['A_03'] : 0; ?>
-            </td>
-
+            <td>0</td>
+            <td>0</td>
         </tr>
         <tr>
             <th class="bg-sky-200">임원</th>
-            <td><?php echo isset($statistics[2]['A_03']) ? $statistics[2]['A_03'] : 0; ?>
-            </td>
-
+            <td>0</td>
+            <td>0</td>
         </tr>
         <tr>
             <th class="bg-sky-200">일반 참가자</th>
-            <td><?php echo isset($statistics[1]['A_03']) ? $statistics[1]['A_03'] : 0; ?>
-            </td>
-
+             <td>0</td>
+             <td>0</td>
         </tr>
         <tr class="bg-green-300 text-black">
             <th colspan="2">합계</th>
-            <th><?php echo $total_1; ?></th>
+            <th>0</th>
+            <th>0</th>
         </tr>
     </table>
 </div>
