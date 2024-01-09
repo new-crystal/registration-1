@@ -550,49 +550,41 @@ class Admin extends CI_Controller
                 $this->load->view('admin/add_user');
             } else {
                 $name = $this->input->post('nick_name');
-                $license = $this->input->post('sn');
                 $org = $this->input->post('org');
                 $phone = $this->input->post('phone');
                 $email = $this->input->post('email');
-                $type = $this->input->post('type');
+                $attendance_type = $this->input->post('attendance_type');
+                $member_type = $this->input->post('member_type');
                 $type1 = $this->input->post('type1');
-                $type2 = $this->input->post('type2');
-                $type3 = $this->input->post('type3');
-                $postcode = $this->input->post('postcode');
-                $address = $this->input->post('address');
-                $detailAddress = $this->input->post('detailAddress');
-                $extraAddress = $this->input->post('extraAddress');
-                $deposit_date = $this->input->post('deposit_date');
-                $deposit_name = $this->input->post('deposit_name');
+                $member = $this->input->post('member');
                 $memo = $this->input->post('memo');
-                if ($type2 == '개원의' || $type2 == '봉직의' || $type2 == '전임의' || $type2 == '교수') {
-                    if ($type3 == '비회원') {
-                        $fee = 110000;
+                if ($member_type == '교수' || $member_type == '개원의' || $member_type == '봉직의' || $member_type == '교직의') {
+                    if ($member == '비회원') {
+                        $fee = 100000;
                     } else {
-                        $fee = 90000;
+                        $fee = 80000;
                     }
-                } else if ($type2 == '간호사' || $type2 == '기초의학자' || $type2 == '약사' || $type2 == '군의관') {
-                    if ($type3 == '비회원') {
-                        $fee = 90000;
-                    } else {
+                } else if ($member_type == '전임의' || $member_type == '수련의' || $member_type == '전공의' || $member_type == '영양사'||$member_type == '운동사' || $member_type == '간호사' || $member_type == '군의관' || $member_type == '공보의'||$member_type == '연구원' || $member_type == '기타' ) {
+                    if ($member == '비회원') {
                         $fee = 70000;
+                    } else {
+                        $fee = 50000;
                     }
-                } else if ($type2 == '전공의') {
-                    if ($type3 == '비회원') {
-                        $fee = 90000;
+                } else if ($member_type == '학생') {
+                    if ($member == '비회원') {
+                        $fee = 30000;
                     } else {
-                        $fee = 70000;
+                        $fee = 30000;
                     }
                 } else {
                     $fee = 0;
                 }
 
+
                 if ($fee == 0)
                     $deposit = '결제대기';
                 else
                     $deposit = '결제대기';
-
-                $addr = $address . " " . $detailAddress . " " . $extraAddress;
 
                 $time = date("Y-m-d H:i:s");
                 $uagent = $this->agent->agent_string();
@@ -601,23 +593,19 @@ class Admin extends CI_Controller
 
                 $info = array(
                     'nick_name' => preg_replace("/\s+/", "", $name),
-                    'sn' => preg_replace("/\s+/", "", $license),
                     'org' => trim($org),
                     'org_nametag' => trim($org),
                     'phone' => preg_replace("/\s+/", "", $phone),
                     'email' => preg_replace("/\s+/", "", $email),
-                    'postcode' => trim($postcode),
-                    'addr' => trim($addr),
-                    'type' => trim($type),
+
+                    'attendance_type' => trim($attendance_type),
                     'type1' => trim($type1),
-                    'type2' => trim($type2),
-                    'type3' => trim($type3),
+                    'member_type' => trim($member_type),
+                    'member' => trim($member),
                     'fee' => $fee,
                     'time' => $time,
                     'uagent' => $uagent,
                     'deposit' => $deposit,
-                    'deposit_date' => $deposit_date,
-                    'deposit_name' => $deposit_name,
                     'memo' => $memo,
                 );
                 //                var_dump($info);

@@ -11,62 +11,60 @@
                     <div class="panel-body">
                         <div class="col-lg-6">
                             <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">구분</label>
+                                <label class="col-sm-2 control-label">참가유형</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control input-lg m-bot15" name="type" id="type">
-                                        <option value="전문의">전문의</option>
-                                        <option value="전공의">전공의</option>
-                                        <option value="기타">기타</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">구분 detail</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control input-lg m-bot15" name="type1" id="type1">
-                                        <option value="개원의">개원의</option>
-                                        <option value="봉직의">봉직의</option>
-                                        <option value="전공의">전공의</option>
-                                        <option value="전임의">전임의</option>
-                                        <option value="교수">교수</option>
-                                        <option value="간호사">간호사</option>
-                                        <!--option value="사회복지사">사회복지사</option-->
-                                        <option value="약사">약사</option>
-                                        <option value="영양사">영양사</option>
-                                        <option value="군의관">군의관</option>
-                                        <!-- <option value="연구원">연구원</option> -->
-                                        <!-- <option value="운동처방사">운동처방사</option> -->
-                                        <option value="기타">기타</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">구분 2</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control input-lg m-bot15" name="type2" id="type2">
-                                        <option value="일반참가자">일반참가자</option>
+                                    <select class="form-control input-lg m-bot15" name="attendance_type" id="attendance_type">
+                                        <option value="일반참석자">일반참석자</option>
+                                        <option value="임원">임원</option>
                                         <option value="좌장">좌장</option>
                                         <option value="연자">연자</option>
                                         <option value="패널">패널</option>
-                                        <option value="임원">임원</option>
-                                        <option value="후원사">후원사</option>
+                                        <option value="기타">기타</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="col-sm-2 control-label">참석 구분</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control input-lg m-bot15" name="member_type" id="member_type">
+                                    <option value="교수">교수</option>
+                                            <option value="개원의">개원의</option>
+                                            <option value="봉직의">봉직의</option>
+                                            <option value="교직의">교직의</option>
+                                            <option value="전임의">전임의</option>
+                                            <option value="수련의">수련의</option>
+                                            <option value="전공의">전공의</option>
+                                            <option value="영양사">영양사</option>
+                                            <option value="운동사">운동사</option>
+                                            <option value="간호사">간호사</option>
+                                            <option value="군의관">군의관</option>
+                                            <option value="연구원">연구원</option>
+                                            <option value="학생">학생</option>
+                                            <option value="전시(부스)">전시(부스)</option>
+                                            <option value="기타">기타</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group form-inline">
+                                <label class="col-sm-2 control-label">분야 구분</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control input-lg m-bot15" name="type1" id="type1">
+                                    <option value="의료">의료</option>
+                                            <option value="영양">영양</option>
+                                            <option value="운동">운동</option>
+                                            <option value="기타">기타</option>
+                                            <option value="전시">전시</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">회원여부</label>
+                                <label class="col-sm-2 control-label">KSSO 회원여부</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control input-lg m-bot15" name="type3" id="type3">
-                                        <option value="회원">회원</option>
+                                    <select class="form-control input-lg m-bot15" name="member" id="member">
+                                        <option value="정회원">정회원</option>
                                         <option value="비회원">비회원</option>
                                     </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">면허번호</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="sn" id="sn">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -95,34 +93,11 @@
                                     <input class="form-control" type="text" name="org" id="org" placeholder="*필수">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">주소</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="postcode" id="postcode" placeholder="*우편번호" readonly disabled style="display:none;">
-                                    <input class="form-control" type="text" name="address" id="address" placeholder="*주소" readonly disabled>
-                                    <input class="form-control" type="text" name="detailAddress" id="detailAddress" placeholder="*상세주소">
-                                    <input style="display:none;" type="text" name="extraAddress" id="extraAddress" placeholder="참고항목" readonly disabled>
-                                    <div clss="btn_group" style="float: right; margin-top: 20px;">
-                                        <input type="button" class="btn btn-warning" onclick="execDaumPostcode()" value="주소 찾기">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">입금자명</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="deposit_name" id="deposit_name">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">입금예정일</label>
-                                <div class="col-sm-10">
-                                    <input id="dp1" type="text" size="16" class="form-control" name="deposit_date">
-                                </div>
-                            </div>
+                          
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">메모</label>
                                 <div class="col-sm-10">
-                                    <input id="dp1" type="text" size="16" class="form-control" name="memo">
+                                    <input type="text" size="16" class="form-control" name="memo">
                                 </div>
                             </div>
                             <div clss="btn_group" style="float: right;">
@@ -224,27 +199,9 @@
                 $("#nick_name").focus();
                 return false;
             }
-            if (!$.trim($("#sn").val())) {
-                $("#sn").val('00000');
-            }
             if (!$.trim($("#org").val())) {
                 alert("소속단체명을 입력해주세요.");
                 $("#org").focus();
-                return false;
-            }
-            if (!$.trim($("#type1").val())) {
-                alert("구분1을 입력해주세요.");
-                $("#type1").focus();
-                return false;
-            }
-            if (!$.trim($("#type2").val())) {
-                alert("구분2을 입력해주세요.");
-                $("#type2").focus();
-                return false;
-            }
-            if (!$.trim($("#type3").val())) {
-                alert("구분3을 입력해주세요.");
-                $("#type3").focus();
                 return false;
             }
             if (!$.trim($("#phone").val())) {
