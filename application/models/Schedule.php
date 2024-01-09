@@ -6,6 +6,7 @@ class Schedule extends CI_Model
 {
 	private $duration = "duration";
     private $breaks = "breaks";
+    private $notice = "notice";
 
     public function get_dday()
     {
