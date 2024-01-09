@@ -65,7 +65,7 @@
 					</div>
 					<!-- /basic datatable -->
 					<div class="footer text-muted">
-						© 2023. <a href="#">온라인 학술대회</a> by (주)인투온
+						© <a href="#">온라인 학술대회</a> by (주)인투온
 					</div>
 				</div>
 				<!-- /content area -->

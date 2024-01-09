@@ -97,6 +97,20 @@
                                         </span>
                                     </a>
                                 </li>
+                                <li style="margin-bottom: 2rem;" >
+                                    <a href="/access/scan_qr" target="_blank">
+                                        <i class="icon-qrcode"></i>
+                                        <span>세로형 출결 페이지
+                                        </span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 2rem;" >
+                                    <a href="/access/row_scan_qr" target="_blank">
+                                        <i class="icon-qrcode"></i>
+                                        <span>가로형 출결 페이지
+                                        </span>
+                                    </a>
+                                </li>
                                 <!-- <li style="margin-bottom: 2rem;">
                                     <a href="/admin/qr_layout_all?type=02" target="_blank">
                                         <i class="icon-printer2"></i>

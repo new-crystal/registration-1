@@ -145,7 +145,7 @@
     </div>
 </div>
 <div class="footer text-muted mt-20">
-    © 2023. <a href="#">온라인 학술대회</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">(주)인투온</a>
+    ©  <a href="#">온라인 학술대회</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">(주)인투온</a>
 </div>
 
 </div>
