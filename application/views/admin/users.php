@@ -92,6 +92,7 @@ table th {
                         <th>소속</th>
                         <th>이메일</th>
                         <th>전화번호</th>
+                        <th>등록구분</th>
                         <th>등록비</th>
                         <th>입금여부</th>
                         <th>메모</th>
@@ -100,6 +101,13 @@ table th {
                 <tbody>
                     <?php
                     foreach ($users as $item) {
+                        $onsite = "";
+                        if($item['onsite_reg'] == '0'){
+                            $onsite = "사전등록";
+                        }else if($item['onsite_reg'] == '1'){
+                            $onsite = "현장등록";
+                        }
+
                         echo '<tr>';
                         echo '<td style="text-align: center;"><input type="checkbox" name="depositChk" class="depositChk" value="' .  $item['registration_no'] . '"></td>';
                         // echo '<td>' . $item['type3'] . '</td>';
@@ -111,6 +119,7 @@ table th {
                         echo '<td>' . $item['org'] . '</td>';
                         echo '<td>' . $item['email'] . '</td>';
                         echo '<td>' . $item['phone'] . '</td>';
+                        echo '<td>' . $onsite . '</td>';
                         // echo '<td>';
                         // echo '<a><div class="btn btn-non-success qr_btn" onclick="onClickReceipt(\'' . $item['registration_no'] . '\')">영수증</div></a>';
                         // echo '</td>';

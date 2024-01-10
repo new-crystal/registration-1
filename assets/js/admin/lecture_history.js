@@ -38,7 +38,7 @@ $(function() {
 
 
 	 // Add placeholder to the datatable filter option
-    $('.dataTables_filter input[type=search]').attr('placeholder','Type to filter...');
+    $('.dataTables_filter input[type=search]').attr('placeholder','검색어를 입력해주세요');
 
    // 최소 2글자 이상 입력해야 검색 실행
    $('.dataTables_filter input[type="search"]').on('keyup', function() {

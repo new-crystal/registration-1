@@ -47,7 +47,7 @@ class Schedule extends CI_Model
     {
         $this->db->insert($this->notice, $info);
         $idx = $this->db->insert_id();
-        $this->db->where('id', $idx);
+        $this->db->where('idx', $idx);
     }
 
     public function edit_notice($info, $where)
