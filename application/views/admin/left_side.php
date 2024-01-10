@@ -111,6 +111,20 @@
                                         </span>
                                     </a>
                                 </li>
+                                <li style="margin-bottom: 2rem;" >
+                                    <a href="https://kosso.org/main/admin/registration_list.php" target="_blank">
+                                        <i class="icon-home2"></i>
+                                        <span>KSSO ADMIN
+                                        </span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 2rem;" >
+                                    <a href="https://kosso.org/main/onsite_registration.php" target="_blank">
+                                        <i class="icon-home2"></i>
+                                        <span>현장등록 페이지
+                                        </span>
+                                    </a>
+                                </li>
                                 <!-- <li style="margin-bottom: 2rem;">
                                     <a href="/admin/qr_layout_all?type=02" target="_blank">
                                         <i class="icon-printer2"></i>

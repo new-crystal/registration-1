@@ -1068,59 +1068,145 @@ class Admin extends CI_Controller
         if (!isset($this->session->admin_data['logged_in']))
             $this->load->view('admin/login');
         else {
-            $userId = $this->input->post('userId');
-            $data['users'] = array(); // 배열로 초기화
-            $wheres = array(
-                'qr_generated' => 'Y'
-            );
-            $users = $this->users->get_msm_user($wheres);
-            $data['users'] = array_merge($data['users'], $users);
-            foreach ($data['users'] as $users) {
-                $where = array(
-                    'registration_no' => $users['registration_no'],
-                );
-                $info = array(
-                    'QR_SMS_SEND_YN' =>  'Y'
-                );
-                $this->users->update_msm_status($info, $where);
-            }
+            //[240110] sujeong / 기존코드 -> 모든 유저 문자 발송
+            // $userId = $this->input->post('userId');
+            // $data['users'] = array(); // 배열로 초기화
+            // $wheres = array(
+            //     'qr_generated' => 'Y'
+            // );
+            // $users = $this->users->get_msm_user($wheres);
+            // $data['users'] = array_merge($data['users'], $users);
+            // foreach ($data['users'] as $users) {
+            //     $where = array(
+            //         'registration_no' => $users['registration_no'],
+            //     );
+            //     $info = array(
+            //         'QR_SMS_SEND_YN' =>  'Y'
+            //     );
+            //     $this->users->update_msm_status($info, $where);
+            // }
 
-            $this->load->view('admin/send_all_msm', $data);
+            // $this->load->view('admin/send_all_msm', $data);
+
+            //[240110] sujeong / 현재코드 -> 페이지 유저 문자 발송
+            $userId = $this->input->post('userId');
+            // $data['users'] = array(); // 배열로 초기화
+            foreach ($userId as $value) {
+                $wheres = array(
+                    'qr_generated' =>  'Y',
+                    'registration_no' => $value
+                );
+                $data['users'] = $this->users->get_msm_user($wheres);
+                // $data['users'] = array_merge($data['users'], $users);
+                foreach ($data['users'] as $users) {
+                    $where = array(
+                        'registration_no' => $users['registration_no'],
+                    );
+                    $info = array(
+                        'QR_SMS_SEND_YN' =>  'Y'
+                    );
+                    $this->users->update_msm_status($info, $where);
+                }
+
+                $this->load->view('admin/send_all_msm', $data);
+            }
         }
     }
+    //[240110] sujeong / 기존코드 -> 모든 유저 메일 발송
+    // public function send_all_mail()
+    // {
+    //     if (!isset($this->session->admin_data['logged_in']))
+    //         $this->load->view('admin/login');
+    //     else {
+    //         $userId = $this->input->post('userId');
+    //         $data['users'] = $this->users->get_mail_user();
+    //         foreach ($data['users'] as $users) {
+    //             // var_dump($value);
+    //             $where = array(
+    //                 'registration_no' => $users['registration_no']
+    //             );
+    //             $info = array(
+    //                 'QR_MAIL_SEND_YN' =>  'Y'
+    //             );
+    //             if ($users['QR_MAIL_SEND_YN'] == 'N') {
 
+    //                 $this->users->update_msm_status($info, $where);
+    //                 $postdata = http_build_query(
+    //                     array(
+    //                         'CATEGORY_D_1'      => 'QrSystem',
+    //                         'CATEGORY_D_2'      => 'kes',
+    //                         'CATEGORY_D_3'      => '230903',
+    //                         'SEND_ADDRESS'      => 'into-mail@into-on.com',
+    //                         'SEND_NAME'         => 'Qr System test',
+    //                         'RECV_ADDRESS'      =>  $users['email'],
+    //                         'RECV_NAME'         =>  $users['nick_name'],
+    //                         'REPLY_ADDRESS'     => 'myunghwan.lee@into-on.com',
+    //                         'REPLY_NAME'        => 'Qr System test',
+    //                         'EMAIL_SUBJECT'     => '2023년 QrSystem test sub',
+    //                         'EMAIL_ALTBODY'     => '2023년 QrSystem test body',
+    //                         'EMAIL_TEMPLETE_ID' => 'Qr_kes_230903',
+    //                         'EMBED_IMAGE_GRID'  => 'null',
+    //                         'INSERT_TEXT_GRID'    => "{" .
+    //                             '"$text1" : ' . '"' .  $users['nick_name'] . '",' .
+    //                             '"$text2" : ' . '"' . $users['org'] . '",' .
+    //                             '"$text3" : ' . '"' .  $users['registration_no'] . '",' .
+    //                             '"$text4" : ' . '"' . base64_encode(file_get_contents(getcwd() . '/assets/images/QR/qrcode_' .  $users['registration_no'] . '.jpg')) . '"' .
+    //                             "}"
+    //                     )
+    //                 );
+
+    //                 $opts = array(
+    //                     'http' =>
+    //                     array(
+    //                         'method' => 'POST',
+    //                         'header' => 'Content-type: application/x-www-form-urlencoded',
+    //                         'content' => $postdata
+    //                     )
+    //                 );
+    //                 $context = stream_context_create($opts);
+    //                 $result = file_get_contents('http://www.into-webinar.com/MailSenderApi', false, $context);
+    //             }
+    //         }
+    //         $this->load->view('admin/send_all_mail', $data);
+    //     }
+    // }
+
+    //[240110] sujeong / 현재코드 -> 페이지 유저 메일 발송
     public function send_all_mail()
     {
         if (!isset($this->session->admin_data['logged_in']))
             $this->load->view('admin/login');
         else {
             $userId = $this->input->post('userId');
-            $data['users'] = $this->users->get_mail_user();
-            foreach ($data['users'] as $users) {
-                // var_dump($value);
-                $where = array(
-                    'registration_no' => $users['registration_no']
+            foreach ($userId as $value) {
+                $wheres = array(
+                    'registration_no' => $value,
                 );
-                $info = array(
-                    'QR_MAIL_SEND_YN' =>  'Y'
-                );
-                if ($users['QR_MAIL_SEND_YN'] == 'N') {
-
+                $data['users'] = $this->users->get_msm_user($wheres);
+                foreach ($data['users'] as $users) {
+                    // var_dump($value);
+                    $where = array(
+                        'registration_no' => $users['registration_no'],
+                        'qr_generated' =>  'Y'
+                    );
+                    $info = array(
+                        'QR_MAIL_SEND_YN' =>  'Y'
+                    );
                     $this->users->update_msm_status($info, $where);
                     $postdata = http_build_query(
                         array(
                             'CATEGORY_D_1'      => 'QrSystem',
-                            'CATEGORY_D_2'      => 'kes',
-                            'CATEGORY_D_3'      => '230903',
-                            'SEND_ADDRESS'      => 'into-mail@into-on.com',
-                            'SEND_NAME'         => 'Qr System test',
+                            'CATEGORY_D_2'      => 'iscp',
+                            'CATEGORY_D_3'      => '231123',
+                            'SEND_ADDRESS'      => 'iscp@into-on.com',
+                            'SEND_NAME'         => 'ISCP 2023',
                             'RECV_ADDRESS'      =>  $users['email'],
                             'RECV_NAME'         =>  $users['nick_name'],
-                            'REPLY_ADDRESS'     => 'myunghwan.lee@into-on.com',
-                            'REPLY_NAME'        => 'Qr System test',
-                            'EMAIL_SUBJECT'     => '2023년 QrSystem test sub',
-                            'EMAIL_ALTBODY'     => '2023년 QrSystem test body',
-                            'EMAIL_TEMPLETE_ID' => 'Qr_kes_230903',
+                            'REPLY_ADDRESS'     => 'iscp@into-on.com',
+                            'REPLY_NAME'        => 'ISCP 2023',
+                            'EMAIL_SUBJECT'     => '[ISCP 2023] Registration QR and On-Site Attendance Details(Nov. 23rd – 25th, Conrad Seoul, Republic of Korea)',
+                            'EMAIL_ALTBODY'     => 'ISCP 2023',
+                            'EMAIL_TEMPLETE_ID' => 'Qr_iscp_231123',
                             'EMBED_IMAGE_GRID'  => 'null',
                             'INSERT_TEXT_GRID'    => "{" .
                                 '"$text1" : ' . '"' .  $users['nick_name'] . '",' .
