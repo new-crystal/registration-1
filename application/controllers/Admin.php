@@ -259,7 +259,7 @@ class Admin extends CI_Controller
             imagedestroy($bg);
         }
 
-        $this->load->view('admin/d_success');
+        //$this->load->view('admin/d_success');
     }
 
     function all_deposit_check()

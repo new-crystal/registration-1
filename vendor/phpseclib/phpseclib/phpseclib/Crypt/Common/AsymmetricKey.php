@@ -5,8 +5,6 @@
  *
  * PHP version 5
  *
- * @category  Crypt
- * @package   AsymmetricKey
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2016 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -15,18 +13,16 @@
 
 namespace phpseclib3\Crypt\Common;
 
-use phpseclib3\Exception\UnsupportedFormatException;
-use phpseclib3\Exception\NoKeyLoadedException;
-use phpseclib3\Math\BigInteger;
+use phpseclib3\Crypt\DSA;
 use phpseclib3\Crypt\Hash;
 use phpseclib3\Crypt\RSA;
-use phpseclib3\Crypt\DSA;
-use phpseclib3\Crypt\ECDSA;
+use phpseclib3\Exception\NoKeyLoadedException;
+use phpseclib3\Exception\UnsupportedFormatException;
+use phpseclib3\Math\BigInteger;
 
 /**
  * Base Class for all asymmetric cipher classes
  *
- * @package AsymmetricKey
  * @author  Jim Wigginton <terrafrost@php.net>
  */
 abstract class AsymmetricKey
@@ -35,7 +31,6 @@ abstract class AsymmetricKey
      * Precomputed Zero
      *
      * @var \phpseclib3\Math\BigInteger
-     * @access private
      */
     protected static $zero;
 
@@ -43,7 +38,6 @@ abstract class AsymmetricKey
      * Precomputed One
      *
      * @var \phpseclib3\Math\BigInteger
-     * @access private
      */
     protected static $one;
 
@@ -51,7 +45,6 @@ abstract class AsymmetricKey
      * Format of the loaded key
      *
      * @var string
-     * @access private
      */
     protected $format;
 
@@ -59,7 +52,6 @@ abstract class AsymmetricKey
      * Hash function
      *
      * @var \phpseclib3\Crypt\Hash
-     * @access private
      */
     protected $hash;
 
@@ -67,7 +59,6 @@ abstract class AsymmetricKey
      * HMAC function
      *
      * @var \phpseclib3\Crypt\Hash
-     * @access private
      */
     private $hmac;
 
@@ -76,7 +67,6 @@ abstract class AsymmetricKey
      *
      * @see self::initialize_static_variables()
      * @var array
-     * @access private
      */
     private static $plugins = [];
 
@@ -85,35 +75,28 @@ abstract class AsymmetricKey
      *
      * @see self::initialize_static_variables()
      * @var array
-     * @access private
      */
     private static $invisiblePlugins = [];
-
-    /**
-     * Supported signature formats (lower case)
-     *
-     * @see self::initialize_static_variables()
-     * @var array
-     * @access private
-     */
-    private static $signatureFormats = [];
-
-    /**
-     * Supported signature formats (original case)
-     *
-     * @see self::initialize_static_variables()
-     * @var array
-     * @access private
-     */
-    private static $signatureFileFormats = [];
 
     /**
      * Available Engines
      *
      * @var boolean[]
-     * @access private
      */
     protected static $engines = [];
+
+    /**
+     * Key Comment
+     *
+     * @var null|string
+     */
+    private $comment;
+
+    /**
+     * @param string $type
+     * @return array|string
+     */
+    abstract public function toString($type, array $options = []);
 
     /**
      * The constructor
@@ -132,7 +115,7 @@ abstract class AsymmetricKey
     protected static function initialize_static_variables()
     {
         if (!isset(self::$zero)) {
-            self::$zero= new BigInteger(0);
+            self::$zero = new BigInteger(0);
             self::$one = new BigInteger(1);
         }
 
@@ -147,11 +130,16 @@ abstract class AsymmetricKey
      *
      * @param string $key
      * @param string $password optional
-     * @return AsymmetricKey
+     * @return \phpseclib3\Crypt\Common\PublicKey|\phpseclib3\Crypt\Common\PrivateKey
      */
     public static function load($key, $password = false)
     {
         self::initialize_static_variables();
+
+        $class = new \ReflectionClass(static::class);
+        if ($class->isFinal()) {
+            throw new \RuntimeException('load() should not be called from final classes (' . static::class . ')');
+        }
 
         $components = false;
         foreach (self::$plugins[static::ALGORITHM]['Keys'] as $format) {
@@ -173,8 +161,11 @@ abstract class AsymmetricKey
         }
 
         $components['format'] = $format;
+        $components['secret'] = isset($components['secret']) ? $components['secret'] : '';
+        $comment = isset($components['comment']) ? $components['comment'] : null;
         $new = static::onLoad($components);
         $new->format = $format;
+        $new->comment = $comment;
         return $new instanceof PrivateKey ?
             $new->withPassword($password) :
             $new;
@@ -184,11 +175,10 @@ abstract class AsymmetricKey
      * Loads a private key
      *
      * @return PrivateKey
-     * @access public
      * @param string|array $key
      * @param string $password optional
      */
-    public function loadPrivateKey($key, $password = '')
+    public static function loadPrivateKey($key, $password = '')
     {
         $key = self::load($key, $password);
         if (!$key instanceof PrivateKey) {
@@ -201,10 +191,9 @@ abstract class AsymmetricKey
      * Loads a public key
      *
      * @return PublicKey
-     * @access public
      * @param string|array $key
      */
-    public function loadPublicKey($key)
+    public static function loadPublicKey($key)
     {
         $key = self::load($key);
         if (!$key instanceof PublicKey) {
@@ -217,10 +206,9 @@ abstract class AsymmetricKey
      * Loads parameters
      *
      * @return AsymmetricKey
-     * @access public
      * @param string|array $key
      */
-    public function loadParameters($key)
+    public static function loadParameters($key)
     {
         $key = self::load($key);
         if (!$key instanceof PrivateKey && !$key instanceof PublicKey) {
@@ -235,7 +223,7 @@ abstract class AsymmetricKey
      * @param string $type
      * @param string $key
      * @param string $password optional
-     * @return AsymmetricKey
+     * @return static
      */
     public static function loadFormat($type, $key, $password = false)
     {
@@ -253,6 +241,7 @@ abstract class AsymmetricKey
         }
 
         $components['format'] = $format;
+        $components['secret'] = isset($components['secret']) ? $components['secret'] : '';
 
         $new = static::onLoad($components);
         $new->format = $format;
@@ -265,12 +254,11 @@ abstract class AsymmetricKey
      * Loads a private key
      *
      * @return PrivateKey
-     * @access public
      * @param string $type
      * @param string $key
      * @param string $password optional
      */
-    public function loadPrivateKeyFormat($type, $key, $password = false)
+    public static function loadPrivateKeyFormat($type, $key, $password = false)
     {
         $key = self::loadFormat($type, $key, $password);
         if (!$key instanceof PrivateKey) {
@@ -283,11 +271,10 @@ abstract class AsymmetricKey
      * Loads a public key
      *
      * @return PublicKey
-     * @access public
      * @param string $type
      * @param string $key
      */
-    public function loadPublicKeyFormat($type, $key)
+    public static function loadPublicKeyFormat($type, $key)
     {
         $key = self::loadFormat($type, $key);
         if (!$key instanceof PublicKey) {
@@ -300,11 +287,10 @@ abstract class AsymmetricKey
      * Loads parameters
      *
      * @return AsymmetricKey
-     * @access public
      * @param string $type
      * @param string|array $key
      */
-    public function loadParametersFormat($type, $key)
+    public static function loadParametersFormat($type, $key)
     {
         $key = self::loadFormat($type, $key);
         if (!$key instanceof PrivateKey && !$key instanceof PublicKey) {
@@ -316,13 +302,12 @@ abstract class AsymmetricKey
     /**
      * Validate Plugin
      *
-     * @access private
      * @param string $format
      * @param string $type
      * @param string $method optional
      * @return mixed
      */
-    protected static function validatePlugin($format, $type, $method = NULL)
+    protected static function validatePlugin($format, $type, $method = null)
     {
         $type = strtolower($type);
         if (!isset(self::$plugins[static::ALGORITHM][$format][$type])) {
@@ -339,7 +324,6 @@ abstract class AsymmetricKey
     /**
      * Load Plugins
      *
-     * @access private
      * @param string $format
      */
     private static function loadPlugins($format)
@@ -351,6 +335,9 @@ abstract class AsymmetricKey
                     continue;
                 }
                 $name = $file->getBasename('.php');
+                if ($name[0] == '.') {
+                    continue;
+                }
                 $type = 'phpseclib3\Crypt\\' . static::ALGORITHM . '\\Formats\\' . $format . '\\' . $name;
                 $reflect = new \ReflectionClass($type);
                 if ($reflect->isTrait()) {
@@ -367,7 +354,6 @@ abstract class AsymmetricKey
     /**
      * Returns a list of supported formats.
      *
-     * @access public
      * @return array
      */
     public static function getSupportedKeyFormats()
@@ -385,7 +371,6 @@ abstract class AsymmetricKey
      *
      * @see self::load()
      * @param string $fullname
-     * @access public
      * @return bool
      */
     public static function addFileFormat($fullname)
@@ -397,7 +382,7 @@ abstract class AsymmetricKey
             $shortname = $meta->getShortName();
             self::$plugins[static::ALGORITHM]['Keys'][strtolower($shortname)] = $fullname;
             if ($meta->hasConstant('IS_INVISIBLE')) {
-                self::$invisiblePlugins[static::ALGORITHM] = strtolower($name);
+                self::$invisiblePlugins[static::ALGORITHM][] = strtolower($shortname);
             }
         }
     }
@@ -409,7 +394,6 @@ abstract class AsymmetricKey
      * with RSA::createKey() then this will throw an exception.
      *
      * @see self::load()
-     * @access public
      * @return mixed
      */
     public function getLoadedFormat()
@@ -423,9 +407,20 @@ abstract class AsymmetricKey
     }
 
     /**
+     * Returns the key's comment
+     *
+     * Not all key formats support comments. If you want to set a comment use toString()
+     *
+     * @return null|string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
      * Tests engine validity
      *
-     * @access public
      */
     public static function useBestEngine()
     {
@@ -444,7 +439,6 @@ abstract class AsymmetricKey
     /**
      * Flag to use internal engine only (useful for unit testing)
      *
-     * @access public
      */
     public static function useInternalEngine()
     {
@@ -468,7 +462,6 @@ abstract class AsymmetricKey
     /**
      * Determines which hashing function should be used
      *
-     * @access public
      * @param string $hash
      */
     public function withHash($hash)
@@ -484,18 +477,16 @@ abstract class AsymmetricKey
     /**
      * Returns the hash algorithm currently being used
      *
-     * @access public
      */
     public function getHash()
     {
-       return clone $this->hash;
+        return clone $this->hash;
     }
 
     /**
      * Compute the pseudorandom k for signature generation,
      * using the process specified for deterministic DSA.
      *
-     * @access public
      * @param string $h1
      * @return string
      */
@@ -540,7 +531,6 @@ abstract class AsymmetricKey
     /**
      * Integer to Octet String
      *
-     * @access private
      * @param \phpseclib3\Math\BigInteger $v
      * @return string
      */
@@ -550,7 +540,7 @@ abstract class AsymmetricKey
         $rolen = $this->q->getLengthInBytes();
         if (strlen($out) < $rolen) {
             return str_pad($out, $rolen, "\0", STR_PAD_LEFT);
-        } else if (strlen($out) > $rolen) {
+        } elseif (strlen($out) > $rolen) {
             return substr($out, -$rolen);
         } else {
             return $out;
@@ -560,7 +550,6 @@ abstract class AsymmetricKey
     /**
      * Bit String to Integer
      *
-     * @access private
      * @param string $in
      * @return \phpseclib3\Math\BigInteger
      */
@@ -578,7 +567,6 @@ abstract class AsymmetricKey
     /**
      * Bit String to Octet String
      *
-     * @access private
      * @param string $in
      * @return string
      */
