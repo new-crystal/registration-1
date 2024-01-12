@@ -34,6 +34,28 @@
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 9999999;
     }
+
+    #pdf_viewer{
+        width: 500px;
+        height: 800px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999999999;
+    }
+
+    #pdf_viewer iframe{
+        width:100%;
+        height: 100%;
+    }
+
+    #pdf_viewer .close_pdf {
+        position: absolute;
+        z-index: 9999999999;
+        right: 0;
+        top: -20px;
+    }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
 <div class="w-full h-screen flex items-center justify-center flex-col px-10">
@@ -76,7 +98,7 @@
                 <td class="border border-solid p-2"><?php echo $abstract1['first_name'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract1['org'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract1['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700"><?php echo $abstract1['title'];?></div></td>
+                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract1['cv_file'];?>"><?php echo $abstract1['title'];?></div></td>
                 <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract1['idx'];?>">채점하기</button></td>
             </tr>
                 <?php  } ?>
@@ -87,7 +109,7 @@
                 <td class="border border-solid p-2"><?php echo $abstract2['first_name'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract2['org'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract2['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700"><?php echo $abstract2['title'];?></div></td>
+                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract2['cv_file'];?>"><?php echo $abstract2['title'];?></div></td>
                 <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract2['idx'];?>">채점하기</button></td>
             </tr>
                 <?php  } ?>
@@ -98,7 +120,7 @@
                 <td class="border border-solid p-2"><?php echo $abstract3['first_name'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract3['org'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract3['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700"><?php echo $abstract3['title'];?></div></td>
+                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract3['cv_file'];?>"><?php echo $abstract3['title'];?></div></td>
                 <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract3['idx'];?>">채점하기</button></td>
             </tr>
                 <?php  } ?>
@@ -109,7 +131,7 @@
                 <td class="border border-solid p-2"><?php echo $abstract4['first_name'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract4['org'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract4['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700"><?php echo $abstract4['title'];?></div></td>
+                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract4['cv_file'];?>"><?php echo $abstract4['title'];?></div></td>
                 <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract4['idx'];?>">채점하기</button></td>
             </tr>
                 <?php  } ?>
@@ -120,7 +142,7 @@
                 <td class="border border-solid p-2"><?php echo $abstract5['first_name'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract5['org'];?></td>
                 <td class="border border-solid p-2"><?php echo $abstract5['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700"><?php echo $abstract5['title'];?></div></td>
+                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract5['cv_file'];?>"><?php echo $abstract5['title'];?></div></td>
                 <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract5['idx'];?>">채점하기</button></td>
             </tr>
                 <?php  } ?>
@@ -214,6 +236,11 @@
             <p class="p-2">4. Poster oral 수상 예정 인원: 30명 (양일 기준, 5개 분야별 10인 발표)</p>
         </div>
     </div>
+
+    <div id="pdf_viewer" style="display: none;">
+        <button class="close_pdf"><i class="icon-cross2"></i>창닫기</button>
+       <iframe class="iframe"></iframe>      
+    </div>
   
     <button id="submit" class="mt-10 py-2 px-4 bg-neutral-300 hover:bg-cyan-400 font-semibold">제출하기</button>
 </div>
@@ -224,6 +251,11 @@
     const completedBtn = document.querySelector("#completed");
     const sumTd = document.querySelector("#sum");
     const submitBtn = document.querySelector("#submit");
+
+    const titleList = document.querySelectorAll(".title_box")
+    const pdfViewer = document.querySelector("#pdf_viewer");
+    const iframe = document.querySelector(".iframe");
+    const closedPdf = document.querySelector(".close_pdf");
 
     const select1 =  document.querySelector("#select1");
     const select2 =  document.querySelector("#select2");
@@ -286,6 +318,12 @@
         }
    })
 
+   titleList.forEach((title)=>{
+    title.addEventListener("click", (e)=>{
+        showPdfViwer(e)
+    })
+   })
+
    //modal show function
    function showModal(e){
         let sel1 = select1.options;
@@ -325,6 +363,19 @@
         }else if(value5 === "Y"){
             sumTd.innerText = 0;
         }
+   }
+
+   function showPdfViwer(e){
+        //console.log(e.target.dataset.id)
+        const url = e.target.dataset.id;
+        modalBackground.style.display = "";
+        pdfViewer.style.display = "";
+        iframe.setAttribute("src", url)
+
+        closedPdf.addEventListener("click", ()=>{
+        modalBackground.style.display = "none";
+        pdfViewer.style.display = "none";
+   })
    }
 
    function openAbstract(){
