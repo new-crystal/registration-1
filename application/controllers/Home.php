@@ -107,4 +107,9 @@ class Home extends CI_Controller
 		$this->pagination->initialize($config);
 		return $this->pagination->create_links();
 	}
+
+	public function excel()
+	{
+		$this->load->view('excel_test.php');
+	}
 }
