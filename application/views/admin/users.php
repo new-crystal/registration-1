@@ -112,12 +112,12 @@ table th {
                         echo '<td style="text-align: center;"><input type="checkbox" name="depositChk" class="depositChk" value="' .  $item['registration_no'] . '"></td>';
                         // echo '<td>' . $item['type3'] . '</td>';
                         // echo '<td>' . substr($item['time'], 0, 100) . '</td>';
-                        echo '<td><a href="/admin/user_detail?n=' . $item['registration_no'] . '" target="_self">' . $item['registration_no'] . '</a></td>';
+                        echo '<td class="reg_num pointer">' . $item['registration_no'] . '</td>';
                         echo '<td>' . $item['attendance_type'] . '</td>';
                         echo '<td>' . $item['member_type'] . '</td>';
                         echo '<td class="user_d">' . $item['nick_name'] . '</td>';
                         echo '<td>' . $item['org'] . '</td>';
-                        echo '<td>' . $item['email'] . '</td>';
+                        echo '<td><a href="/admin/user_detail?n=' . $item['registration_no'] . '" target="_self">' . $item['email'] . '</a></td>';
                         echo '<td>' . $item['phone'] . '</td>';
                         echo '<td>' . $onsite . '</td>';
                         // echo '<td>';
@@ -177,7 +177,26 @@ table th {
 //                $('input[type=checkbox]').prop('checked',false);
 //            }
 //        })
+const regNumList = document.querySelectorAll(".reg_num")
 
+regNumList.forEach((num)=>{
+    num.addEventListener("click", ()=>{
+        copy(num.innerText)
+    })
+})
+
+function copy(text) {
+        if (navigator.clipboard) {
+            navigator.clipboard
+                .writeText(text)
+                .then(() => {
+                    alert('클립보드에 복사되었습니다.');
+                })
+                .catch(() => {
+                    alert('복사를 다시 시도해주세요.');
+                });
+        }
+    }
 
 function onClickMemo(id) {
     const url = `/admin/memo?n=${id}`;

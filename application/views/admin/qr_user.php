@@ -99,7 +99,7 @@ table th {
                         echo '<td style="text-align: center;"><input type="checkbox" name="depositChk" class="depositChk" value="' .  $item['registration_no'] . '"></td>';
                         // echo '<td>' . $item['type3'] . '</td>';
                         // echo '<td>' . substr($item['time'], 0, 10) . '</td>';
-                        echo '<td>' . $item['registration_no'] . '</td>';
+                        echo '<td class="reg_num pointer">' . $item['registration_no'] . '</td>';
                         echo '<td>' . $item['attendance_type'] . '</td>';
                         echo '<td>' . $item['member_type'] . '</td>';
                         echo '<td class="user_d">' . $item['nick_name'] . '</td>';
@@ -150,6 +150,28 @@ table th {
 </div>
 <!-- /page container -->
 <script>
+const regNumList = document.querySelectorAll(".reg_num")
+
+regNumList.forEach((num)=>{
+    num.addEventListener("click", ()=>{
+        copy(num.innerText)
+    })
+})
+
+function copy(text) {
+        if (navigator.clipboard) {
+            navigator.clipboard
+                .writeText(text)
+                .then(() => {
+                    alert('클립보드에 복사되었습니다.');
+                })
+                .catch(() => {
+                    alert('복사를 다시 시도해주세요.');
+                });
+        }
+    }
+
+
 function onClickMsm(number) {
     const url = `/admin/send_msm?n=${number}`
     window.open(url, "Certificate", "width=800, height=1000, top=30, left=30")
