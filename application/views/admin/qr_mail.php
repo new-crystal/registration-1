@@ -86,11 +86,8 @@
     </tbody>
 </table>
 <div style="width:750px;display:flex; justify-content:center;">
-    <button style="background-color: #fff; padding: 4px 8px; border:1px solid #ddd; cursor:pointer"> <a
-            id="sendMailLink" data-registration-no="<?php echo $users['registration_no'] ?>" href="#"
-            style="text-decoration:none">메일발송</a></button>
-
-
+    <input value="<?php echo $users['email'] ?>" class="email"/>
+    <button id="sendMailLink" style="background-color: #fff; padding: 4px 8px; border:1px solid #ddd; cursor:pointer">메일발송</button>
 </div>
 
 <script>
@@ -100,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
     sendMailLink.addEventListener("click", function(event) {
         event.preventDefault();
 
-        const registrationNo = sendMailLink.getAttribute("data-registration-no");
+        const registrationNo = document.querySelector(".email").value;
         const url = `https://reg1.webeon.net/admin/sendmail?n=${registrationNo}`;
 
         fetch(url, {
@@ -109,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => {
                 // 응답 처리
                 alert("email 발송 완료")
-                console.log("POST 요청 성공");
+                //console.log(response);
             })
             .catch(error => {
                 // 에러 처리

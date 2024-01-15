@@ -56,13 +56,12 @@
                 echo '<div class="a4_area">';
                 echo '<div class="bg_area">';
                 echo '<div class="txt_con">';
-
-                if ($lang == 0) {
-                    echo '<div class="nick_name lang_en" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if ($nicknameLength <= 3) {
+                if ($nicknameLength <= 3) {
                     echo '<div class="nick_name" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if ($nicknameLength > 3) {
+                } else if ($nicknameLength > 3 && $nicknameLength <= 6) {
                     echo '<div class="small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
+                } else if($nicknameLength > 6){
+                    echo '<div class="small_small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
                 }
                 echo '<div class="org" id="org">' . $users['org_nametag'] . '</div>';
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
