@@ -1196,17 +1196,17 @@ class Admin extends CI_Controller
                     $postdata = http_build_query(
                         array(
                             'CATEGORY_D_1'      => 'QrSystem',
-                            'CATEGORY_D_2'      => 'iscp',
-                            'CATEGORY_D_3'      => '231123',
-                            'SEND_ADDRESS'      => 'iscp@into-on.com',
-                            'SEND_NAME'         => 'ISCP 2023',
+                            'CATEGORY_D_2'      => 'ksso',
+                            'CATEGORY_D_3'      => '240308',
+                            'SEND_ADDRESS'      => 'secretariat@kosso.org',
+                            'SEND_NAME'         => 'KSSO 2024',
                             'RECV_ADDRESS'      =>  $users['email'],
                             'RECV_NAME'         =>  $users['nick_name'],
-                            'REPLY_ADDRESS'     => 'iscp@into-on.com',
-                            'REPLY_NAME'        => 'ISCP 2023',
-                            'EMAIL_SUBJECT'     => '[ISCP 2023] Registration QR and On-Site Attendance Details(Nov. 23rd – 25th, Conrad Seoul, Republic of Korea)',
-                            'EMAIL_ALTBODY'     => 'ISCP 2023',
-                            'EMAIL_TEMPLETE_ID' => 'Qr_iscp_231123',
+                            'REPLY_ADDRESS'     => 'secretariat@kosso.org',
+                            'REPLY_NAME'        => 'KSSO 2024',
+                            'EMAIL_SUBJECT'     => '[제59차 대한비만학회 춘계학술대회]',
+                            'EMAIL_ALTBODY'     => 'KSSO 2024',
+                            'EMAIL_TEMPLETE_ID' => 'Qr_ksso_240308',
                             'EMBED_IMAGE_GRID'  => 'null',
                             'INSERT_TEXT_GRID'    => "{" .
                                 '"$text1" : ' . '"' .  $users['nick_name'] . '",' .
@@ -1374,17 +1374,17 @@ class Admin extends CI_Controller
         $postdata = http_build_query(
             array(
                 'CATEGORY_D_1'      => 'QrSystem',
-                'CATEGORY_D_2'      => 'kes',
-                'CATEGORY_D_3'      => '230903',
-                'SEND_ADDRESS'      => 'into-mail@into-on.com',
-                'SEND_NAME'         => 'Qr System test',
+                'CATEGORY_D_2'      => 'ksso',
+                'CATEGORY_D_3'      => '240308',
+                'SEND_ADDRESS'      => 'secretariat@kosso.org',
+                'SEND_NAME'         => 'KSSO 2024',
                 'RECV_ADDRESS'      => $data['users']['email'],
                 'RECV_NAME'         => $data['users']['nick_name'],
-                'REPLY_ADDRESS'     => 'myunghwan.lee@into-on.com',
-                'REPLY_NAME'        => 'Qr System test',
-                'EMAIL_SUBJECT'     => '2023년 QrSystem test sub',
-                'EMAIL_ALTBODY'     => '2023년 QrSystem test body',
-                'EMAIL_TEMPLETE_ID' => 'Qr_kes_230903',
+                'REPLY_ADDRESS'     => 'secretariat@kosso.org',
+                'REPLY_NAME'        => 'KSSO 2024',
+                'EMAIL_SUBJECT'     => '[제59차 대한비만학회 춘계학술대회]',
+                'EMAIL_ALTBODY'     => 'KSSO 2024',
+                'EMAIL_TEMPLETE_ID' => 'Qr_ksso_240308',
                 'EMBED_IMAGE_GRID'  => 'null',
                 'INSERT_TEXT_GRID'    => "{" .
                     '"$text1" : ' . '"' . $data['users']['nick_name'] . '",' .

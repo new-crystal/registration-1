@@ -23,6 +23,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         word-break: break-all;
+        cursor: pointer;
     }
 
     .modal_background{
@@ -239,7 +240,7 @@
 
     <div id="pdf_viewer" style="display: none;">
         <button class="close_pdf"><i class="icon-cross2"></i>창닫기</button>
-       <iframe class="iframe"></iframe>      
+       <iframe class="iframe" frameborder="0" width="500" height="800"></iframe>      
     </div>
   
     <button id="submit" class="mt-10 py-2 px-4 bg-neutral-300 hover:bg-cyan-400 font-semibold">제출하기</button>
