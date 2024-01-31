@@ -241,26 +241,14 @@ class Users extends CI_Model
 		return $this->db->get($this->users)->result_array();
 	}
 
-
-		public function get_access_statistics_1()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0
-				ORDER BY a.id ASC
-		");
-			return $query->result_array();
-		}
-
-		
-
+	//participant page 재사용 함수
 	public function get_access_user($where)
 	{
 		$this->db->where($where);
 		return $this->db->get($this->users)->result_array();
 	}
 
+	//날짜 변경 필요!!!
 	public function get_faculty()
 	{
 		$query = $this->db->query("
@@ -287,6 +275,8 @@ class Users extends CI_Model
 ");
 		return $query->result_array();
 	}
+
+
 }
 
 /* SQL 오류 (1064): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM
