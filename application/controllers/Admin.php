@@ -1242,20 +1242,42 @@ class Admin extends CI_Controller
         else {
             $data['primary_menu'] = 'participant';
 
-
-            $wheres = array(
-                'qr_chk' => 'Y'
-            );
-
             /**모든 유저 */
             $data['users'] = $this->users->get_users();
 
             /**qr access 총 유저 */
-            $data['item'] = $this->users->get_qr_print_user($wheres);
+            $data['item'] = $this->users->get_qr_print_user();
 
             /**day1 ~ day2 access 각각 유저 */
-            $data['day_1'] = $this->users->get_access_statistics_1();      
-            $data['day_2'] = $this->users->get_access_statistics_2();
+            // $data['day_1'] = $this->users->get_access_statistics_1();      
+            // $data['day_2'] = $this->users->get_access_statistics_1();
+
+            /** day 1, 사전등록 */
+            $where_pre_day1 = array(
+                'onsite_reg' => 0,
+                'qr_chk_day_1' => 'Y'
+            );
+            /** day 2, 사전등록 */
+            $where_pre_day2 = array(
+                'onsite_reg' => 0,
+                'qr_chk_day_2' => 'Y'
+            );
+            /** day 1, 현장등록 */
+            $where_on_day1 = array(
+                'onsite_reg' => 1,
+                'qr_chk_day_1' => 'Y'
+            );
+            /** day 2, 현장등록 */
+            $where_on_day2 = array(
+                'onsite_reg' => 1,
+                'qr_chk_day_2' => 'Y'
+            );
+
+            $data['day_1_pre'] = $this->users->get_access_user($where_pre_day1);
+            $data['day_2_pre'] = $this->users->get_access_user($where_pre_day2);
+
+            $data['day_1_on'] = $this->users->get_access_user($where_on_day1);
+            $data['day_2_on'] = $this->users->get_access_user($where_on_day2);
 
             $this->load->view('admin/left_side.php', $data);
             $this->load->view('admin/participant.php', $data);
@@ -1513,6 +1535,22 @@ class Admin extends CI_Controller
 
             $this->load->view('admin/left_side.php', $data);
             $this->load->view('admin/qr_blank_user');
+        }
+        $this->load->view('footer');
+    }
+
+    public function faculty()
+    {
+        $this->load->view('admin/header');
+        if (!isset($this->session->admin_data['logged_in']))
+            $this->load->view('admin/login');
+        else {
+            // 
+            $data['primary_menu'] = 'faculty';
+            $data['users'] = $this->users->get_faculty();
+
+            $this->load->view('admin/left_side.php', $data);
+            $this->load->view('admin/faculty', $data);
         }
         $this->load->view('footer');
     }

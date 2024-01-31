@@ -62,10 +62,16 @@ class Users extends CI_Model
 		$this->db->where($where);
 		return $this->db->get($this->users)->row_array();
 	}
-	public function get_qr_print_user($where)
+	public function get_qr_print_user()
 	{
-		$this->db->where($where);
-		return $this->db->get($this->users)->result_array();
+		
+		$query = $this->db->query("
+		SELECT *
+			FROM users a
+			WHERE a.qr_chk_day_2 = 'Y' OR a.qr_chk_day_1 = 'Y'
+			ORDER BY a.id ASC;
+");
+		return $query->result_array();
 	}
 
 	public function get_qr_user()
@@ -235,32 +241,54 @@ class Users extends CI_Model
 		return $this->db->get($this->users)->result_array();
 	}
 
-		/**day 1 access & korean */
+
 		public function get_access_statistics_1()
 		{
 			$query = $this->db->query("
-		SELECT *
-		FROM users a
-		WHERE a.qr_chk_day_1 = 'Y'
-		ORDER BY a.id ASC
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0
+				ORDER BY a.id ASC
 		");
 			return $query->result_array();
 		}
 
 		
-	/**day 2 access & korean */
-	public function get_access_statistics_2()
+
+	public function get_access_user($where)
 	{
-		$query = $this->db->query("
-	SELECT *
-	FROM users a
-	WHERE a.qr_chk_day_2 = 'Y'
-	ORDER BY a.id ASC
-	");
-		return $query->result_array();
+		$this->db->where($where);
+		return $this->db->get($this->users)->result_array();
 	}
 
+	public function get_faculty()
+	{
+		$query = $this->db->query("
+		SELECT *, time_format(b.duration,'%H시간 %i분') as d_format
+		FROM users a
+		LEFT JOIN (
+			SELECT registration_no as qr_registration_no,
+				MIN(time) as mintime_day_1,
+				TIMEDIFF(MAX(time), MIN(time)) as duration
+			FROM access
+			 WHERE DATE(TIME) = '2024-01-29'
+			GROUP BY registration_no
+		) b ON a.registration_no = b.qr_registration_no
+		LEFT JOIN (
+			SELECT registration_no as qr_registration_no,
+				MIN(time) as mintime_day_2,
+				TIMEDIFF(MAX(time), MIN(time)) as duration
+			FROM access
+			 WHERE DATE(TIME) = '2024-01-31'
+			GROUP BY registration_no
+		) b1 ON a.registration_no = b1.qr_registration_no
+		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반참석자'
+		ORDER BY a.id ASC
+");
+		return $query->result_array();
+	}
 }
+
 /* SQL 오류 (1064): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM
 		users u
 	JOIN
