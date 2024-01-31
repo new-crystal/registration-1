@@ -17,6 +17,7 @@ class Admin extends CI_Controller
 
         date_default_timezone_set('Asia/Seoul');
         $this->load->model('users');
+        $this->load->model('participant');
         $this->load->model('entrance');
         $this->load->model('schedule');
         $this->load->library("excel");
@@ -1234,57 +1235,6 @@ class Admin extends CI_Controller
     }
 
 
-    public function participant()
-    {
-        $this->load->view('admin/header');
-        if (!isset($this->session->admin_data['logged_in']))
-            $this->load->view('admin/login');
-        else {
-            $data['primary_menu'] = 'participant';
-
-            /**모든 유저 */
-            $data['users'] = $this->users->get_users();
-
-            /**qr access 총 유저 */
-            $data['item'] = $this->users->get_qr_print_user();
-
-            /**day1 ~ day2 access 각각 유저 */
-            // $data['day_1'] = $this->users->get_access_statistics_1();      
-            // $data['day_2'] = $this->users->get_access_statistics_1();
-
-            /** day 1, 사전등록 */
-            $where_pre_day1 = array(
-                'onsite_reg' => 0,
-                'qr_chk_day_1' => 'Y'
-            );
-            /** day 2, 사전등록 */
-            $where_pre_day2 = array(
-                'onsite_reg' => 0,
-                'qr_chk_day_2' => 'Y'
-            );
-            /** day 1, 현장등록 */
-            $where_on_day1 = array(
-                'onsite_reg' => 1,
-                'qr_chk_day_1' => 'Y'
-            );
-            /** day 2, 현장등록 */
-            $where_on_day2 = array(
-                'onsite_reg' => 1,
-                'qr_chk_day_2' => 'Y'
-            );
-
-            $data['day_1_pre'] = $this->users->get_access_user($where_pre_day1);
-            $data['day_2_pre'] = $this->users->get_access_user($where_pre_day2);
-
-            $data['day_1_on'] = $this->users->get_access_user($where_on_day1);
-            $data['day_2_on'] = $this->users->get_access_user($where_on_day2);
-
-            $this->load->view('admin/left_side.php', $data);
-            $this->load->view('admin/participant.php', $data);
-        }
-        $this->load->view('footer');
-    }
-
     public function receipt()
     {
         if (!isset($this->session->admin_data['logged_in']))
@@ -1551,6 +1501,326 @@ class Admin extends CI_Controller
 
             $this->load->view('admin/left_side.php', $data);
             $this->load->view('admin/faculty', $data);
+        }
+        $this->load->view('footer');
+    }
+
+    public function participant()
+    {
+        $this->load->view('admin/header');
+        if (!isset($this->session->admin_data['logged_in']))
+            $this->load->view('admin/login');
+        else {
+            $data['primary_menu'] = 'participant';
+
+            /**모든 유저 */
+            $data['users'] = $this->users->get_users();
+
+            /**qr access 총 유저 */
+            $data['item'] = $this->users->get_qr_print_user();
+
+
+            //type1 => t -> t0 의료 / t1 영양 / t2 운동 / t3 기타
+            //qr_chk_day_1, 2 => d -> d1 day1 / d2 day2
+            //onsite_reg => pre 사전등록 0 / on 현장등록 1
+            //attendance_type => a -> ap 일반참석자 / ac 임원
+            //member_type => m -> m0 교수 / m1 개원의 / m2 봉직의 / m3 전임의 / m4 수련의 / m5 전공의 
+                                //m6 영양사 / m7 운동사 / m8 간호사 / m9 군의관 / m10 공보의 
+                                //m11 연구원 / m 12 학생 / m13 전시(부스) / m14 기타
+
+            $data['user_t0_d1_pre_ap_m0'] = $this->participant->get_participants_t0_d1_pre_ap_m0();
+            $data['user_t0_d1_pre_ac_m0'] = $this->participant->get_participants_t0_d1_pre_ac_m0();
+            $data['user_t0_d1_on_ap_m0'] = $this->participant->get_participants_t0_d1_on_ap_m0();
+            $data['user_t0_d1_on_ac_m0'] = $this->participant->get_participants_t0_d1_on_ac_m0();
+            $data['user_t0_d2_pre_ap_m0'] = $this->participant->get_participants_t0_d2_pre_ap_m0();
+            $data['user_t0_d2_pre_ac_m0'] = $this->participant->get_participants_t0_d2_pre_ac_m0();
+            $data['user_t0_d2_on_ap_m0'] = $this->participant->get_participants_t0_d2_on_ap_m0();
+            $data['user_t0_d2_on_ac_m0'] = $this->participant->get_participants_t0_d2_on_ac_m0();
+
+            $data['user_t0_d1_pre_ap_m1'] = $this->participant->get_participants_t0_d1_pre_ap_m1();
+            $data['user_t0_d1_pre_ac_m1'] = $this->participant->get_participants_t0_d1_pre_ac_m1();
+            $data['user_t0_d1_on_ap_m1'] = $this->participant->get_participants_t0_d1_on_ap_m1();
+            $data['user_t0_d1_on_ac_m1'] = $this->participant->get_participants_t0_d1_on_ac_m1();
+            $data['user_t0_d2_pre_ap_m1'] = $this->participant->get_participants_t0_d2_pre_ap_m1();
+            $data['user_t0_d2_pre_ac_m1'] = $this->participant->get_participants_t0_d2_pre_ac_m1();
+            $data['user_t0_d2_on_ap_m1'] = $this->participant->get_participants_t0_d2_on_ap_m1();
+            $data['user_t0_d2_on_ac_m1'] = $this->participant->get_participants_t0_d2_on_ac_m1();
+
+            $data['user_t0_d1_pre_ap_m2'] = $this->participant->get_participants_t0_d1_pre_ap_m2();
+            $data['user_t0_d1_pre_ac_m2'] = $this->participant->get_participants_t0_d1_pre_ac_m2();
+            $data['user_t0_d1_on_ap_m2'] = $this->participant->get_participants_t0_d1_on_ap_m2();
+            $data['user_t0_d1_on_ac_m2'] = $this->participant->get_participants_t0_d1_on_ac_m2();
+            $data['user_t0_d2_pre_ap_m2'] = $this->participant->get_participants_t0_d2_pre_ap_m2();
+            $data['user_t0_d2_pre_ac_m2'] = $this->participant->get_participants_t0_d2_pre_ac_m2();
+            $data['user_t0_d2_on_ap_m2'] = $this->participant->get_participants_t0_d2_on_ap_m2();
+            $data['user_t0_d2_on_ac_m2'] = $this->participant->get_participants_t0_d2_on_ac_m2();
+
+            $data['user_t0_d1_pre_ap_m3'] = $this->participant->get_participants_t0_d1_pre_ap_m3();
+            $data['user_t0_d1_pre_ac_m3'] = $this->participant->get_participants_t0_d1_pre_ac_m3();
+            $data['user_t0_d1_on_ap_m3'] = $this->participant->get_participants_t0_d1_on_ap_m3();
+            $data['user_t0_d1_on_ac_m3'] = $this->participant->get_participants_t0_d1_on_ac_m3();
+            $data['user_t0_d2_pre_ap_m3'] = $this->participant->get_participants_t0_d2_pre_ap_m3();
+            $data['user_t0_d2_pre_ac_m3'] = $this->participant->get_participants_t0_d2_pre_ac_m3();
+            $data['user_t0_d2_on_ap_m3'] = $this->participant->get_participants_t0_d2_on_ap_m3();
+            $data['user_t0_d2_on_ac_m3'] = $this->participant->get_participants_t0_d2_on_ac_m3();
+
+            $data['user_t0_d1_pre_ap_m4'] = $this->participant->get_participants_t0_d1_pre_ap_m4();
+            $data['user_t0_d1_pre_ac_m4'] = $this->participant->get_participants_t0_d1_pre_ac_m4();
+            $data['user_t0_d1_on_ap_m4'] = $this->participant->get_participants_t0_d1_on_ap_m4();
+            $data['user_t0_d1_on_ac_m4'] = $this->participant->get_participants_t0_d1_on_ac_m4();
+            $data['user_t0_d2_pre_ap_m4'] = $this->participant->get_participants_t0_d2_pre_ap_m4();
+            $data['user_t0_d2_pre_ac_m4'] = $this->participant->get_participants_t0_d2_pre_ac_m4();
+            $data['user_t0_d2_on_ap_m4'] = $this->participant->get_participants_t0_d2_on_ap_m4();
+            $data['user_t0_d2_on_ac_m4'] = $this->participant->get_participants_t0_d2_on_ac_m4();
+            
+            $data['user_t0_d1_pre_ap_m5'] = $this->participant->get_participants_t0_d1_pre_ap_m5();
+            $data['user_t0_d1_pre_ac_m5'] = $this->participant->get_participants_t0_d1_pre_ac_m5();
+            $data['user_t0_d1_on_ap_m5'] = $this->participant->get_participants_t0_d1_on_ap_m5();
+            $data['user_t0_d1_on_ac_m5'] = $this->participant->get_participants_t0_d1_on_ac_m5();
+            $data['user_t0_d2_pre_ap_m5'] = $this->participant->get_participants_t0_d2_pre_ap_m5();
+            $data['user_t0_d2_pre_ac_m5'] = $this->participant->get_participants_t0_d2_pre_ac_m5();
+            $data['user_t0_d2_on_ap_m5'] = $this->participant->get_participants_t0_d2_on_ap_m5();
+            $data['user_t0_d2_on_ac_m5'] = $this->participant->get_participants_t0_d2_on_ac_m5();  
+
+            $data['user_t0_d1_pre_ap_m6'] = $this->participant->get_participants_t0_d1_pre_ap_m6();
+            $data['user_t0_d1_pre_ac_m6'] = $this->participant->get_participants_t0_d1_pre_ac_m6();
+            $data['user_t0_d1_on_ap_m6'] = $this->participant->get_participants_t0_d1_on_ap_m6();
+            $data['user_t0_d1_on_ac_m6'] = $this->participant->get_participants_t0_d1_on_ac_m6();
+            $data['user_t0_d2_pre_ap_m6'] = $this->participant->get_participants_t0_d2_pre_ap_m6();
+            $data['user_t0_d2_pre_ac_m6'] = $this->participant->get_participants_t0_d2_pre_ac_m6();
+            $data['user_t0_d2_on_ap_m6'] = $this->participant->get_participants_t0_d2_on_ap_m6();
+            $data['user_t0_d2_on_ac_m6'] = $this->participant->get_participants_t0_d2_on_ac_m6();
+            
+            $data['user_t0_d1_pre_ap_m7'] = $this->participant->get_participants_t0_d1_pre_ap_m7();
+            $data['user_t0_d1_pre_ac_m7'] = $this->participant->get_participants_t0_d1_pre_ac_m7();
+            $data['user_t0_d1_on_ap_m7'] = $this->participant->get_participants_t0_d1_on_ap_m7();
+            $data['user_t0_d1_on_ac_m7'] = $this->participant->get_participants_t0_d1_on_ac_m7();
+            $data['user_t0_d2_pre_ap_m7'] = $this->participant->get_participants_t0_d2_pre_ap_m7();
+            $data['user_t0_d2_pre_ac_m7'] = $this->participant->get_participants_t0_d2_pre_ac_m7();
+            $data['user_t0_d2_on_ap_m7'] = $this->participant->get_participants_t0_d2_on_ap_m7();
+            $data['user_t0_d2_on_ac_m7'] = $this->participant->get_participants_t0_d2_on_ac_m7();
+                        
+            $data['user_t0_d1_pre_ap_m8'] = $this->participant->get_participants_t0_d1_pre_ap_m8();
+            $data['user_t0_d1_pre_ac_m8'] = $this->participant->get_participants_t0_d1_pre_ac_m8();
+            $data['user_t0_d1_on_ap_m8'] = $this->participant->get_participants_t0_d1_on_ap_m8();
+            $data['user_t0_d1_on_ac_m8'] = $this->participant->get_participants_t0_d1_on_ac_m8();
+            $data['user_t0_d2_pre_ap_m8'] = $this->participant->get_participants_t0_d2_pre_ap_m8();
+            $data['user_t0_d2_pre_ac_m8'] = $this->participant->get_participants_t0_d2_pre_ac_m8();
+            $data['user_t0_d2_on_ap_m8'] = $this->participant->get_participants_t0_d2_on_ap_m8();
+            $data['user_t0_d2_on_ac_m8'] = $this->participant->get_participants_t0_d2_on_ac_m8();
+
+            $data['user_t0_d1_pre_ap_m9'] = $this->participant->get_participants_t0_d1_pre_ap_m9();
+            $data['user_t0_d1_pre_ac_m9'] = $this->participant->get_participants_t0_d1_pre_ac_m9();
+            $data['user_t0_d1_on_ap_m9'] = $this->participant->get_participants_t0_d1_on_ap_m9();
+            $data['user_t0_d1_on_ac_m9'] = $this->participant->get_participants_t0_d1_on_ac_m9();
+            $data['user_t0_d2_pre_ap_m9'] = $this->participant->get_participants_t0_d2_pre_ap_m9();
+            $data['user_t0_d2_pre_ac_m9'] = $this->participant->get_participants_t0_d2_pre_ac_m9();
+            $data['user_t0_d2_on_ap_m9'] = $this->participant->get_participants_t0_d2_on_ap_m9();
+            $data['user_t0_d2_on_ac_m9'] = $this->participant->get_participants_t0_d2_on_ac_m9();
+
+            $data['user_t0_d1_pre_ap_m10'] = $this->participant->get_participants_t0_d1_pre_ap_m10();
+            $data['user_t0_d1_pre_ac_m10'] = $this->participant->get_participants_t0_d1_pre_ac_m10();
+            $data['user_t0_d1_on_ap_m10'] = $this->participant->get_participants_t0_d1_on_ap_m10();
+            $data['user_t0_d1_on_ac_m10'] = $this->participant->get_participants_t0_d1_on_ac_m10();
+            $data['user_t0_d2_pre_ap_m10'] = $this->participant->get_participants_t0_d2_pre_ap_m10();
+            $data['user_t0_d2_pre_ac_m10'] = $this->participant->get_participants_t0_d2_pre_ac_m10();
+            $data['user_t0_d2_on_ap_m10'] = $this->participant->get_participants_t0_d2_on_ap_m10();
+            $data['user_t0_d2_on_ac_m10'] = $this->participant->get_participants_t0_d2_on_ac_m10();
+            
+            $data['user_t0_d1_pre_ap_m11'] = $this->participant->get_participants_t0_d1_pre_ap_m11();
+            $data['user_t0_d1_pre_ac_m11'] = $this->participant->get_participants_t0_d1_pre_ac_m11();
+            $data['user_t0_d1_on_ap_m11'] = $this->participant->get_participants_t0_d1_on_ap_m11();
+            $data['user_t0_d1_on_ac_m11'] = $this->participant->get_participants_t0_d1_on_ac_m11();
+            $data['user_t0_d2_pre_ap_m11'] = $this->participant->get_participants_t0_d2_pre_ap_m11();
+            $data['user_t0_d2_pre_ac_m11'] = $this->participant->get_participants_t0_d2_pre_ac_m11();
+            $data['user_t0_d2_on_ap_m11'] = $this->participant->get_participants_t0_d2_on_ap_m11();
+            $data['user_t0_d2_on_ac_m11'] = $this->participant->get_participants_t0_d2_on_ac_m11();
+ 
+            $data['user_t0_d1_pre_ap_m12'] = $this->participant->get_participants_t0_d1_pre_ap_m12();
+            $data['user_t0_d1_pre_ac_m12'] = $this->participant->get_participants_t0_d1_pre_ac_m12();
+            $data['user_t0_d1_on_ap_m12'] = $this->participant->get_participants_t0_d1_on_ap_m12();
+            $data['user_t0_d1_on_ac_m12'] = $this->participant->get_participants_t0_d1_on_ac_m12();
+            $data['user_t0_d2_pre_ap_m12'] = $this->participant->get_participants_t0_d2_pre_ap_m12();
+            $data['user_t0_d2_pre_ac_m12'] = $this->participant->get_participants_t0_d2_pre_ac_m12();
+            $data['user_t0_d2_on_ap_m12'] = $this->participant->get_participants_t0_d2_on_ap_m12();
+            $data['user_t0_d2_on_ac_m12'] = $this->participant->get_participants_t0_d2_on_ac_m12();
+
+            $data['user_t0_d1_pre_ap_m13'] = $this->participant->get_participants_t0_d1_pre_ap_m13();
+            $data['user_t0_d1_pre_ac_m13'] = $this->participant->get_participants_t0_d1_pre_ac_m13();
+            $data['user_t0_d1_on_ap_m13'] = $this->participant->get_participants_t0_d1_on_ap_m13();
+            $data['user_t0_d1_on_ac_m13'] = $this->participant->get_participants_t0_d1_on_ac_m13();
+            $data['user_t0_d2_pre_ap_m13'] = $this->participant->get_participants_t0_d2_pre_ap_m13();
+            $data['user_t0_d2_pre_ac_m13'] = $this->participant->get_participants_t0_d2_pre_ac_m13();
+            $data['user_t0_d2_on_ap_m13'] = $this->participant->get_participants_t0_d2_on_ap_m13();
+            $data['user_t0_d2_on_ac_m13'] = $this->participant->get_participants_t0_d2_on_ac_m13();
+
+            $data['user_t0_d1_pre_ap_m14'] = $this->participant->get_participants_t0_d1_pre_ap_m14();
+            $data['user_t0_d1_pre_ac_m14'] = $this->participant->get_participants_t0_d1_pre_ac_m14();
+            $data['user_t0_d1_on_ap_m14'] = $this->participant->get_participants_t0_d1_on_ap_m14();
+            $data['user_t0_d1_on_ac_m14'] = $this->participant->get_participants_t0_d1_on_ac_m14();
+            $data['user_t0_d2_pre_ap_m14'] = $this->participant->get_participants_t0_d2_pre_ap_m14();
+            $data['user_t0_d2_pre_ac_m14'] = $this->participant->get_participants_t0_d2_pre_ac_m14();
+            $data['user_t0_d2_on_ap_m14'] = $this->participant->get_participants_t0_d2_on_ap_m14();
+            $data['user_t0_d2_on_ac_m14'] = $this->participant->get_participants_t0_d2_on_ac_m14();
+            
+            $data['sum_t0_d1_pre_ap'] = $this->participant->sum_participants_t0_d1_pre_ap();
+            $data['sum_t0_d1_pre_ac'] = $this->participant->sum_participants_t0_d1_pre_ac();
+            $data['sum_t0_d1_on_ap'] = $this->participant->sum_participants_t0_d1_on_ap();
+            $data['sum_t0_d1_on_ac'] = $this->participant->sum_participants_t0_d1_on_ac();
+            $data['sum_t0_d2_pre_ap'] = $this->participant->sum_participants_t0_d2_pre_ap();
+            $data['sum_t0_d2_pre_ac'] = $this->participant->sum_participants_t0_d2_pre_ac();
+            $data['sum_t0_d2_on_ap'] = $this->participant->sum_participants_t0_d2_on_ap();
+            $data['sum_t0_d2_on_ac'] = $this->participant->sum_participants_t0_d2_on_ac();
+
+            ////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            $data['user_t1_d1_pre_ap_m0'] = $this->participant->get_participants_t1_d1_pre_ap_m0();
+            $data['user_t1_d1_pre_ac_m0'] = $this->participant->get_participants_t1_d1_pre_ac_m0();
+            $data['user_t1_d1_on_ap_m0'] = $this->participant->get_participants_t1_d1_on_ap_m0();
+            $data['user_t1_d1_on_ac_m0'] = $this->participant->get_participants_t1_d1_on_ac_m0();
+            $data['user_t1_d2_pre_ap_m0'] = $this->participant->get_participants_t1_d2_pre_ap_m0();
+            $data['user_t1_d2_pre_ac_m0'] = $this->participant->get_participants_t1_d2_pre_ac_m0();
+            $data['user_t1_d2_on_ap_m0'] = $this->participant->get_participants_t1_d2_on_ap_m0();
+            $data['user_t1_d2_on_ac_m0'] = $this->participant->get_participants_t1_d2_on_ac_m0();
+
+            $data['user_t1_d1_pre_ap_m1'] = $this->participant->get_participants_t1_d1_pre_ap_m1();
+            $data['user_t1_d1_pre_ac_m1'] = $this->participant->get_participants_t1_d1_pre_ac_m1();
+            $data['user_t1_d1_on_ap_m1'] = $this->participant->get_participants_t1_d1_on_ap_m1();
+            $data['user_t1_d1_on_ac_m1'] = $this->participant->get_participants_t1_d1_on_ac_m1();
+            $data['user_t1_d2_pre_ap_m1'] = $this->participant->get_participants_t1_d2_pre_ap_m1();
+            $data['user_t1_d2_pre_ac_m1'] = $this->participant->get_participants_t1_d2_pre_ac_m1();
+            $data['user_t1_d2_on_ap_m1'] = $this->participant->get_participants_t1_d2_on_ap_m1();
+            $data['user_t1_d2_on_ac_m1'] = $this->participant->get_participants_t1_d2_on_ac_m1();
+
+            $data['user_t1_d1_pre_ap_m2'] = $this->participant->get_participants_t1_d1_pre_ap_m2();
+            $data['user_t1_d1_pre_ac_m2'] = $this->participant->get_participants_t1_d1_pre_ac_m2();
+            $data['user_t1_d1_on_ap_m2'] = $this->participant->get_participants_t1_d1_on_ap_m2();
+            $data['user_t1_d1_on_ac_m2'] = $this->participant->get_participants_t1_d1_on_ac_m2();
+            $data['user_t1_d2_pre_ap_m2'] = $this->participant->get_participants_t1_d2_pre_ap_m2();
+            $data['user_t1_d2_pre_ac_m2'] = $this->participant->get_participants_t1_d2_pre_ac_m2();
+            $data['user_t1_d2_on_ap_m2'] = $this->participant->get_participants_t1_d2_on_ap_m2();
+            $data['user_t1_d2_on_ac_m2'] = $this->participant->get_participants_t1_d2_on_ac_m2();
+
+            $data['user_t1_d1_pre_ap_m3'] = $this->participant->get_participants_t1_d1_pre_ap_m3();
+            $data['user_t1_d1_pre_ac_m3'] = $this->participant->get_participants_t1_d1_pre_ac_m3();
+            $data['user_t1_d1_on_ap_m3'] = $this->participant->get_participants_t1_d1_on_ap_m3();
+            $data['user_t1_d1_on_ac_m3'] = $this->participant->get_participants_t1_d1_on_ac_m3();
+            $data['user_t1_d2_pre_ap_m3'] = $this->participant->get_participants_t1_d2_pre_ap_m3();
+            $data['user_t1_d2_pre_ac_m3'] = $this->participant->get_participants_t1_d2_pre_ac_m3();
+            $data['user_t1_d2_on_ap_m3'] = $this->participant->get_participants_t1_d2_on_ap_m3();
+            $data['user_t1_d2_on_ac_m3'] = $this->participant->get_participants_t1_d2_on_ac_m3();
+
+            $data['user_t1_d1_pre_ap_m4'] = $this->participant->get_participants_t1_d1_pre_ap_m4();
+            $data['user_t1_d1_pre_ac_m4'] = $this->participant->get_participants_t1_d1_pre_ac_m4();
+            $data['user_t1_d1_on_ap_m4'] = $this->participant->get_participants_t1_d1_on_ap_m4();
+            $data['user_t1_d1_on_ac_m4'] = $this->participant->get_participants_t1_d1_on_ac_m4();
+            $data['user_t1_d2_pre_ap_m4'] = $this->participant->get_participants_t1_d2_pre_ap_m4();
+            $data['user_t1_d2_pre_ac_m4'] = $this->participant->get_participants_t1_d2_pre_ac_m4();
+            $data['user_t1_d2_on_ap_m4'] = $this->participant->get_participants_t1_d2_on_ap_m4();
+            $data['user_t1_d2_on_ac_m4'] = $this->participant->get_participants_t1_d2_on_ac_m4();
+            
+            $data['user_t1_d1_pre_ap_m5'] = $this->participant->get_participants_t1_d1_pre_ap_m5();
+            $data['user_t1_d1_pre_ac_m5'] = $this->participant->get_participants_t1_d1_pre_ac_m5();
+            $data['user_t1_d1_on_ap_m5'] = $this->participant->get_participants_t1_d1_on_ap_m5();
+            $data['user_t1_d1_on_ac_m5'] = $this->participant->get_participants_t1_d1_on_ac_m5();
+            $data['user_t1_d2_pre_ap_m5'] = $this->participant->get_participants_t1_d2_pre_ap_m5();
+            $data['user_t1_d2_pre_ac_m5'] = $this->participant->get_participants_t1_d2_pre_ac_m5();
+            $data['user_t1_d2_on_ap_m5'] = $this->participant->get_participants_t1_d2_on_ap_m5();
+            $data['user_t1_d2_on_ac_m5'] = $this->participant->get_participants_t1_d2_on_ac_m5();  
+
+            $data['user_t1_d1_pre_ap_m6'] = $this->participant->get_participants_t1_d1_pre_ap_m6();
+            $data['user_t1_d1_pre_ac_m6'] = $this->participant->get_participants_t1_d1_pre_ac_m6();
+            $data['user_t1_d1_on_ap_m6'] = $this->participant->get_participants_t1_d1_on_ap_m6();
+            $data['user_t1_d1_on_ac_m6'] = $this->participant->get_participants_t1_d1_on_ac_m6();
+            $data['user_t1_d2_pre_ap_m6'] = $this->participant->get_participants_t1_d2_pre_ap_m6();
+            $data['user_t1_d2_pre_ac_m6'] = $this->participant->get_participants_t1_d2_pre_ac_m6();
+            $data['user_t1_d2_on_ap_m6'] = $this->participant->get_participants_t1_d2_on_ap_m6();
+            $data['user_t1_d2_on_ac_m6'] = $this->participant->get_participants_t1_d2_on_ac_m6();
+            
+            $data['user_t1_d1_pre_ap_m7'] = $this->participant->get_participants_t1_d1_pre_ap_m7();
+            $data['user_t1_d1_pre_ac_m7'] = $this->participant->get_participants_t1_d1_pre_ac_m7();
+            $data['user_t1_d1_on_ap_m7'] = $this->participant->get_participants_t1_d1_on_ap_m7();
+            $data['user_t1_d1_on_ac_m7'] = $this->participant->get_participants_t1_d1_on_ac_m7();
+            $data['user_t1_d2_pre_ap_m7'] = $this->participant->get_participants_t1_d2_pre_ap_m7();
+            $data['user_t1_d2_pre_ac_m7'] = $this->participant->get_participants_t1_d2_pre_ac_m7();
+            $data['user_t1_d2_on_ap_m7'] = $this->participant->get_participants_t1_d2_on_ap_m7();
+            $data['user_t1_d2_on_ac_m7'] = $this->participant->get_participants_t1_d2_on_ac_m7();
+                        
+            $data['user_t1_d1_pre_ap_m8'] = $this->participant->get_participants_t1_d1_pre_ap_m8();
+            $data['user_t1_d1_pre_ac_m8'] = $this->participant->get_participants_t1_d1_pre_ac_m8();
+            $data['user_t1_d1_on_ap_m8'] = $this->participant->get_participants_t1_d1_on_ap_m8();
+            $data['user_t1_d1_on_ac_m8'] = $this->participant->get_participants_t1_d1_on_ac_m8();
+            $data['user_t1_d2_pre_ap_m8'] = $this->participant->get_participants_t1_d2_pre_ap_m8();
+            $data['user_t1_d2_pre_ac_m8'] = $this->participant->get_participants_t1_d2_pre_ac_m8();
+            $data['user_t1_d2_on_ap_m8'] = $this->participant->get_participants_t1_d2_on_ap_m8();
+            $data['user_t1_d2_on_ac_m8'] = $this->participant->get_participants_t1_d2_on_ac_m8();
+
+            $data['user_t1_d1_pre_ap_m9'] = $this->participant->get_participants_t1_d1_pre_ap_m9();
+            $data['user_t1_d1_pre_ac_m9'] = $this->participant->get_participants_t1_d1_pre_ac_m9();
+            $data['user_t1_d1_on_ap_m9'] = $this->participant->get_participants_t1_d1_on_ap_m9();
+            $data['user_t1_d1_on_ac_m9'] = $this->participant->get_participants_t1_d1_on_ac_m9();
+            $data['user_t1_d2_pre_ap_m9'] = $this->participant->get_participants_t1_d2_pre_ap_m9();
+            $data['user_t1_d2_pre_ac_m9'] = $this->participant->get_participants_t1_d2_pre_ac_m9();
+            $data['user_t1_d2_on_ap_m9'] = $this->participant->get_participants_t1_d2_on_ap_m9();
+            $data['user_t1_d2_on_ac_m9'] = $this->participant->get_participants_t1_d2_on_ac_m9();
+
+            $data['user_t1_d1_pre_ap_m10'] = $this->participant->get_participants_t1_d1_pre_ap_m10();
+            $data['user_t1_d1_pre_ac_m10'] = $this->participant->get_participants_t1_d1_pre_ac_m10();
+            $data['user_t1_d1_on_ap_m10'] = $this->participant->get_participants_t1_d1_on_ap_m10();
+            $data['user_t1_d1_on_ac_m10'] = $this->participant->get_participants_t1_d1_on_ac_m10();
+            $data['user_t1_d2_pre_ap_m10'] = $this->participant->get_participants_t1_d2_pre_ap_m10();
+            $data['user_t1_d2_pre_ac_m10'] = $this->participant->get_participants_t1_d2_pre_ac_m10();
+            $data['user_t1_d2_on_ap_m10'] = $this->participant->get_participants_t1_d2_on_ap_m10();
+            $data['user_t1_d2_on_ac_m10'] = $this->participant->get_participants_t1_d2_on_ac_m10();
+            
+            $data['user_t1_d1_pre_ap_m11'] = $this->participant->get_participants_t1_d1_pre_ap_m11();
+            $data['user_t1_d1_pre_ac_m11'] = $this->participant->get_participants_t1_d1_pre_ac_m11();
+            $data['user_t1_d1_on_ap_m11'] = $this->participant->get_participants_t1_d1_on_ap_m11();
+            $data['user_t1_d1_on_ac_m11'] = $this->participant->get_participants_t1_d1_on_ac_m11();
+            $data['user_t1_d2_pre_ap_m11'] = $this->participant->get_participants_t1_d2_pre_ap_m11();
+            $data['user_t1_d2_pre_ac_m11'] = $this->participant->get_participants_t1_d2_pre_ac_m11();
+            $data['user_t1_d2_on_ap_m11'] = $this->participant->get_participants_t1_d2_on_ap_m11();
+            $data['user_t1_d2_on_ac_m11'] = $this->participant->get_participants_t1_d2_on_ac_m11();
+ 
+            $data['user_t1_d1_pre_ap_m12'] = $this->participant->get_participants_t1_d1_pre_ap_m12();
+            $data['user_t1_d1_pre_ac_m12'] = $this->participant->get_participants_t1_d1_pre_ac_m12();
+            $data['user_t1_d1_on_ap_m12'] = $this->participant->get_participants_t1_d1_on_ap_m12();
+            $data['user_t1_d1_on_ac_m12'] = $this->participant->get_participants_t1_d1_on_ac_m12();
+            $data['user_t1_d2_pre_ap_m12'] = $this->participant->get_participants_t1_d2_pre_ap_m12();
+            $data['user_t1_d2_pre_ac_m12'] = $this->participant->get_participants_t1_d2_pre_ac_m12();
+            $data['user_t1_d2_on_ap_m12'] = $this->participant->get_participants_t1_d2_on_ap_m12();
+            $data['user_t1_d2_on_ac_m12'] = $this->participant->get_participants_t1_d2_on_ac_m12();
+
+            $data['user_t1_d1_pre_ap_m13'] = $this->participant->get_participants_t1_d1_pre_ap_m13();
+            $data['user_t1_d1_pre_ac_m13'] = $this->participant->get_participants_t1_d1_pre_ac_m13();
+            $data['user_t1_d1_on_ap_m13'] = $this->participant->get_participants_t1_d1_on_ap_m13();
+            $data['user_t1_d1_on_ac_m13'] = $this->participant->get_participants_t1_d1_on_ac_m13();
+            $data['user_t1_d2_pre_ap_m13'] = $this->participant->get_participants_t1_d2_pre_ap_m13();
+            $data['user_t1_d2_pre_ac_m13'] = $this->participant->get_participants_t1_d2_pre_ac_m13();
+            $data['user_t1_d2_on_ap_m13'] = $this->participant->get_participants_t1_d2_on_ap_m13();
+            $data['user_t1_d2_on_ac_m13'] = $this->participant->get_participants_t1_d2_on_ac_m13();
+
+            $data['user_t1_d1_pre_ap_m14'] = $this->participant->get_participants_t1_d1_pre_ap_m14();
+            $data['user_t1_d1_pre_ac_m14'] = $this->participant->get_participants_t1_d1_pre_ac_m14();
+            $data['user_t1_d1_on_ap_m14'] = $this->participant->get_participants_t1_d1_on_ap_m14();
+            $data['user_t1_d1_on_ac_m14'] = $this->participant->get_participants_t1_d1_on_ac_m14();
+            $data['user_t1_d2_pre_ap_m14'] = $this->participant->get_participants_t1_d2_pre_ap_m14();
+            $data['user_t1_d2_pre_ac_m14'] = $this->participant->get_participants_t1_d2_pre_ac_m14();
+            $data['user_t1_d2_on_ap_m14'] = $this->participant->get_participants_t1_d2_on_ap_m14();
+            $data['user_t1_d2_on_ac_m14'] = $this->participant->get_participants_t1_d2_on_ac_m14();
+            
+            $data['sum_t1_d1_pre_ap'] = $this->participant->sum_participants_t1_d1_pre_ap();
+            $data['sum_t1_d1_pre_ac'] = $this->participant->sum_participants_t1_d1_pre_ac();
+            $data['sum_t1_d1_on_ap'] = $this->participant->sum_participants_t1_d1_on_ap();
+            $data['sum_t1_d1_on_ac'] = $this->participant->sum_participants_t1_d1_on_ac();
+            $data['sum_t1_d2_pre_ap'] = $this->participant->sum_participants_t1_d2_pre_ap();
+            $data['sum_t1_d2_pre_ac'] = $this->participant->sum_participants_t1_d2_pre_ac();
+            $data['sum_t1_d2_on_ap'] = $this->participant->sum_participants_t1_d2_on_ap();
+            $data['sum_t1_d2_on_ac'] = $this->participant->sum_participants_t1_d2_on_ac();
+
+
+            $this->load->view('admin/left_side.php', $data);
+            $this->load->view('admin/participant.php', $data);
         }
         $this->load->view('footer');
     }

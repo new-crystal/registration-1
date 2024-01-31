@@ -15,6 +15,7 @@ class Entrance extends CI_Model
             return false;
     }
 
+    //날짜 변경 필요!!!
     public function history_all()
     {
         //

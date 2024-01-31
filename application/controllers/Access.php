@@ -440,6 +440,7 @@ class Access extends CI_Controller
         return $this->pagination->create_links();
     }
 
+    //날짜 변경 필요!!!
     public function scan_qr()
     {
         $this->load->helper('form');
@@ -675,7 +676,7 @@ class Access extends CI_Controller
         }
     }
 
-    
+    //날짜 변경 필요!!!
     public function row_scan_qr()
     {
         $this->load->helper('form');
