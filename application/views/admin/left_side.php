@@ -60,6 +60,14 @@
                                         </span>
                                     </a>
                                 </li>
+                                
+                                <li style="margin-bottom: 2rem;"
+                                    <?php if ($primary_menu == 'faculty') echo 'class="active"' ?>>
+                                    <a href="/admin/faculty">
+                                        <i class="icon-list-unordered"></i>
+                                        <span>faculty 관리</span>
+                                    </a>
+                                </li>
                                 <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'qrcode') echo 'class="active"' ?>>
                                     <a href="/admin/access">
