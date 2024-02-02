@@ -65,13 +65,39 @@ table th {
             <div class="panel-heading">
                 <h5 class="panel-title">등록 초록</h5>
                 <div class="heading-elements">
-                    <form action="/score/abstract_excel" method="post">
+                    <form action="/score/abstract_excel_2" method="post">
                         <button class="btn btn-primary pull-right"><i class="icon-download4"></i> &nbspExcel
                             Download</button>
                     </form>
+                    <!-- <form action="/score/abstract_excel" method="post">
+                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> &nbspExcel
+                            Download</button>
+                    </form> -->
                 </div>
             </div>
-
+            <?php 
+            // print_r($abstracts);
+            foreach($abstracts_category as $category_num){
+                        $category_text = "";
+                        $category = $category_num["category"] ?? "-";
+                        switch ($category) {
+                            case 0:
+                                $category_text = "Diabetes/Obesity/Lipid (clinical)";
+                                break;
+                            case 1:
+                                $category_text = "Diabetes/Obesity/Lipid (basic)";
+                                break;
+                            case 2:
+                                $category_text = "Bone/Muscle";
+                                break;
+                            case 3:
+                                $category_text = "Thyroid";
+                                break;
+                            case 4:
+                                $category_text = "Pituitary/Adrenal/Gonad";
+                                break;
+                        } ?>
+                <h1><?php echo $category_text; ?></h1>
             <table class="table datatable-basic">
                 <thead>
                     <tr>
@@ -88,26 +114,28 @@ table th {
                     <?php
             
                     foreach($abstracts as $abstract){
-
+                            if($abstract['category'] == $category_num["category"]){
                             echo '<tr>';
                             echo '<td><a href="/score/score_detail?n=' . $abstract['idx'] . '" target="_self">' .$abstract['submission_code'] . '</a></td>';
                             echo '<td>' . $abstract['first_name'] . '</td>';
                             echo '<td>' . $abstract['org'] . '</td>';
                             echo '<td>' . $abstract['nation'] . '</td>';
                             echo '<td>' . $abstract['title'] . '</td>';
-                            echo '<td>' . $abstract['category'] . '</td>';
+                            echo '<td>' . $category_text . '</td>';
                             echo '<td>' . $abstract['sum'] . '</td>';
                             echo '</tr>';
                     }
+                }
                     ?>
 
                 </tbody>
             </table>
+            <?php } ?>
         </div>
         <!-- /basic datatable -->
-        <div class="footer text-muted">
+        <!-- <div class="footer text-muted">
              <a href="#">온라인 학술대회</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">(주)인투온</a>
-        </div>
+        </div> -->
     </div>
     <!-- /content area -->
 
@@ -129,24 +157,4 @@ table th {
 //        })
 
 
-$('.depositChk').click(function() {
-    var formName = $('#depositForm');
-    var formName2 = $('#nametagForm');
-    var formName3 = $('#non_depositForm');
-    // var formName4 = $('#all_depositForm');
-    var userId = $(this).val();
-    var checkHtml = '<input type="hidden" class="userId user' + userId + '" name="userId[]" value="' + userId +
-        '" id="">'
-    if ($(this).prop('checked')) {
-        formName.append(checkHtml);
-        formName2.append(checkHtml);
-        formName3.append(checkHtml);
-        // formName4.append(checkHtml)
-    } else {
-        $('.user' + userId).remove();
-    }
-})
-
-
 </script>
-</body>
