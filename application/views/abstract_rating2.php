@@ -59,8 +59,45 @@
     }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
+<?php
+$type_text = "";
+$category_text = "";
+
+$type = $abstract1["type"] ?? "-";
+switch ($type) {
+	case 0:
+		$type_text = "Oral";
+		break;
+	case 1:
+		$type_text = "Poster oral I";
+		break;
+	case 2:
+		$type_text = "Poster oral II";
+		break;
+}
+
+$category = $abstract1["category"] ?? "-";
+switch ($category) {
+	case 0:
+		$category_text = "Diabetes/Obesity/Lipid (clinical)";
+		break;
+	case 1:
+		$category_text = "Diabetes/Obesity/Lipid (basic)";
+		break;
+	case 2:
+		$category_text = "Bone/Muscle";
+		break;
+	case 3:
+		$category_text = "Thyroid";
+		break;
+	case 4:
+		$category_text = "Pituitary/Adrenal/Gonad";
+		break;
+}
+
+?>
 <div class="w-full h-screen flex items-center justify-center flex-col px-10">
-    <h1 class="font-semibold text-2xl font-sans">포스터구연발표(Poster oral seesion) 채점표</h1>
+    <h1 class="font-semibold text-2xl font-sans"><?php echo $type_text; ?> 채점표</h1>
     <div class="mt-10">
         <table class="border border-solid">
             <tr class="border border-solid">
@@ -74,7 +111,7 @@
             <tr>
                 <?php foreach($reviewers as $reviewer) {?>
                 <input id="reviewer_idx" value="<?php echo $reviewer['idx']; ?>" hidden/>
-                <td class="border border-solid py-2 px-4"> <div class="text_box"><?php echo $reviewer['category']; ?></div> </td>
+                <td class="border border-solid py-2 px-4"> <div class="text_box"><?php echo $category_text; ?></div> </td>
                 <td class="border border-solid py-2 px-4"> <?php echo $reviewer['nick_name']; ?> </td>
                 <td class="border border-solid py-2 px-4"> <?php echo $reviewer['org']; ?> </td>
                <?php } ?>
@@ -276,28 +313,49 @@
 
         const abstract_idx = modal.dataset.id;
         const reviewer_idx = document.querySelector("#reviewer_idx").value;
-        const sum =  sumTd.innerText;
-       const url = `/score/add_sum?abstract_idx=${abstract_idx}&reviewer_idx=${reviewer_idx}&sum=${sum}`
+        let value1 =  select1.options[select1.selectedIndex].value;
+        let value2 =  select2.options[select2.selectedIndex].value;
+        let value3 =  select3.options[select3.selectedIndex].value;
+        let value4 =  select4.options[select4.selectedIndex].value;
+        let value5 =  select5.options[select5.selectedIndex].value;
 
+        if(value5 === 'Y'){
+            value1 = 0;
+            value2 = 0;
+            value3 = 0;
+            value4 = 0;
+        }
+        const url = `/score/add_sum`
+        const data = {
+            abstract_idx:abstract_idx,
+            reviewer_idx:reviewer_idx,
+            score1 : value1,
+            score2 : value2,
+            score3 : value3,
+            score4 : value4,
+            coi :value5
+        };
 
-     try{
-        const res = await fetch(url)
-
-        if(res.ok){
-            modal.style.display = "none";
+        $.ajax({
+		type: "POST",
+		url : url,
+		data: data,
+		success: function(result){
+			modal.style.display = "none";
             modalBackground.style.display = "none";
 
-        rateBtnList.forEach((btn)=>{
-                if(modal.dataset.id === btn.dataset.id){
-                    btn.innerText = "채점완료";
-                    btn.style.background = "rgb(59 130 246)"
-                }
+            rateBtnList.forEach((btn)=>{
+            if(modal.dataset.id === btn.dataset.id){
+                btn.innerText = "채점완료";
+                btn.style.background = "rgb(59 130 246)"
+            }
         })
-        }
-     }catch(e){
-        console.log(e)
-     }
-      
+        },
+		error:function(e){  
+            console.log(e)
+            //에러가 났을 경우 실행시킬 코드
+		}
+	})   
    })
 
    submitBtn.addEventListener("click", ()=>{
@@ -346,8 +404,8 @@
         })
 
         modal.style.display = "";
-       modalBackground.style.display = "";
-       modal.dataset.id = e.target.dataset.id;
+        modalBackground.style.display = "";
+        modal.dataset.id = e.target.dataset.id;
         sumTd.innerText = "4"
    }
 
