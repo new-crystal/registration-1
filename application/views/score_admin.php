@@ -24,7 +24,25 @@ table th {
     left: 52%;
     transform: translate(-50%, -50%);
 }
+
 </style>
+<script>
+    const path = window.location.pathname;
+    let type = 0;
+    if(path === '/score/admin'){
+        type = 0;
+    }
+    else if(path === '/score/admin_poster1'){
+        type = 1;
+    }
+    else if(path === '/score/admin_poster2'){
+        type = 2;
+    }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("typeInput").value = type;
+    });
+</script>
 <!-- Main content -->
 <div class="content-wrapper">
     <!-- Page header -->
@@ -65,7 +83,8 @@ table th {
             <div class="panel-heading">
                 <h5 class="panel-title">등록 초록</h5>
                 <div class="heading-elements">
-                    <form action="/score/abstract_excel_2" method="post">
+                    <form action="/score/abstract_excel" method="post">
+                    <input type="hidden" id="typeInput" name="type" value="0"/>
                         <button class="btn btn-primary pull-right"><i class="icon-download4"></i> &nbspExcel
                             Download</button>
                     </form>
