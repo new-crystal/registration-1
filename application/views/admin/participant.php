@@ -199,7 +199,7 @@
         </tr>
         <tr>
             <th class="bg-blue-200"></th>
-            <th class="bg-blue-200">기타 총합</th>
+            <th class="bg-blue-200">전시(부스) 총합</th>
 
             <td class="bg-blue-200" class="sum_t3_d1_pre_ap"><?php echo $sum_t3_d1_pre_ap; ?></td>
             <td class="bg-blue-200" class="sum_t3_d1_pre_ac"><?php echo $sum_t3_d1_pre_ac; ?></td>
@@ -212,6 +212,22 @@
 
             <td class="bg-blue-200" class="sum_t3_d2_on_ap"><?php echo $sum_t3_d2_on_ap; ?></td>
             <td class="bg-blue-200" class="sum_t3_d2_on_ac"><?php echo $sum_t3_d2_on_ac; ?></td>
+        </tr>
+        <tr>
+            <th class="bg-blue-200"></th>
+            <th class="bg-blue-200">기타 총합</th>
+
+            <td class="bg-blue-200" class="sum_t3_d1_pre_ap"><?php echo $sum_t4_d1_pre_ap; ?></td>
+            <td class="bg-blue-200" class="sum_t3_d1_pre_ac"><?php echo $sum_t4_d1_pre_ac; ?></td>
+
+            <td class="bg-blue-200" class="sum_t3_d1_on_ap"><?php echo $sum_t4_d1_on_ap; ?></td>
+            <td class="bg-blue-200" class="sum_t3_d1_on_ac"><?php echo $sum_t4_d1_on_ac; ?></td>
+
+            <td class="bg-blue-200" class="sum_t3_d2_pre_ap"><?php echo $sum_t4_d2_pre_ap; ?></td>
+            <td class="bg-blue-200" class="sum_t3_d2_pre_ac"><?php echo $sum_t4_d2_pre_ac; ?></td>
+
+            <td class="bg-blue-200" class="sum_t3_d2_on_ap"><?php echo $sum_t4_d2_on_ap; ?></td>
+            <td class="bg-blue-200" class="sum_t3_d2_on_ac"><?php echo $sum_t4_d2_on_ac; ?></td>
         </tr>
             <tr>
                 <th class="bg-neutral-200" rowspan="15">의료</th>
@@ -903,9 +919,9 @@
             <td class="bg-blue-200" class="sum_t2_d2_on_ac"><?php echo $sum_t2_d2_on_ac; ?></td>
         </tr>
 
-<!------------------------ 기타 -------------------------->
-        <tr>
-            <th class="bg-neutral-200" rowspan="15">기타</th>
+<!------------------------ 전시(부스) -------------------------->
+<tr>
+            <th class="bg-neutral-200" rowspan="15">전시(부스)</th>
             <th>교수</th>
             <td><?php echo $user_t3_d1_pre_ap_m0; ?></td>
             <td><?php echo $user_t3_d1_pre_ac_m0; ?></td>
@@ -1117,7 +1133,7 @@
         </tr>
         <tr>
             <th class="bg-blue-200"></th>
-            <th class="bg-blue-200">기타 총합</th>
+            <th class="bg-blue-200">전시(부스) 총합</th>
 
             <td class="bg-blue-200" class="sum_t3_d1_pre_ap"><?php echo $sum_t3_d1_pre_ap; ?></td>
             <td class="bg-blue-200" class="sum_t3_d1_pre_ac"><?php echo $sum_t3_d1_pre_ac; ?></td>
@@ -1132,26 +1148,255 @@
             <td class="bg-blue-200" class="sum_t3_d2_on_ac"><?php echo $sum_t3_d2_on_ac; ?></td>
         </tr>
 
+<!------------------------ 기타 -------------------------->
+        <tr>
+            <th class="bg-neutral-200" rowspan="15">기타</th>
+            <th>교수</th>
+            <td><?php echo $user_t4_d1_pre_ap_m0; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m0; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m0; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m0; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m0; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m0; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m0; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m0; ?></td>
+        </tr>
+        <tr>
+        <th>개원의</th>
+            <td><?php echo $user_t4_d1_pre_ap_m1; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m1; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m1; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m1; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m1; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m1; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m1; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m1; ?></td>
+        </tr>
+        <tr>
+            <th>봉직의</th>
+            <td><?php echo $user_t4_d1_pre_ap_m2; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m2; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m2; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m2; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m2; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m2; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m2; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m2; ?></td>
+        </tr>
+        <tr>
+            <th>전임의</th>
+            <td><?php echo $user_t4_d1_pre_ap_m3; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m3; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m3; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m3; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m3; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m3; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m3; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m3; ?></td>
+        </tr>
+        <tr>
+            <th>수련의</th>
+            <td><?php echo $user_t4_d1_pre_ap_m4; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m4; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m4; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m4; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m4; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m4; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m4; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m4; ?></td>
+        </tr>
+        <tr>
+            <th>전공의</th>
+            <td><?php echo $user_t4_d1_pre_ap_m5; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m5; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m5; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m5; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m5; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m5; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m5; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m5; ?></td>
+        </tr>
+        <tr>
+            <th>영양사</th>
+            <td><?php echo $user_t4_d1_pre_ap_m6; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m6; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m6; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m6; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m6; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m6; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m6; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m6; ?></td>
+        </tr>
+        <tr>
+            <th>운동사</th>
+            <td><?php echo $user_t4_d1_pre_ap_m7; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m7; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m7; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m7; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m7; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m7; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m7; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m7; ?></td>
+        </tr>
+        <tr>
+            <th>간호사</th>
+            <td><?php echo $user_t4_d1_pre_ap_m8; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m8; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m8; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m8; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m8; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m8; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m8; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m8; ?></td>
+        </tr>
+        <tr>
+            <th>군의관</th>
+            <td><?php echo $user_t4_d1_pre_ap_m9; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m9; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m9; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m9; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m9; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m9; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m9; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m9; ?></td>
+        </tr>
+        <tr>
+            <th>공보의</th>
+            <td><?php echo $user_t4_d1_pre_ap_m10; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m10; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m10; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m10; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m10; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m10; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m10; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m10; ?></td>
+        </tr>
+        <tr>
+            <th>연구원</th>
+            <td><?php echo $user_t4_d1_pre_ap_m11; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m11; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m11; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m11; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m11; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m11; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m11; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m11; ?></td>
+        </tr>
+        <tr>
+            <th>학생</th>
+            <td><?php echo $user_t4_d1_pre_ap_m12; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m12; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m12; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m12; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m12; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m12; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m12; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m12; ?></td>
+        </tr>
+        <tr>
+            <th>전시(부스)</th>
+            <td><?php echo $user_t4_d1_pre_ap_m13; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m13; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m13; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m13; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m13; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m13; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m13; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m13; ?></td>
+        </tr>
+        <tr>
+            <th>기타</th>
+            <td><?php echo $user_t4_d1_pre_ap_m14; ?></td>
+            <td><?php echo $user_t4_d1_pre_ac_m14; ?></td>
+
+            <td><?php echo $user_t4_d1_on_ap_m14; ?></td>
+            <td><?php echo $user_t4_d1_on_ac_m14; ?></td>
+
+            <td><?php echo $user_t4_d2_pre_ap_m14; ?></td>
+            <td><?php echo $user_t4_d2_pre_ac_m14; ?></td>
+
+            <td><?php echo $user_t4_d2_on_ap_m14; ?></td>
+            <td><?php echo $user_t4_d2_on_ac_m14; ?></td>
+        </tr>
+        <tr>
+            <th class="bg-blue-200"></th>
+            <th class="bg-blue-200">기타 총합</th>
+
+            <td class="bg-blue-200" class="sum_t4_d1_pre_ap"><?php echo $sum_t4_d1_pre_ap; ?></td>
+            <td class="bg-blue-200" class="sum_t4_d1_pre_ac"><?php echo $sum_t4_d1_pre_ac; ?></td>
+
+            <td class="bg-blue-200" class="sum_t4_d1_on_ap"><?php echo $sum_t4_d1_on_ap; ?></td>
+            <td class="bg-blue-200" class="sum_t4_d1_on_ac"><?php echo $sum_t4_d1_on_ac; ?></td>
+
+            <td class="bg-blue-200" class="sum_t4_d2_pre_ap"><?php echo $sum_t4_d2_pre_ap; ?></td>
+            <td class="bg-blue-200" class="sum_t4_d2_pre_ac"><?php echo $sum_t4_d2_pre_ac; ?></td>
+
+            <td class="bg-blue-200" class="sum_t4_d2_on_ap"><?php echo $sum_t4_d2_on_ap; ?></td>
+            <td class="bg-blue-200" class="sum_t4_d2_on_ac"><?php echo $sum_t4_d2_on_ac; ?></td>
+        </tr>
+
 <!------------------------ total -------------------------->
 
             <tr>
                 <th class="bg-neutral-200" colspan="2">합계</th>
-                <td class="bg-neutral-200" class="sum_1"><?php echo $sum_t0_d1_pre_ap + $sum_t1_d1_pre_ap + $sum_t2_d1_pre_ap + $sum_t3_d1_pre_ap; ?></td>
-                <td class="bg-neutral-200" class="sum_2"><?php echo $sum_t0_d1_pre_ac + $sum_t1_d1_pre_ac + $sum_t2_d1_pre_ac + $sum_t3_d1_pre_ac; ?></td>
+                <td class="bg-neutral-200"><?php echo $sum_t0_d1_pre_ap + $sum_t1_d1_pre_ap + $sum_t2_d1_pre_ap + $sum_t3_d1_pre_ap + $sum_t4_d1_pre_ap; ?></td>
+                <td class="bg-neutral-200"><?php echo $sum_t0_d1_pre_ac + $sum_t1_d1_pre_ac + $sum_t2_d1_pre_ac + $sum_t3_d1_pre_ac + $sum_t4_d1_pre_ac; ?></td>
 
-                <td class="bg-neutral-200" class="sum_3"><?php echo $sum_t0_d1_on_ap + $sum_t1_d1_on_ap + $sum_t2_d1_on_ap + $sum_t3_d1_on_ap; ?></td>
-                <td class="bg-neutral-200" class="sum_4"><?php echo $sum_t0_d1_on_ac + $sum_t1_d1_on_ac + $sum_t2_d1_on_ac + $sum_t3_d1_on_ac; ?></td>
+                <td class="bg-neutral-200"><?php echo $sum_t0_d1_on_ap + $sum_t1_d1_on_ap + $sum_t2_d1_on_ap + $sum_t3_d1_on_ap + $sum_t4_d1_on_ap; ?></td>
+                <td class="bg-neutral-200"><?php echo $sum_t0_d1_on_ac + $sum_t1_d1_on_ac + $sum_t2_d1_on_ac + $sum_t3_d1_on_ac + $sum_t4_d1_on_ac; ?></td>
 
-                <td class="bg-neutral-200" class="sum_5"><?php echo $sum_t0_d2_pre_ap + $sum_t1_d2_pre_ap + $sum_t2_d2_pre_ap + $sum_t3_d2_pre_ap; ?></td>
-                <td class="bg-neutral-200" class="sum_6"><?php echo $sum_t0_d2_pre_ac + $sum_t1_d2_pre_ac + $sum_t2_d2_pre_ac + $sum_t3_d2_pre_ac; ?></td>
+                <td class="bg-neutral-200"><?php echo $sum_t0_d2_pre_ap + $sum_t1_d2_pre_ap + $sum_t2_d2_pre_ap + $sum_t3_d2_pre_ap + $sum_t4_d2_pre_ap; ?></td>
+                <td class="bg-neutral-200"><?php echo $sum_t0_d2_pre_ac + $sum_t1_d2_pre_ac + $sum_t2_d2_pre_ac + $sum_t3_d2_pre_ac + $sum_t4_d2_pre_ac; ?></td>
 
-                <td class="bg-neutral-200" class="sum_7"><?php echo $sum_t0_d2_on_ap + $sum_t1_d2_on_ap + $sum_t2_d2_on_ap + $sum_t3_d2_on_ap; ?></td>
-                <td class="bg-neutral-200" class="sum_8"><?php echo $sum_t0_d2_on_ac + $sum_t1_d2_on_ac + $sum_t2_d2_on_ac + $sum_t3_d2_on_ac; ?></td>
+                <td class="bg-neutral-200"><?php echo $sum_t0_d2_on_ap + $sum_t1_d2_on_ap + $sum_t2_d2_on_ap + $sum_t3_d2_on_ap + $sum_t4_d2_on_ap; ?></td>
+                <td class="bg-neutral-200"><?php echo $sum_t0_d2_on_ac + $sum_t1_d2_on_ac + $sum_t2_d2_on_ac + $sum_t3_d2_on_ac + $sum_t4_d2_on_ac; ?></td>
             </tr>
             <tr>
                 <th class="bg-yellow-400" colspan="2">Total</th>
-                <td class="bg-yellow-400" colspan="4" class="count_5"></td>
-                <td class="bg-yellow-400" colspan="4" class="count_6"></td>
+                <td class="bg-yellow-400" colspan="4"><?php echo $sum_d1; ?></td>
+                <td class="bg-yellow-400" colspan="4"><?php echo $sum_d2; ?></td>
             </tr>
         </tbody>
     </table>
@@ -1162,33 +1407,3 @@
 
 </div>
 <!-- /page container -->
-
-<script>
-    const count_5 = document.querySelector(".count_5");
-    const count_6 = document.querySelector(".count_6");
-
-    const sum_1 = document.querySelector(".sum_1");
-    const sum_2 = document.querySelector(".sum_2");
-    const sum_3 = document.querySelector(".sum_3");
-    const sum_4 = document.querySelector(".sum_4");
-
-    const sum_5 = document.querySelector(".sum_5");
-    const sum_6 = document.querySelector(".sum_6");
-    const sum_7 = document.querySelector(".sum_7");
-    const sum_8 = document.querySelector(".sum_8");
-
-    function getSum(){
-        console.log("hi")
-        count_5.innerText = sum_1.innerText * 1 + sum_2.innerText * 1 + sum_3.innerText * 1 + sum_4.innerText * 1;
-        count_6.innerText = sum_5.innerText * 1 + sum_6.innerText * 1 + sum_7.innerText * 1 + sum_8.innerText * 1;
-    }
-
-    // let timeout = setTimeout(()=>{
-    //     getSum();
-    // }, 10000)
-        
-    // window.addEventListener('beforeunload', function () {
-    //     clearTimeout(timeout)
-    // });
-    
-</script>
