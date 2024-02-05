@@ -10,7 +10,7 @@ class Participant extends CI_Model
 	//참석자 현황 페이지 model!!
 
 	 
-    //type1 => t -> t0 의료 / t1 영양 / t2 운동 / t3 기타
+    //type1 => t -> t0 의료 / t1 영양 / t2 운동 / t3 전시(부스) /t4 기타
     //qr_chk_day_1, 2 => d -> d1 day1 / d2 day2
     //onsite_reg => pre 사전등록 0 / on 현장등록 1
     //attendance_type => a -> ap 일반참석자 / ac 임원
@@ -4696,15 +4696,16 @@ public function get_participants_t2_d2_on_ac_m12()
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
-// 영양!!
+// 전시(부스)!!
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 public function get_participants_t3_d1_pre_ap_m0()
 {
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4716,7 +4717,7 @@ public function get_participants_t3_d1_pre_ac_m0()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '교수'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '교수'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4728,7 +4729,7 @@ public function get_participants_t3_d1_on_ap_m0()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4740,7 +4741,7 @@ public function get_participants_t3_d1_on_ac_m0()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '교수'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '교수'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4752,7 +4753,7 @@ public function get_participants_t3_d2_pre_ap_m0()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4764,7 +4765,7 @@ public function get_participants_t3_d2_pre_ac_m0()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '교수'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '교수'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4776,7 +4777,7 @@ public function get_participants_t3_d2_on_ap_m0()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4788,7 +4789,7 @@ public function get_participants_t3_d2_on_ac_m0()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '교수'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '교수'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4801,7 +4802,7 @@ public function get_participants_t3_d1_pre_ap_m1()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4813,7 +4814,7 @@ public function get_participants_t3_d1_pre_ac_m1()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '개원의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4825,7 +4826,7 @@ public function get_participants_t3_d1_on_ap_m1()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4837,7 +4838,7 @@ public function get_participants_t3_d1_on_ac_m1()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '개원의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4849,7 +4850,7 @@ public function get_participants_t3_d2_pre_ap_m1()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4861,7 +4862,7 @@ public function get_participants_t3_d2_pre_ac_m1()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '개원의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4873,7 +4874,7 @@ public function get_participants_t3_d2_on_ap_m1()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4885,7 +4886,7 @@ public function get_participants_t3_d2_on_ac_m1()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '개원의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4899,7 +4900,7 @@ public function get_participants_t3_d1_pre_ap_m2()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4911,7 +4912,7 @@ public function get_participants_t3_d1_pre_ac_m2()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4923,7 +4924,7 @@ public function get_participants_t3_d1_on_ap_m2()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4935,7 +4936,7 @@ public function get_participants_t3_d1_on_ac_m2()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4947,7 +4948,7 @@ public function get_participants_t3_d2_pre_ap_m2()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4959,7 +4960,7 @@ public function get_participants_t3_d2_pre_ac_m2()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4971,7 +4972,7 @@ public function get_participants_t3_d2_on_ap_m2()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4983,7 +4984,7 @@ public function get_participants_t3_d2_on_ac_m2()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -4998,7 +4999,7 @@ public function get_participants_t3_d1_pre_ap_m3()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5010,7 +5011,7 @@ public function get_participants_t3_d1_pre_ac_m3()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전임의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5022,7 +5023,7 @@ public function get_participants_t3_d1_on_ap_m3()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5034,7 +5035,7 @@ public function get_participants_t3_d1_on_ac_m3()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전임의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5046,7 +5047,7 @@ public function get_participants_t3_d2_pre_ap_m3()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5058,7 +5059,7 @@ public function get_participants_t3_d2_pre_ac_m3()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전임의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5070,7 +5071,7 @@ public function get_participants_t3_d2_on_ap_m3()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5082,7 +5083,7 @@ public function get_participants_t3_d2_on_ac_m3()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전임의'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5096,7 +5097,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5108,7 +5109,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '수련의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '수련의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5120,7 +5121,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5132,7 +5133,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '수련의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '수련의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5144,7 +5145,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5156,7 +5157,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '수련의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '수련의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5168,7 +5169,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5180,7 +5181,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '수련의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '수련의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5195,7 +5196,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5207,7 +5208,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전공의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전공의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5219,7 +5220,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5231,7 +5232,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전공의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전공의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5243,7 +5244,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5255,7 +5256,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전공의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전공의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5267,7 +5268,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5279,7 +5280,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전공의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전공의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5294,7 +5295,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5306,7 +5307,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '영양사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '영양사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5318,7 +5319,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5330,7 +5331,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '영양사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '영양사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5342,7 +5343,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5354,7 +5355,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '영양사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '영양사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5366,7 +5367,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5378,7 +5379,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '영양사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '영양사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5393,7 +5394,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5405,7 +5406,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '운동사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '운동사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5417,7 +5418,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5429,7 +5430,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '운동사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '운동사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5441,7 +5442,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5453,7 +5454,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '운동사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '운동사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5465,7 +5466,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5477,7 +5478,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '운동사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '운동사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5492,7 +5493,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5504,7 +5505,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '간호사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '간호사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5516,7 +5517,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5528,7 +5529,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '간호사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '간호사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5540,7 +5541,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5552,7 +5553,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '간호사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '간호사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5564,7 +5565,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5576,7 +5577,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '간호사'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '간호사'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5591,7 +5592,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5603,7 +5604,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '군의관'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '군의관'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5615,7 +5616,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5627,7 +5628,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '군의관'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '군의관'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5639,7 +5640,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5651,7 +5652,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '군의관'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '군의관'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5663,7 +5664,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5675,7 +5676,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '군의관'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '군의관'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5690,7 +5691,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5702,7 +5703,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '공보의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '공보의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5714,7 +5715,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5726,7 +5727,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '공보의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '공보의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5738,7 +5739,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5750,7 +5751,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '공보의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '공보의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5762,7 +5763,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5774,7 +5775,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '공보의'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '공보의'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5789,7 +5790,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5801,7 +5802,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '연구원'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '연구원'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5813,7 +5814,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5825,7 +5826,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '연구원'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '연구원'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5837,7 +5838,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5849,7 +5850,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '연구원'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '연구원'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5861,7 +5862,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5873,7 +5874,7 @@ public function get_participants_t3_d2_on_ac_m3()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '연구원'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '연구원'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5887,7 +5888,7 @@ public function get_participants_t3_d1_pre_ap_m12()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5899,7 +5900,7 @@ public function get_participants_t3_d1_pre_ac_m12()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '학생'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '학생'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5911,7 +5912,7 @@ public function get_participants_t3_d1_on_ap_m12()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5923,7 +5924,7 @@ public function get_participants_t3_d1_on_ac_m12()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '학생'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '학생'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5935,7 +5936,7 @@ public function get_participants_t3_d2_pre_ap_m12()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5947,7 +5948,7 @@ public function get_participants_t3_d2_pre_ac_m12()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '학생'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '학생'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5959,7 +5960,7 @@ public function get_participants_t3_d2_on_ap_m12()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5971,7 +5972,7 @@ public function get_participants_t3_d2_on_ac_m12()
     $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '학생'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '학생'
         ORDER BY a.id ASC
 ");
     $result = $query->result_array();
@@ -5985,7 +5986,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -5997,7 +5998,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -6009,7 +6010,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -6021,7 +6022,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -6033,7 +6034,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -6045,7 +6046,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -6057,7 +6058,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -6069,7 +6070,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
             ORDER BY a.id ASC
     ");
         $result = $query->result_array();
@@ -6083,7 +6084,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
     ");
         $result = $query->result_array();
         return count($result); 
@@ -6094,7 +6095,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '기타'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '기타'
     ");
         $result = $query->result_array();
         return count($result); 
@@ -6105,7 +6106,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
     ");
         $result = $query->result_array();
         return count($result); 
@@ -6116,7 +6117,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '기타'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '기타'
     ");
         $result = $query->result_array();
         return count($result); 
@@ -6127,7 +6128,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
     ");
         $result = $query->result_array();
         return count($result); 
@@ -6138,7 +6139,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '기타'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '기타'
     ");
         $result = $query->result_array();
         return count($result); 
@@ -6149,7 +6150,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
     ");
         $result = $query->result_array();
         return count($result); 
@@ -6160,7 +6161,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '기타'
+            WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '기타'
     ");
         $result = $query->result_array();
         return count($result); 
@@ -6176,7 +6177,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자'
         ");
     $result = $query->result_array();
     return count($result); 
@@ -6187,7 +6188,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원'
         ");
     $result = $query->result_array();
     return count($result); 
@@ -6198,7 +6199,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '일반참석자'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '일반참석자'
         ");
     $result = $query->result_array();
     return count($result); 
@@ -6209,7 +6210,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '임원'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '임원'
         ");
     $result = $query->result_array();
     return count($result); 
@@ -6220,7 +6221,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0 AND a.attendance_type = '일반참석자'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0 AND a.attendance_type = '일반참석자'
         ");
     $result = $query->result_array();
     return count($result); 
@@ -6231,7 +6232,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0 AND a.attendance_type = '임원'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0 AND a.attendance_type = '임원'
         ");
     $result = $query->result_array();
     return count($result); 
@@ -6242,7 +6243,7 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '일반참석자'
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '일반참석자'
         ");
     $result = $query->result_array();
     return count($result); 
@@ -6253,11 +6254,1575 @@ public function get_participants_t3_d2_on_ac_m12()
         $query = $this->db->query("
         SELECT *
         FROM users a
+        WHERE a.type1 = '전시(부스)' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '임원'
+        ");
+    $result = $query->result_array();
+    return count($result); 
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+// 기타!!
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public function get_participants_t4_d1_pre_ap_m0()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_pre_ac_m0()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '교수'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ap_m0()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ac_m0()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '교수'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ap_m0()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ac_m0()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '교수'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ap_m0()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ac_m0()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '교수'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public function get_participants_t4_d1_pre_ap_m1()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_pre_ac_m1()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ap_m1()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ac_m1()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ap_m1()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ac_m1()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ap_m1()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ac_m1()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public function get_participants_t4_d1_pre_ap_m2()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_pre_ac_m2()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ap_m2()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ac_m2()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ap_m2()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ac_m2()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ap_m2()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ac_m2()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public function get_participants_t4_d1_pre_ap_m3()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_pre_ac_m3()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ap_m3()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ac_m3()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ap_m3()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ac_m3()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ap_m3()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ac_m3()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m4()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m4()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '수련의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m4()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m4()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '수련의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m4()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m4()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '수련의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m4()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m4()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '수련의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m5()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m5()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전공의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m5()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m5()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전공의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m5()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m5()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전공의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m5()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m5()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전공의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+            
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m6()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m6()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '영양사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m6()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m6()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '영양사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m6()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m6()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '영양사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m6()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m6()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '영양사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+                    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m7()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m7()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '운동사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m7()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m7()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '운동사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m7()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m7()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '운동사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m7()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m7()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '운동사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+                            
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m8()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m8()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '간호사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m8()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m8()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '간호사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m8()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m8()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '간호사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m8()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m8()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '간호사'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+                                    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m9()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m9()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '군의관'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m9()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m9()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '군의관'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m9()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m9()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '군의관'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m9()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m9()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '군의관'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+                                            
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m10()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m10()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '공보의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m10()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m10()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '공보의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m10()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m10()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '공보의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m10()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m10()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '공보의'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+                                                    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m11()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m11()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '연구원'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m11()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m11()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '연구원'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m11()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m11()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '연구원'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m11()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m11()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '연구원'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public function get_participants_t4_d1_pre_ap_m12()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_pre_ac_m12()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '학생'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ap_m12()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d1_on_ac_m12()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '학생'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ap_m12()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_pre_ac_m12()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '학생'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ap_m12()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+public function get_participants_t4_d2_on_ac_m12()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '학생'
+        ORDER BY a.id ASC
+");
+    $result = $query->result_array();
+    return count($result); 
+}
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m13()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m13()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m13()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m13()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m13()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m13()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m13()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '전시(부스)'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m13()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '전시(부스)'
+            ORDER BY a.id ASC
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_participants_t4_d1_pre_ap_m14()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_pre_ac_m14()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '기타'
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d1_on_ap_m14()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+    
+    public function get_participants_t4_d1_on_ac_m14()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '기타'
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ap_m14()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_pre_ac_m14()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원' AND a.member_type = '기타'
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ap_m14()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '일반참석자' AND a.member_type = '기타'
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+    public function get_participants_t4_d2_on_ac_m14()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1  AND a.attendance_type = '임원' AND a.member_type = '기타'
+    ");
+        $result = $query->result_array();
+        return count($result); 
+    }
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
+// 합계
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function sum_participants_t4_d1_pre_ap()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '일반참석자'
+        ");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function sum_participants_t4_d1_pre_ac()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0  AND a.attendance_type = '임원'
+        ");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function sum_participants_t4_d1_on_ap()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '일반참석자'
+        ");
+    $result = $query->result_array();
+    return count($result); 
+    }
+    
+    public function sum_participants_t4_d1_on_ac()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '임원'
+        ");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function sum_participants_t4_d2_pre_ap()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0 AND a.attendance_type = '일반참석자'
+        ");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function sum_participants_t4_d2_pre_ac()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0 AND a.attendance_type = '임원'
+        ");
+    $result = $query->result_array();
+    return count($result); 
+    }
+    
+    public function sum_participants_t4_d2_on_ap()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '일반참석자'
+        ");
+    $result = $query->result_array();
+    return count($result); 
+    }
+            
+    public function sum_participants_t4_d2_on_ac()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
         WHERE a.type1 = '기타' AND a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1 AND a.attendance_type = '임원'
         ");
     $result = $query->result_array();
     return count($result); 
     }
+
 
 
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -6340,8 +7905,9 @@ public function get_participants_t3_d2_on_ac_m12()
  {
         $query = $this->db->query("
         SELECT *
-        FROM users a
-        WHERE a.qr_chk_day_1 = 'Y'
+            FROM users a
+            WHERE a.qr_chk_day_1 = 'Y' 
+            AND (a.attendance_type = '일반참석자' OR a.attendance_type = '임원');
         ");
     $result = $query->result_array();
     return count($result); 
@@ -6351,12 +7917,15 @@ public function get_participants_t3_d2_on_ac_m12()
  {
         $query = $this->db->query("
         SELECT *
-        FROM users a
-        WHERE a.qr_chk_day_2 = 'Y'
+            FROM users a
+            WHERE a.qr_chk_day_2 = 'Y' 
+            AND (a.attendance_type = '일반참석자' OR a.attendance_type = '임원');
         ");
     $result = $query->result_array();
     return count($result); 
  }
+
+
 }
 
 ?>
