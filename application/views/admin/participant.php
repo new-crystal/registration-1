@@ -3,7 +3,7 @@
     th,
     td {
         text-align: center !important;
-        border: 2px solid rgb(163 163 163);
+        border: 1px solid rgb(163 163 163);
         font-weight: 600;
         font-size: 1.5rem;
         line-height: 2rem;
@@ -11,7 +11,7 @@
 
     tr {
         height: 3.7rem;
-        border: 2px solid rgb(163 163 163);
+        border: 1px solid rgb(163 163 163);
         font-weight: 600;
         font-size: 1.5rem;
         line-height: 2rem;
@@ -29,7 +29,7 @@
 .tableWrap table{
     width: 80%;
     border: 0px;
-    border-collapse: collapse;
+    border-collapse: separate;
     margin : 0 auto;
 }
 
@@ -51,7 +51,7 @@
 
     //echo $user_t0_d1_pre_ap_m0;
 
-    //type1 => t -> t0 의료 / t1 영양 / t2 운동 / t3 기타
+    //type1 => t -> t0 의료 / t1 영양 / t2 운동 / t3 전시(부스) / t4 기타
     //qr_chk_day_1, 2 => d -> d1 day1 / d2 day2
     //onsite_reg => pre 사전등록 0 / on 현장등록 1
     //attendance_type => a -> ap 일반참석자 / ac 임원
