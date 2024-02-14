@@ -56,6 +56,7 @@
                 echo '<div class="a4_area">';
                 echo '<div class="bg_area">';
                 echo '<div class="txt_con">';
+                echo '<div class="reg_num_1">' . $users['registration_no'] . '</div>';
                 if ($nicknameLength <= 3) {
                     echo '<div class="nick_name" id="nick_name">' . $users['nick_name'] . '</div>';
                 } else if ($nicknameLength > 3 && $nicknameLength <= 6) {
@@ -68,11 +69,11 @@
                 if ($nicknameLength > 3) {
                     echo '<div class="small_receipt">';
                 }
-                echo '<div class="receipt receipt_num_1">' . $users['registration_no'] . '</div>';
-                echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
+                // echo '<div class="receipt receipt_num_1">' . $users['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_price">' . number_format($users['fee']) . '</div>';
-                echo '<div class="receipt receipt_num_2">' . $users['registration_no'] . '</div>';
-                echo '<div class="receipt receipt_small small_nick">' . $users['nick_name'] . '</div>';
+                echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
+                echo '<div class="receipt receipt_num">' . $users['registration_no'] . '</div>';
+                // echo '<div class="receipt receipt_small small_nick">' . $users['nick_name'] . '</div>';
 
                 if ($nicknameLength > 3) {
                     echo '</div>';
