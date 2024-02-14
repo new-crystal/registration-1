@@ -102,7 +102,7 @@
     width: 10cm;
     height: 24cm;
     border: 1px solid transparent;
-    background-image: url('../../images/nametag_bg.png');
+    background-image: url('../../images/2024_nametag_bg.png');
     background-size: contain;
     margin: 0;
     background-repeat: no-repeat;
@@ -159,7 +159,7 @@
   font-weight: 400;
   font-size: 70px;
   letter-spacing: 20px;
-  padding: 19px 40px 0 58px;
+  padding: 0px 40px 0 58px;
   overflow: hidden;
   line-height: 100px;
 }
@@ -180,10 +180,11 @@
     /* width: 100%; */
     /* padding-right: 96px; */
     text-align: right;
+    transform: rotate(180deg);
 }
-#printThis .receipt_num_1{
-  top: 50px;
-  right: 17px;
+#printThis .receipt_num{
+  top: 432px;
+  left: 4px;
   font-size: 10px;
 }
 
@@ -218,18 +219,28 @@
   font-size: 10px;
 }
 
+#printThis .reg_num_1{
+  position: relative;
+  top: -58px;
+  right: 4px;
+  font-size: 10px;
+  text-align: right;
+}
+
 #printThis .receipt span{
     text-align: left !important;
 }
 
 #printThis .receipt_name{
-  top: 99px;
-  right: 94px;
+  top: 253px;
+  left: 95px;
+  width: 150px;
 }
 
 #printThis .receipt_price{
-  top: 95px;
-  right: 94px;
+  top: 253px;
+  left: 95px;
+  width: 150px;
 }
 
 

@@ -195,8 +195,11 @@ class Score extends CI_Controller
     
             // 테이블 헤더 설정
             $table_columns = array("NO.", "초록번호", "발표자", "소속", "국적", "초록 제목", "전체 총합", "평균", "순위");
+            //$additional_columns = array("연구의 창의성", "방법의 타당성", "결과의 영향력", "발표의 우수성", "COI", "총점", "조정점수");
             $start_row = $this->getCategoryRow($category) + 1; 
             
+
+
             // 테이블 헤더 추가
             $column = 0;
             foreach ($table_columns as $field) {

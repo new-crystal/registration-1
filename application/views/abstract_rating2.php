@@ -131,58 +131,58 @@ switch ($category) {
             </tr>
             <?php if(isset($abstract1)){ ?>
                 <tr>
-                <td class="border border-solid p-2">1</td>
-                <td class="border border-solid p-2"><?php echo $abstract1['submission_code'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract1['first_name'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract1['org'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract1['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract1['cv_file'];?>"><?php echo $abstract1['title'];?></div></td>
-                <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract1['idx'];?>">채점하기</button></td>
-            </tr>
+                    <td class="border border-solid p-2">1</td>
+                    <td class="border border-solid p-2"><?php echo $abstract1['submission_code'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract1['first_name'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract1['org'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract1['nation'];?></td>
+                    <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract1['cv_file'];?>"><?php echo $abstract1['title'];?></div></td>
+                    <td class="border border-solid p-2"><button class="rating button" id="0" data-id="<?php echo $abstract1['idx'];?>">채점하기</button></td>
+                </tr>
                 <?php  } ?>
             <?php if(isset($abstract2)){ ?>
                 <tr>
-                <td class="border border-solid p-2">2</td>
-                <td class="border border-solid p-2"><?php echo $abstract2['submission_code'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract2['first_name'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract2['org'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract2['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract2['cv_file'];?>"><?php echo $abstract2['title'];?></div></td>
-                <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract2['idx'];?>">채점하기</button></td>
-            </tr>
+                    <td class="border border-solid p-2">2</td>
+                    <td class="border border-solid p-2"><?php echo $abstract2['submission_code'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract2['first_name'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract2['org'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract2['nation'];?></td>
+                    <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract2['cv_file'];?>"><?php echo $abstract2['title'];?></div></td>
+                    <td class="border border-solid p-2"><button class="rating button" id="1" data-id="<?php echo $abstract2['idx'];?>">채점하기</button></td>
+                </tr>
                 <?php  } ?>
             <?php if(isset($abstract3)){ ?>
                 <tr>
-                <td class="border border-solid p-2">3</td>
-                <td class="border border-solid p-2"><?php echo $abstract3['submission_code'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract3['first_name'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract3['org'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract3['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract3['cv_file'];?>"><?php echo $abstract3['title'];?></div></td>
-                <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract3['idx'];?>">채점하기</button></td>
-            </tr>
+                    <td class="border border-solid p-2">3</td>
+                    <td class="border border-solid p-2"><?php echo $abstract3['submission_code'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract3['first_name'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract3['org'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract3['nation'];?></td>
+                    <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract3['cv_file'];?>"><?php echo $abstract3['title'];?></div></td>
+                    <td class="border border-solid p-2"><button class="rating button" id="2" data-id="<?php echo $abstract3['idx'];?>">채점하기</button></td>
+                </tr>
                 <?php  } ?>
             <?php if(isset($abstract4)){ ?>
                 <tr>
-                <td class="border border-solid p-2">4</td>
-                <td class="border border-solid p-2"><?php echo $abstract4['submission_code'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract4['first_name'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract4['org'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract4['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract4['cv_file'];?>"><?php echo $abstract4['title'];?></div></td>
-                <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract4['idx'];?>">채점하기</button></td>
-            </tr>
+                    <td class="border border-solid p-2">4</td>
+                    <td class="border border-solid p-2"><?php echo $abstract4['submission_code'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract4['first_name'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract4['org'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract4['nation'];?></td>
+                    <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract4['cv_file'];?>"><?php echo $abstract4['title'];?></div></td>
+                    <td class="border border-solid p-2"><button class="rating button" id="3" data-id="<?php echo $abstract4['idx'];?>">채점하기</button></td>
+                </tr>
                 <?php  } ?>
             <?php if(isset($abstract5)){ ?>
                 <tr>
-                <td class="border border-solid p-2">5</td>
-                <td class="border border-solid p-2"><?php echo $abstract5['submission_code'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract5['first_name'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract5['org'];?></td>
-                <td class="border border-solid p-2"><?php echo $abstract5['nation'];?></td>
-                <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract5['cv_file'];?>"><?php echo $abstract5['title'];?></div></td>
-                <td class="border border-solid p-2"><button class="rating button" data-id="<?php echo $abstract5['idx'];?>">채점하기</button></td>
-            </tr>
+                    <td class="border border-solid p-2">5</td>
+                    <td class="border border-solid p-2"><?php echo $abstract5['submission_code'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract5['first_name'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract5['org'];?></td>
+                    <td class="border border-solid p-2"><?php echo $abstract5['nation'];?></td>
+                    <td class="border border-solid p-2"><div class="title_box text-blue-700 underline decoration-blue-700" data-id="<?php echo $abstract5['cv_file'];?>"><?php echo $abstract5['title'];?></div></td>
+                    <td class="border border-solid p-2"><button class="rating button" id="4" data-id="<?php echo $abstract5['idx'];?>">채점하기</button></td>
+                </tr>
                 <?php  } ?>
         </table>
     </div>
@@ -283,11 +283,14 @@ switch ($category) {
     <button id="submit" class="mt-10 py-2 px-4 bg-neutral-300 hover:bg-cyan-400 font-semibold">제출하기</button>
 </div>
 <script>
-   const rateBtnList = document.querySelectorAll(".rating");
-   const modal = document.querySelector("#modal");
+    const rateBtnList = document.querySelectorAll(".rating");
+    const modal = document.querySelector("#modal");
     const modalBackground = document.querySelector(".modal_background");
-    const completedBtn = document.querySelector("#completed");
     const sumTd = document.querySelector("#sum");
+
+    //채점완료 버튼
+    const completedBtn = document.querySelector("#completed");
+    //제출하기 버튼
     const submitBtn = document.querySelector("#submit");
 
     const titleList = document.querySelectorAll(".title_box")
@@ -301,6 +304,13 @@ switch ($category) {
     const select4 =  document.querySelector("#select4");
     const select5 =  document.querySelector("#select5");
 
+    // let data1 = "";
+    // let data2 = "";
+    // let data3 = "";
+    // let data4 = "";
+    // let data5 = "";
+    let data = [];
+
     //채점하기 버튼 클릭 이벤트
    rateBtnList.forEach((btn)=>{
         btn.addEventListener("click", (e)=>{
@@ -310,9 +320,26 @@ switch ($category) {
 
    //modal 채점 완료 버튼 이벤트
    completedBtn.addEventListener("click", async ()=>{
+ 
+        saveData(modal.dataset.index)
+    
+        modal.style.display = "none";
+        modalBackground.style.display = "none";
+
+        rateBtnList.forEach((btn)=>{
+        if(modal.dataset.id === btn.dataset.id){
+            btn.innerText = "채점완료";
+            btn.style.background = "rgb(59 130 246)"
+        }
+    })
+   })
+
+
+   function saveData(index) {
 
         const abstract_idx = modal.dataset.id;
         const reviewer_idx = document.querySelector("#reviewer_idx").value;
+
         let value1 =  select1.options[select1.selectedIndex].value;
         let value2 =  select2.options[select2.selectedIndex].value;
         let value3 =  select3.options[select3.selectedIndex].value;
@@ -325,39 +352,19 @@ switch ($category) {
             value3 = 0;
             value4 = 0;
         }
-        const url = `/score/add_sum`
-        const data = {
-            abstract_idx:abstract_idx,
-            reviewer_idx:reviewer_idx,
-            score1 : value1,
-            score2 : value2,
-            score3 : value3,
-            score4 : value4,
-            coi :value5
+
+        data[index] = {
+            abstract_idx: abstract_idx,
+            reviewer_idx: reviewer_idx,
+            score1: value1,
+            score2: value2,
+            score3: value3,
+            score4: value4,
+            coi: value5
         };
+}
 
-        $.ajax({
-		type: "POST",
-		url : url,
-		data: data,
-		success: function(result){
-			modal.style.display = "none";
-            modalBackground.style.display = "none";
-
-            rateBtnList.forEach((btn)=>{
-            if(modal.dataset.id === btn.dataset.id){
-                btn.innerText = "채점완료";
-                btn.style.background = "rgb(59 130 246)"
-            }
-        })
-        },
-		error:function(e){  
-            console.log(e)
-            //에러가 났을 경우 실행시킬 코드
-		}
-	})   
-   })
-
+   //제출하기 버튼 이벤트
    submitBtn.addEventListener("click", ()=>{
         let submitStatus = true;
         rateBtnList.forEach((btn)=>{
@@ -372,10 +379,26 @@ switch ($category) {
         }else{
             if (window.confirm("채점을 제출하시겠습니까?")) {
                 alert("채점을 해주셔서 감사합니다.")
-                window.location.href = "/score"
             }
         }
    })
+
+   function postAjax(){
+    const url = `/score/add_sum`;
+    
+    $.ajax({
+		type: "POST",
+		url : url,
+		data: data,
+		success: function(result){
+            window.location.href = "/score"
+        },
+		error:function(e){  
+            console.log(e)
+            //에러가 났을 경우 실행시킬 코드
+		}
+	})  
+   }
 
    titleList.forEach((title)=>{
     title.addEventListener("click", (e)=>{
@@ -406,6 +429,7 @@ switch ($category) {
         modal.style.display = "";
         modalBackground.style.display = "";
         modal.dataset.id = e.target.dataset.id;
+        modal.dataset.index = e.target.id;
         sumTd.innerText = "4"
    }
 
@@ -425,7 +449,6 @@ switch ($category) {
    }
 
    function showPdfViwer(e){
-        //console.log(e.target.dataset.id)
         const url = e.target.dataset.id;
         modalBackground.style.display = "";
         pdfViewer.style.display = "";
@@ -437,7 +460,4 @@ switch ($category) {
    })
    }
 
-   function openAbstract(){
-        window.open("https://kosso.org/main/download/abstract/TBD.pdf",'ChildWindow', 'width=400,height=300')
-   }
 </script>
