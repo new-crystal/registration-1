@@ -74,51 +74,54 @@ class Score extends CI_Controller
     }
 
     public function add_sum(){
-        
-        $abstract_idx = $_POST['abstract_idx'];
-        $reviewer_idx = $_POST['reviewer_idx'];
-        $score1 = $_POST['score1'];
-        $score2 = $_POST['score2'];
-        $score3 = $_POST['score3'];
-        $score4 = $_POST['score4'];
-        $coi = $_POST['coi'];
-        $time = date("Y-m-d H:i:s");
-
-        $info = array(
-            'abstract_idx' => $abstract_idx,
-            'reviewer_idx' => $reviewer_idx,
-            'score1' => $score1,
-            'score2' => $score2,
-            'score3' => $score3,
-            'score4' => $score4,
-            'coi' => $coi,
-            'time' => $time
-        );
-
-        $data['score'] = $this->rating->get_scores();
-        $data['abstracts'] = $this->rating->get_abstracts();
-
-        $found = false;
-
-        //같은 초록, 같은 심사자 경우
-        //점수 수정할 경우 위에 덮어 씌여지도록 
-        foreach($data['score'] as $score) {
-            if($score['abstract_idx'] == $abstract_idx && $score['reviewer_idx'] == $reviewer_idx) {
-                $where = array(
-                    'idx' => $score['idx']
+        // $data 배열을 이용하여 필요한 작업 수행
+        foreach ($_POST as $index => $info) {
+            // $info 배열에서 필요한 정보 추출
+            $abstract_idx = $info['abstract_idx'];
+            $reviewer_idx = $info['reviewer_idx'];
+            $score1 = $info['score1'];
+            $score2 = $info['score2'];
+            $score3 = $info['score3'];
+            $score4 = $info['score4'];
+            $coi = $info['coi'];
+            $etc1 = $info['etc1'];
+            $time = date("Y-m-d H:i:s");
+    
+            // 기존에 같은 초록, 같은 심사자가 있는지 확인하여 처리하는 코드
+            $data['score'] = $this->rating->get_scores();
+            $found = false;
+    
+            foreach($data['score'] as $score) {
+                if($score['abstract_idx'] == $abstract_idx && $score['reviewer_idx'] == $reviewer_idx) {
+                    $where = array(
+                        'idx' => $score['idx']
+                    );
+                    // 이미 있는 점수인 경우 업데이트
+                    $this->rating->update_score($info, $where);
+                    $found = true;
+                    break; // 이미 찾았으니 루프 종료
+                }
+            }
+    
+            if (!$found) {
+                // 새로운 점수인 경우 추가
+                $new_info = array(
+                    'abstract_idx' => $abstract_idx,
+                    'reviewer_idx' => $reviewer_idx,
+                    'score1' => $score1,
+                    'score2' => $score2,
+                    'score3' => $score3,
+                    'score4' => $score4,
+                    'coi' => $coi,
+                    'etc1' => $etc1,
+                    'time' => $time
                 );
-                $this->rating->update_score($info, $where);
-                $found = true;
-                break; // 이미 찾았으니 루프 종료
+    
+                $this->rating->add_score($new_info);
             }
         }
-
-        if (!$found) {
-            $this->rating->add_score($info);
-        }
-
-       
     }
+    
 
     public function admin(){
         $this->load->view('admin/header');
@@ -171,15 +174,16 @@ class Score extends CI_Controller
         $this->load->view('score_admin', $data);
     }
 
-    //excel / 총합, 평균, 순위만 출력 / 5개 카테고리 모두 출력
+    //초록 엑셀 출력 / 심사위원 출력 O
+    //[TODO] 조정점수 합, 조정점수 평균, 순위 / 심사위원별 점수
     public function abstract_excel(){
         $object = new PHPExcel();
         $object->setActiveSheetIndex(0);
-
+    
         //페이지별 type 받아오기
         $type =  $this->input->post('type');
-    
-        // 카테고리별로 반복하여 데이터 채우기
+        
+        // 반복문을 통해 각 카테고리에 맞는 열에 nickname과 org를 출력
         for ($category = 0; $category <= 4; $category++) {
             // 카테고리명 출력
             $category_name = $this->getCategoryName($category); 
@@ -191,24 +195,56 @@ class Score extends CI_Controller
                 'type' => $type,
                 'category' => $category
             );
+
+            //전체 리스트
             $list = $this->rating->get_abstract_excel($where);
-    
-            // 테이블 헤더 설정
-            $table_columns = array("NO.", "초록번호", "발표자", "소속", "국적", "초록 제목", "전체 총합", "평균", "순위");
-            //$additional_columns = array("연구의 창의성", "방법의 타당성", "결과의 영향력", "발표의 우수성", "COI", "총점", "조정점수");
-            $start_row = $this->getCategoryRow($category) + 1; 
             
+            // type, category 받아서 심사위원 성함, 소속 얻기
+            $header_list = $this->rating->get_abstract_excel_reviewer($where);
+            
+            // 테이블 헤더 설정
+            $table_columns = array("NO.", "초록번호", "발표자", "소속", "국적", "초록 제목", "전체 총합", "전체 평균", "조정 점수 총합", "조정 점수 평균" ,"순위");
+            
+            // 추가되야하는 테이블 헤더
+            $additional_columns = array("연구의 창의성", "방법의 타당성", "결과의 영향력", "발표의 우수성", "COI", "총점", "조정점수");
+            
+            foreach ($header_list as $idx) {
+                // $additional_columns 배열을 $table_columns 배열에 병합합니다.
+                $table_columns = array_merge($table_columns, $additional_columns);
+            } 
 
-
+            // 시작 열 인덱스 초기화
+            $start_column_index = 11; // J열부터 시작
+            
+            // 반복문을 통해 열을 7열씩 병합하며 이름 추가
+            foreach ($header_list as $idx) {
+                // 열의 범위 계산
+                $merge_start_column = PHPExcel_Cell::stringFromColumnIndex($start_column_index);
+                $merge_end_column = PHPExcel_Cell::stringFromColumnIndex($start_column_index + 6); // 7열씩 병합
+            
+                // 열의 범위에 해당하는 셀을 병합
+                $merge_range = $merge_start_column . $this->getCategoryRow($category) . ':' . $merge_end_column . $this->getCategoryRow($category);
+                $object->getActiveSheet()->mergeCells($merge_range);
+            
+                // 병합된 범위에 심사위원 성함과 소속 추가
+                $merged_cell_text = $idx['nick_name'] . " (" . $idx['org'] . ")";
+                $object->getActiveSheet()->setCellValue($merge_start_column . $this->getCategoryRow($category), $merged_cell_text);
+            
+                // 다음 병합을 위해 시작 열 인덱스 업데이트
+                $start_column_index += 7;
+            }
+            
             // 테이블 헤더 추가
             $column = 0;
             foreach ($table_columns as $field) {
-                $object->getActiveSheet()->setCellValueByColumnAndRow($column, $start_row, $field);
-                $column++;
+                $object->getActiveSheet()->setCellValueByColumnAndRow($column++, $this->getCategoryRow($category) + 1, $field);
             }
-    
+
             // 데이터 채우기
-            $excel_row = $start_row + 1;
+            $excel_row = $this->getCategoryRow($category) + 2;
+
+            $rank = 1;
+
             foreach ($list as $row) {
                 $where_detail = array('idx' => $row['idx']);
                 $detail_list = $this->rating->get_detail($where_detail); // 평균 얻기
@@ -218,9 +254,9 @@ class Score extends CI_Controller
                 if (count($detail_list) > 0) {
                     $average = $row['total_sum'] / count($detail_list); // 평균 계산
                 }
-    
+                
                 // 행 데이터 채우기
-                $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $excel_row - $start_row);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $excel_row - $this->getCategoryRow($category) - 1);
                 $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row['submission_code']);
                 $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row['first_name']);
                 $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row['org']);
@@ -228,10 +264,17 @@ class Score extends CI_Controller
                 $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['title']);
                 $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row['total_sum']);
                 $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $average);
-                $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $excel_row - $start_row);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row,  $row['etc1_sum']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row,  $row['avg_etc1']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $rank);
+
+                
+                
+
     
                 // 행 증가
                 $excel_row++;
+                $rank++;
             }
         }
     
@@ -271,15 +314,10 @@ class Score extends CI_Controller
         }
     }
 
- 
-    
-
+    //detail page 
     public function score_detail(){
         $this->load->view('admin/header');
         $idx = $_GET['n'];
-        // $wheres = array(
-        //     'abstract_idx' => $idx
-        // );
 
         $where = array(
             'idx' => $idx

@@ -103,16 +103,16 @@ class Rating extends CI_Model
     {
         $type = $where["type"]; 
         $category = $where["category"]; 
-        $query = $this->db->query("SELECT a.*, subquery.total_sum
-        FROM abstracts a
-        LEFT JOIN (
-            SELECT c.idx, SUM(a.score1 + a.score2 + a.score3 + a.score4) AS total_sum
-            FROM abstract_score a
-            LEFT JOIN abstracts c ON a.abstract_idx = c.idx
-            GROUP BY c.idx
-        ) AS subquery ON a.idx = subquery.idx
-        WHERE a.category = '$category' AND a.type = '$type'
-        ORDER BY subquery.total_sum DESC;");
+        $query = $this->db->query("SELECT a.*, subquery.total_sum, subquery.etc1_sum, subquery.avg_etc1
+            FROM abstracts a
+            LEFT JOIN (
+                SELECT c.abstract_idx, SUM(c.etc1) AS etc1_sum, AVG(c.etc1) AS avg_etc1, SUM(c.score1 + c.score2 + c.score3 + c.score4) AS total_sum
+                FROM abstract_score c
+                WHERE c.etc1 != 0
+                GROUP BY c.abstract_idx
+            ) AS subquery ON a.idx = subquery.abstract_idx
+            WHERE a.category = '$category' AND a.type = '$type'
+            ORDER BY subquery.avg_etc1 DESC;");
         return $query->result_array();
     }
 
@@ -125,6 +125,21 @@ class Rating extends CI_Model
         LEFT JOIN abstract_score s ON r.idx = s.reviewer_idx
         LEFT JOIN abstracts a ON s.abstract_idx = a.idx
         WHERE a.type = '$type' AND a.category = '$category'
+        ");
+        return $query->result_array();
+    }
+
+    //type, category 받아와서 심사위원 얻는 함수
+    public function get_abstract_excel_reviewer($where)
+    {
+        $type = $where["type"]; 
+        $category = $where["category"]; 
+        $query = $this->db->query("SELECT r.idx, r.nick_name, r.org
+        FROM abstract_reviewer r
+        LEFT JOIN abstract_score s ON r.idx = s.reviewer_idx
+        LEFT JOIN abstracts a ON s.abstract_idx = a.idx
+        WHERE a.type = '$type' AND a.category = '$category'
+        GROUP BY r.idx
         ");
         return $query->result_array();
     }
