@@ -263,7 +263,9 @@ switch ($category) {
                     </select>
                 </td>
                 <td class="border border-solid py-2 px-4" id="sum">4</td>
-                <td class="border border-solid py-2 px-4"><button id="completed" class="button">채점 완료</button></td>
+                <td class="border border-solid py-2 px-4">
+                    <button id="completed" class="button">채점 완료</button>
+                </td>
             </tr>
         </table>
         <div>
@@ -279,7 +281,8 @@ switch ($category) {
         <button class="close_pdf"><i class="icon-cross2"></i>창닫기</button>
        <iframe class="iframe" frameborder="0" width="500" height="800"></iframe>      
     </div>
-  
+    
+    <input name="etc1" class="etc1" hidden/>
     <button id="submit" class="mt-10 py-2 px-4 bg-neutral-300 hover:bg-cyan-400 font-semibold">제출하기</button>
 </div>
 <script>
@@ -304,12 +307,9 @@ switch ($category) {
     const select4 =  document.querySelector("#select4");
     const select5 =  document.querySelector("#select5");
 
-    // let data1 = "";
-    // let data2 = "";
-    // let data3 = "";
-    // let data4 = "";
-    // let data5 = "";
-    let data = [];
+    let data = {};
+    let sumList = [];
+    let etc1 = 0;
 
     //채점하기 버튼 클릭 이벤트
    rateBtnList.forEach((btn)=>{
@@ -332,9 +332,11 @@ switch ($category) {
             btn.style.background = "rgb(59 130 246)"
         }
     })
+
+    sumList[modal.dataset.index] = sumTd.innerText * 1;
    })
 
-
+   //data 저장함수
    function saveData(index) {
 
         const abstract_idx = modal.dataset.id;
@@ -378,44 +380,74 @@ switch ($category) {
             alert("채점을 완료해주세요.")
         }else{
             if (window.confirm("채점을 제출하시겠습니까?")) {
-                alert("채점을 해주셔서 감사합니다.")
+                postAjax();
             }
         }
    })
 
+   //ajax 보내기
    function postAjax(){
     const url = `/score/add_sum`;
+
+    //평균구하기
+    const average = calculateAverage(sumList);
+    const scoreList = [];
     
+    //조정점수 구하기
+    sumList.map((sum)=>{
+        if(sum !== 0){
+            scoreList.push(sum * 15 / average)
+        }else{
+            scoreList.push(0)
+        }
+    })
+
+    // 조정점수 넣기
+    scoreList.forEach((score, index) => {
+        data[index]['etc1'] = score;
+    });
+    
+    // console.log(sumList);
+    // console.log(scoreList);
+
     $.ajax({
 		type: "POST",
 		url : url,
 		data: data,
 		success: function(result){
-            window.location.href = "/score"
+            alert("채점을 해주셔서 감사합니다.");
+            window.location.href = "/score";
         },
 		error:function(e){  
             console.log(e)
-            //에러가 났을 경우 실행시킬 코드
+            alert("점수 저장 이슈가 발생했습니다. 관리자에게 문의해주세요.")
 		}
 	})  
    }
 
+   //제목 클릭 => pdf 뷰어
    titleList.forEach((title)=>{
     title.addEventListener("click", (e)=>{
         showPdfViwer(e)
     })
    })
 
-   //modal show function
+   //modal 보이는 함수
    function showModal(e){
-        let sel1 = select1.options;
-        let sel2 = select2.options;
-        let sel3 = select3.options;
-        let sel4 = select4.options;
-        let sel5 = select5.options;
-        
-        let selList = [sel1, sel2, sel3, sel4, sel5];
 
+        modal.style.display = "";
+        modalBackground.style.display = "";
+        modal.dataset.id = e.target.dataset.id;
+        modal.dataset.index = e.target.id;
+
+        const sel1 = select1.options;
+        const sel2 = select2.options;
+        const sel3 = select3.options;
+        const sel4 = select4.options;
+        const sel5 = select5.options;
+        const selList = [sel1, sel2, sel3, sel4, sel5];
+
+        //select box 초기화
         selList.map((sel)=>{
             for(let i = 0; i < sel.length; i++){
                 if(sel[i].value == "1"){
@@ -425,12 +457,37 @@ switch ($category) {
                 }
             }
         })
+        sumTd.innerText = "4";
 
-        modal.style.display = "";
-        modalBackground.style.display = "";
-        modal.dataset.id = e.target.dataset.id;
-        modal.dataset.index = e.target.id;
-        sumTd.innerText = "4"
+        const index = modal.dataset.index; 
+
+        //채점한 초록 수정할 경우 기존 점수 부여
+        if(data[index]){
+            const score1 = data[index].score1;
+            const score2 = data[index].score2;
+            const score3 = data[index].score3;
+            const score4 = data[index].score4;
+            const score5 = data[index].coi;
+
+            //coi가 Y 일 때
+            if(score5 === "Y"){
+                sel5[1].selected = true;
+                sel5[0].selected = false;
+
+                sumTd.innerText = 0;
+
+            //coi가 N 일 때
+            }else if(score5 === "N"){
+                sel5[0].selected = true;
+                sel5[1].selected = false;
+
+                sel1[score1*1 - 1].selected = true;     
+                sel2[score2*1 - 1].selected = true;
+                sel3[score3*1 - 1].selected = true;
+                sel4[score4*1 - 1].selected = true;
+                sumTd.innerText = score1*1 + score2*1 + score3*1 + score4*1;
+            }    
+        }
    }
 
    //점수 합계 구하는 함수
@@ -448,6 +505,7 @@ switch ($category) {
         }
    }
 
+   //pdf 뷰어 보이는 함수
    function showPdfViwer(e){
         const url = e.target.dataset.id;
         modalBackground.style.display = "";
@@ -459,5 +517,25 @@ switch ($category) {
         pdfViewer.style.display = "none";
    })
    }
+
+   //평균 구하는 함수 -> COI가 Y(sum이 0)일 경우 제외
+   function calculateAverage(arr) {
+    let sum = 0;
+    let count = 0; // 0이 아닌 값의 개수를 세기 위한 변수
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== 0) {
+            sum += arr[i];
+            count++; // 0이 아닌 값일 때만 count를 증가시킴
+        }
+    }
+
+    // 0이 아닌 값이 없을 경우 예외 처리
+    if (count === 0) {
+        return 0;
+    }
+
+    return sum / count;
+}
 
 </script>
