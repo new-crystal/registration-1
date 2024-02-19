@@ -47,7 +47,7 @@
                                     <?php if ($primary_menu == 'oral') echo 'class="active"' ?>>
                                     <a href="/score/admin">
                                         <i class="icon-list-unordered"></i>
-                                        <span>구연발표</span>
+                                        <span>Oral</span>
                                     </a>
                                 </li>
 
@@ -55,7 +55,7 @@
                                     <?php if ($primary_menu == 'poster_1') echo 'class="active"' ?>>
                                     <a href="/score/admin_poster1">
                                         <i class="icon-list-unordered"></i>
-                                        <span>포스터 구연1</span>
+                                        <span>Poster oral 1</span>
                                     </a>
                                 </li>
                                 
@@ -63,7 +63,7 @@
                                     <?php if ($primary_menu == 'poster_2') echo 'class="active"' ?>>
                                     <a href="/score/admin_poster2">
                                         <i class="icon-list-unordered"></i>
-                                        <span>포스터 구연2</span>
+                                        <span>Poster oral 2</span>
                                     </a>
                                 </li>
                                 

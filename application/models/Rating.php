@@ -116,6 +116,23 @@ class Rating extends CI_Model
         return $query->result_array();
     }
 
+    //poster1, 2 통합 출력
+    public function get_abstract_excel_poster_oral($where)
+    {
+        $category = $where["category"]; 
+        $query = $this->db->query("SELECT a.*, subquery.total_sum, subquery.etc1_sum, subquery.avg_etc1
+        FROM abstracts a
+        LEFT JOIN (
+            SELECT c.abstract_idx, SUM(c.etc1) AS etc1_sum, AVG(c.etc1) AS avg_etc1, SUM(c.score1 + c.score2 + c.score3 + c.score4) AS total_sum
+            FROM abstract_score c
+            WHERE c.etc1 != 0
+            GROUP BY c.abstract_idx
+        ) AS subquery ON a.idx = subquery.abstract_idx
+        WHERE (a.category = '$category') AND (a.type = 1 OR a.type = 2) -- 수정된 부분
+        ORDER BY subquery.avg_etc1 DESC;");
+        return $query->result_array();
+    }
+
     public function get_abstract_excel_title($where)
     {
         $type = $where["type"]; 
