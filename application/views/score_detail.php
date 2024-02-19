@@ -53,7 +53,9 @@
 <section id="container" class="">
 
     <!--main content start-->
-    <?php $sum = 0;
+    <?php 
+        $sum = 0;
+        $etc_sum = 0;
      $category_text = "";
      $category = $abstract["category"] ?? "-";
      switch ($category) {
@@ -129,9 +131,11 @@
                                     <th>발표의 <br>우수성</th>
                                     <th>COI</th>
                                     <th>총점</th>
+                                    <th>조정점수</th>
                                 </tr>
                                 <?php foreach($abstract_detail as $detail){ 
                                     $sum += $detail['sum'];
+                                    $etc_sum += $detail['etc1'];
                                     ?>
                                 <tr>
                                     <td><?php echo $detail['nick_name']; ?></td>
@@ -144,6 +148,7 @@
                                     <td><?php echo $detail['score4']; ?></td>
                                     <td><?php echo $detail['coi']; ?></td>
                                     <td><?php echo $detail['sum']; ?></td>
+                                    <td><?php echo $detail['etc1']; ?></td>
                                 </tr>
                             <?php } ?>
                             </table>
@@ -153,9 +158,11 @@
                         <table>
                                 <tr>
                                     <th>총점</th>
+                                    <th>조정점수 총합</th>
                                 </tr>
                                 <tr>
-                                    <td colspan="5"><?php echo $sum; ?></td>
+                                    <td><?php echo $sum; ?></td>
+                                    <td><?php echo $etc_sum; ?></td>
                                 </tr>  
                             </table>
 
