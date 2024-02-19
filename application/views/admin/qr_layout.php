@@ -53,6 +53,7 @@
                 <?php
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
+                // echo $nicknameLength;
                 echo '<div class="a4_area">';
                 echo '<div class="bg_area">';
                 echo '<div class="txt_con">';
@@ -61,8 +62,10 @@
                     echo '<div class="nick_name" id="nick_name">' . $users['nick_name'] . '</div>';
                 } else if ($nicknameLength > 3 && $nicknameLength <= 6) {
                     echo '<div class="small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if($nicknameLength > 6){
+                } else if($nicknameLength > 6 && $nicknameLength <= 16){
                     echo '<div class="small_small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
+                }else if($nicknameLength > 16){
+                    echo '<div class="small_small_small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
                 }
                 echo '<div class="org" id="org">' . $users['org_nametag'] . '</div>';
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';

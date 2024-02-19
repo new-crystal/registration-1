@@ -51,31 +51,34 @@ body {
     <div class="content" id="nametag">
         <div id="printThis">
             <div id="editor1" contenteditable="true">
-                <?php
+            <?php
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
+                // echo $nicknameLength;
                 echo '<div class="a4_area">';
                 echo '<div class="bg_area">';
                 echo '<div class="txt_con">';
-                if ($lang == 0) {
-                    echo '<div class="nick_name lang_en" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if ($lang !== 0 && $nicknameLength <= 3) {
+                echo '<div class="reg_num_1">' . $users['registration_no'] . '</div>';
+                if ($nicknameLength <= 3) {
                     echo '<div class="nick_name" id="nick_name">' . $users['nick_name'] . '</div>';
-                } else if ($lang !== 0 && $nicknameLength > 3) {
+                } else if ($nicknameLength > 3 && $nicknameLength <= 6) {
                     echo '<div class="small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
+                } else if($nicknameLength > 6 && $nicknameLength <= 16){
+                    echo '<div class="small_small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
+                }else if($nicknameLength > 16){
+                    echo '<div class="small_small_small_nickname" id="nick_name">' . $users['nick_name'] . '</div>';
                 }
                 echo '<div class="org" id="org">' . $users['org_nametag'] . '</div>';
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
                 if ($nicknameLength > 3) {
                     echo '<div class="small_receipt">';
                 }
-                echo '<div class="receipt receipt_num_1">' . $users['registration_no'] . '</div>';
-                echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
+                // echo '<div class="receipt receipt_num_1">' . $users['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_price">' . number_format($users['fee']) . '</div>';
-                echo '<div class="receipt receipt_num_2">' . $users['registration_no'] . '</div>';
-                echo '<div class="receipt receipt_small small_nick">' . $users['nick_name'] . '</div>';
-                // echo '<div class="receipt receipt_small smaill_ln">' . $users['ln'] . '</div>';
-                // echo '<div class="receipt receipt_small small_sn">' . $users['sn'] . '</div>';
+                echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
+                echo '<div class="receipt receipt_num">' . $users['registration_no'] . '</div>';
+                // echo '<div class="receipt receipt_small small_nick">' . $users['nick_name'] . '</div>';
+
                 if ($nicknameLength > 3) {
                     echo '</div>';
                 }
