@@ -137,7 +137,7 @@ class Admin extends CI_Controller
             $object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row['date_of_birth']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $row['is_score1']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $row['deposit']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $row['fee']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, number_format($row['fee']).'원');
             $object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $row['deposit_date']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $row['deposit_method']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(23, $excel_row, $row['deposit_memo']);
@@ -910,7 +910,7 @@ class Admin extends CI_Controller
             $object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $row['date_of_birth']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $row['is_score1']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $row['deposit']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $row['fee']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, number_format($row['fee']).'원');
             $object->getActiveSheet()->setCellValueByColumnAndRow(23, $excel_row, $row['deposit_date']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(24, $excel_row, $row['deposit_method']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(25, $excel_row, $row['deposit_memo']);
@@ -1172,7 +1172,7 @@ class Admin extends CI_Controller
     //     }
     // }
 
-    //[240110] sujeong / 현재코드 -> 페이지 유저 메일 발송
+    //[240110] sujeong / 현재코드 -> 페이지 유저 메일 발송!!!
     public function send_all_mail()
     {
         if (!isset($this->session->admin_data['logged_in']))
@@ -1196,17 +1196,17 @@ class Admin extends CI_Controller
                     $this->users->update_msm_status($info, $where);
                     $postdata = http_build_query(
                         array(
-                            'CATEGORY_D_1'      => 'QrSystem',
+                            'CATEGORY_D_1'      => 'QRSystem',
                             'CATEGORY_D_2'      => 'ksso',
                             'CATEGORY_D_3'      => '240308',
                             'SEND_ADDRESS'      => 'secretariat@kosso.org',
-                            'SEND_NAME'         => 'KSSO 2024',
+                            'SEND_NAME'         => '제59차 대한비만학회 춘계학술대회',
                             'RECV_ADDRESS'      =>  $users['email'],
                             'RECV_NAME'         =>  $users['nick_name'],
                             'REPLY_ADDRESS'     => 'secretariat@kosso.org',
-                            'REPLY_NAME'        => 'KSSO 2024',
-                            'EMAIL_SUBJECT'     => '[제59차 대한비만학회 춘계학술대회]',
-                            'EMAIL_ALTBODY'     => 'KSSO 2024',
+                            'REPLY_NAME'        => '제59차 대한비만학회 춘계학술대회',
+                            'EMAIL_SUBJECT'     => '[제59차 대한비만학회 춘계학술대회] 제목입니다.',
+                            'EMAIL_ALTBODY'     => '제59차 대한비만학회 춘계학술대회',
                             'EMAIL_TEMPLETE_ID' => 'Qr_ksso_240308',
                             'EMBED_IMAGE_GRID'  => 'null',
                             'INSERT_TEXT_GRID'    => "{" .
@@ -1278,7 +1278,7 @@ class Admin extends CI_Controller
                 'QR_MAIL_SEND_YN' =>  'Y'
             );
             $data['users'] = $this->users->get_user($where);
-            // $this->users->update_msm_status($info, $where);
+            //$this->users->update_msm_status($info, $where);
             $this->load->view('admin/qr_mail', $data);
         }
     }
@@ -1331,11 +1331,12 @@ class Admin extends CI_Controller
         $this->load->view('admin/loading');
     }
 
+    //메일 개별 발송!!!
     public function sendMail()
     {
         $userId = $_GET['n'];
         $where = array(
-            'registration_no' => $userId
+            'email' => $userId
         );
         $info = array(
             'QR_MAIL_SEND_YN' =>  'Y'

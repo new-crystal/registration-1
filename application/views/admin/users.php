@@ -131,7 +131,7 @@ table th {
                         //     echo '<a href="/admin/email?n=' . $item['registration_no'] . '" target="_blank"><div class="btn btn-warning qr_btn" >입금요청메일발송</div></a>';
                         // }
                         // echo '</td>';
-                        echo '<td style="text-align: center;">' . number_format($item['fee']) . '</td>';
+                        echo '<td style="text-align: center;">' .number_format($item['fee']) .'원' .'</td>';
                         if ($item['deposit'] == "결제대기") {
                             echo '<td style="color:red;">';
                         } else {
