@@ -13,6 +13,16 @@ body {
     padding: 0;
 }
 
+@media print {
+    #printThis {
+    width: 10cm;
+    height: 24cm;
+    margin: 0;
+    padding: 0;
+}
+
+}
+
 @font-face {
     font-family: NanumSquare;
     src: url("../../../assets/font/NanumSquare-Hv.otf");
@@ -73,11 +83,9 @@ body {
                 if ($nicknameLength > 3) {
                     echo '<div class="small_receipt">';
                 }
-                // echo '<div class="receipt receipt_num_1">' . $users['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_price">' . number_format($users['fee']) . '</div>';
                 echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
                 echo '<div class="receipt receipt_num">' . $users['registration_no'] . '</div>';
-                // echo '<div class="receipt receipt_small small_nick">' . $users['nick_name'] . '</div>';
 
                 if ($nicknameLength > 3) {
                     echo '</div>';

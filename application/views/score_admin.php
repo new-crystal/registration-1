@@ -83,11 +83,34 @@ table th {
             <div class="panel-heading">
                 <h5 class="panel-title">등록 초록</h5>
                 <div class="heading-elements">
-                    <form action="/score/abstract_excel" method="post">
+                    <?php if ($primary_menu == 'poster_1' || $primary_menu == 'poster_2' ) { ?>
+                    <form action="/score/abstract_excel_poster_oral" method="post">
                     <input type="hidden" id="typeInput" name="type" value="0"/>
-                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> &nbspExcel
+                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Poster oral 전체 Excel
                             Download</button>
                     </form>
+                    <?php } ?>
+                    <?php if ($primary_menu == 'oral') { ?>
+                    <form action="/score/abstract_excel" method="post">
+                    <input type="hidden" id="typeInput" name="type" value="0"/>
+                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Oral Excel
+                            Download</button>
+                    </form>
+                    <?php } ?>
+                    <?php if ($primary_menu == 'poster_1') { ?>
+                    <form action="/score/abstract_excel" method="post">
+                    <input type="hidden" id="typeInput" name="type" value="1"/>
+                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Poster oral 1 Excel
+                            Download</button>
+                    </form>
+                    <?php } ?>
+                    <?php if ($primary_menu == 'poster_2') { ?>
+                    <form action="/score/abstract_excel" method="post">
+                    <input type="hidden" id="typeInput" name="type" value="2"/>
+                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Poster oral 2 Excel
+                            Download</button>
+                    </form>
+                    <?php } ?>
                     <!-- <form action="/score/abstract_excel" method="post">
                         <button class="btn btn-primary pull-right"><i class="icon-download4"></i> &nbspExcel
                             Download</button>
