@@ -1199,11 +1199,11 @@ class Admin extends CI_Controller
                             'CATEGORY_D_1'      => 'QRSystem',
                             'CATEGORY_D_2'      => 'ksso',
                             'CATEGORY_D_3'      => '240308',
-                            'SEND_ADDRESS'      => 'secretariat@kosso.org',
+                            'SEND_ADDRESS'      => 'ksso@into-on.com',
                             'SEND_NAME'         => '제59차 대한비만학회 춘계학술대회',
                             'RECV_ADDRESS'      =>  $users['email'],
                             'RECV_NAME'         =>  $users['nick_name'],
-                            'REPLY_ADDRESS'     => 'secretariat@kosso.org',
+                            'REPLY_ADDRESS'     => 'ksso@into-on.com',
                             'REPLY_NAME'        => '제59차 대한비만학회 춘계학술대회',
                             'EMAIL_SUBJECT'     => '[제59차 대한비만학회 춘계학술대회] 제목입니다.',
                             'EMAIL_ALTBODY'     => '제59차 대한비만학회 춘계학술대회',
@@ -1298,10 +1298,10 @@ class Admin extends CI_Controller
             if ($qrcode) {
                 $time = date("Y-m-d H:i:s");
                 // echo $qr_time;
-                // $info = array(
-                //     'registration_no' => $qrcode,
-                //     'time' => $time
-                // );
+                $info = array(
+                    'registration_no' => $qrcode,
+                    'time' => $time
+                );
                 $where = array(
                     'registration_no' => $qrcode
                 );
@@ -1311,8 +1311,25 @@ class Admin extends CI_Controller
                 $this->users->update_qr_status($infoqr, $where);
 
 
-                //입장시간, 퇴장시간 기록
+                //[240221] sujeong / 입장시간, 퇴장시간 기록!!! (확인중!!!)
                 // $this->entrance->record($info);
+
+                // /** day1 ~ day2 access 기록!!!*/
+                // $qr_time = date("Y-m-d");
+                // if ($qr_time == '2024-03-08') {
+                //     $infoqr = array(
+                //         'qr_chk_day_1' => 'Y',
+                //         'qr_chk' => 'Y'
+                //     );
+                //     $this->users->update_qr_status($infoqr, $where);
+                // }
+                // if ($qr_time == '2024-03-09') {
+                //     $infoqr = array(
+                //         'qr_chk_day_2' =>  'Y',
+                //         'qr_chk' => 'Y'
+                //     );
+                //     $this->users->update_qr_status($infoqr, $where);
+                // }
 
                 $data['notice'] = $this->schedule->get_notice();
                 $data['user'] = $this->users->get_user($where);
@@ -1349,14 +1366,14 @@ class Admin extends CI_Controller
                 'CATEGORY_D_1'      => 'QrSystem',
                 'CATEGORY_D_2'      => 'ksso',
                 'CATEGORY_D_3'      => '240308',
-                'SEND_ADDRESS'      => 'secretariat@kosso.org',
-                'SEND_NAME'         => 'KSSO 2024',
+                'SEND_ADDRESS'      => 'ksso@into-on.com',
+                'SEND_NAME'         => '제59차 대한비만학회 춘계학술대회',
                 'RECV_ADDRESS'      => $data['users']['email'],
                 'RECV_NAME'         => $data['users']['nick_name'],
-                'REPLY_ADDRESS'     => 'secretariat@kosso.org',
-                'REPLY_NAME'        => 'KSSO 2024',
-                'EMAIL_SUBJECT'     => '[제59차 대한비만학회 춘계학술대회]',
-                'EMAIL_ALTBODY'     => 'KSSO 2024',
+                'REPLY_ADDRESS'     => 'ksso@into-on.com',
+                'REPLY_NAME'        => '제59차 대한비만학회 춘계학술대회',
+                'EMAIL_SUBJECT'     => '[제59차 대한비만학회 춘계학술대회] 제목입니다.',
+                'EMAIL_ALTBODY'     => '제59차 대한비만학회 춘계학술대회',
                 'EMAIL_TEMPLETE_ID' => 'Qr_ksso_240308',
                 'EMBED_IMAGE_GRID'  => 'null',
                 'INSERT_TEXT_GRID'    => "{" .
