@@ -146,7 +146,7 @@ input {
 <body id="body" class="flex items-center justify-center">
     <div id="container" class="w-full h-full flex items-center">
         <div class="alert">
-            <p class="alert_text">Attendance Checked!</p>
+            <p class="alert_text">출결 체크 완료!</p>
         </div>
         <div class="h-full">
             <div>

@@ -122,4 +122,13 @@ class Qrcode extends CI_Controller
         $data['users'] = $this->users->get_user($where);
         $this->load->view('qr_open', $data);
     }
+    public function kakao()
+    {
+        $qrcode = isset($_GET['qrcode']) ? $_GET['qrcode'] : null;
+        $where = array(
+            'registration_no' => $qrcode
+        );
+        $data['users'] = $this->users->get_user($where);
+        $this->load->view('kakao_qr', $data);
+    }
 }
