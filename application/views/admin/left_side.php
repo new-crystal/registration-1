@@ -99,7 +99,7 @@
                                     </a>
                                 </li>
                                 <li style="margin-bottom: 2rem;" >
-                                    <a href="/admin/qr_blank_user">
+                                    <a href="/admin/qr_blank_user" target="_blank">
                                         <i class="icon-shredder"></i>
                                         <span>QR 프린트용
                                         </span>

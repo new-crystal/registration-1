@@ -84,23 +84,29 @@
     }
 </style>
 <script>
-    document.getElementById("btnPrint").onclick = function() {
-        print_area("printThis");
+     document.getElementById("btnPrint").onclick = function() {
+        printElement(document.getElementById("printThis"));
+
     }
-    //한 장만 프린터 하기 위해서 body 내용 변경하기
-    function print_area($id) {
-        var _body = document.body.innerHTML;
-        window.onbeforeprint = function () {
-            document.body.innerHTML = document.getElementById($id).innerHTML;
+
+    function printElement(elem) {
+        var domClone = elem.cloneNode(true);
+
+        var $printSection = document.getElementById("printSection");
+
+        if (!$printSection) {
+            var $printSection = document.createElement("div");
+            $printSection.style.width = "10cm";
+            $printSection.style.height = "24cm";
+            $printSection.id = "printSection";
+            document.body.appendChild($printSection);
         }
 
-        window.onafterprint = function () {
-            document.body.innerHTML = _body;
-        }
+        $printSection.innerHTML = "";
+        $printSection.appendChild(domClone);
+        //            console.log($printSection);
         window.print();
     }
- 
-
 </script>
 
 <script src="/ckeditor/ckeditor.js"></script>
