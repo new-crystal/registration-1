@@ -1,5 +1,5 @@
+<!-- 카카오 알림톡으로 메시지 보내기(개별) PHP 버전 - TEST 필요 -->
 <?php
-
 $base_url = "stg-user.bizmsg.kakaoenterprise.com"; //스테이징 - 일반 / 변경 필요
 $clientID = "intowebinar"; //변경 필요
 $clientSecret = "a756c0edd55b504a0c4138411ad41055"; //변경 필요

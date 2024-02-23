@@ -148,9 +148,9 @@
 
 #printThis .small_small_small_nickname{
   font-weight: 400;
-  font-size: 29px;
+  font-size: 30px;
   letter-spacing: 0px;
-  padding: 0px 40px 0 58px;
+  padding: 0px 12px 0 12px;
   overflow: hidden;
   line-height: 67px;
 }
