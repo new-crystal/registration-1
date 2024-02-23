@@ -1,5 +1,5 @@
+<!-- 카카오 알림톡으로 메시지 보내기(개별) Javascript 버전 - TEST 필요-->
 <script>
-
     //1단계 OAuth 2.0 인증 -> 토큰 발급
     var myHeaders = new Headers();
     const base_url =  "stg-user.bizmsg.kakaoenterprise.com"; //스테이징 - 일반 / 변경 필요

@@ -122,6 +122,48 @@ class Qrcode extends CI_Controller
         $data['users'] = $this->users->get_user($where);
         $this->load->view('qr_open', $data);
     }
+
+    //카카오 알림톡 개별발송
+    public function send_kakao()
+    {
+        $qrcode = isset($_GET['qrcode']) ? $_GET['qrcode'] : null;
+        $where = array(
+            'registration_no' => $qrcode
+        );
+        $data['users'] = $this->users->get_user($where);
+        $this->load->view('send_kakao', $data);
+    }
+
+    //카카오 알림톡 단체발송
+    public function send_all_kakao()
+    {
+        $userId = $this->input->post('userId');
+
+        foreach ($userId as $value) {
+            $wheres = array(
+                'qr_generated' =>  'Y',
+                'registration_no' => $value
+            );
+            $data['users'] = $this->users->get_msm_user($wheres);
+            // $data['users'] = array_merge($data['users'], $users);
+            foreach ($data['users'] as $users) {
+                $where = array(
+                    'registration_no' => $users['registration_no'],
+                );
+                $info = array(
+                    'QR_SMS_SEND_YN' =>  'Y'
+                );
+                $this->users->update_msm_status($info, $where);
+            }
+
+            //php 버전
+            $this->load->view('send_kakao', $data);
+
+            //javascript 버전
+            //$this->load->view('send_kakao_js', $data);
+        }
+    }
+
     public function kakao()
     {
         $qrcode = isset($_GET['qrcode']) ? $_GET['qrcode'] : null;
