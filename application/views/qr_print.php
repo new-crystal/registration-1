@@ -39,10 +39,6 @@ body {
     padding: 0;
 }
 
-.small_receipt {
-    position: relative;
-    top: 37px;
-}
 </style>
 
 <!-- Main content -->
@@ -65,7 +61,7 @@ body {
 
                 //영문일 경우 자간 간격 4px / 한글은 10px
                 $only_letters = preg_match('/^[a-zA-Z\s]+$/', $users['nick_name']);
-                $letter_spacing = ($only_letters) ? '4px' : '10px';
+                $letter_spacing = ($only_letters) ? '0px' : '10px';
 
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
