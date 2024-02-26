@@ -103,7 +103,7 @@ table th {
                         echo '<td>' . $item['attendance_type'] . '</td>';
                         echo '<td>' . $item['member_type'] . '</td>';
                         echo '<td class="user_d">' . $item['nick_name'] . '</td>';
-                        echo '<td>' . $item['org'] . '</td>';
+                        echo '<td>' . $item['org_nametag'] . '</td>';
                         echo '<td><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['email'] . '</a></td>';
                         echo '<td>' . $item['phone'] . '</td>';
                         echo '<td>';

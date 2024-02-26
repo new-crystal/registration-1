@@ -137,6 +137,20 @@
   font-weight: 500!important;
 }
 
+#printThis .org.small_org{
+  height: 90px;
+}
+
+.small_receipt {
+  position: relative;
+  top: 37px;
+}
+
+.small_small_receipt{
+  position: relative;
+  top: 5px;
+}
+
 #printThis .small_small_nickname{
   font-weight: 400;
   font-size: 40px;

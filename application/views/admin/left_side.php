@@ -84,7 +84,7 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li style="margin-bottom: 2rem;" >
+                                <li style="margin-bottom: 2rem;">
                                     <a href="/admin/qr_excel_download" target="_blank">
                                         <i class="icon-download4"></i>
                                         <span>QR 기록 다운로드
@@ -98,21 +98,21 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li style="margin-bottom: 2rem;" >
+                                <li style="margin-bottom: 2rem;">
                                     <a href="/admin/qr_blank_user" target="_blank">
                                         <i class="icon-shredder"></i>
                                         <span>QR 프린트용
                                         </span>
                                     </a>
                                 </li>
-                                <li style="margin-bottom: 2rem;" >
+                                <li style="margin-bottom: 2rem;">
                                     <a href="/access/scan_qr" target="_blank">
                                         <i class="icon-qrcode"></i>
                                         <span>세로형 출결 페이지
                                         </span>
                                     </a>
                                 </li>
-                                <li style="margin-bottom: 2rem;" >
+                                <li style="margin-bottom: 2rem;">
                                     <a href="/access/row_scan_qr" target="_blank">
                                         <i class="icon-qrcode"></i>
                                         <span>가로형 출결 페이지
