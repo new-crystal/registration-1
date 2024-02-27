@@ -9,14 +9,14 @@
     }
 
         
-    @media print {
+    /* @media print {
         #printThis {
         width: 10cm;
         height: 24cm;
         margin: 0;
         padding: 0;
     }
-    }
+    } */
 
     body {
         margin: 0;
@@ -73,19 +73,19 @@
                 //성함 조건식 
                 //1. 3글자 //영문 letter_spacing = 0, 한글 = 10
                 if ($nicknameLength <= 3) {
-                    echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
+                    echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
                 } 
                 //2. 4 ~ 6 글자 //영문 letter_spacing = 0, 한글 = 10
                 else if ($nicknameLength > 3 && $nicknameLength <= 6) {
-                    echo '<div class="small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
+                    echo '<div class="small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
                 } 
                 //3. 7 ~ 16 글자 //영문 letter_spacing = 0, 한글 = 10
                 else if($nicknameLength > 6 && $nicknameLength <= 16){
-                    echo '<div class="small_small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
+                    echo '<div class="small_small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
                 }
                 //4. 17 글자부터 ~ //영문 letter_spacing = 0, 한글 = 10
                 else if($nicknameLength > 16){
-                    echo '<div class="small_small_small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
+                    echo '<div class="small_small_small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
                 }
                 echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
@@ -120,7 +120,6 @@
 <script>
     document.getElementById("btnPrint").onclick = function() {
         printElement(document.getElementById("printThis"));
-
     }
 
     function printElement(elem) {
