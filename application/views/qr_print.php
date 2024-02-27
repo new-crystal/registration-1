@@ -14,13 +14,12 @@ body {
 }
 
 @media print {
-    #printThis {
-    width: 10cm;
-    height: 24cm;
-    margin: 0;
-    padding: 0;
-}
-
+        #printThis {
+        width: 10cm;
+        height: 24cm;
+        margin: 0;
+        padding: 0;
+    }
 }
 
 @font-face {
@@ -58,39 +57,42 @@ body {
         <div id="printThis">
             <div id="editor1" contenteditable="true">
             <?php
-
                 //영문일 경우 자간 간격 4px / 한글은 10px
                 $only_letters = preg_match('/^[a-zA-Z\s]+$/', $users['nick_name']);
                 $letter_spacing = ($only_letters) ? '0px' : '10px';
-
+    
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
+                $orgLength = mb_strlen($users['org_nametag'], "UTF-8");
                 // echo $nicknameLength;
                 echo '<div class="a4_area">';
                 echo '<div class="bg_area">';
                 echo '<div class="txt_con">';
                 echo '<div class="reg_num_1">' . $users['registration_no'] . '</div>';
+                //성함 조건식 
+                //1. 3글자 //영문 letter_spacing = 0, 한글 = 10
                 if ($nicknameLength <= 3) {
                     echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
-                } else if ($nicknameLength > 3 && $nicknameLength <= 6) {
+                } 
+                //2. 4 ~ 6 글자 //영문 letter_spacing = 0, 한글 = 10
+                else if ($nicknameLength > 3 && $nicknameLength <= 6) {
                     echo '<div class="small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
-                } else if($nicknameLength > 6 && $nicknameLength <= 16){
+                } 
+                //3. 7 ~ 16 글자 //영문 letter_spacing = 0, 한글 = 10
+                else if($nicknameLength > 6 && $nicknameLength <= 16){
                     echo '<div class="small_small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
-                }else if($nicknameLength > 16){
+                }
+                //4. 17 글자부터 ~ //영문 letter_spacing = 0, 한글 = 10
+                else if($nicknameLength > 16){
                     echo '<div class="small_small_small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
                 }
-                echo '<div class="org" id="org">' . $users['org_nametag'] . '</div>';
+                echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
-                if ($nicknameLength > 3) {
-                    echo '<div class="small_receipt">';
-                }
+                echo '<div class="small_small_receipt">';
                 echo '<div class="receipt receipt_price">' . number_format($users['fee']) . '</div>';
                 echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
                 echo '<div class="receipt receipt_num">' . $users['registration_no'] . '</div>';
-
-                if ($nicknameLength > 3) {
-                    echo '</div>';
-                }
+                echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
