@@ -9,14 +9,14 @@
     }
 
         
-    /* @media print {
-        #printThis {
-        width: 10cm;
-        height: 24cm;
-        margin: 0;
-        padding: 0;
+    @media print {
+            #printThis {
+            width: 10cm;
+            height: 24cm;
+            margin: 0;
+            padding: 0;
+        }
     }
-    } */
 
     body {
         margin: 0;
@@ -65,11 +65,12 @@
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
                 $orgLength = mb_strlen($users['org_nametag'], "UTF-8");
+                $reg_num = explode("-", $users['registration_no'])[1];
                 // echo $nicknameLength;
                 echo '<div class="a4_area">';
                 echo '<div class="bg_area">';
                 echo '<div class="txt_con">';
-                echo '<div class="reg_num_1">' . $users['registration_no'] . '</div>';
+                echo '<div class="reg_num_1">' . $reg_num . '</div>';
                 //성함 조건식 
                 //1. 3글자 //영문 letter_spacing = 0, 한글 = 10
                 if ($nicknameLength <= 3) {
@@ -92,7 +93,7 @@
                 echo '<div class="small_small_receipt">';
                 echo '<div class="receipt receipt_price">' . number_format($users['fee']) . '</div>';
                 echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
-                echo '<div class="receipt receipt_num">' . $users['registration_no'] . '</div>';
+                echo '<div class="receipt receipt_num">' . $reg_num . '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
