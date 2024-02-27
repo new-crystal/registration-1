@@ -60,6 +60,7 @@ body {
                 //영문일 경우 자간 간격 4px / 한글은 10px
                 $only_letters = preg_match('/^[a-zA-Z\s]+$/', $users['nick_name']);
                 $letter_spacing = ($only_letters) ? '0px' : '10px';
+                $letter_spacing_receipt = ($only_letters) ? '0px' : '5px';
     
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
@@ -91,7 +92,7 @@ body {
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
                 echo '<div class="small_small_receipt">';
                 echo '<div class="receipt receipt_price">' . number_format($users['fee']) . '</div>';
-                echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
+                echo '<div class="receipt receipt_name" style="letter-spacing: ' . $letter_spacing_receipt . ';">' . $users['nick_name'] . '</div>';
                 echo '<div class="receipt receipt_num">' . $reg_num . '</div>';
                 echo '</div>';
                 echo '</div>';
