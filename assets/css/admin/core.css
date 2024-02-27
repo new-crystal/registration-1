@@ -207,7 +207,7 @@
 }
 #printThis .receipt_num{
   width: 150px;
-  top: 430px;
+  top: 420px;
   font-size: 14px;
   margin-left: 33px;
   /* left: 6px; */
@@ -246,7 +246,7 @@
 
 #printThis .reg_num_1{
   position: relative;
-  top: -68px;
+  top: -75px;
   right: 32px;
   font-size: 14px;
   text-align: right;
@@ -257,13 +257,13 @@
 }
 
 #printThis .receipt_name{
-  top: 260px;
-  left: -5px;
+  top: 245px;
+  left: -65px;
   width: 150px;
 }
 
 #printThis .receipt_price{
-  top: 253px;
+  top: 238px;
   left: -5px;
   width: 150px;
 }
