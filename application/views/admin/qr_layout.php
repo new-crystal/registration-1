@@ -87,22 +87,9 @@
                 else if($nicknameLength > 16){
                     echo '<div class="small_small_small_nickname" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
                 }
-
-                if($orgLength <= 14){
-                    echo '<div class="org" id="org">' . $users['org_nametag'] . '</div>';
-                }
-
-                else if($orgLength > 14){
-                    echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
-                }
+                echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
-
-                if($orgLength > 14){
-                    echo '<div class="small_small_receipt">';
-                }else{
-                    echo '<div class="small_receipt">';
-                }
-
+                echo '<div class="small_small_receipt">';
                 echo '<div class="receipt receipt_price">' . number_format($users['fee']) . '</div>';
                 echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
                 echo '<div class="receipt receipt_num">' . $users['registration_no'] . '</div>';
