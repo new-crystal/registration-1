@@ -283,16 +283,16 @@
 
                                 <tr>
                                     <th>qr print 여부(N/Y)</th>
-                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_print']; ?>" name="qr_print" id="phone"></td>
+                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_print']; ?>" name="qr_print" id="phone" readonly></td>
                                 </tr>
                                 <tr>
                                     <th>day 1 출결여부(N/Y)</th>
-                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_1']; ?>" name="qr_chk_day_1" id="phone">
+                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_1']; ?>" name="qr_chk_day_1" id="phone" readonly>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>day 2 출결여부(N/Y)</th>
-                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_2']; ?>" name="qr_chk_day_2" id="phone">
+                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_2']; ?>" name="qr_chk_day_2" id="phone" readonly>
                                     </td>
                                 </tr>
                                 <tr>

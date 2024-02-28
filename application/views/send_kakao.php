@@ -1,8 +1,8 @@
 <!-- 카카오 알림톡으로 메시지 보내기(개별) PHP 버전 - TEST 필요 -->
 <?php
 $base_url = "stg-user.bizmsg.kakaoenterprise.com"; //스테이징 - 일반 / 변경 필요
-$clientID = "intowebinar"; //변경 필요
-$clientSecret = "a756c0edd55b504a0c4138411ad41055"; //변경 필요
+$clientID = ""; //변경 필요
+$clientSecret = ""; //변경 필요
 
 $curl = curl_init();
 
@@ -53,10 +53,10 @@ if ($err) {
             CURLOPT_POSTFIELDS => json_encode(array(
                 "message_type" => "AT",
                 "sender_key" => $senderKey,
-                "cid" => "202210181600001",
+                "cid" => "1234",
                 "template_code" => "TEMPLATE_001",
                 "phone_number" => 82 . $item['phone'],
-                "sender_no" => "01040585269",
+                "sender_no" => "0100000000",
                 "message" => "알림톡 메시지 테스트",
                 "fall_back_yn" => false
             )),
