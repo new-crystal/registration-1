@@ -16,6 +16,10 @@
             margin: 0;
             padding: 0;
         }
+
+        .edit_wrapper{
+            display: none;
+        }
     }
 
     body {
