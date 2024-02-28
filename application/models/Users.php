@@ -249,6 +249,7 @@ class Users extends CI_Model
 	}
 
 	//날짜 변경 필요!!!
+	//faculty page / 일반참석자, 기자 제외
 	public function get_faculty()
 	{
 		$query = $this->db->query("
@@ -270,7 +271,7 @@ class Users extends CI_Model
 			 WHERE DATE(TIME) = '2024-03-09'
 			GROUP BY registration_no
 		) b1 ON a.registration_no = b1.qr_registration_no
-		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반참석자'
+		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반참석자' AND a.attendance_type != '기자'
 		ORDER BY a.id ASC
 ");
 		return $query->result_array();
