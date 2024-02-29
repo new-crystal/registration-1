@@ -105,7 +105,6 @@
     background-image: url('../../images/2024_nametag_bg.png');
     /* background-size: 10cm 24cm; */
     background-size: contain;
-    margin: 0;
     background-repeat: no-repeat;
     background-position: center;
 }
