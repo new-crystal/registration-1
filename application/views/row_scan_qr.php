@@ -18,6 +18,11 @@
         }
     }
 
+    @font-face {
+        font-family: Gong;
+        src: url("../../../assets/font/Gong_Gothic_OTF_Bold.otf");
+    }
+
 
     body {
         font-family: 'Roboto', sans-serif;
@@ -63,19 +68,21 @@
     }
 
     .info_content>input {
-        margin-left: 139px;
+        margin-left: 155px;
         margin-top: 10px;
-        width: 157%;
+        width: 68%;
         height: 90%;
         padding: 0 2rem;
         z-index: 999;
         transform: translate(-63px, 91px);
+        font-weight: 700;
     }
 
     input {
         /* background-color: orange; */
         background-color: transparent;
         font-size: 3rem;
+        font-weight: 700;
         font-family: 'Roboto', sans-serif !important;
     }
 
@@ -95,29 +102,32 @@
     }
 
     .input_box {
-        transform: translate(1px, -92px);
+        transform: translate(19px, 202px);
+        width: 1750px;
+        height: 350px;
     }
 
     .alert {
-        width: 500px;
-        height: 200px;
-        background: #f9a21b;
+        width: 100%;
+        height: 210px;
+        background: #004471;
         display: flex;
         justify-content: center;
         align-items: center;
         color: #FFF;
         position: absolute;
-        top: 50%;
+        top: 48%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border-radius: 32px;
+        opacity: 0.85;
     }
 
     .alert>p {
-        font-size: 3rem;
+        font-size: 8.5rem;
         font-weight: 700;
         position: relative;
         animation: fadeInUp 1s;
+        font-family: Gong;
     }
 </style>
 
@@ -129,7 +139,7 @@
         <div class="h-full">
             <div>
                 <div>
-                    <img src="../../assets/images/row_app_loading_bg.png" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
+                    <img src="../../assets/images/row_app_loading_bg.jpg" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
                     <dl>
 
                         <script type="text/javascript">
@@ -153,7 +163,8 @@
                                 <div class="fresh"></div>
                                 <div>
                                     <dl class="pl-2">
-                                        <dd><input type="text" name="qrcode" id="qrcode" class="h-20 px-3 py-3 mt-5 border-indigo-900 mx-auto" style="transform: translate(74px,-20px);width: 800px;" placeholder="" autofocus>
+                                        <dd>
+                                            <input type="text" name="qrcode" id="qrcode" class="h-20 px-3 py-3 mt-5 border-indigo-900 mx-auto" style="transform: translate(74px,-20px);width: 800px; color:transparent" placeholder="" autofocus />
                                         </dd>
                                     </dl>
 
@@ -163,17 +174,23 @@
                                             </div>
                                         </div>
                                     </dl>
-
+                                    <dl class="pl-2">
+                                        <div id="qr_org" class="qr_info_wrap">
+                                            <div class="info_content">
+                                                <input type="text" style="position: relative;top: 113px;" class="qr_info input name" value="<?php if (isset($entrance_org)) echo $entrance_org ?>" readonly />
+                                            </div>
+                                        </div>
+                                    </dl>
                                     <dl class="pl-2">
                                         <div id="qr_entrance" class="qr_info_wrap">
                                             <div class="info_content">
-                                                <input type="text"class="qr_info input" value="<?php if (isset($enter)) { $enter = date("Y-m-d H:i", strtotime($enter));echo $enter;} ?>" readonly>
+                                                <input type="text"class="qr_info input" style="margin-top:0; position: relative; left: 895px; top: -200px;" value="<?php if (isset($enter)) { $enter = date("Y-m-d H:i", strtotime($enter));echo $enter;} ?>" readonly>
                                             </div>
 
                                         </div>
                                         <div id="qr_exit" class="qr_info_wrap">
                                             <div class="info_content">
-                                                <input type="text" style="margin-top:0; transform: translate(854px, -107px);" class="qr_info input" value="<?php if (isset($leave)) { $leave = date("Y-m-d H:i", strtotime($leave)); echo $leave; } ?>
+                                                <input type="text" style="margin-top:0; transform: translate(834px, 8px);" class="qr_info input" value="<?php if (isset($leave)) { $leave = date("Y-m-d H:i", strtotime($leave)); echo $leave; } ?>
                                                 " readonly>
                                             </div>
                                         </div>

@@ -23,6 +23,12 @@ body {
 }
 
 
+@font-face {
+        font-family: Gong;
+        src: url("../../../assets/font/Gong_Gothic_OTF_Bold.otf");
+    }
+
+
 #accessForm {
     padding: 0 3rem;
     /* height: 60%; */
@@ -71,6 +77,7 @@ body {
     height: 90%;
     padding: 0 2rem;
     z-index: 999;
+    font-weight: 700;
 }
 
 .info_content>input:focus {
@@ -119,25 +126,29 @@ input {
 }
 
 .alert {
-    width: 500px;
-    height: 200px;
-    background: #f8de63;
+    width: 100%;
+    height: 302px;
+    background: #ffc425;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #000;
+    color: #FFF;
     position: absolute;
-    top: 40%;
+    top: 33%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 32px;
+    /* border-radius: 32px; */
+    opacity: 0.95;
 }
 
 .alert>p {
-    font-size: 3rem;
+    font-size: 9rem;
     font-weight: 700;
     position: relative;
     animation: fadeInUp 1s;
+    font-family: Gong;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #004471;
 }
 
 .entrance_time {
