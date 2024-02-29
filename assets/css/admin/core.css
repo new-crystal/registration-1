@@ -103,6 +103,7 @@
     height: 24cm;
     border: 1px solid transparent;
     background-image: url('../../images/2024_nametag_bg.png');
+    /* background-size: 10cm 24cm; */
     background-size: contain;
     margin: 0;
     background-repeat: no-repeat;
@@ -246,7 +247,7 @@
 
 #printThis .reg_num_1{
   position: relative;
-  top: -75px;
+  top: -77px;
   right: 32px;
   font-size: 14px;
   text-align: right;
