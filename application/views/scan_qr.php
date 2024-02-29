@@ -94,9 +94,9 @@ input {
 }
 
 .input_box {
-    transform: translate(58px, 867px);
+    transform: translate(58px, 687px);
     width: 861px;
-    height: 611px;
+    height: 770px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -105,7 +105,9 @@ input {
 }
 
 #qrcode {
-    transform: translate(-15px, -169px);
+    position: absolute;
+    top: -24px;
+    left: 0;
 }
 
 .leave_time {
@@ -119,11 +121,11 @@ input {
 .alert {
     width: 500px;
     height: 200px;
-    background: #f9a21b;
+    background: #f8de63;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #FFF;
+    color: #000;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -141,6 +143,10 @@ input {
 .entrance_time {
     transform: translate(-13px, -62px);
 }
+
+/* input {
+    background-color: #f9a21b;
+} */
 </style>
 
 <body id="body" class="flex items-center justify-center">
@@ -151,7 +157,7 @@ input {
         <div class="h-full">
             <div>
                 <div>
-                    <img src="../../assets/images/app_loading_bg.png" onclick="replace()"
+                    <img src="../../assets/images/app_loading_bg.jpg" onclick="replace()"
                         style="position: absolute;z-index: -999;width: 100vw;" />
                     <dl>
 
@@ -176,32 +182,30 @@ input {
                                 <div class="fresh"></div>
                                 <div class="input_box">
                                     <dl class="pl-2">
-                                        <dd><input type="text" name="qrcode" id="qrcode"
-                                                class="w-full h-20  px-3 py-3 mt-5 border-indigo-900 mx-auto"
-                                                placeholder="" autofocus>
+                                        <dd>
+                                            <input type="text" name="qrcode" id="qrcode" class="w-full h-20  px-3 py-3 mt-5 border-indigo-900 mx-auto" style="color:transparent" placeholder="" autofocus>
                                         </dd>
                                     </dl>
 
                                     <dl class="pl-2">
                                         <div id="qr_nick_name" class="qr_info_wrap">
                                             <div class="info_content"><input type="text" class="qr_info input name"
-                                                    value="<?php if (isset($nick_name)) echo $nick_name ?>"
-                                                    readonly>
+                                                    value="<?php if (isset($nick_name)) echo $nick_name ?>" readonly>
                                             </div>
                                         </div>
-
                                     </dl>
-
+                                    <dl class="pl-2">
+                                        <div id="qr_org" class="qr_info_wrap">
+                                            <div class="info_content">
+                                                <input type="text" style="margin-top: 25px;" class="qr_info input name" value="<?php if (isset($entrance_org)) echo $entrance_org ?>" readonly />
+                                            </div>
+                                        </div>
+                                    </dl>
                                     <dl class="pl-2">
                                         <div id="qr_entrance" class="qr_info_wrap">
-
                                             <div class="info_content">
                                                 <input type="text" style="margin-top:3px"
-                                                    class="qr_info input entrance_time" value="<?php if (isset($enter)) {
-                                                                                                                                            $enter = date("Y-m-d H:i", strtotime($enter));
-                                                                                                                                            echo $enter;
-                                                                                                                                        } ?>
-                                                " readonly>
+                                                    class="qr_info input entrance_time" value="<?php if (isset($enter)) {$enter = date("Y-m-d H:i", strtotime($enter)); echo $enter;} ?>" readonly>
                                             </div>
 
                                         </div>
@@ -209,11 +213,7 @@ input {
 
                                             <div class="info_content">
                                                 <input type="text" style="margin-top:0" class="qr_info input leave_time"
-                                                    value="<?php if (isset($leave)) {
-                                                                                                                                    $leave = date("Y-m-d H:i", strtotime($leave));
-                                                                                                                                    echo $leave;
-                                                                                                                                } ?>
-                                                " readonly>
+                                                    value="<?php if (isset($leave)) { $leave = date("Y-m-d H:i", strtotime($leave)); echo $leave; } ?>" readonly>
                                             </div>
                                         </div>
 
@@ -222,7 +222,7 @@ input {
                                     <div class="w-full flex items-center justify-center">
                                         <button type="submit" value="등록"
                                             class="btnPoint w-full flex items-center justify-center"
-                                            style="    transform: translate(55px,434px);"></button>
+                                            style="transform: translate(55px,434px);"></button>
                                     </div>
                                 </div>
 
