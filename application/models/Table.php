@@ -23,7 +23,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '교수' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -35,7 +35,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '개원의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -47,7 +47,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -59,7 +59,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '전임의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -71,7 +71,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '수련의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -83,7 +83,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '전공의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -95,7 +95,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '영양사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -107,7 +107,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '운동사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -119,8 +119,10 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
-        ORDER BY a.id ASC
+        WHERE a.qr_chk_day_1 = 'Y' 
+        AND a.onsite_reg = 0
+        AND a.attendance_type = '일반참석자' 
+        AND (a.member_type = '간호사' OR a.member_type = '기타(일괄등록)')
         ");
         $result = $query->result_array();
         return count($result); 
@@ -131,7 +133,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '군의관' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -143,7 +145,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '공보의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -155,7 +157,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '연구원' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -167,7 +169,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '학생' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -179,7 +181,19 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type LIKE '%전시(부스)%'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type LIKE '%전시(부스)%' AND a.onsite_reg = 0
+        ORDER BY a.id ASC
+        ");
+        $result = $query->result_array();
+        return count($result); 
+   }
+
+   public function get_d1_ar()
+   {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '기자' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -191,8 +205,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type LIKE '%기타%'
-        ORDER BY a.id ASC
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type LIKE '%기타%' AND a.member_type != '기타(일괄등록)' AND a.onsite_reg = 0
         ");
         $result = $query->result_array();
         return count($result); 
@@ -203,7 +216,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' 
+            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -220,7 +233,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '교수'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '교수' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -232,7 +245,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '개원의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -244,7 +257,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '봉직의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -256,7 +269,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '전임의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -268,7 +281,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '수련의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '수련의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -280,7 +293,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '전공의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '전공의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -292,7 +305,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '영양사'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '영양사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -304,7 +317,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '운동사'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '운동사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -316,7 +329,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '간호사'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '간호사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -328,7 +341,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '군의관'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '군의관' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -340,7 +353,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '공보의'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '공보의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -352,7 +365,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '연구원'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '연구원' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -364,7 +377,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '학생'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '학생' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -376,7 +389,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type LIKE '%전시(부스)%'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type LIKE '%전시(부스)%' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -388,7 +401,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type LIKE '%기타%'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.member_type LIKE '%기타%' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -400,7 +413,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' 
+            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -418,7 +431,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '좌장'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -430,7 +443,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '좌장' 
+            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '좌장'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -446,7 +459,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '연자'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -458,7 +471,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '연자' 
+            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '연자'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -474,7 +487,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '패널'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -486,7 +499,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '패널' 
+            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '패널'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -502,7 +515,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type LIKE '%심사%'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type LIKE '%심사%' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -530,7 +543,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type LIKE '%외부초청%'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type LIKE '%외부초청%' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -559,7 +572,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '교수'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '교수' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -571,7 +584,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '개원의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '개원의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -583,7 +596,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '봉직의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -595,7 +608,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '전임의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '전임의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -607,7 +620,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '수련의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '수련의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -619,7 +632,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '전공의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '전공의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -631,7 +644,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '영양사'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '영양사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -643,7 +656,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '운동사'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '운동사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -655,8 +668,10 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '간호사'
-        ORDER BY a.id ASC
+        WHERE a.qr_chk_day_2 = 'Y' 
+        AND a.onsite_reg = 0
+        AND a.attendance_type = '일반참석자' 
+        AND (a.member_type = '간호사' OR a.member_type = '기타(일괄등록)')
         ");
         $result = $query->result_array();
         return count($result); 
@@ -667,7 +682,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '군의관'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '군의관' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -679,7 +694,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '공보의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '공보의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -691,7 +706,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '연구원'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '연구원' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -703,7 +718,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '학생'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type = '학생' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -715,19 +730,32 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type LIKE '%전시(부스)%'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type LIKE '%전시(부스)%' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
         return count($result); 
    }
+
+   public function get_d2_ar()
+   {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '기자' AND a.onsite_reg = 0
+        ORDER BY a.id ASC
+        ");
+        $result = $query->result_array();
+        return count($result); 
+   }
+        
                        
    public function get_d2_ap_m14()
    {
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type LIKE '%기타%'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.member_type LIKE '%기타%' AND a.member_type != '기타(일괄등록)' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -739,7 +767,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' 
+            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -756,7 +784,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '교수'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '교수' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -768,7 +796,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '개원의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '개원의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -780,7 +808,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '봉직의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '봉직의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -792,7 +820,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '전임의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '전임의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -804,7 +832,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '수련의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '수련의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -816,7 +844,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '전공의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '전공의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -828,7 +856,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '영양사'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '영양사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -840,7 +868,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '운동사'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '운동사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -852,7 +880,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '간호사'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '간호사' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -864,7 +892,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '군의관'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '군의관' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -876,7 +904,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '공보의'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '공보의' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -888,7 +916,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '연구원'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '연구원' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -900,7 +928,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '학생'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type = '학생' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -912,7 +940,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type LIKE '%전시(부스)%'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type LIKE '%전시(부스)%' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -924,7 +952,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type LIKE '%기타%'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.member_type LIKE '%기타%' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -936,7 +964,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' 
+            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -954,7 +982,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '좌장'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -966,7 +994,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '좌장' 
+            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '좌장'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -982,7 +1010,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '연자'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -994,7 +1022,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '연자' 
+            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '연자'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -1010,7 +1038,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '패널'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -1022,7 +1050,7 @@ class Table extends CI_Model
         $query = $this->db->query("
             SELECT *
             FROM users a
-            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '패널' 
+            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '패널'
             ORDER BY a.id ASC
             ");
             $result = $query->result_array();
@@ -1038,7 +1066,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type LIKE '%심사%'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type LIKE '%심사%' AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -1066,7 +1094,7 @@ class Table extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type LIKE '%외부초청%'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type LIKE '%외부초청%'  AND a.onsite_reg = 0
         ORDER BY a.id ASC
         ");
         $result = $query->result_array();
@@ -1084,6 +1112,100 @@ class Table extends CI_Model
             $result = $query->result_array();
             return count($result); 
     }
+
+     
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////// 현장등록
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public function get_d1_ap_on()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1
+            ");
+            $result = $query->result_array();
+            return count($result); 
+    }
+
+    public function get_d1_ac_on()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 1
+            ");
+            $result = $query->result_array();
+            return count($result); 
+    }
+
+    public function get_d1_ar_on()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '기자' AND a.onsite_reg = 1
+            ");
+            $result = $query->result_array();
+            return count($result); 
+    }
+
+    public function get_d2_ap_on()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1
+            ");
+            $result = $query->result_array();
+            return count($result); 
+    }
+
+    public function get_d2_ac_on()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 1
+            ");
+            $result = $query->result_array();
+            return count($result); 
+    }
+
+    public function get_d2_ar_on()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '기자' AND a.onsite_reg = 1
+            ");
+            $result = $query->result_array();
+            return count($result); 
+    }
+
+    public function add_d1_ar()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '기자'
+            ");
+            $result = $query->result_array();
+            return count($result); 
+    }
+
+    public function add_d2_ar()
+    {
+        $query = $this->db->query("
+            SELECT *
+            FROM users a
+            WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '기자'
+            ");
+            $result = $query->result_array();
+            return count($result); 
+    }
+
 }
 
 ?>
