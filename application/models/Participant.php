@@ -10,9 +10,9 @@ class Participant extends CI_Model
 	//참석자 현황 페이지 model!!
 
 	 
+    //onsite_reg => pre 사전등록 0 / on 현장등록 1
     //type1 => t -> t0 의료 / t1 영양 / t2 운동 / t3 전시(부스) /t4 기타
     //qr_chk_day_1, 2 => d -> d1 day1 / d2 day2
-    //onsite_reg => pre 사전등록 0 / on 현장등록 1
     //attendance_type => a -> ap 일반참석자 / ac 임원
     //member_type => m -> m0 교수 / m1 개원의 / m2 봉직의 / m3 전임의 / m4 수련의 / m5 전공의 
                          //m6 영양사 / m7 운동사 / m8 간호사 / m9 군의관 / m10 공보의 
