@@ -78,7 +78,7 @@
                                 </li>
                                 <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'participant') echo 'class="active"' ?>>
-                                    <a href="/admin/participant">
+                                    <a href="/admin/participant_2">
                                         <i class="icon-list-unordered"></i>
                                         <span>참석자 현황
                                         </span>

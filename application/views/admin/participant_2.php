@@ -11,7 +11,7 @@
     }
 
     tr {
-        height: 3.7rem;
+        /* height: 3.7rem; */
         border: 1px solid rgb(163 163 163);
         font-weight: 600;
         font-size: 1.5rem;
@@ -59,11 +59,11 @@
             <td class="sum" colspan="2"></td>
         </tr>
     </table> -->
-    <div class="w-full flex justify-around mt-20 mb-52">
-        <div style="width:48%;">
+    <div class="w-full flex justify-center mt-20 mb-52 gap-x-10">
+        <div style="width:40%;">
             <table class="w-full">
                 <colgroup>
-                    <col width="15%">
+                    <col width="13%">
                     <col>
                 </colgroup>
                 <tr>
@@ -158,12 +158,14 @@
                 </tr>
                 <tr>
                     <th>기자</th>
-                    <td colspan="3"><?php echo $d1_ar == 0 ? "-" : $d1_ar; ?></td>
+                    <td colspan="2">-</td>
+                    <td><?php echo $d1_ar == 0 ? "-" : $d1_ar; ?></td>
                 </tr>
                 <tr>
-                    <th>기타<br/><span class="text-xs">(결제한 제약사 + 기타(약사) 등)</span></th>
+                    <th>기타<br/><span class="text-xs">(결제한 제약사<br>+ 기타(약사) 등)</span></th>
                     <td><?php echo $d1_ap_m14 == 0 ? "-" : $d1_ap_m14; ?></td>
                     <td><?php echo $d1_ac_m14 == 0 ? "-" : $d1_ac_m14; ?></td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <th>현장등록</th>
@@ -187,7 +189,7 @@
                     <td colspan="8" class="add_1"><?php echo $add_d1_ap + $add_d1_ac + $add_d1_ar + $add_d1_ach + $add_d1_as + $add_d1_apn + $add_d1_aj + $add_d1_ao;?></td>
                 </tr>
                 <tr>
-                    <th>정책 심포지엄 등록자</th>
+                    <th>정책<br>심포지엄<br>등록자</th>
                     <td colspan="8" class="add_2">0</td>
                 </tr>
                 <tr>
@@ -198,10 +200,10 @@
         </div>
 
         <!-- =================================================================================== -->
-        <div style="width:48%;">
+        <div style="width:40%;">
             <table class="w-full">
                 <colgroup>
-                    <col width="15%">
+                    <col width="13%">
                     <col>
                 </colgroup>
                 <tr>
@@ -294,23 +296,26 @@
                 </tr>
                 <tr>
                     <th>기자</th>
-                    <td colspan="3"><?php echo $d2_ar == 0 ? "-" : $d2_ar; ?></td>
+                    <td colspan="2">-</td>
+                    <td><?php echo $d2_ar == 0 ? "-" : $d2_ar; ?></td>
                 </tr>
                 <tr>
-                    <th>기타<br/><span class="text-xs">(결제한 제약사 + 기타(약사) 등)</span></th>
+                    <th>기타<br/><span class="text-xs">(결제한 제약사<br>+ 기타(약사) 등)</span></th>
                     <td><?php echo $d2_ap_m14 == 0 ? "-" : $d2_ap_m14; ?></td>
                     <td><?php echo $d2_ac_m14 == 0 ? "-" : $d2_ac_m14; ?></td>
+                    <td>-</td>
                 </tr>
                 <tr>
                     <th>현장등록</th>
-                    <td><?php echo $d2_ap_m12 == 0 ? "-" : $d2_ap_m12; ?></td>
-                    <td><?php echo $d2_ac_m12 == 0 ? "-" : $d2_ac_m12; ?></td>
+                    <td><?php echo $d2_ap_on == 0 ? "-" : $d2_ap_on; ?></td>
+                    <td><?php echo $d2_ac_on == 0 ? "-" : $d2_ac_on; ?></td>
+                    <td><?php echo $d2_ar_on == 0 ? "-" : $d2_ar_on; ?></td>
                 </tr>
                 <tr>
                     <th>소계 (명)</th>
                     <td><?php echo $add_d2_ap == 0 ? "-" : $add_d2_ap; ?></td>
-                    <td><?php echo $add_d2_ar == 0 ? "-" : $add_d2_ar; ?></td>
                     <td><?php echo $add_d2_ac == 0 ? "-" : $add_d2_ac; ?></td>
+                    <td><?php echo $add_d2_ar == 0 ? "-" : $add_d2_ar; ?></td>
                     <td><?php echo $add_d2_ach == 0 ? "-" : $add_d2_ach; ?></td>
                     <td><?php echo $add_d2_as == 0 ? "-" : $add_d2_as; ?></td>
                     <td><?php echo $add_d2_apn == 0 ? "-" : $add_d2_apn; ?></td>
