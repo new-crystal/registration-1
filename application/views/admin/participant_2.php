@@ -184,15 +184,15 @@
                 </tr>
                 <tr>
                     <th>합계 (명)</th>
-                    <td colspan="8"><?php echo $add_d1_ap + $add_d1_ac + $add_d1_ar + $add_d1_ach + $add_d1_as + $add_d1_apn + $add_d1_aj + $add_d1_ao;?></td>
+                    <td colspan="8" class="add_1"><?php echo $add_d1_ap + $add_d1_ac + $add_d1_ar + $add_d1_ach + $add_d1_as + $add_d1_apn + $add_d1_aj + $add_d1_ao;?></td>
                 </tr>
                 <tr>
                     <th>정책 심포지엄 등록자</th>
-                    <td colspan="8"></td>
+                    <td colspan="8" class="add_2">0</td>
                 </tr>
                 <tr>
-                    <th>TOTAL (명)<br>합계 + 정책 심포지엄</th>
-                    <td colspan="8"></td>
+                    <th>TOTAL (명)<br><span class="text-xs">합계 + 정책 심포지엄</span></th>
+                    <td colspan="8" class="sum"></td>
                 </tr>
             </table>
         </div>
@@ -332,8 +332,8 @@
 <!-- /page container -->
 
 <script>
-    const sum1 = document.querySelector(".add_day_1");
-    const sum2 = document.querySelector(".add_day_2");
+    const sum1 = document.querySelector(".add_1");
+    const sum2 = document.querySelector(".add_2");
     const total = document.querySelector(".sum");
 
     total.innerText = sum1.innerText * 1 + sum2.innerText * 1;
