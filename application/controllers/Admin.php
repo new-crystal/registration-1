@@ -17,9 +17,10 @@ class Admin extends CI_Controller
 
         date_default_timezone_set('Asia/Seoul');
         $this->load->model('users');
-        $this->load->model('participant');
         $this->load->model('entrance');
         $this->load->model('schedule');
+        $this->load->model('participant');
+        $this->load->model('table');
         $this->load->library("excel");
         $this->load->library("user_agent");
         ini_set('memory_limit', '-1');
@@ -1519,6 +1520,145 @@ class Admin extends CI_Controller
 
             $this->load->view('admin/left_side.php', $data);
             $this->load->view('admin/faculty', $data);
+        }
+        $this->load->view('footer');
+    }
+
+    public function participant_2 ()
+    {
+        $this->load->view('admin/header');
+        if (!isset($this->session->admin_data['logged_in']))
+            $this->load->view('admin/login');
+        else {
+            $data['primary_menu'] = 'participant';
+
+            $wheres = array(
+                'qr_chk' => 'Y'
+            );
+            /**모든 유저 */
+            $data['users'] = $this->users->get_users();
+
+            
+            //qr_chk_day_1, 2 => d -> d1 day1 / d2 day2
+            //attendance_type => a -> ap 일반참석자 / ac 임원 / ach 좌장 / as 연자 / apn 패널 / aj 심사자 / ao 외부초청
+            //member_type => m -> m0 교수 / m1 개원의 / m2 봉직의 / m3 전임의 / m4 수련의 / m5 전공의 
+                                //m6 영양사 / m7 운동사 / m8 간호사 / m9 군의관 / m10 공보의 
+                                //m11 연구원 / m 12 학생 / m13 전시(부스) / m14 기타
+
+            /** day 1 && 일반참석자 */
+            $data['d1_ap_m0'] = $this->table->get_d1_ap_m0();
+            $data['d1_ap_m1'] = $this->table->get_d1_ap_m1();
+            $data['d1_ap_m2'] = $this->table->get_d1_ap_m2();
+            $data['d1_ap_m3'] = $this->table->get_d1_ap_m3();
+            $data['d1_ap_m4'] = $this->table->get_d1_ap_m4();
+            $data['d1_ap_m5'] = $this->table->get_d1_ap_m5();
+            $data['d1_ap_m6'] = $this->table->get_d1_ap_m6();
+            $data['d1_ap_m7'] = $this->table->get_d1_ap_m7();
+            $data['d1_ap_m8'] = $this->table->get_d1_ap_m8();
+            $data['d1_ap_m9'] = $this->table->get_d1_ap_m9();
+            $data['d1_ap_m10'] = $this->table->get_d1_ap_m10();
+            $data['d1_ap_m11'] = $this->table->get_d1_ap_m11();
+            $data['d1_ap_m12'] = $this->table->get_d1_ap_m12();
+            $data['d1_ap_m13'] = $this->table->get_d1_ap_m13();
+            $data['d1_ap_m14'] = $this->table->get_d1_ap_m14();
+            $data['add_d1_ap'] = $this->table->add_d1_ap();
+
+             /** day 1 && 임원 */
+             $data['d1_ac_m0'] = $this->table->get_d1_ac_m0();
+             $data['d1_ac_m1'] = $this->table->get_d1_ac_m1();
+             $data['d1_ac_m2'] = $this->table->get_d1_ac_m2();
+             $data['d1_ac_m3'] = $this->table->get_d1_ac_m3();
+             $data['d1_ac_m4'] = $this->table->get_d1_ac_m4();
+             $data['d1_ac_m5'] = $this->table->get_d1_ac_m5();
+             $data['d1_ac_m6'] = $this->table->get_d1_ac_m6();
+             $data['d1_ac_m7'] = $this->table->get_d1_ac_m7();
+             $data['d1_ac_m8'] = $this->table->get_d1_ac_m8();
+             $data['d1_ac_m9'] = $this->table->get_d1_ac_m9();
+             $data['d1_ac_m10'] = $this->table->get_d1_ac_m10();
+             $data['d1_ac_m11'] = $this->table->get_d1_ac_m11();
+             $data['d1_ac_m12'] = $this->table->get_d1_ac_m12();
+             $data['d1_ac_m13'] = $this->table->get_d1_ac_m13();
+             $data['d1_ac_m14'] = $this->table->get_d1_ac_m14();
+             $data['add_d1_ac'] = $this->table->add_d1_ac();
+
+             /** day 1 && 좌장 */
+             $data['d1_ach'] = $this->table->get_d1_ach();
+             $data['add_d1_ach'] = $this->table->add_d1_ach();
+
+             /** day 1 && 연자 */
+             $data['d1_as'] = $this->table->get_d1_as();
+             $data['add_d1_as'] = $this->table->add_d1_as();
+
+             /** day 1 && 패널 */
+             $data['d1_apn'] = $this->table->get_d1_apn();
+             $data['add_d1_apn'] = $this->table->add_d1_apn();
+
+             /** day 1 && 심사 */
+             $data['d1_aj'] = $this->table->get_d1_aj();
+             $data['add_d1_aj'] = $this->table->add_d1_aj();
+
+             /** day 1 && 외부초청 */
+             $data['d1_ao'] = $this->table->get_d1_ao();
+             $data['add_d1_ao'] = $this->table->add_d1_ao();
+
+             /** day 2 && 일반참석자 */
+            $data['d2_ap_m0'] = $this->table->get_d2_ap_m0();
+            $data['d2_ap_m1'] = $this->table->get_d2_ap_m1();
+            $data['d2_ap_m2'] = $this->table->get_d2_ap_m2();
+            $data['d2_ap_m3'] = $this->table->get_d2_ap_m3();
+            $data['d2_ap_m4'] = $this->table->get_d2_ap_m4();
+            $data['d2_ap_m5'] = $this->table->get_d2_ap_m5();
+            $data['d2_ap_m6'] = $this->table->get_d2_ap_m6();
+            $data['d2_ap_m7'] = $this->table->get_d2_ap_m7();
+            $data['d2_ap_m8'] = $this->table->get_d2_ap_m8();
+            $data['d2_ap_m9'] = $this->table->get_d2_ap_m9();
+            $data['d2_ap_m10'] = $this->table->get_d2_ap_m10();
+            $data['d2_ap_m11'] = $this->table->get_d2_ap_m11();
+            $data['d2_ap_m12'] = $this->table->get_d2_ap_m12();
+            $data['d2_ap_m13'] = $this->table->get_d2_ap_m13();
+            $data['d2_ap_m14'] = $this->table->get_d2_ap_m14();
+            $data['add_d2_ap'] = $this->table->add_d2_ap();
+
+             /** day 1 && 임원 */
+             $data['d2_ac_m0'] = $this->table->get_d2_ac_m0();
+             $data['d2_ac_m1'] = $this->table->get_d2_ac_m1();
+             $data['d2_ac_m2'] = $this->table->get_d2_ac_m2();
+             $data['d2_ac_m3'] = $this->table->get_d2_ac_m3();
+             $data['d2_ac_m4'] = $this->table->get_d2_ac_m4();
+             $data['d2_ac_m5'] = $this->table->get_d2_ac_m5();
+             $data['d2_ac_m6'] = $this->table->get_d2_ac_m6();
+             $data['d2_ac_m7'] = $this->table->get_d2_ac_m7();
+             $data['d2_ac_m8'] = $this->table->get_d2_ac_m8();
+             $data['d2_ac_m9'] = $this->table->get_d2_ac_m9();
+             $data['d2_ac_m10'] = $this->table->get_d2_ac_m10();
+             $data['d2_ac_m11'] = $this->table->get_d2_ac_m11();
+             $data['d2_ac_m12'] = $this->table->get_d2_ac_m12();
+             $data['d2_ac_m13'] = $this->table->get_d2_ac_m13();
+             $data['d2_ac_m14'] = $this->table->get_d2_ac_m14();
+             $data['add_d2_ac'] = $this->table->add_d2_ac();
+
+             /** day 1 && 좌장 */
+             $data['d2_ach'] = $this->table->get_d2_ach();
+             $data['add_d2_ach'] = $this->table->add_d2_ach();
+
+             /** day 1 && 연자 */
+             $data['d2_as'] = $this->table->get_d2_as();
+             $data['add_d2_as'] = $this->table->add_d2_as();
+
+             /** day 1 && 패널 */
+             $data['d2_apn'] = $this->table->get_d2_apn();
+             $data['add_d2_apn'] = $this->table->add_d2_apn();
+
+             /** day 1 && 심사 */
+             $data['d2_aj'] = $this->table->get_d2_aj();
+             $data['add_d2_aj'] = $this->table->add_d2_aj();
+
+             /** day 1 && 외부초청 */
+             $data['d2_ao'] = $this->table->get_d2_ao();
+             $data['add_d2_ao'] = $this->table->add_d2_ao();
+
+            $this->load->view('admin/left_side.php', $data);
+            $this->load->view('admin/participant_2.php', $data);
         }
         $this->load->view('footer');
     }
