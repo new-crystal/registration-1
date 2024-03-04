@@ -1538,9 +1538,21 @@ class Admin extends CI_Controller
             /**모든 유저 */
             $data['users'] = $this->users->get_users();
 
-            
+            /**qr access 총 유저 */
+            $data['item'] = $this->users->get_qr_print_user();
+
+            $where = array(
+                'deposit' => '결제대기'
+            );
+            $data['no_deposit'] = $this->users->get_access_user($where);
+
+            $where_1 = array(
+                'onsite_reg' => 1
+            );
+            $data['onsite'] = $this->users->get_access_user($where_1);
+
             //qr_chk_day_1, 2 => d -> d1 day1 / d2 day2
-            //attendance_type => a -> ap 일반참석자 / ac 임원 / ach 좌장 / as 연자 / apn 패널 / aj 심사자 / ao 외부초청
+            //attendance_type => a -> ap 일반참석자 / ac 임원 / ach 좌장 / as 연자 / apn 패널 / aj 심사자 / ao 외부초청/ ar 기자
             //member_type => m -> m0 교수 / m1 개원의 / m2 봉직의 / m3 전임의 / m4 수련의 / m5 전공의 
                                 //m6 영양사 / m7 운동사 / m8 간호사 / m9 군의관 / m10 공보의 
                                 //m11 연구원 / m 12 학생 / m13 전시(부스) / m14 기타
@@ -1601,6 +1613,11 @@ class Admin extends CI_Controller
              $data['d1_ao'] = $this->table->get_d1_ao();
              $data['add_d1_ao'] = $this->table->add_d1_ao();
 
+              /** day 1 && 기자*/
+              $data['d1_ar'] = $this->table->get_d1_ar();
+              $data['add_d1_ar'] = $this->table->add_d1_ar();
+
+
              /** day 2 && 일반참석자 */
             $data['d2_ap_m0'] = $this->table->get_d2_ap_m0();
             $data['d2_ap_m1'] = $this->table->get_d2_ap_m1();
@@ -1619,7 +1636,7 @@ class Admin extends CI_Controller
             $data['d2_ap_m14'] = $this->table->get_d2_ap_m14();
             $data['add_d2_ap'] = $this->table->add_d2_ap();
 
-             /** day 1 && 임원 */
+             /** day 2 && 임원 */
              $data['d2_ac_m0'] = $this->table->get_d2_ac_m0();
              $data['d2_ac_m1'] = $this->table->get_d2_ac_m1();
              $data['d2_ac_m2'] = $this->table->get_d2_ac_m2();
@@ -1637,25 +1654,41 @@ class Admin extends CI_Controller
              $data['d2_ac_m14'] = $this->table->get_d2_ac_m14();
              $data['add_d2_ac'] = $this->table->add_d2_ac();
 
-             /** day 1 && 좌장 */
+            /** day 2 && 기자*/
+            $data['d2_ar'] = $this->table->get_d2_ar();
+            $data['add_d2_ar'] = $this->table->add_d2_ar();
+
+
+             /** day 2 && 좌장 */
              $data['d2_ach'] = $this->table->get_d2_ach();
              $data['add_d2_ach'] = $this->table->add_d2_ach();
 
-             /** day 1 && 연자 */
+             /** day 2 && 연자 */
              $data['d2_as'] = $this->table->get_d2_as();
              $data['add_d2_as'] = $this->table->add_d2_as();
 
-             /** day 1 && 패널 */
+             /** day 2 && 패널 */
              $data['d2_apn'] = $this->table->get_d2_apn();
              $data['add_d2_apn'] = $this->table->add_d2_apn();
 
-             /** day 1 && 심사 */
+             /** day 2 && 심사 */
              $data['d2_aj'] = $this->table->get_d2_aj();
              $data['add_d2_aj'] = $this->table->add_d2_aj();
 
-             /** day 1 && 외부초청 */
+             /** day 2 && 외부초청 */
              $data['d2_ao'] = $this->table->get_d2_ao();
              $data['add_d2_ao'] = $this->table->add_d2_ao();
+
+            /** day 1 && 현장등록 */
+            $data['d1_ap_on'] = $this->table->get_d1_ap_on();
+            $data['d1_ac_on'] = $this->table->get_d1_ac_on();
+            $data['d1_ar_on'] = $this->table->get_d1_ar_on();
+
+             /** day 2 && 현장등록 */
+             $data['d2_ap_on'] = $this->table->get_d2_ap_on();
+             $data['d2_ac_on'] = $this->table->get_d2_ac_on();
+             $data['d2_ar_on'] = $this->table->get_d2_ar_on();
+
 
             $this->load->view('admin/left_side.php', $data);
             $this->load->view('admin/participant_2.php', $data);
