@@ -122,7 +122,22 @@
         opacity: 0.85;
     }
 
-    .alert>p {
+    .no_alert{
+        width: 100%;
+        height: 210px;
+        background: rgba(255,0,0,0.85);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 48%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* opacity: 0.85; */
+        color: #fff;
+    }
+
+    .alert>p, .no_alert > p {
         font-size: 8.5rem;
         font-weight: 700;
         position: relative;
@@ -135,6 +150,9 @@
     <div id="container" class="w-full h-full flex items-center overflow-hidden">
         <div class="alert" style="display:none">
             <p class="alert_text">출결 체크 완료!</p>
+        </div>
+        <div class="no_alert">
+            <p class="no_alert_text">QR코드를 확인해주세요.</p>
         </div>
         <div class="h-full">
             <div>
@@ -233,6 +251,8 @@
     const body = document.querySelector("#body")
     const alert = document.querySelector(".alert")
     const alertText = document.querySelector(".alert_text")
+    const noAlert = document.querySelector(".no_alert")
+    const noAlertText = document.querySelector(".no_alert_text")
     const name = document.querySelector(".name")
     let textTime;
     let alertTime;
@@ -245,8 +265,10 @@
     function checkAlert() {
         if (name.value !== "") {
             alert.style.display = "";
+            noAlert.style.display = "none";
         } else {
             alert.style.display = "none";
+            noAlert.style.display = "";
         }
     }
 
@@ -270,11 +292,13 @@
         checkAlert()
         alertTime = setTimeout(() => {
             alert.style.display = "none";
+            noAlert.style.display = "none";
         }, 3000)
         inputs.forEach((input) => {
             textTime = setTimeout(() => {
                 input.value = "";
                 alert.style.display = "none";
+                noAlert.style.display = "none";
             }, 10000)
         })
     }

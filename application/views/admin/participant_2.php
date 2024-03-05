@@ -190,7 +190,7 @@
                 </tr>
                 <tr>
                     <th>정책<br>심포지엄<br>등록자</th>
-                    <td colspan="8" class="add_2">0</td>
+                    <td colspan="8" class="add_2"><?php  echo $add_apo == 0 ? "-" : $add_apo; ?></td>
                 </tr>
                 <tr>
                     <th>TOTAL (명)<br><span class="text-xs">합계 + 정책 심포지엄</span></th>
@@ -341,7 +341,9 @@
     const sum2 = document.querySelector(".add_2");
     const total = document.querySelector(".sum");
 
-    total.innerText = sum1.innerText * 1 + sum2.innerText * 1;
+    if(sum2.innerText !== "-" && sum1.innerText !== "-"){
+        total.innerText = sum1.innerText * 1 + sum2.innerText * 1;
+    }
 
 
 </script>

@@ -7,7 +7,7 @@ class Table extends CI_Model
     private $users = "users";
 
     //qr_chk_day_1, 2 => d -> d1 day1 / d2 day2
-    //attendance_type => a -> ap 일반참석자 / ac 임원 / ach 좌장 / as 연자 / apn 패널 / aj 심사자 / ao 외부초청
+    //attendance_type => a -> ap 일반참석자 / ac 임원 / ach 좌장 / as 연자 / apn 패널 / aj 심사자 / ao 외부초청 / apo 정책 심포지엄
     //member_type => m -> m0 교수 / m1 개원의 / m2 봉직의 / m3 전임의 / m4 수련의 / m5 전공의 
                          //m6 영양사 / m7 운동사 / m8 간호사 / m9 군의관 / m10 공보의 
                          //m11 연구원 / m 12 학생 / m13 전시(부스) / m14 기타
@@ -1205,6 +1205,21 @@ class Table extends CI_Model
             $result = $query->result_array();
             return count($result); 
     }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////// 정책 심포지엄
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public function add_apo()
+{
+    $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.attendance_type = '정책 심포지엄' AND a.qr_chk_day_1 = 'Y' 
+        ");
+        $result = $query->result_array();
+        return count($result); 
+}
 
 }
 

@@ -1552,7 +1552,7 @@ class Admin extends CI_Controller
             $data['onsite'] = $this->users->get_access_user($where_1);
 
             //qr_chk_day_1, 2 => d -> d1 day1 / d2 day2
-            //attendance_type => a -> ap 일반참석자 / ac 임원 / ach 좌장 / as 연자 / apn 패널 / aj 심사자 / ao 외부초청/ ar 기자
+            //attendance_type => a -> ap 일반참석자 / ac 임원 / ach 좌장 / as 연자 / apn 패널 / aj 심사자 / ao 외부초청/ ar 기자 / apo 정책심포지엄
             //member_type => m -> m0 교수 / m1 개원의 / m2 봉직의 / m3 전임의 / m4 수련의 / m5 전공의 
                                 //m6 영양사 / m7 운동사 / m8 간호사 / m9 군의관 / m10 공보의 
                                 //m11 연구원 / m 12 학생 / m13 전시(부스) / m14 기타
@@ -1689,6 +1689,8 @@ class Admin extends CI_Controller
              $data['d2_ac_on'] = $this->table->get_d2_ac_on();
              $data['d2_ar_on'] = $this->table->get_d2_ar_on();
 
+             /** 정책 심포지엄 */
+             $data['add_apo'] = $this->table->add_apo();
 
             $this->load->view('admin/left_side.php', $data);
             $this->load->view('admin/participant_2.php', $data);
