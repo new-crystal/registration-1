@@ -212,14 +212,13 @@ class Admin extends CI_Controller
     {
 
         $regNo = $this->input->post('userId');
-
+       
         foreach ($regNo as $value) {
             $info = array(
                 'deposit' =>  '결제완료'
             );
             $where = array(
                 'registration_no' => $value,
-                'deposit' => '결제대기'
             );
             $this->users->update_deposit_status($info, $where);
 
@@ -261,7 +260,7 @@ class Admin extends CI_Controller
             imagedestroy($bg);
         }
 
-        //$this->load->view('admin/d_success');
+        $this->load->view('admin/d_success');
     }
 
     function all_deposit_check()
@@ -416,6 +415,18 @@ class Admin extends CI_Controller
         $this->load->view('admin/qr_layout', $data);
     }
 
+    function qr_layout_test()
+    {
+
+        $this->load->view('admin/header');
+        $regNo = $_GET['n'];
+        $where = array(
+            'registration_no' => $regNo
+        );
+        $data['users'] = $this->users->get_user($where);
+        //                var_dump($data['users']);
+        $this->load->view('admin/qr_layout_test', $data);
+    }
 
 
     public function qr_layout_all()
