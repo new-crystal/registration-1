@@ -60,29 +60,34 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="background-color: #fb8500">Remarks 1</th>
+                                    <th style="background-color: #fb8500">Remarks 1<br>하단택 구분</th>
                                     <td><input class="form-control" type="text" name="remark1" id="remark1" value="<?php echo $item['remark1']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="background-color: #fb8500">Remarks 2</th>
+                                    <th style="background-color: #fb8500">Remarks 2<br>전시 번호</th>
                                     <td>
                                         <input class="form-control" type="text" value="<?php echo $item['remark2']; ?>" name="remark2" id="remark2">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="background-color: #fb8500">Remarks 3</th>
+                                    <th style="background-color: #fb8500">Remarks 3<br>안내 및 확인사항</th>
                                     <td><input class="form-control" type="text" name="remark3" value="<?php echo $item['remark3']; ?>" id="remark3">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="background-color: #fb8500">Remarks 4</th>
+                                    <th style="background-color: #fb8500">Remarks 4<br>결제 및 환불관련</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['remark4']; ?>" name="remark4" id="remark4">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="background-color: #fb8500">memo</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['memo']; ?>" name="memo" id="memo">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #fb8500">결제 메모</th>
+                                    <td><input class="form-control" type="text" value="<?php echo $item['deposit_memo']; ?>" name="deposit_memo" id="deposit_memo">
                                     </td>
                                 </tr>
                             </table>

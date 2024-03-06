@@ -138,26 +138,26 @@
                                 <col />
                             </colgroup>
                             <tr>
-                                <th class="memoHeader">remark1</th>
+                                <th class="memoHeader">remark1<br>하단택 구분</th>
                                 <td id="remark1" class="qr_text">
                                     <?php if (isset($user['remark1'])) echo $user['remark1'] ?>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="memoHeader">remark2</th>
+                                <th class="memoHeader">remark2<br>전시 번호</th>
                                 <td id="remark2" class="qr_text">
                                     <?php if (isset($user['remark2'])) echo $user['remark2'] ?>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="memoHeader">remark3</th>
+                                <th class="memoHeader">remark3<br>안내 및 확인사항</th>
                                 <td id="remark3" class="qr_text">
                                     <?php if (isset($user['remark3'])) echo $user['remark3'] ?>
                                 </td>
                             </tr>
 
                             <tr>
-                                <th class="memoHeader">remark4</th>
+                                <th class="memoHeader">remark4<br>결제 및 환불관련</th>
                                 <td id="remark4" class="qr_text">
                                     <?php if (isset($user['remark4'])) echo $user['remark4'] ?>
                                 </td>
@@ -165,12 +165,11 @@
 
                             <tr>
                                 <th class="memoHeader">메모</th>
-                                <td id="memo" class="qr_text"><?php
-                                                                if (isset($user['memo'])) {
-                                                                    echo $user['memo'] == 'null' ? "" : $user['memo'];
-                                                                }
-                                                                ?></td>
-
+                                <td id="memo" class="qr_text"><?php if (isset($user['memo'])) { echo $user['memo'] == 'null' ? "" : $user['memo'];}?></td>
+                            </tr>
+                            <tr>
+                                <th class="memoHeader">결제 메모</th>
+                                <td id="deposit_memo" class="qr_text"><?php if (isset($user['deposit_memo'])) { echo $user['deposit_memo'] == 'null' ? "" : $user['deposit_memo'];}?></td>
                             </tr>
                         </table>
                     </div>
@@ -209,16 +208,12 @@
     const fee = document.querySelector("#fee")
     const is_score = document.querySelector("#is_score")
     const memo = document.querySelector("#memo")
+    const deposit_memo = document.querySelector("#deposit_memo")
     const number = document.querySelector("#number")
     const remark1 = document.querySelector("#remark1")
     const remark2 = document.querySelector("#remark2")
     const remark3 = document.querySelector("#remark3")
     const remark4 = document.querySelector("#remark4")
-    const remark5 = document.querySelector("#remark5")
-    const special_request_food = document.querySelector("#special_request_food")
-    // const remark6 = document.querySelector("#remark6")
-    // const remark7 = document.querySelector("#remark7")
-    // const remark8 = document.querySelector("#remark8")
     const memoBtn = document.querySelector("#memo_btn")
     const content = document.querySelector(".content")
     const notice = document.querySelector("#notice")
@@ -315,6 +310,8 @@
                         .trim();
                     memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "")
                         .trim();
+                    deposit_memo.innerText = htmlDocument.querySelector("#deposit_memo").innerText.replace(/<br\s*\/?>/gi, "")
+                        .trim();
                     remark1.innerText = htmlDocument.querySelector("#remark1").innerText.replace(/<br\s*\/?>/gi, "")
                         .trim();
                     remark2.innerText = htmlDocument.querySelector("#remark2").innerText.replace(/<br\s*\/?>/gi, "")
@@ -344,6 +341,7 @@
                 changeBackgroundColorIfNotEmpty(remark2);
                 changeBackgroundColorIfNotEmpty(remark3);
                 changeBackgroundColorIfNotEmpty(remark4);
+                changeBackgroundColorIfNotEmpty(deposit_memo);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
