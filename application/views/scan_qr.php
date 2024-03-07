@@ -6,11 +6,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
+
 body {
     font-family: 'Gothic A1', sans-serif;
 }
 
-@keyframes fadeInUp {
+/* @keyframes fadeInUp {
     0% {
         opacity: 0;
         transform: translate3d(0, 100%, 0);
@@ -20,7 +21,7 @@ body {
         opacity: 1;
         transform: translateZ(0);
     }
-}
+} */
 
 
 @font-face {
@@ -161,7 +162,7 @@ input {
             font-size: 9rem;
             font-weight: 700;
             position: relative;
-            animation: fadeInUp 1s;
+            /* animation: fadeInUp 1s; */
             font-family: Gong;
             -webkit-text-stroke-width: 5px;
             -webkit-text-stroke-color: #004471;
@@ -182,17 +183,16 @@ input {
 
 <body id="body" class="flex items-center justify-center">
     <div id="container" class="w-full h-full flex items-center">
-        <div class="alert">
+        <div class="alert" style="display:none;">
             <p class="alert_text">출결 체크 완료!</p>
         </div>
-        <div class="no_alert">
+        <div class="no_alert" style="display:none;">
             <p class="no_alert_text">QR코드를 확인해주세요.</p>
         </div>
         <div class="h-full">
             <div>
                 <div>
-                    <img src="../../assets/images/app_loading_bg.jpg" onclick="replace()"
-                        style="position: absolute;z-index: -999;width: 100vw;" />
+                    <img src="../../assets/images/2024_app_loading_bg.png" onclick="replace()" style="position: absolute;z-index: -999;width: 100vw;" />
                     <dl>
 
                         <script type="text/javascript">
