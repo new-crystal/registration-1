@@ -182,7 +182,7 @@
                                 <div>
                                     <dl class="pl-2">
                                         <dd>
-                                            <input type="text" name="qrcode" id="qrcode" class="h-20 px-3 py-3 mt-5 border-indigo-900 mx-auto" style="transform: translate(74px,-20px);width: 800px; color:transparent" placeholder="" autofocus />
+                                            <input type="text" name="qrcode" id="qrcode" class="h-20 px-3 py-3 mt-5 border-indigo-900 mx-auto" style="transform: translate(74px,-20px);width: 800px; color:transparent" placeholder="" autofocus autocomplete='off'/>
                                         </dd>
                                     </dl>
 
