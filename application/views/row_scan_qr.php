@@ -6,7 +6,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
-    @keyframes fadeInUp {
+    /* @keyframes fadeInUp {
         0% {
             opacity: 0;
             transform: translate3d(0, 100%, 0);
@@ -16,7 +16,7 @@
             opacity: 1;
             transform: translateZ(0);
         }
-    }
+    } */
 
     @font-face {
         font-family: Gong;
@@ -141,7 +141,7 @@
         font-size: 8.5rem;
         font-weight: 700;
         position: relative;
-        animation: fadeInUp 1s;
+        /* animation: fadeInUp 1s; */
         font-family: Gong;
     }
 </style>
@@ -151,13 +151,13 @@
         <div class="alert" style="display:none">
             <p class="alert_text">출결 체크 완료!</p>
         </div>
-        <div class="no_alert">
+        <div class="no_alert" style="display:none;">
             <p class="no_alert_text">QR코드를 확인해주세요.</p>
         </div>
         <div class="h-full">
             <div>
                 <div>
-                    <img src="../../assets/images/row_app_loading_bg.jpg" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
+                    <img src="../../assets/images/2024_row_app_loading_bg.png" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
                     <dl>
 
                         <script type="text/javascript">
