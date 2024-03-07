@@ -318,6 +318,12 @@
 
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>참여 정책심포지엄</th>
+                                    <td> <input id="committee" type="text" value="<?php echo $item['etc1'] ? $item['etc1'] : "-"; ?>" size="16" class="form-control" name="etc1">
+
+                                    </td>
+                                </tr>
                                
                             </table>
 

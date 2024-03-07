@@ -51,6 +51,7 @@
         width: 500px;
         padding: 4px;
         background-color: #ffbe0b;
+        display: block;
     }
 
     .memoHeader {

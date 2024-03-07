@@ -66,6 +66,7 @@ body {
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
                 $orgLength = mb_strlen($users['org_nametag'], "UTF-8");
                 $reg_num = explode("-", $users['registration_no'])[1];
+                // $reg_num = "";
                 // echo $nicknameLength;
                 echo '<div class="a4_area">';
                 echo '<div class="bg_area">';
