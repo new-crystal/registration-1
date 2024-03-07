@@ -73,7 +73,7 @@ if ($err) {
 제59차 대한비만학회 춘계학술대회 운영사무국 드림. 
 
 TEL: 82-2-2285-2582 / E-mail: ksso@into-on.com
-                ', 'refkey' => 'RESTAPITEST1548722798', 'subject' => '대한내분비학회 2023년 개원의 연수강좌 안내', 'image_cnt' =>
+                ', 'refkey' => 'RESTAPITEST1548722798', 'subject' => '[제59차 대한비만학회 춘계학술대회]', 'image_cnt' =>
                 '1', '
              images0' => new CURLFILE('assets/images/QR/qrcode_' . $item['registration_no'] . '.jpg')
             ),
