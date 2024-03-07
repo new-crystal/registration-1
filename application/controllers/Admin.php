@@ -829,7 +829,7 @@ class Admin extends CI_Controller
         $object = new PHPExcel();
         $object->setActiveSheetIndex(0);
 
-        $table_columns = array("등록구분", "참석여부", "등록번호", "등록일", "이메일", "KSSO 회원 여부", "이름", "소속", "네임택용 소속","부서", "휴대폰번호", "참가유형", "분야구분", "참석구분", "평점신청여부", "의사면허번호", "전문의번호", "영양사자격번호", "임상영양사자격번호", "생년월일", "운동사 평점 신청 여부", "결제상태", "등록비", "결제일","결제방식", "결제 정보 메모", "Welcome Reception", "Satellite Symposium", "Breakfast Symposium", "Luncheon Symposium", "개최 정보 습득 방법", "remark1", "remark2", "remark3", "remark4", "memo", "Day 1 참석여부", "Day 1 입실 시간", "Day 1 퇴실 시간", "체류시간", "Break 제외 시간", "Day 2 참석여부", "Day 2 입실 시간", "Day 2 퇴실 시간", "체류시간", "Break 제외 시간");
+        $table_columns = array("등록구분", "참석여부", "등록번호", "등록일", "이메일", "KSSO 회원 여부", "이름", "소속", "네임택용 소속","부서", "휴대폰번호", "참가유형", "분야구분", "참석구분", "평점신청여부", "의사면허번호", "전문의번호", "영양사자격번호", "임상영양사자격번호", "생년월일", "운동사 평점 신청 여부", "결제상태", "등록비", "결제일","결제방식", "결제 정보 메모", "Welcome Reception", "Satellite Symposium", "Breakfast Symposium", "Luncheon Symposium", "개최 정보 습득 방법", "remark1", "remark2", "remark3", "remark4", "memo","참여 정책세션", "Day 1 참석여부", "Day 1 입실 시간", "Day 1 퇴실 시간", "체류시간", "Break 제외 시간", "Day 2 참석여부", "Day 2 입실 시간", "Day 2 퇴실 시간", "체류시간", "Break 제외 시간");
 
         $column = 0;
 
@@ -936,18 +936,19 @@ class Admin extends CI_Controller
             $object->getActiveSheet()->setCellValueByColumnAndRow(33, $excel_row, $row['remark3']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(34, $excel_row, $row['remark4']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(35, $excel_row, $row['memo']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row, $row['etc1']);
 
-            $object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row,  $row['qr_chk_day_1']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(37, $excel_row, date("H:i", strtotime($row['mintime_day1'])));  //DAY1입실
-            $object->getActiveSheet()->setCellValueByColumnAndRow(38, $excel_row, date("H:i", strtotime($row['maxtime_day1'])));  //DAY1퇴실
-            $object->getActiveSheet()->setCellValueByColumnAndRow(39, $excel_row, $row['d_format_day1']);                //DAY1체류시간
-            $object->getActiveSheet()->setCellValueByColumnAndRow(40, $excel_row, hoursandmins($spent1));
+            $object->getActiveSheet()->setCellValueByColumnAndRow(37, $excel_row,  $row['qr_chk_day_1']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(38, $excel_row, date("H:i", strtotime($row['mintime_day1'])));  //DAY1입실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(39, $excel_row, date("H:i", strtotime($row['maxtime_day1'])));  //DAY1퇴실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(40, $excel_row, $row['d_format_day1']);                //DAY1체류시간
+            $object->getActiveSheet()->setCellValueByColumnAndRow(41, $excel_row, hoursandmins($spent1));
 
-            $object->getActiveSheet()->setCellValueByColumnAndRow(41, $excel_row,  $row['qr_chk_day_2']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(42, $excel_row, date("H:i", strtotime($row['mintime_day2'])));  //DAY2입실
-            $object->getActiveSheet()->setCellValueByColumnAndRow(43, $excel_row, date("H:i", strtotime($row['maxtime_day2'])));  //DAY2퇴실
-            $object->getActiveSheet()->setCellValueByColumnAndRow(44, $excel_row, $row['d_format_day2']);                          //DAY2체류시
-            $object->getActiveSheet()->setCellValueByColumnAndRow(45, $excel_row, hoursandmins($spent2));
+            $object->getActiveSheet()->setCellValueByColumnAndRow(42, $excel_row,  $row['qr_chk_day_2']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(43, $excel_row, date("H:i", strtotime($row['mintime_day2'])));  //DAY2입실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(44, $excel_row, date("H:i", strtotime($row['maxtime_day2'])));  //DAY2퇴실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(45, $excel_row, $row['d_format_day2']);                          //DAY2체류시
+            $object->getActiveSheet()->setCellValueByColumnAndRow(46, $excel_row, hoursandmins($spent2));
 
 
             $excel_row++;
