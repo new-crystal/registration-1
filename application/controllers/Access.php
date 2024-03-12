@@ -109,19 +109,19 @@ class Access extends CI_Controller
                 }
             } else if (count($qrstr) == 6) {
                 $url = $qrstr[0] . $qrstr[1] . $qrstr[2] . $qrstr[3] . $qrstr[4];
-                $phone = $qrstr[5];
+                $qrcode = $qrstr[5];
                 $time = date("Y-m-d H:i:s");
 
                 $info = array(
-                    'registration_no' => $phone,
+                    'registration_no' => $qrcode,
                     'time' => $time
                 );
 
                 $where = array(
-                    'registration_no' => $phone
+                    'registration_no' => $qrcode
                 );
 
-                if (filter_var($phone, FILTER_VALIDATE_REGEXP, $rop) and $this->entrance->record($info)) {
+                if (filter_var($qrcode, FILTER_VALIDATE_REGEXP, $rop) and $this->entrance->record($info)) {
                     $userName = $this->users->get_user($where);
                     //                  var_dump($userName['nick_name']);
                     $this->data['entrance'] =  "";
@@ -485,7 +485,7 @@ class Access extends CI_Controller
                       );
                       $this->users->update_qr_status($infoqr, $where);
                   }
-
+                  
                 if ($this->entrance->record($info)) {
                     $userName = $this->users->get_user($where);
                     //                  var_dump($userName['nick_name']);
@@ -527,7 +527,7 @@ class Access extends CI_Controller
                         $to_go = 60 - $remains;
                         $notice = "현재 평점 {$score}점, 평점 {$next_score}점까지 {$to_go}분 남았습니다.";
                     }
-
+                   
                     //                  var_dump($spent);
                     $this->data['enter'] = $enter;
                     $this->data['leave'] = $leave;
@@ -544,15 +544,15 @@ class Access extends CI_Controller
                 $time = date("Y-m-d H:i:s");
 
                 $info = array(
-                    'registration_no' => $phone,
-                    'time' => $time
+                    'registration_no' => $qrcode,
+                    'time' => $qrcode
                 );
 
                 $where = array(
-                    'registration_no' => $phone
+                    'registration_no' => $qrcode
                 );
 
-                if (filter_var($phone, FILTER_VALIDATE_REGEXP, $rop) and $this->entrance->record($info)) {
+                if (filter_var($qrcode, FILTER_VALIDATE_REGEXP, $rop) and $this->entrance->record($info)) {
                     $userName = $this->users->get_user($where);
                     //                  var_dump($userName['nick_name']);
                     $this->data['entrance'] =  "";
@@ -671,6 +671,7 @@ class Access extends CI_Controller
             } else {
                 $this->data['entrance'] =  "등록 실패: phone not found";
             }
+          
 
             $this->load->view('scan_qr', $this->data);
         }
@@ -771,7 +772,7 @@ class Access extends CI_Controller
 
                     $this->data['entrance'] =  $this->data['entrance'] . $notice;
                 } else {
-                    $this->data['entrance'] =  "<span class='red'>등록 실패: </span>" . $phone;
+                    $this->data['entrance'] =  "<span class='red'>등록 실패: </span>" . $qrcode;
                     $this->data['entrance_org'] = '';
                 }
             } else if (count($qrstr) == 6) {
@@ -855,7 +856,7 @@ class Access extends CI_Controller
                     $userName = $this->users->get_user($where);
                     //                  var_dump($userName['nick_name']);
                     $this->data['entrance'] =  "";
-                    $this->data['name_kor'] = $userName['nick_name'];
+                    $this->data['nick_name'] = $userName['nick_name'];
                     $this->data['entrance_org'] = $userName['org'];
 
                     $list = $this->entrance->access($where);
@@ -896,6 +897,7 @@ class Access extends CI_Controller
                     $this->data['enter'] = $enter;
                     $this->data['leave'] = $leave;
                     $this->data['score'] = $score;
+                    $this->data['list'] = $list;
 
                     $this->data['entrance'] =  $this->data['entrance'] . $notice;
                 } else {
@@ -905,6 +907,13 @@ class Access extends CI_Controller
             } else {
                 $this->data['entrance'] =  "등록 실패: phone not found";
             }
+            $this->data['list'] = $list;
+            // $where_day2 = array(
+            //     'registration_no' => $qrcode
+            // );
+
+            // $day_2 = $this->entrance-> history_day_2($where_day2);
+            // $this->data['day_2'] = $day_2;
 
             $this->load->view('row_scan_qr', $this->data);
         }
