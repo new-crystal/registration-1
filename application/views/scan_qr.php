@@ -180,7 +180,9 @@ input {
     background-color: #f9a21b;
 } */
 </style>
-
+<?php 
+// echo $history_day_2;
+?>
 <body id="body" class="flex items-center justify-center">
     <div id="container" class="w-full h-full flex items-center">
         <div class="alert" style="display:none;">

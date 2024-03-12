@@ -146,6 +146,10 @@
     }
 </style>
 
+<?php
+// print_r($list);
+?>
+
 <body id="body" class="flex items-center justify-center">
     <div id="container" class="w-full h-full flex items-center overflow-hidden">
         <div class="alert" style="display:none">
