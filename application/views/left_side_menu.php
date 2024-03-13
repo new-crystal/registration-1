@@ -67,6 +67,13 @@
                                     </a>
                                 </li>
                                 
+                                <li style="margin-bottom: 2rem;"
+                                    <?php if ($primary_menu == 'reviewer') echo 'class="active"' ?>>
+                                    <a href="/score/reviewer">
+                                        <i class="icon-list-unordered"></i>
+                                        <span>심사위원</span>
+                                    </a>
+                                </li>
                             
                                 <!-- /main -->
                             </ul>

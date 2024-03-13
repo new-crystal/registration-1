@@ -562,5 +562,28 @@ class Score extends CI_Controller
     
     echo $html;
 }
+    //admin 심사위원 페이지
+    public function reviewer(){
+        $this->load->view('admin/header');
+        $data['primary_menu'] = 'reviewer';
+        $this->load->view('left_side_menu.php', $data);
+
+        $data['reviewers'] = $this->rating-> get_reviewer_check();
+
+        $this->load->view('score_reviewer', $data);
+    }
+
+    //admin 심사위원 detail 페이지
+    public function reviewer_detail(){
+        $this->load->view('admin/header');
+        $idx = $_GET['n'];
+
+        $where = array(
+            'idx' => $idx
+        );
+
+        $data['reviewer'] = $this->rating-> get_reviewer_detail($where);
+        $this->load->view('reviewer_detail', $data);
+    }
 
 }
