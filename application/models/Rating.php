@@ -21,6 +21,12 @@ class Rating extends CI_Model
         return $query->result_array();
     }
 
+    // public function get_reviewers()
+    // {
+    //     $query = $this->db->query("SELECT * FROM `abstract_reviewer` ORDER BY  `idx` ");
+    //     return $query->result_array();
+    // }
+
     public function get_abstracts_sum($where)
     {
         $type = $where["type"]; 
@@ -133,6 +139,7 @@ class Rating extends CI_Model
         return $query->result_array();
     }
 
+    //excel download / type, category 별
     public function get_abstract_excel_title($where)
     {
         $type = $where["type"]; 
@@ -158,6 +165,33 @@ class Rating extends CI_Model
         WHERE a.type = '$type' AND a.category = '$category'
         GROUP BY r.idx
         ");
+        return $query->result_array();
+    }
+
+    //reviewer 초록 평가 여부와 함께 가져오기
+    public function get_reviewer_check()
+    {
+        $query = $this->db->query("SELECT 
+        r.idx, r.nick_name, r.code ,r.email, r.org, r.phone, r.abstract1, r.abstract2, r.abstract3, r.abstract4, r.abstract5,
+        CASE WHEN s.reviewer_idx IS NOT NULL THEN 'Y' ELSE 'N' END AS has_score
+            FROM 
+                abstract_reviewer r
+            LEFT JOIN 
+                abstract_score s ON r.idx = s.reviewer_idx
+            GROUP BY 
+                r.idx");
+        return $query->result_array();
+    }
+
+    public function get_reviewer_detail($where)
+    {
+        $query = $this->db->query("
+            SELECT r.*, s.score1, s.score2, s.score3, s.score4, s.coi, s.time, s.etc1, a.submission_code
+            FROM abstract_reviewer r
+            LEFT JOIN abstract_score s ON r.idx = s.reviewer_idx
+            LEFT JOIN abstracts a ON s.abstract_idx = a.idx
+            WHERE r.idx =" . $where['idx']
+        );
         return $query->result_array();
     }
    
