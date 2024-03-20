@@ -183,7 +183,7 @@ class Rating extends CI_Model
     public function get_reviewer_check()
     {
         $query = $this->db->query("SELECT 
-        r.idx, r.nick_name, r.code ,r.email, r.org, r.phone, r.abstract1, r.abstract2, r.abstract3, r.abstract4, r.abstract5,
+        r.idx, r.nick_name, r.code, r.org,
         CASE WHEN s.reviewer_idx IS NOT NULL THEN 'Y' ELSE 'N' END AS has_score
             FROM 
                 abstract_reviewer r

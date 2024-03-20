@@ -73,20 +73,17 @@
                                     <col width="20%">
                                     <col width="20%">
                                     <col width="20%">
-                                    <col width="20%">
                                     <col>
                                 </colgroup>
                             <tr>
                                 <th>심사위원 성함</th>
                                 <th>심사위원 코드</th>
                                 <th>심사위원 소속</th>
-                                <th>심사위원 전화번호</th>
                             </tr>
                                 <tr>
                                     <td><?php echo $reviewer[0]['nick_name']; ?></td>
                                     <td><?php echo $reviewer[0]['code']; ?></td>
                                     <td><?php echo $reviewer[0]['org']; ?></td>
-                                    <td><?php echo $reviewer[0]['phone']; ?></td>
                                 </tr>
                             </table>
                         </div>
@@ -147,7 +144,7 @@
                                 </tr>
                                 <tr>
                                     <th>조정점수 평균</th>
-                                    <td><?php echo $etc_sum / $user; ?></td>
+                                    <td><?php echo  $user != 0 ? $etc_sum / $user : 0; ?></td>
                                 </tr>
                             </table>
                     </div>
