@@ -159,7 +159,7 @@ table th {
                             if($abstract['category'] == $category_num["category"]){
                             echo '<tr>';
                             echo '<td><a href="/score/score_detail?n=' . $abstract['idx'] . '" target="_self">' .$abstract['submission_code'] . '</a></td>';
-                            echo '<td>' . $abstract['first_name'] . '</td>';
+                            echo '<td>' . $abstract['nick_name'] . '</td>';
                             echo '<td>' . $abstract['org'] . '</td>';
                             echo '<td>' . $abstract['nation'] . '</td>';
                             echo '<td>' . $abstract['title'] . '</td>';
