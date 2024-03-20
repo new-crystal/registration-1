@@ -68,14 +68,7 @@ table th {
                     <tr>
                         <th>성함</th>
                         <th>코드</th>
-                        <th>email</th>
-                        <th>전화번호</th>
                         <th>소속</th>
-                        <th>평가 초록 1</th>
-                        <th>평가 초록 2</th>
-                        <th>평가 초록 3</th>
-                        <th>평가 초록 4</th>
-                        <th>평가 초록 5</th>
                         <th>평가 완료 여부</th>
                     </tr>
                 </thead>
@@ -85,14 +78,7 @@ table th {
                         echo '<tr>';
                         echo '<td><a href="/score/reviewer_detail?n=' . $item['idx'] . '"target="_top">' . $item['nick_name'] . '</a></td>';
                         echo '<td>' . $item['code'] . '</td>';
-                        echo '<td>' . $item['email'] . '</td>';
-                        echo '<td>' . $item['phone'] . '</td>';
                         echo '<td>' . $item['org'] . '</td>';
-                        echo '<td>' . $item['abstract1'] . '</td>';
-                        echo '<td>' . $item['abstract2'] . '</td>';
-                        echo '<td>' . $item['abstract3'] . '</td>';
-                        echo '<td>' . $item['abstract4'] . '</td>';
-                        echo '<td>' . $item['abstract5'] . '</td>';
                         echo '<td>' . $item['has_score'] . '</td>';
                         echo '</tr>';
                     }
