@@ -51,10 +51,11 @@
 
         if(submitStatus === true){
             
+            //이름, 소속 공백 제거
             const data = {
                 code,
-                nick_name : nameInput.value,
-                org : orgInput.value
+                nick_name : nameInput.value.replace(/(\s*)/g, ""),
+                org : orgInput.value.replace(/(\s*)/g, "")
             }
 
             //[TODO] 점수 판으로 페이지 이동
