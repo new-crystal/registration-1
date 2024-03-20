@@ -101,8 +101,6 @@
                                     <col>
                                     <col>
                                     <col>
-                                    <col>
-                                    <col>
                                 </colgroup>
                                 <tr>
                                     <th>초록 접수 번호</th>

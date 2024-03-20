@@ -20,57 +20,49 @@ class Score extends CI_Controller
     public function index()
     {
         $this->load->view('admin/header');
-        $this->load->helper('form');
-        $this->load->library('form_validation');
+        $this->load->view('abstract_rating');
+    }
 
-        $this->form_validation->set_rules('nick_name', '이름', 'required');
+    public function abstract_reviewer()
+    {
+        $this->load->view('admin/header');
+        $this->load->view('abstract_reviewer');
+    }
 
-        if ($this->form_validation->run() === FALSE) {
-            $this->load->view('abstract_rating');
-        }else{
-            $name = $this->input->post('nick_name');
-            $email = $this->input->post('email');
+    public function add_reviewer()
+    {
+        $nick_name = $_POST['nick_name'];
+        $org = $_POST['org'];
+        $code = $_POST['code'];
 
-            $where = array(
-                'nick_name' => $name,
-                'email' => $email
-            );
+        $info = array(
+            'nick_name' => $nick_name,
+            'org' => $org,
+            'code' => $code
+        );
 
-            $data['reviewers'] = $this->rating->get_reviewer($where);
-            if (empty($data['reviewers'])) {
-                $this->load->view('abstract_fail');
-            } else {
-                foreach( $data['reviewers'] as $reviewer){
-                    $where1 = array(
-                        'submission_code' => $reviewer['abstract1']
-                    );
-                    $data['abstract1'] = $this->rating->get_abstract($where1);
+        $this->rating->add_reviewer($info);
+    }
 
-                    $where2 = array(
-                        'submission_code' => $reviewer['abstract2']
-                    );
-                    $data['abstract2'] = $this->rating->get_abstract($where2);
+    public function abstarct_rating()
+    {
+        $this->load->view('admin/header');
 
-                    $where3 = array(
-                        'submission_code' => $reviewer['abstract3']
-                    );
-                    $data['abstract3'] = $this->rating->get_abstract($where3);
+        $code = $_GET['n'];
+        $sliced_code = explode("-", $code)[0];
 
-                    $where4 = array(
-                        'submission_code' => $reviewer['abstract4']
-                    );
-                    $data['abstract4'] = $this->rating->get_abstract($where4);
+        $abstract_where = array(
+            'code' => $sliced_code
+        );
 
-                    $where5 = array(
-                        'submission_code' => $reviewer['abstract5']
-                    );
-                    $data['abstract5'] = $this->rating->get_abstract($where5);
+        $reviewer_where = array(
+            'code' => $code
+        );
 
-                    // If $data['reviewer'] is not empty, load the 'abstract_rating2' view
-                    $this->load->view('abstract_rating2', $data);
-                }
-            }
-        }
+        $data['abstract'] = $this->rating->get_abstract_rating($abstract_where);
+        $data['reviewer'] = $this->rating->get_reviewer($reviewer_where);
+
+        $this->load->view('abstract_rating2', $data);
     }
 
     public function add_sum(){
@@ -183,7 +175,7 @@ class Score extends CI_Controller
         $type =  $this->input->post('type');
         
         // 반복문을 통해 각 카테고리에 맞는 열에 nickname과 org를 출력
-        for ($category = 0; $category <= 4; $category++) {
+        for ($category = 1; $category <= 5; $category++) {
             // 카테고리명 출력
             $category_name = $this->getCategoryName($category); 
             $object->getActiveSheet()->setCellValue('A' . $this->getCategoryRow($category), $category_name);
@@ -225,7 +217,7 @@ class Score extends CI_Controller
                 // 행 데이터 채우기
                 $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $excel_row - $this->getCategoryRow($category) - 1);
                 $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row['submission_code']);
-                $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row['first_name']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row['nick_name']);
                 $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row['org']);
                 $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row['nation']);
                 $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['title']);
@@ -380,7 +372,7 @@ class Score extends CI_Controller
             $object->setActiveSheetIndex(0);
         
             // 반복문을 통해 각 카테고리에 맞는 열에 nickname과 org를 출력
-            for ($category = 0; $category <= 4; $category++) {
+            for ($category = 1; $category <= 5; $category++) {
                 // 카테고리명 출력
                 $category_name = $this->getCategoryName($category); 
                 $object->getActiveSheet()->setCellValue('A' . $this->getCategoryRow($category), $category_name);
@@ -421,7 +413,7 @@ class Score extends CI_Controller
                     // 행 데이터 채우기
                     $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $excel_row - $this->getCategoryRow($category) - 1);
                     $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row['submission_code']);
-                    $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row['first_name']);
+                    $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row['nick_name']);
                     $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row['org']);
                     $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row['nation']);
                     $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['title']);
@@ -450,26 +442,26 @@ class Score extends CI_Controller
     
     // 카테고리에 대한 행 위치를 반환하는 함수
     private function getCategoryRow($category) {
-        return $category * 12 + 3;
+        return ($category - 1) * 12 + 3;
     }
     
     // 카테고리에 대한 이름을 반환하는 함수 (예: 0 -> "Clinical", 1 -> "Basic")
     private function getCategoryName($category) {
         // 카테고리에 따라 다른 이름을 반환
         switch ($category) {
-            case 0:
+            case 1:
                 return "Diabetes/Obesity/Lipid (clinical)";
                 break;
-            case 1:
-                return "Diabetes/Obesity/Lipid (basic)";
-                break;
             case 2:
-                return "Bone/Muscle";
+                return "Diabetes/Obesity/Lipid (basic)";
                 break;
             case 3:
                 return "Thyroid";
                 break;
             case 4:
+                return "Bone/Muscle";
+                break;
+            case 5:
                 return "Pituitary/Adrenal/Gonad";
                 break;
         }
