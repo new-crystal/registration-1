@@ -55,7 +55,7 @@
                                     <?php if ($primary_menu == 'poster_1') echo 'class="active"' ?>>
                                     <a href="/score/admin_poster1">
                                         <i class="icon-list-unordered"></i>
-                                        <span>Poster oral 1</span>
+                                        <span>Poster oral 1(Day 2)</span>
                                     </a>
                                 </li>
                                 
@@ -63,7 +63,7 @@
                                     <?php if ($primary_menu == 'poster_2') echo 'class="active"' ?>>
                                     <a href="/score/admin_poster2">
                                         <i class="icon-list-unordered"></i>
-                                        <span>Poster oral 2</span>
+                                        <span>Poster oral 2(Day 3)</span>
                                     </a>
                                 </li>
                                 

@@ -98,24 +98,24 @@ class Rating extends CI_Model
 
     public function get_detail($where){
         $query = $this->db->query("
-                SELECT a.*, b.*, c.*, (a.score1 + a.score2 + a.score3 + a.score4) AS sum
-                FROM abstract_score a
-                LEFT JOIN (
-                SELECT *
-                FROM abstract_reviewer
-                ) b
-                ON a.reviewer_idx = b.idx
-                LEFT JOIN (
-                SELECT *
-                FROM abstracts
-                GROUP BY idx
-                ) c
-                ON a.abstract_idx = c.idx
-                WHERE c.idx = " . $where['idx']
+        SELECT a.*,  b.nick_name AS reviewer_name, b.org AS reviewer_org, b.code, c.submission_code, c.nation, c.nick_name AS abstract_name, c.org AS abstarct_org, (a.score1 + a.score2 + a.score3 + a.score4) AS sum
+        FROM abstract_score a
+        LEFT JOIN (
+        SELECT *
+        FROM abstract_reviewer
+        ) b
+        ON a.reviewer_idx = b.idx
+        LEFT JOIN (
+        SELECT *
+        FROM abstracts
+        GROUP BY idx
+        ) c
+        ON a.abstract_idx = c.idx
+        WHERE c.idx =" . $where['idx']
         );
         return $query->result_array();
     }
-    
+    //type, category 별 excel download
     public function get_abstract_excel($where)
     {
         $type = $where["type"]; 
@@ -133,6 +133,40 @@ class Rating extends CI_Model
         return $query->result_array();
     }
 
+    //type, category1, 2 별 excel download
+    public function get_abstract_excel_plus($where)
+    {
+        $code1 = $where["code1"]; 
+        $code2 = $where["code2"]; 
+        $query = $this->db->query("SELECT a.*, subquery.total_sum, subquery.etc1_sum, subquery.avg_etc1
+            FROM abstracts a
+            LEFT JOIN (
+                SELECT c.abstract_idx, SUM(c.etc1) AS etc1_sum, AVG(c.etc1) AS avg_etc1, SUM(c.score1 + c.score2 + c.score3 + c.score4) AS total_sum
+                FROM abstract_score c
+                WHERE c.etc1 != 0
+                GROUP BY c.abstract_idx
+            ) AS subquery ON a.idx = subquery.abstract_idx
+            WHERE  (a.code = '$code1' OR a.code = '$code2')
+            ORDER BY subquery.avg_etc1 DESC;");
+        return $query->result_array();
+    }
+
+     //pp3 + pp4 + pp5 + pp8 + pp9 + pp10 excel download
+     public function get_abstract_excel_all()
+     {
+         $query = $this->db->query("SELECT a.*, subquery.total_sum, subquery.etc1_sum, subquery.avg_etc1
+             FROM abstracts a
+             LEFT JOIN (
+                 SELECT c.abstract_idx, SUM(c.etc1) AS etc1_sum, AVG(c.etc1) AS avg_etc1, SUM(c.score1 + c.score2 + c.score3 + c.score4) AS total_sum
+                 FROM abstract_score c
+                 WHERE c.etc1 != 0
+                 GROUP BY c.abstract_idx
+             ) AS subquery ON a.idx = subquery.abstract_idx
+             WHERE  a.code = 'PP3' OR a.code = 'PP4' OR a.code = 'PP5' OR a.code = 'PP8' OR a.code = 'PP9' OR a.code = 'PP10'
+             ORDER BY subquery.avg_etc1 DESC;");
+         return $query->result_array();
+     }
+
     //poster1, 2 통합 출력
     public function get_abstract_excel_poster_oral($where)
     {
@@ -145,7 +179,7 @@ class Rating extends CI_Model
             WHERE c.etc1 != 0
             GROUP BY c.abstract_idx
         ) AS subquery ON a.idx = subquery.abstract_idx
-        WHERE (a.category = '$category') AND (a.type = 1 OR a.type = 2) -- 수정된 부분
+        WHERE (a.category = '$category') AND (a.type = 1 OR a.type = 2)
         ORDER BY subquery.avg_etc1 DESC;");
         return $query->result_array();
     }
@@ -173,11 +207,12 @@ class Rating extends CI_Model
         FROM abstract_reviewer r
         LEFT JOIN abstract_score s ON r.idx = s.reviewer_idx
         LEFT JOIN abstracts a ON s.abstract_idx = a.idx
-        WHERE a.type = '$type' AND a.category = '$category'
+        WHERE a.type = '$type' AND a.category = '$category' 
         GROUP BY r.idx
         ");
         return $query->result_array();
     }
+
 
     //reviewer 초록 평가 여부와 함께 가져오기
     public function get_reviewer_check()

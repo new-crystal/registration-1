@@ -308,9 +308,6 @@ switch ($category) {
         modal.style.display = "none";
         modalBackground.style.display = "none";
 
-        console.log()
-
-
         //채점하기 버튼 -> 채점 완료, 파란색 변경
         rateBtnList.forEach((btn, index)=>{
             
@@ -326,6 +323,7 @@ switch ($category) {
         if (allTrue) {
             submitBtn.style.background = "rgb(59 130 246)";
         }
+        console.log(btnFlags)
 
     sumList[modal.dataset.index] = sumTd.innerText * 1;
    })
@@ -402,7 +400,7 @@ switch ($category) {
     });
     
     // console.log(sumList);
-    // console.log(scoreList);
+     console.log(data);
 
     $.ajax({
 		type: "POST",

@@ -86,8 +86,7 @@ table th {
                     <?php if ($primary_menu == 'poster_1' || $primary_menu == 'poster_2' ) { ?>
                     <form action="/score/abstract_excel_poster_oral" method="post">
                     <input type="hidden" id="typeInput" name="type" value="0"/>
-                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Poster oral 전체 Excel
-                            Download</button>
+                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Poster oral 전체 Excel</button>
                     </form>
                     <?php } ?>
                     <?php if ($primary_menu == 'oral') { ?>
@@ -98,23 +97,45 @@ table th {
                     </form>
                     <?php } ?>
                     <?php if ($primary_menu == 'poster_1') { ?>
+                    <form action="/score/get_abstract_excel_plus" method="post">
+                        <input type="hidden" id="typeInput" name="code1" value="PP1"/>
+                        <input type="hidden" id="typeInput" name="code2" value="PP2"/>
+                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> PP1 + PP2 Excel</button>
+                    </form>
                     <form action="/score/abstract_excel" method="post">
-                    <input type="hidden" id="typeInput" name="type" value="1"/>
-                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Poster oral 1 Excel
-                            Download</button>
+                        <input type="hidden" id="typeInput" name="type" value="1"/>
+                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Poster oral 1 Excel</button>
                     </form>
                     <?php } ?>
                     <?php if ($primary_menu == 'poster_2') { ?>
+                    <form action="/score/get_abstract_excel_plus" method="post">
+                            <input type="hidden" id="typeInput" name="code1" value="PP6"/>
+                            <input type="hidden" id="typeInput" name="code2" value="PP7"/>
+                            <button class="btn btn-primary pull-right"><i class="icon-download4"></i> PP6 + PP7 Excel</button>
+                    </form>
+                    <form action="/score/get_abstract_excel_plus" method="post">
+                            <input type="hidden" id="typeInput" name="code1" value="PP3"/>
+                            <input type="hidden" id="typeInput" name="code2" value="PP4"/>
+                            <button class="btn btn-primary pull-right"><i class="icon-download4"></i> PP3 + PP8 Excel</button>
+                    </form>
+                    <form action="/score/get_abstract_excel_plus" method="post">
+                            <input type="hidden" id="typeInput" name="code1" value="PP4"/>
+                            <input type="hidden" id="typeInput" name="code2" value="PP9"/>
+                            <button class="btn btn-primary pull-right"><i class="icon-download4"></i> PP4 + PP9 Excel</button>
+                    </form>
+                    <form action="/score/get_abstract_excel_plus" method="post">
+                            <input type="hidden" id="typeInput" name="code1" value="PP5"/>
+                            <input type="hidden" id="typeInput" name="code2" value="PP10"/>
+                            <button class="btn btn-primary pull-right"><i class="icon-download4"></i> PP5 + PP10 Excel</button>
+                    </form>
+                    <form action="/score/get_abstract_excel_all" method="post">
+                            <button class="btn btn-primary pull-right"><i class="icon-download4"></i> PP3 ~ PP10 Excel</button>
+                    </form>
                     <form action="/score/abstract_excel" method="post">
-                    <input type="hidden" id="typeInput" name="type" value="2"/>
-                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Poster oral 2 Excel
-                            Download</button>
+                        <input type="hidden" id="typeInput" name="type" value="2"/>
+                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> Poster oral 2 Excel</button>
                     </form>
                     <?php } ?>
-                    <!-- <form action="/score/abstract_excel" method="post">
-                        <button class="btn btn-primary pull-right"><i class="icon-download4"></i> &nbspExcel
-                            Download</button>
-                    </form> -->
                 </div>
             </div>
             <?php 
@@ -122,22 +143,28 @@ table th {
             foreach($abstracts_category as $category_num){
                         $category_text = "";
                         $category = $category_num["category"] ?? "-";
+                        
                         switch ($category) {
-                            case 0:
-                                $category_text = "Diabetes/Obesity/Lipid (clinical)";
-                                break;
                             case 1:
-                                $category_text = "Diabetes/Obesity/Lipid (basic)";
-                                break;
-                            case 2:
-                                $category_text = "Bone/Muscle";
-                                break;
-                            case 3:
-                                $category_text = "Thyroid";
-                                break;
-                            case 4:
-                                $category_text = "Pituitary/Adrenal/Gonad";
-                                break;
+                                case 6:
+                                    $category_text = "Diabetes/Obesity/Lipid (clinical)";
+                                    break;
+                                case 2:
+                                   case 7:
+                                    $category_text = "Diabetes/Obesity/Lipid (basic)";
+                                    break;
+                                case 3:
+                                   case 8:
+                                    $category_text = "Bone/Muscle";
+                                    break;
+                                case 4:
+                                   case 9:
+                                    $category_text = "Thyroid";
+                                    break;
+                                case 5:
+                                   case 10:
+                                    $category_text = "Pituitary/Adrenal/Gonad";
+                                    break;
                         } ?>
                 <h1><?php echo $category_text; ?></h1>
             <table class="table datatable-basic">

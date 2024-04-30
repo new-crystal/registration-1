@@ -253,6 +253,91 @@ class OnSite extends CI_Controller
         }
     }
 
+    public function mobile_kes()
+    {
+        if (isset($_POST['nick_name'])) {
+            $name = isset($_POST['nick_name']) ? $_POST['nick_name'] : null;
+            $license = isset($_POST['ln']) ? $_POST['ln'] : null;
+            $special_license = isset($_POST['sn']) ? $_POST['sn'] : null;
+            $email= isset($_POST['email']) ? $_POST['email'] : null;
+            $phone = isset($_POST['phone']) ? $_POST['phone'] : null;
+            $place = isset($_POST['place']) ? $_POST['place'] : null;
+            $place_etc = isset($_POST['place_etc']) ? $_POST['place_etc'] : null;
+            $address = isset($_POST['address']) ? $_POST['address'] : null;
+            $is_score = isset($_POST['is_score']) ? $_POST['is_score'] : null;
+            $participation = isset($_POST['participation']) ? $_POST['participation'] : null;
+            $option_number = isset($_POST['option']) ? $_POST['option'] : null;
+            $category_number = isset($_POST['category']) ? $_POST['category'] : null;
+            $category_other = isset($_POST['category_etc']) ? $_POST['category_etc'] : null;
+            
+            $option_text = "";
+            switch($option_number){
+                case 1 : 
+                    $option_text = "전임의(임상강사)";
+                    break;
+                case 2 :
+                    $option_text = "시험 지원자";
+                    break;
+                case 3 :
+                    $option_text = "자격증 취득자";
+                    break;
+                case 4 :
+                    $option_text = "해당없음";
+                    break;
+            }
+
+            $category_text = "";
+            switch($category_number){
+                case 1 : 
+                    $category_text = "전임의";
+                    break;
+                case 2 :
+                    $category_text = "봉직의";
+                    break;
+                case 3 :
+                    $category_text = "전공의";
+                    break;
+                case 4 :
+                    $category_text = "교수";
+                    break;
+                case 5 :
+                    $category_text = "개원의";
+                    break;
+                case 6 :
+                    $category_text = $category_other;
+                    break;
+            }
+
+
+            $fee = 0;
+            $time = date("Y-m-d H:i:s");
+
+            // $uagent = $this->agent->agent_string();
+            $info = array(
+                'nick_name' => preg_replace("/\s+/", "", $name),
+                'licence_number' => preg_replace("/\s+/", "", $license),
+                'specialty_number' => preg_replace("/\s+/", "", $special_license),
+                'email' => preg_replace("/\s+/", "", $email),
+                'phone' => preg_replace("/\s+/", "", $phone),
+                'etc1' => $place, //근무처
+                'etc2' => $place_etc, //근무처 기타
+                'etc3' => $address, //근무처 주소
+                'is_score' => $is_score,
+                'attendance_type' => $participation,
+                'etc4' => $option_text, //선택 구분
+                'member_type' => $category_text,
+                'fee' => $fee,
+                'time' => $time,
+                // 'uagent' => $uagent,
+            );
+            $this->users->add_onsite_user($info);
+            $data['fee'] = $fee;
+            $this->load->view('success', $data);
+        } else {
+            $this->load->view('mobile_onsite_kes');
+        }
+    }
+
     public function success()
     {
         $data['fee'] = $_GET['fee'];
