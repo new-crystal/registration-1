@@ -255,6 +255,151 @@ class Score extends CI_Controller
         $object_writer->save('php://output');
     }
 
+      //초록 엑셀 출력 / 심사위원 출력 X
+      public function get_abstract_excel_plus(){
+        $object = new PHPExcel();
+        $object->setActiveSheetIndex(0);
+    
+        //페이지별 type 받아오기
+        $code1 =  $this->input->post('code1');
+        $code2 =  $this->input->post('code2');
+        
+            // 카테고리별로 데이터 가져오기
+            $where = array(
+                'code1' => $code1,
+                'code2' => $code2
+            );
+
+            //전체 리스트
+            $list = $this->rating->get_abstract_excel_plus($where);
+            
+            // 테이블 헤더 설정
+            $table_columns = array("NO.", "초록번호", "발표자", "소속", "국적", "초록 제목", "전체 총합", "전체 평균", "조정 점수 총합", "조정 점수 평균" ,"순위");
+
+            // 테이블 헤더 추가
+            $column = 0;
+            foreach ($table_columns as $field) {
+                $object->getActiveSheet()->setCellValueByColumnAndRow($column, 1, $field);
+                $column++;
+            }
+
+            // 데이터 채우기
+            $excel_row = 2;
+
+            $rank = 1;
+
+            foreach ($list as $row) {
+
+                $where_detail = array('idx' => $row['idx']);
+                $detail_list = $this->rating->get_detail($where_detail); // 평균 얻기
+                
+                $average = 0; // 평균 초기화
+    
+                if (count($detail_list) > 0) {
+                    $average = $row['total_sum'] / count($detail_list); // 평균 계산
+                }
+                
+                // 행 데이터 채우기
+                $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $rank );
+                $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row['submission_code']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row['nick_name']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row['org']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row['nation']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['title']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row['total_sum']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $average);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row,  $row['etc1_sum']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row,  $row['avg_etc1']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $rank);
+
+                //[TODO] 심사자 성함에 맞춰 상세 점수 출력
+
+                // 행 증가
+                $excel_row++;
+                $rank++;
+            }
+
+        $extension = "xlsx"; // 파일 확장자 변수
+        $filename = "개별_초록집계현황";
+    
+        // 엑셀 파일로 내보내기
+        header('Content-Type: application/vnd.ms-excel');
+        header("Content-Disposition: attachment; filename=\"$filename.$extension\"");
+        header('Cache-Control: max-age=0');
+        
+        $object_writer = PHPExcel_IOFactory::createWriter($object, 'Excel2007');
+        $object_writer->save('php://output');
+    }
+
+    
+      //초록 엑셀 출력 / 심사위원 출력 X
+      public function get_abstract_excel_all(){
+        $object = new PHPExcel();
+        $object->setActiveSheetIndex(0);
+
+            //전체 리스트
+            $list = $this->rating->get_abstract_excel_all();
+            
+            // 테이블 헤더 설정
+            $table_columns = array("NO.", "초록번호", "발표자", "소속", "국적", "초록 제목", "전체 총합", "전체 평균", "조정 점수 총합", "조정 점수 평균" ,"순위");
+
+            // 테이블 헤더 추가
+            $column = 0;
+            foreach ($table_columns as $field) {
+                $object->getActiveSheet()->setCellValueByColumnAndRow($column, 1, $field);
+                $column++;
+            }
+
+            // 데이터 채우기
+            $excel_row = 2;
+
+            $rank = 1;
+
+            foreach ($list as $row) {
+
+                $where_detail = array('idx' => $row['idx']);
+                $detail_list = $this->rating->get_detail($where_detail); // 평균 얻기
+                
+                $average = 0; // 평균 초기화
+    
+                if (count($detail_list) > 0) {
+                    $average = $row['total_sum'] / count($detail_list); // 평균 계산
+                }
+                
+                // 행 데이터 채우기
+                $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $rank );
+                $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row['submission_code']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row, $row['nick_name']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row['org']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row['nation']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['title']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row['total_sum']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $average);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row,  $row['etc1_sum']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row,  $row['avg_etc1']);
+                $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $rank);
+
+                //[TODO] 심사자 성함에 맞춰 상세 점수 출력
+
+                // 행 증가
+                $excel_row++;
+                $rank++;
+            }
+
+        $extension = "xlsx"; // 파일 확장자 변수
+        $filename = "개별_초록집계현황";
+    
+        // 엑셀 파일로 내보내기
+        header('Content-Type: application/vnd.ms-excel');
+        header("Content-Disposition: attachment; filename=\"$filename.$extension\"");
+        header('Cache-Control: max-age=0');
+        
+        $object_writer = PHPExcel_IOFactory::createWriter($object, 'Excel2007');
+        $object_writer->save('php://output');
+    }
+
+
+
     // //초록 엑셀 출력 / 심사위원 출력 O
     // public function abstract_excel(){
     //     $object = new PHPExcel();
