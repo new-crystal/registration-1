@@ -59,22 +59,29 @@
      $category_text = "";
      $category = $abstract["category"] ?? "-";
      switch ($category) {
-         case 0:
+         case 1:
+         case 6:
              $category_text = "Diabetes/Obesity/Lipid (clinical)";
              break;
-         case 1:
+         case 2:
+            case 7:
              $category_text = "Diabetes/Obesity/Lipid (basic)";
              break;
-         case 2:
+         case 3:
+            case 8:
              $category_text = "Bone/Muscle";
              break;
-         case 3:
+         case 4:
+            case 9:
              $category_text = "Thyroid";
              break;
-         case 4:
+         case 5:
+            case 10:
              $category_text = "Pituitary/Adrenal/Gonad";
              break;
      }  
+
+     //print_r($abstract_detail)
     ?>
 
     <section class="wrapper">
@@ -99,7 +106,7 @@
                             </tr>
                                 <tr>
                                     <td><?php echo $abstract['submission_code']; ?></td>
-                                    <td><?php echo $abstract['first_name']; ?></td>
+                                    <td><?php echo $abstract['nick_name']; ?></td>
                                     <td><?php echo $abstract['title']; ?></td>
                                     <td><?php echo $category_text; ?></td>
                                     <td><?php echo $abstract['nation']; ?></td>
@@ -123,8 +130,7 @@
                                 <tr>
                                     <th>평가자 성함</th>
                                     <th>평가자 소속</th>
-                                    <th>평가자 휴대폰 번호</th>
-                                    <th>평가자 email</th>
+                                    <th>평가자 코드</th>
                                     <th>연구의 <br>창의성</th>
                                     <th>방법의 <br>타당성</th>
                                     <th>결과의 <br>영향력</th>
@@ -138,11 +144,10 @@
                                     $etc_sum += $detail['etc1'];
                                     ?>
                                 <tr>
-                                    <td><?php echo $detail['nick_name']; ?></td>
-                                    <td><?php echo $detail['org']; ?></td>
-                                    <td><?php echo $detail['phone']; ?></td>
-                                    <td><?php echo $detail['email']; ?></td>
-                                    <td><?php echo $detail['score1']; ?></td>
+                                    <td><?php echo $detail['reviewer_name']; ?></td>
+                                    <td><?php echo $detail['reviewer_org']; ?></td>
+                                    <td><?php echo $detail['reviewer_org']; ?></td>
+                                    <td><?php echo $detail['code']; ?></td>
                                     <td><?php echo $detail['score2']; ?></td>
                                     <td><?php echo $detail['score3']; ?></td>
                                     <td><?php echo $detail['score4']; ?></td>
