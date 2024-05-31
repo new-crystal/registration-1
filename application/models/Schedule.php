@@ -38,17 +38,18 @@ class Schedule extends CI_Model
     }
     public function get_notice()
     {
-        $query = $this->db->query("SELECT * FROM `notice` WHERE is_deleted = 'N' ORDER BY `idx`");
+        $query = $this->db->query("SELECT * FROM `notice` WHERE is_deleted = 'N' ORDER BY `id`");
         return $query->result_array();
         // return $this->db->get($this->notice)->result_array();
     }
 
     public function add_notice($info)
     {
-        $this->db->insert($this->notice, $info);
-        $idx = $this->db->insert_id();
-        $this->db->where('idx', $idx);
+        $result = $this->db->insert($this->notice, $info);
+        $id = $this->db->insert_id(); // 삽입 후 생성된 ID 가져오기
+        $this->db->where('id', $id);
     }
+    
 
     public function edit_notice($info, $where)
     {

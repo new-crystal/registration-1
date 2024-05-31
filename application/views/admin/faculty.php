@@ -99,7 +99,7 @@ table th {
         </div>
         <!-- /basic datatable -->
         <div class="footer text-muted">
-            © 2023. <a href="#">온라인 학술대회</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">(주)인투온</a>
+            © 2024. <a href="#">온라인 학술대회</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">(주)인투온</a>
         </div>
     </div>
     <!-- /content area -->

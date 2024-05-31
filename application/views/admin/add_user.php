@@ -14,7 +14,7 @@
                                 <label class="col-sm-2 control-label">참가유형</label>
                                 <div class="col-sm-10">
                                     <select class="form-control input-lg m-bot15" name="attendance_type" id="attendance_type">
-                                        <option value="일반참석자">일반참석자</option>
+                                        <option value="일반참가자">일반참가자</option>
                                         <option value="임원">임원</option>
                                         <option value="좌장">좌장</option>
                                         <option value="연자">연자</option>
@@ -27,25 +27,26 @@
                                 <label class="col-sm-2 control-label">참석 구분</label>
                                 <div class="col-sm-10">
                                     <select class="form-control input-lg m-bot15" name="member_type" id="member_type">
-                                    <option value="교수">교수</option>
-                                            <option value="개원의">개원의</option>
-                                            <option value="봉직의">봉직의</option>
-                                            <option value="교직의">교직의</option>
-                                            <option value="전임의">전임의</option>
+                                        <option value="전임의">전임의</option>
+                                        <option value="봉직의">봉직의</option>
+                                        <option value="전공의">전공의</option>
+                                        <option value="교수">교수</option>
+                                        <option value="개원의">개원의</option>
+                                        <option value="후원사">후원사</option>
+                                        <option value="기타">기타</option>
+                                            <!-- <option value="교직의">교직의</option>
                                             <option value="수련의">수련의</option>
-                                            <option value="전공의">전공의</option>
                                             <option value="영양사">영양사</option>
                                             <option value="운동사">운동사</option>
                                             <option value="간호사">간호사</option>
                                             <option value="군의관">군의관</option>
                                             <option value="연구원">연구원</option>
                                             <option value="학생">학생</option>
-                                            <option value="전시(부스)">전시(부스)</option>
-                                            <option value="기타">기타</option>
+                                            <option value="전시(부스)">전시(부스)</option> -->
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group form-inline">
+                            <!-- <div class="form-group form-inline">
                                 <label class="col-sm-2 control-label">분야 구분</label>
                                 <div class="col-sm-10">
                                     <select class="form-control input-lg m-bot15" name="type1" id="type1">
@@ -56,14 +57,15 @@
                                             <option value="전시">전시</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="form-group form-inline">
-                                <label class="col-sm-2 control-label">KSSO 회원여부</label>
+                                <label class="col-sm-2 control-label">회원여부</label>
                                 <div class="col-sm-10">
                                     <select class="form-control input-lg m-bot15" name="member" id="member">
-                                        <option value="정회원">정회원</option>
                                         <option value="비회원">비회원</option>
+                                        <option value="정회원">정회원</option>
+                                        <option value="평생회원">평생회원</option>
                                     </select>
                                 </div>
                             </div>

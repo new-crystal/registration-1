@@ -24,11 +24,11 @@
         <button onclick="addNotice()">추가하기</button>
     </div>
     <div>
-        <?php
-        //print_r($notice); 
-        foreach ($notice as $item) {
-            echo '<form id="memoForm" action="/admin/edit_notice"><div style="text-align: center;">
-            <input  id="notice" class="notice" value="' .  $item['notice'] . '" readonly/><button type="button" id="save" onclick="delNotice(\'' . $item['idx'] . '\')">삭제</button></div></form>';
+
+        <?php 
+            foreach ($notice as $item) {
+                    echo '<form id="memoForm" action="/admin/edit_notice"><div style="text-align: center;">
+                    <input  id="notice" class="notice" value="' .  $item['notice'] . '" readonly/><button type="button" id="save" onclick="delNotice(\'' . $item['id'] . '\')">삭제</button></div></form>';
         } ?>
     </div>
 </div>
@@ -36,17 +36,17 @@
 <script>
 const saveButton = document.querySelector("#save")
 const memo = document.querySelector("#notice")
-const form = document.querySelector("#memoForm")
+const memoForm = document.querySelector("#memoForm")
 
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    saveMemo();
-});
+// memoForm.addEventListener("submit", (event) => {
+//     event.preventDefault();
+//     saveMemo();
+// });
 
 async function saveMemo(idx) {
     const memoValue = memo.value;
-    const url = form.action;
-    const formData = new FormData(form);
+    const url = memoForm.action;
+    const formData = new FormData(memoForm);
 
     if (memoValue === "") {
         formData.append('memo', null); // 메모 필드의 값을 공백으로 설정
@@ -75,8 +75,8 @@ async function saveMemo(idx) {
 
 async function delNotice(idx) {
     const url = "/admin/del_notice"
-    const formData = new FormData(form);
-    formData.set("idx", idx)
+    const formData = new FormData(memoForm);
+    formData.set("id", idx)
     const response = await fetch(url, {
         method: 'POST',
         body: formData
@@ -92,7 +92,7 @@ async function delNotice(idx) {
     }
 }
 
-function addNotice(id) {
+function addNotice() {
     const url = `/admin/add_notice`;
     window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
 }

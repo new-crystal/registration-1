@@ -39,7 +39,52 @@
                     <div class="sidebar-category sidebar-category-visible">
                         <div class="category-content no-padding">
                             <ul class="navigation navigation-main navigation-accordion">
+                                  <!-- Main -->
+                                  <li class="navigation-header"><span>Print</span> <i class="icon-menu"
+                                        title="Main pages"></i></li>
+                            <li style="margin-bottom: 2rem;">
+                                    <a href="/admin/qr_layout_all?type=02" target="_blank">
+                                        <i class="icon-printer2"></i>
+                                        <span>임원 QR생성
+                                        </span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 2rem;">
+                                    <a href="/admin/qr_layout_all?type=06" target="_blank">
+                                        <i class="icon-printer2"></i>
+                                        <span>좌장 QR생성
+                                        </span>
+                                    </a>
+                                </li>
 
+                                <li style="margin-bottom: 2rem;">
+                                    <a href="/admin/qr_layout_all?type=05" target="_blank">
+                                        <i class="icon-printer2"></i>
+                                        <span>연자 QR생성
+                                        </span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 2rem;">
+                                    <a href="/admin/qr_layout_all?type=07" target="_blank">
+                                        <i class="icon-printer2"></i>
+                                        <span>후원사 QR생성
+                                        </span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 2rem;">
+                                    <a href="/admin/qr_layout_all?type=01" target="_blank">
+                                        <i class="icon-printer2"></i>
+                                        <span>일반참가자 QR생성
+                                        </span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 2rem;">
+                                    <a href="/admin/qr_blank_user" target="_blank">
+                                        <i class="icon-printer2"></i>
+                                        <span>QR 프린트용
+                                        </span>
+                                    </a>
+                                </li>
                                 <!-- Main -->
                                 <li class="navigation-header"><span>Main</span> <i class="icon-menu"
                                         title="Main pages"></i></li>
@@ -61,24 +106,25 @@
                                     </a>
                                 </li>
                                 
-                                <li style="margin-bottom: 2rem;"
+                                <!-- <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'faculty') echo 'class="active"' ?>>
                                     <a href="/admin/faculty">
                                         <i class="icon-list-unordered"></i>
                                         <span>faculty 관리</span>
                                     </a>
-                                </li>
-                                <li style="margin-bottom: 2rem;"
+                                </li> -->
+                              
+                                <!-- <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'qrcode') echo 'class="active"' ?>>
                                     <a href="/admin/access">
                                         <i class="icon-list-unordered"></i>
                                         <span> QR code
                                         </span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'participant') echo 'class="active"' ?>>
-                                    <a href="/admin/participant_2">
+                                    <a href="/admin/participant">
                                         <i class="icon-list-unordered"></i>
                                         <span>참석자 현황
                                         </span>
@@ -91,20 +137,13 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li style="margin-bottom: 2rem;" <?php if ($primary_menu == 'notice') echo 'class="active"' ?>>
+                                <!-- <li style="margin-bottom: 2rem;" <?php if ($primary_menu == 'notice') echo 'class="active"' ?>>
                                     <a href="/admin/notice">
                                         <i class="icon-pushpin"></i>
                                         <span>공지사항
                                         </span>
                                     </a>
-                                </li>
-                                <li style="margin-bottom: 2rem;">
-                                    <a href="/admin/qr_blank_user" target="_blank">
-                                        <i class="icon-shredder"></i>
-                                        <span>QR 프린트용
-                                        </span>
-                                    </a>
-                                </li>
+                                </li> -->
                                 <li style="margin-bottom: 2rem;">
                                     <a href="/access/scan_qr" target="_blank">
                                         <i class="icon-qrcode"></i>
@@ -119,20 +158,20 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li style="margin-bottom: 2rem;" >
+                                <!-- <li style="margin-bottom: 2rem;" >
                                     <a href="https://kosso.org/main/admin/registration_list.php" target="_blank">
                                         <i class="icon-home2"></i>
                                         <span>KSSO ADMIN
                                         </span>
                                     </a>
-                                </li>
-                                <li style="margin-bottom: 2rem;" >
-                                    <a href="https://kosso.org/main/onsite_registration.php" target="_blank">
+                                </li> -->
+                                <!-- <li style="margin-bottom: 2rem;" >
+                                    <a href="/onSite/mobile_kes" target="_blank">
                                         <i class="icon-home2"></i>
                                         <span>현장등록 페이지
                                         </span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <!-- <li style="margin-bottom: 2rem;">
                                     <a href="/admin/qr_layout_all?type=02" target="_blank">
                                         <i class="icon-printer2"></i>

@@ -24,7 +24,7 @@
 
 </style>
 <div class="text-center flex flex-col items-center justify-center">
-    <h1 class="text-6xl font-semibold text-orange-600 my-10">제59차 대한비만학회 춘계학술대회</h1>
+    <h1 class="text-6xl font-semibold text-orange-600 my-10">대한내분비학회 제22회 분과정문의 연수강좌</h1>
     <h6 class="text-3xl font-semibold mb-20 ">현장 참석자 데이터</h6>
     <h6 class="text-3xl font-semibold mb-20 ">• 등록자 : 총 <?php echo count($users); ?>명</h6>
     <h6 class="text-3xl font-semibold mb-20 ">• 현장 출결인원(중복 제외) : 총 <?php echo count($item); ?>명</h6>

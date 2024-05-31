@@ -19,7 +19,7 @@ class Qrcode extends CI_Controller
 
     public function index()
     {
-        //$this->qrcode_e->create_QRcode("Hello, World!!!!!", "qrcode.png");
+        //$this->qrcode_e->create_QRcode("Hello, World!!", "qrcode.png");
         $this->load->helper('form');
         $this->load->library('form_validation');
 
