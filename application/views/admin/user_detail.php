@@ -99,7 +99,7 @@
                                     <td><input class="form-control" type="text" name="fee" value="<?php echo $item['fee']; ?>">
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th>Welcome Reception 참석 여부</th>
                                     <td> <input id="dp1" type="text" value="<?php echo $item['welcome_reception_yn']; ?>" size="16" class="form-control yn" name="welcome_reception_yn">
 
@@ -122,32 +122,7 @@
                                     <td> <input id="dp1" type="text" value="<?php echo $item['luncheon_yn']; ?>" size="16" class="form-control yn" name="luncheon_yn">
 
                                     </td>
-                                </tr>
-                                <tr>
-                                    <th>참석자구분</th>
-                                    <td>
-                                        <input class="form-control member_type" type="text" value="<?php echo $item['member_type']; ?>" name="member_type" id="member_type">
-                                        <select class="form-control input-lg m-bot15" id="member_type_select">
-                                            <option value="" selected="selected">직접입력</option>
-
-                                            <option value="교수">교수</option>
-                                            <option value="개원의">개원의</option>
-                                            <option value="봉직의">봉직의</option>
-                                            <option value="교직의">교직의</option>
-                                            <option value="전임의">전임의</option>
-                                            <option value="수련의">수련의</option>
-                                            <option value="전공의">전공의</option>
-                                            <option value="영양사">영양사</option>
-                                            <option value="운동사">운동사</option>
-                                            <option value="간호사">간호사</option>
-                                            <option value="군의관">군의관</option>
-                                            <option value="연구원">연구원</option>
-                                            <option value="학생">학생</option>
-                                            <option value="전시(부스)">전시(부스)</option>
-                                            <option value="기타">기타</option>
-                                        </select>
-                                    </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th>참가유형</th>
                                     <td>
@@ -165,19 +140,72 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>분야구분</th>
+                                    <th>참석자구분</th>
+                                    <td>
+                                        <input class="form-control member_type" type="text" value="<?php echo $item['member_type']; ?>" name="member_type" id="member_type">
+                                        <select class="form-control input-lg m-bot15" id="member_type_select">
+                                            <option value="" selected="selected">직접입력</option>
+
+                                            <!-- 
+                                                <option value="수련의">수련의</option>
+                                                <option value="교직의">교직의</option> 
+                                                <option value="영양사">영양사</option>
+                                                <option value="간호사">간호사</option>
+                                                <option value="연구원">연구원</option>
+                                                <option value="학생">학생</option>
+                                                <option value="전시(부스)">전시(부스)</option>
+                                                <option value="군의관">군의관</option>
+                                                <option value="운동사">운동사</option>
+                                            -->
+                                            <option value="전임의">전임의</option>
+                                            <option value="봉직의">봉직의</option>
+                                            <option value="전공의">전공의</option>
+                                            <option value="교수">교수</option>
+                                            <option value="개원의">개원의</option>
+                                            <option value="기타">기타</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                              
+                                <tr>
+                                    <th>참가형태</th>
                                     <td>
                                         <input class="form-control type1" type="text" value="<?php echo $item['type1']; ?>" name="type1" id="type1">
                                         <select class="form-control input-lg m-bot15" id="type1_select">
                                             <option value="" selected="selected">직접입력</option>
 
-                                            <option value="의료">의료</option>
-                                            <option value="영양">영양</option>
-                                            <option value="운동">운동</option>
-                                            <option value="기타">기타</option>
-                                            <option value="전시">전시</option>
-                                           
+                                            <option value="0">전임의 과정에 있거나 2024년도 분과전문의 자격인정시험에 응시 예정인 대한내분비학회 회원(평생회원, 정회원)</option>
+                                            <option value="1">분과전문의 자격을 이미 취득한 대한내분비학회 평생회원</option>
                                         </select>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>선택 구분</th>
+                                    <td>
+                                        <input class="form-control type1" type="text" value="<?php echo $item['type2']; ?>" name="type2" id="type2">
+                                        <select class="form-control input-lg m-bot15" id="type2_select">
+                                            <option value="" selected="selected">직접입력</option>
+
+                                            <option value="0">전임의(임상강사) 과정인 자</option>
+                                            <option value="1">2024년도 분과전문의 시험 지원자</option>
+                                            <option value="2">분과전문의 자격을 이미 취득한 자</option>
+                                            <option value="3">해당없음</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>qr print 여부(N/Y)</th>
+                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_print']; ?>" name="qr_print" id="phone" readonly></td>
+                                </tr>
+                                <tr>
+                                    <th>day 1 출결여부(N/Y)</th>
+                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_1']; ?>" name="qr_chk_day_1" id="phone" readonly>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>day 2 출결여부(N/Y)</th>
+                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_2']; ?>" name="qr_chk_day_2" id="phone" readonly>
                                     </td>
                                 </tr>
                             </table>
@@ -241,7 +269,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th>영양사면허번호</th>
                                     <td>
                                         <div style="display:flex;  align-items: center;">
@@ -256,8 +284,8 @@
                                             <input class="form-control" type="text" value="<?php echo $item['dietitian_number']; ?>" name="dietitian_number" id="dietitian_number">
                                         </div>
                                     </td>
-                                </tr>
-                                <tr>
+                                </tr> -->
+                                <!-- <tr>
                                     <th>생년월일(YYYY-MM-DD)</th>
                                     <td>
                                         <div style="display:flex;  align-items: center;">
@@ -272,7 +300,7 @@
                                             <input class="form-control" type="text" value="<?php echo $item['is_score1']; ?>" name="is_score1" id="is_score1">
                                         </div>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th>연락처</th>
                                     <td>
@@ -286,20 +314,7 @@
                                     <td><input class="form-control" type="text" value="<?php echo $item['email']; ?>" name="email" id="email"></td>
                                 </tr>
 
-                                <tr>
-                                    <th>qr print 여부(N/Y)</th>
-                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_print']; ?>" name="qr_print" id="phone" readonly></td>
-                                </tr>
-                                <tr>
-                                    <th>day 1 출결여부(N/Y)</th>
-                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_1']; ?>" name="qr_chk_day_1" id="phone" readonly>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>day 2 출결여부(N/Y)</th>
-                                    <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_2']; ?>" name="qr_chk_day_2" id="phone" readonly>
-                                    </td>
-                                </tr>
+                               
                                 <tr>
                                     <th>개최정보습득방법</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['conference_info']; ?>" name="conference_info" id="phone"></td>
@@ -319,8 +334,14 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>참여 정책심포지엄</th>
+                                    <th>숙박 신청여부</th>
                                     <td> <input id="committee" type="text" value="<?php echo $item['etc1'] ? $item['etc1'] : "-"; ?>" size="16" class="form-control" name="etc1">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>저녁 만찬 및 친교의 시간 신청여부</th>
+                                    <td> <input id="committee" type="text" value="<?php echo $item['etc2'] ? $item['etc2'] : "-"; ?>" size="16" class="form-control" name="etc1">
 
                                     </td>
                                 </tr>

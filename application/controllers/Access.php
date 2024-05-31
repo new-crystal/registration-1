@@ -469,16 +469,16 @@ class Access extends CI_Controller
                     'registration_no' => $qrcode
                 );
 
-                  /** day1 ~ day3 access 기록*/
+                  /** day1 ~ day2 access 기록*/
                   $qr_time = date("Y-m-d");
-                  if ($qr_time == '2024-03-08') {
+                  if ($qr_time == '2024-06-15') {
                       $infoqr = array(
                           'qr_chk_day_1' => 'Y',
                           'qr_chk' => 'Y'
                       );
                       $this->users->update_qr_status($infoqr, $where);
                   }
-                  if ($qr_time == '2024-03-09') {
+                  if ($qr_time == '2024-06-16') {
                       $infoqr = array(
                           'qr_chk_day_2' =>  'Y',
                           'qr_chk' => 'Y'
@@ -708,14 +708,14 @@ class Access extends CI_Controller
 
                 /** day1 ~ day2 access 기록!!!*/
                 $qr_time = date("Y-m-d");
-                if ($qr_time == '2024-03-08') {
+                if ($qr_time == '2024-06-15') {
                     $infoqr = array(
                         'qr_chk_day_1' => 'Y',
                         'qr_chk' => 'Y'
                     );
                     $this->users->update_qr_status($infoqr, $where);
                 }
-                if ($qr_time == '2024-03-09') {
+                if ($qr_time == '2024-06-16') {
                     $infoqr = array(
                         'qr_chk_day_2' =>  'Y',
                         'qr_chk' => 'Y'

@@ -18,6 +18,187 @@ class Participant extends CI_Model
                          //m6 영양사 / m7 운동사 / m8 간호사 / m9 군의관 / m10 공보의 
                          //m11 연구원 / m 12 학생 / m13 전시(부스) / m14 기타
 
+    //[240615-16] 
+    public function get_day1_chairperson()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '좌장'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function get_day1_chairman()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function get_day1_panel()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '패널'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function get_day1_speaker()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '연자'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    
+    public function get_day1_participants()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참가자'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }    
+
+    public function get_day1_sponsor()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '후원사'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    
+    public function get_day1_etc()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반참가자' AND a.attendance_type != '후원사'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+
+    public function get_day2_chairperson()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '좌장'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function get_day2_chairman()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function get_day2_panel()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '패널'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function get_day2_speaker()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '연자'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    
+    public function get_day2_participants()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참가자'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }    
+
+    public function get_day2_sponsor()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '후원사'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    
+    public function get_day2_etc()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반참가자' AND a.attendance_type != '후원사'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+
+    public function get_day1_check()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_1 = 'Y'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
+   
+    public function get_day2_check()
+    {
+        $query = $this->db->query("
+        SELECT *
+        FROM users a
+        WHERE a.qr_chk_day_2 = 'Y'
+");
+    $result = $query->result_array();
+    return count($result); 
+    }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////	
 // 의료!!
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -110,7 +110,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = 'KSSO2024-' . str_pad($id, 4, '0', STR_PAD_LEFT);
+		$registration_no = '202402_O-' . str_pad($id, 4, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
@@ -120,7 +120,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = 'KSSO2024-' . str_pad($id, 4, '0', STR_PAD_LEFT);
+		$registration_no = '202402_O' . str_pad($id, 4, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
@@ -260,7 +260,7 @@ class Users extends CI_Model
 				MIN(time) as mintime_day_1,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			 WHERE DATE(TIME) = '2024-03-08'
+			 WHERE DATE(TIME) = '2024-06-15'
 			GROUP BY registration_no
 		) b ON a.registration_no = b.qr_registration_no
 		LEFT JOIN (
@@ -268,7 +268,7 @@ class Users extends CI_Model
 				MIN(time) as mintime_day_2,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			 WHERE DATE(TIME) = '2024-03-09'
+			 WHERE DATE(TIME) = '2024-06-16'
 			GROUP BY registration_no
 		) b1 ON a.registration_no = b1.qr_registration_no
 		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반참석자' AND a.attendance_type != '기자'

@@ -97,8 +97,6 @@ table th {
                     foreach ($users as $item) {
                         echo '<tr>';
                         echo '<td style="text-align: center;"><input type="checkbox" name="depositChk" class="depositChk" value="' .  $item['registration_no'] . '"></td>';
-                        // echo '<td>' . $item['type3'] . '</td>';
-                        // echo '<td>' . substr($item['time'], 0, 10) . '</td>';
                         echo '<td class="reg_num pointer">' . $item['registration_no'] . '</td>';
                         echo '<td>' . $item['attendance_type'] . '</td>';
                         echo '<td>' . $item['member_type'] . '</td>';
@@ -136,7 +134,7 @@ table th {
         </div>
         <!-- /basic datatable -->
         <div class="footer text-muted">
-            © 2023. <a href="#">온라인 학술대회</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">(주)인투온</a>
+            © 2024. <a href="#">온라인 학술대회</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">(주)인투온</a>
         </div>
     </div>
     <!-- /content area -->

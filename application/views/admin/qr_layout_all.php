@@ -48,9 +48,7 @@
                 echo '<div class="a4_area">';
                 echo '<div class="bg_area">';
                 echo '<div class="txt_con">';
-                if ($item['nt_info'] != '') {
-                    echo '<div class="org" id="nt_info">' . $item['nt_info'] . '</div>';
-                }
+            
                 if ($lang == 0) {
                     echo '<div class="nick_name lang_en" id="nick_name">' . $item['nick_name'] . '</div>';
                 } else if ($lang !== 0 && $nicknameLength <= 3) {
@@ -68,8 +66,8 @@
                 echo '<div class="receipt receipt_price">' . number_format($item['fee']) . '</div>';
                 echo '<div class="receipt receipt_num_2">' . $item['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_small small_nick">' . $item['nick_name'] . '</div>';
-                echo '<div class="receipt receipt_small smaill_ln">' . $item['ln'] . '</div>';
-                echo '<div class="receipt receipt_small small_sn">' . $item['sn'] . '</div>';
+                echo '<div class="receipt receipt_small smaill_ln">' . $item['licence_number'] . '</div>';
+                echo '<div class="receipt receipt_small small_sn">' . $item['specialty_number'] . '</div>';
                 if ($nicknameLength > 3) {
                     echo '</div>';
                 }
