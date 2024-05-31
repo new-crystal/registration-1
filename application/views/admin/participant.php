@@ -30,7 +30,7 @@
             <th>6월 16일(일)</th>
         </tr>
         <tr>
-            <th class="bg-red-100" rowspan="7">사전등록</th>
+            <th class="bg-red-100" rowspan="6">참가유형</th>
             <th class="bg-red-100">좌장</th>
             <td><?php echo isset($day1_chairperson) ? $day1_chairperson  : 0; ?></td>
             <td><?php echo isset($day2_chairperson) ? $day2_chairperson  : 0; ?></td>
@@ -42,11 +42,11 @@
             <td><?php echo isset($day2_chairman) ? $day2_chairman : 0; ?></td>
 
         </tr>
-        <tr>
+        <!-- <tr>
             <th class="bg-red-100">패널</th>
             <td><?php echo isset($day1_panel) ? $day1_panel : 0; ?></td>
             <td><?php echo isset($day2_panel) ? $day2_panel : 0; ?></td>
-        </tr>
+        </tr> -->
         <tr>
             <th class="bg-red-100">연자</th>
             <td><?php echo isset($day1_speaker) ? $day1_speaker : 0; ?></td>
