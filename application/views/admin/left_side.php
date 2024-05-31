@@ -79,6 +79,13 @@
                                     </a>
                                 </li>
                                 <li style="margin-bottom: 2rem;">
+                                    <a href="/admin/qr_layout_all?type=08" target="_blank">
+                                        <i class="icon-printer2"></i>
+                                        <span>기타참가자 QR생성
+                                        </span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 2rem;">
                                     <a href="/admin/qr_blank_user" target="_blank">
                                         <i class="icon-printer2"></i>
                                         <span>QR 프린트용

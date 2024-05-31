@@ -57,6 +57,18 @@ class Users extends CI_Model
 		return $this->db->get($this->users)->result_array();
 	}
 
+	public function get_users_etc()
+	{
+		
+		$query = $this->db->query("
+		SELECT *
+			FROM users a
+			WHERE a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반참가자' AND a.attendance_type != '후원사'
+			ORDER BY a.id ASC;
+		");
+		return $query->result_array();
+	}
+
 	public function get_user($where)
 	{
 		$this->db->where($where);
