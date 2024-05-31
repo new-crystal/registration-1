@@ -434,10 +434,9 @@ class Admin extends CI_Controller
         $this->load->view('admin/header');
         $userType = $_GET['type'];
 
-        if ($userType == '03') {
-            $where = array(
-                'nick_name' => '이원영'
-            );
+        if ($userType == '08') {
+            $data['users'] = $this->users->get_users_etc();
+            $this->load->view('admin/qr_layout_all', $data);
         } else {
             if ($userType == '01') {
                 $userType = '일반참가자';
@@ -451,7 +450,7 @@ class Admin extends CI_Controller
                 $userType = '좌장';
             } else if ($userType == '07') {
                 $userType = '후원사';
-            }
+            } 
 
             // if ($userType == '일반참가자') {
             //     // 데이터베이스 쿼리를 통해 '전문의', '전공의', '기타' 중 하나를 만족하는 데이터를 가져옵니다.
