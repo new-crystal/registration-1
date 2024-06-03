@@ -109,14 +109,15 @@
 
     .alert {
         width: 100%;
-        height: 210px;
+        height: 260px;
         background: #004471;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         color: #FFF;
         position: absolute;
-        top: 48%;
+        top: 47%;
         left: 50%;
         transform: translate(-50%, -50%);
         opacity: 0.85;
@@ -144,6 +145,17 @@
         /* animation: fadeInUp 1s; */
         font-family: Gong;
     }
+
+    .alert>h6 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        position: relative;
+        /* animation: fadeInUp 1s; */
+        font-family: Gong;
+        -webkit-text-stroke-width: 3px;
+        -webkit-text-stroke-color: #004471;
+        }
+
 </style>
 
 <?php
@@ -152,8 +164,9 @@
 
 <body id="body" class="flex items-center justify-center">
     <div id="container" class="w-full h-full flex items-center overflow-hidden">
-        <div class="alert" style="display:none">
+        <div class="alert" style="display:none;">
             <p class="alert_text">출결 체크 완료!</p>
+            <h6 class="alert_text">예상 평점 <?php echo $score ?>점</h6>
         </div>
         <div class="no_alert" style="display:none;">
             <p class="no_alert_text">QR코드를 확인해주세요.</p>
