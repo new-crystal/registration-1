@@ -63,7 +63,7 @@
                 }
                 echo '<div class="receipt receipt_num_1">' . $item['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_name">' . $item['nick_name'] . '</div>';
-                echo '<div class="receipt receipt_price">' . number_format($item['fee']) . '</div>';
+                echo '<div class="receipt receipt_price">' . $item['fee'] . '</div>';
                 echo '<div class="receipt receipt_num_2">' . $item['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_small small_nick">' . $item['nick_name'] . '</div>';
                 echo '<div class="receipt receipt_small smaill_ln">' . $item['licence_number'] . '</div>';
