@@ -421,7 +421,7 @@ class Admin extends CI_Controller
             $this->load->view('admin/qr_layout_all', $data);
         } else {
             if ($userType == '01') {
-                $userType = '일반참가자';
+                $userType = '일반 참가자';
             } else if ($userType == '02') {
                 $userType = '임원';
             } else if ($userType == '04') {
@@ -663,10 +663,10 @@ class Admin extends CI_Controller
             if ($this->form_validation->run() === FALSE) {
                 //                $this->load->view('admin');
             } else {
-                $remark1 = $this->input->post('remark1');
-                $remark2 = $this->input->post('remark2');
-                $remark3 = $this->input->post('remark3');
-                $remark4 = $this->input->post('remark4');
+                // $remark1 = $this->input->post('remark1');
+                // $remark2 = $this->input->post('remark2');
+                // $remark3 = $this->input->post('remark3');
+                // $remark4 = $this->input->post('remark4');
                 $memo = $this->input->post('memo');
                 
                 $fee = $this->input->post('fee');
@@ -677,8 +677,8 @@ class Admin extends CI_Controller
                 
                 $member_type = $this->input->post('member_type');
                 $attendance_type = $this->input->post('attendance_type');
-                $type1 = $this->input->post('type1');
-                $type2 = $this->input->post('type2');
+                // $type1 = $this->input->post('type1');
+                // $type2 = $this->input->post('type2');
                 // $is_score1 = $this->input->post('is_score1');
         
                 $time = $this->input->post('time');
@@ -686,7 +686,7 @@ class Admin extends CI_Controller
                 $org = $this->input->post('org');
                 $org_nametag = $this->input->post('org_nametag');
                 $member = $this->input->post('member');
-                $department = $this->input->post('department');
+                // $department = $this->input->post('department');
 
                 $licence_number = $this->input->post('licence_number');
                 $specialty_number = $this->input->post('specialty_number');
@@ -701,28 +701,28 @@ class Admin extends CI_Controller
                 $qr_chk_day_1 = $this->input->post('qr_chk_day_1');
                 $qr_chk_day_2 = $this->input->post('qr_chk_day_2');
                
-                $conference_info = $this->input->post('conference_info');
-                $deposit_method = $this->input->post('deposit_method');
+                // $conference_info = $this->input->post('conference_info');
+                // $deposit_method = $this->input->post('deposit_method');
                 $deposit = $this->input->post('deposit');
                 $deposit_date = $this->input->post('deposit_date');
-                $onsite = $this->input->post('onsite_reg');
+                // $onsite = $this->input->post('onsite_reg');
                 $etc1 = $this->input->post('etc1');
                 $etc2 = $this->input->post('etc2');
 
                 if ($memo == "") {
                     $memo = null;
                 }
-                if($onsite == "현장등록"){
-                    $onsite_reg = '1';
-                }else if($onsite == "사전등록"){
-                    $onsite_reg = '0';
-                }
+                // if($onsite == "현장등록"){
+                //     $onsite_reg = '1';
+                // }else if($onsite == "사전등록"){
+                //     $onsite_reg = '0';
+                // }
                 $updateTime = date("Y-m-d H:i:s");
                 $info = array(
-                    'remark1' => $remark1,
-                    'remark2' => $remark2,
-                    'remark3' => $remark3,
-                    'remark4' => $remark4,
+                    // 'remark1' => $remark1,
+                    // 'remark2' => $remark2,
+                    // 'remark3' => $remark3,
+                    // 'remark4' => $remark4,
                     'memo' => $memo,
                     'fee' => $fee,
                     // 'welcome_reception_yn' => $welcome_reception_yn,
@@ -733,10 +733,10 @@ class Admin extends CI_Controller
                     'org' => $org,
                     'org_nametag' => $org_nametag,
                     'member' => $member,
-                    'department' => $department,
+                    // 'department' => $department,
                     'member_type' => $member_type,
                     'attendance_type' => $attendance_type,
-                    'type1' => $type1,
+                    // 'type1' => $type1,
                     // 'is_score1' => $is_score1,
                     'licence_number' => $licence_number,
                     'specialty_number' => $specialty_number,
@@ -748,13 +748,13 @@ class Admin extends CI_Controller
                     'qr_print' => $qr_print,
                     'qr_chk_day_1' => $qr_chk_day_1,
                     'qr_chk_day_2' => $qr_chk_day_2,
-                    'conference_info' => $conference_info,
-                    'deposit_method' => $deposit_method,
+                    // 'conference_info' => $conference_info,
+                    // 'deposit_method' => $deposit_method,
                     'deposit' => $deposit,
                     'deposit_date' => $deposit_date,
                     'updatetime' => $updateTime,
                     'memo' => $memo,
-                    'onsite_reg' => $onsite_reg,
+                    // 'onsite_reg' => $onsite_reg,
                     'time' => substr($time, 0, 10),
                     'etc1' => $etc1,
                     'etc2' => $etc2
