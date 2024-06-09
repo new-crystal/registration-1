@@ -14,7 +14,7 @@
                                 <label class="col-sm-2 control-label">참가유형</label>
                                 <div class="col-sm-10">
                                     <select class="form-control input-lg m-bot15" name="attendance_type" id="attendance_type">
-                                        <option value="일반참가자">일반참가자</option>
+                                        <option value="일반 참가자">일반참가자</option>
                                         <option value="임원">임원</option>
                                         <option value="좌장">좌장</option>
                                         <option value="연자">연자</option>

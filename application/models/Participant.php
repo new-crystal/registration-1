@@ -69,7 +69,7 @@ class Participant extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참가자'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반 참가자'
 ");
     $result = $query->result_array();
     return count($result); 
@@ -92,7 +92,7 @@ class Participant extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반참가자' AND a.attendance_type != '후원사'
+        WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반 참가자' AND a.attendance_type != '후원사'
 ");
     $result = $query->result_array();
     return count($result); 
@@ -149,7 +149,7 @@ class Participant extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참가자'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반 참가자'
 ");
     $result = $query->result_array();
     return count($result); 
@@ -172,7 +172,7 @@ class Participant extends CI_Model
         $query = $this->db->query("
         SELECT *
         FROM users a
-        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반참가자' AND a.attendance_type != '후원사'
+        WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반 참가자' AND a.attendance_type != '후원사'
 ");
     $result = $query->result_array();
     return count($result); 

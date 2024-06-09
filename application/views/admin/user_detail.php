@@ -59,7 +59,7 @@
                                     <td colspan="2"><button type="button" class="btn btn-primary" onclick="print('<?php echo $item['registration_no']; ?>')">QR Print</button>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th style="background-color: #fb8500">Remarks 1<br>하단택 구분</th>
                                     <td><input class="form-control" type="text" name="remark1" id="remark1" value="<?php echo $item['remark1']; ?>">
                                     </td>
@@ -79,17 +79,17 @@
                                     <th style="background-color: #fb8500">Remarks 4<br>결제 및 환불관련</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['remark4']; ?>" name="remark4" id="remark4">
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th style="background-color: #fb8500">memo</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['memo']; ?>" name="memo" id="memo">
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th style="background-color: #fb8500">결제 메모</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['deposit_memo']; ?>" name="deposit_memo" id="deposit_memo">
                                     </td>
-                                </tr>
+                                </tr> -->
                             </table>
 
 
@@ -130,7 +130,7 @@
                                         <select class="form-control input-lg m-bot15" id="attendance_type_select">
                                             <option value="" selected="selected">직접입력</option>
 
-                                            <option value="일반참석자">일반참석자</option>
+                                            <option value="일반 참가자">일반 참가자</option>
                                             <option value="임원">임원</option>
                                             <option value="좌장">좌장</option>
                                             <option value="연자">연자</option>
@@ -167,33 +167,7 @@
                                     </td>
                                 </tr>
                               
-                                <tr>
-                                    <th>참가형태</th>
-                                    <td>
-                                        <input class="form-control type1" type="text" value="<?php echo $item['type1']; ?>" name="type1" id="type1">
-                                        <select class="form-control input-lg m-bot15" id="type1_select">
-                                            <option value="" selected="selected">직접입력</option>
-
-                                            <option value="0">전임의 과정에 있거나 2024년도 분과전문의 자격인정시험에 응시 예정인 대한내분비학회 회원(평생회원, 정회원)</option>
-                                            <option value="1">분과전문의 자격을 이미 취득한 대한내분비학회 평생회원</option>
-                                        </select>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th>선택 구분</th>
-                                    <td>
-                                        <input class="form-control type1" type="text" value="<?php echo $item['type2']; ?>" name="type2" id="type2">
-                                        <select class="form-control input-lg m-bot15" id="type2_select">
-                                            <option value="" selected="selected">직접입력</option>
-
-                                            <option value="0">전임의(임상강사) 과정인 자</option>
-                                            <option value="1">2024년도 분과전문의 시험 지원자</option>
-                                            <option value="2">분과전문의 자격을 이미 취득한 자</option>
-                                            <option value="3">해당없음</option>
-                                        </select>
-                                    </td>
-                                </tr>
+                              
                                 <tr>
                                     <th>qr print 여부(N/Y)</th>
                                     <td><input class="form-control yn" type="text" value="<?php echo $item['qr_print']; ?>" name="qr_print" id="phone" readonly></td>
@@ -341,7 +315,7 @@
                                 </tr>
                                 <tr>
                                     <th>저녁 만찬 및 친교의 시간 신청여부</th>
-                                    <td> <input id="committee" type="text" value="<?php echo $item['etc2'] ? $item['etc2'] : "-"; ?>" size="16" class="form-control" name="etc1">
+                                    <td> <input id="committee" type="text" value="<?php echo $item['etc2'] ? $item['etc2'] : "-"; ?>" size="16" class="form-control" name="etc2">
 
                                     </td>
                                 </tr>

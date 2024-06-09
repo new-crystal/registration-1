@@ -405,7 +405,7 @@ class Admin extends CI_Controller
             );
         } else {
             if ($userType == '01') {
-                $userType = '일반참가자';
+                $userType = '일반 참가자';
             } else if ($userType == '02') {
                 $userType = '임원';
             } else if ($userType == '04') {
