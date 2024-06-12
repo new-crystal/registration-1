@@ -206,7 +206,7 @@ input {
         <div class="h-full">
             <div>
                 <div>
-                    <img src="../../assets/images/2024_app_loading_bg.png" onclick="replace()" style="position: absolute;z-index: -999;width: 100vw;" />
+                    <img src="../../assets/images/2024_app_loading_bg-1.jpg" onclick="replace()" style="position: absolute;z-index: -999;width: 100vw;" />
                     <dl>
 
                         <script type="text/javascript">
@@ -351,12 +351,12 @@ window.onload = () => {
         alert.style.display = "none";
         noAlert.style.display = "none";
     }, 3000)
-    inputs.forEach((input) => {
-        textTime = setTimeout(() => {
-            input.value = ""
-            noAlert.style.display = "none";
-        }, 10000)
-    })
+    // inputs.forEach((input) => {
+    //     textTime = setTimeout(() => {
+    //         input.value = ""
+    //         noAlert.style.display = "none";
+    //     }, 10000)
+    // })
 }
 /**우클릭 방지 */
 document.addEventListener("contextmenu", function(event) {

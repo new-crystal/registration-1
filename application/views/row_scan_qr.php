@@ -69,7 +69,7 @@
 
     .info_content>input {
         margin-left: 155px;
-        margin-top: 10px;
+        margin-top: -5px;
         width: 68%;
         height: 90%;
         padding: 0 2rem;
@@ -174,7 +174,7 @@
         <div class="h-full">
             <div>
                 <div>
-                    <img src="../../assets/images/2024_row_app_loading_bg.png" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
+                    <img src="../../assets/images/2024_row_app_loading_bg-1.jpg" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
                     <dl>
 
                         <script type="text/javascript">
@@ -219,13 +219,13 @@
                                     <dl class="pl-2">
                                         <div id="qr_entrance" class="qr_info_wrap">
                                             <div class="info_content">
-                                                <input type="text"class="qr_info input" style="margin-top:0; position: relative; left: 895px; top: -200px;" value="<?php if (isset($enter)) { $enter = date("Y-m-d H:i", strtotime($enter));echo $enter;} ?>" readonly>
+                                                <input type="text"class="qr_info input" style="margin-top:0; position: relative; left: 895px; top: -210px;" value="<?php if (isset($enter)) { $enter = date("Y-m-d H:i", strtotime($enter));echo $enter;} ?>" readonly>
                                             </div>
 
                                         </div>
                                         <div id="qr_exit" class="qr_info_wrap">
                                             <div class="info_content">
-                                                <input type="text" style="margin-top:0; transform: translate(834px, 8px);" class="qr_info input" value="<?php if (isset($leave)) { $leave = date("Y-m-d H:i", strtotime($leave)); echo $leave; } ?>
+                                                <input type="text" style="margin-top:0; transform: translate(834px, -4px);" class="qr_info input" value="<?php if (isset($leave)) { $leave = date("Y-m-d H:i", strtotime($leave)); echo $leave; } ?>
                                                 " readonly>
                                             </div>
                                         </div>
@@ -311,13 +311,13 @@
             alert.style.display = "none";
             noAlert.style.display = "none";
         }, 3000)
-        inputs.forEach((input) => {
-            textTime = setTimeout(() => {
-                input.value = "";
-                alert.style.display = "none";
-                noAlert.style.display = "none";
-            }, 10000)
-        })
+        // inputs.forEach((input) => {
+        //     textTime = setTimeout(() => {
+        //         input.value = "";
+        //         alert.style.display = "none";
+        //         noAlert.style.display = "none";
+        //     }, 10000)
+        // })
     }
     /**우클릭 방지 */
     document.addEventListener("contextmenu", function(event) {
