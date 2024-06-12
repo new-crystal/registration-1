@@ -117,23 +117,20 @@
                    echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
                    echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div></div>';
    
-                   echo '<div class="small_small_receipt">';
+             
    
    
                    //학회팀 요청 영수증 성함 한글일 때 letter_spacing = 5
                    echo '<div class = "box_2_area">';
                    echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
                    echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
-                   echo '<div class="receipt receipt_price">' . $users['fee']. '</div></div>';
-   
-   
-                   echo '<div class ="box_3_area">';
+                   echo '<div class="receipt receipt_price">' . $users['fee']. '</div>';
                    echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
                    echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
                    echo '<div class="receipt ln">' . $users['licence_number']. '</div>';
                    echo '<div class="receipt sn">' . $users['specialty_number']. '</div></div>';
                    
-                   echo '</div>';
+    
                    echo '</div>';
                    echo '</div>';
                 $num_int = $num_int + 1;
