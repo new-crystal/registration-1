@@ -96,7 +96,7 @@
     /* width: 10cm;
     height: 24cm; */
     width: 794px;
-    height: 960px;
+    height: 956px;
     page-break-after: always;
 }
 
@@ -104,7 +104,7 @@
     /* width: 10cm;
     height: 24cm; */
     width: 794px;
-    height: 960px;
+    height: 956px;
     border: 1px solid transparent;
     background-image: url('../../images/0615_nametag_bg-01.jpg');
     /* background-size: 10cm 24cm; */
@@ -159,7 +159,7 @@
   width: 50%;
   float: left;
   position: relative;
-  padding: 130px 0;
+  padding: 140px 0;
 }
 
 #printThis .box_2_area{
@@ -171,15 +171,21 @@
 
 #printThis .box_2_area div {
   text-align: right;
+  padding-top: 10px;
+  padding-right: 8px;
 }
 
 #printThis .box_2_area div:nth-child(2){
-  padding-top:100px;
+  padding-top:97px;
   padding-bottom: 5px;
 }
 
 #printThis .box_2_area div:nth-child(2), #printThis .box_2_area div:nth-child(3){
   padding-right: 60px;
+}
+
+#printThis .box_2_area div:nth-child(3){
+  padding-top: 1px;
 }
 
 
@@ -188,7 +194,8 @@
   position: relative;
   clear: both;
   float: right;
-  padding-right: 180px;
+  padding-right: 180px;    
+  top: -18px;
 }
 
 #printThis .box_3_area div{
@@ -234,11 +241,11 @@
 
 #printThis .nick_name{
   font-weight: 400;
-  font-size: 70px;
+  font-size: 65px;
   letter-spacing: 20px;
   padding: 0px 40px;
   overflow: hidden;
-  line-height: 75px;
+  line-height: 68px;
 }
 
 #printThis .nick_name.lang_en{
