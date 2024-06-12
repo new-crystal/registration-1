@@ -102,7 +102,7 @@ input {
 }
 
 .input_box {
-    transform: translate(58px, 687px);
+    transform: translate(37px, 492px);
     width: 861px;
     height: 770px;
     display: flex;
@@ -128,7 +128,7 @@ input {
 
 .alert {
     width: 100%;
-    height: 302px;
+    height: 290px;
     background: #ffc425;
     display: flex;
     flex-direction: column;
@@ -136,7 +136,7 @@ input {
     align-items: center;
     color: #FFF;
     position: absolute;
-    top: 33%;
+    top: 23.5%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* border-radius: 32px; */
@@ -145,14 +145,14 @@ input {
 
 .no_alert{
         width: 100%;
-        height: 302px;
+        height: 265px;
         background: rgba(255,0,0,0.85);
         display: flex;
         justify-content: center;
         align-items: center;
         color: #FFF;
         position: absolute;
-        top: 33%;
+        top: 23%;
         left: 50%;
         transform: translate(-50%, -50%);
         /* opacity: 0.85; */
@@ -351,12 +351,12 @@ window.onload = () => {
         alert.style.display = "none";
         noAlert.style.display = "none";
     }, 3000)
-    // inputs.forEach((input) => {
-    //     textTime = setTimeout(() => {
-    //         input.value = ""
-    //         noAlert.style.display = "none";
-    //     }, 10000)
-    // })
+    inputs.forEach((input) => {
+        textTime = setTimeout(() => {
+            input.value = ""
+            noAlert.style.display = "none";
+        }, 10000)
+    })
 }
 /**우클릭 방지 */
 document.addEventListener("contextmenu", function(event) {
