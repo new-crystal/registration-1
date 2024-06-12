@@ -221,12 +221,12 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <!-- <tr>
                                     <th>등록구분(사전등록/현장등록)</th>
                                     <td> <input id="dp1" type="text" value="<?php echo $onsite; ?>" size="16" class="form-control" name="onsite_reg">
 
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th>의사면허번호</th>
                                     <td>
@@ -289,24 +289,24 @@
                                 </tr>
 
                                
-                                <tr>
+                                <!-- <tr>
                                     <th>개최정보습득방법</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['conference_info']; ?>" name="conference_info" id="phone"></td>
                                 </tr>
                                 <tr>
                                     <th>결제수단(신용카드/계좌이체)</th>
                                     <td> <input type="text" class="form-control" value="<?php echo $item['deposit_method']; ?>" name="deposit_method" id="etc4"></td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th>결제상태(결제대기/결제완료)</th>
                                     <td> <input type="text" class="form-control" value="<?php echo $item['deposit']; ?>" name="deposit" id="deposit"></td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th>결제일</th>
                                     <td> <input id="dp1" type="text" value="<?php echo $item['deposit_date']; ?>" size="16" class="form-control" name="deposit_date">
 
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th>숙박 신청여부</th>
                                     <td> <input id="committee" type="text" value="<?php echo $item['etc1'] ? $item['etc1'] : "-"; ?>" size="16" class="form-control" name="etc1">

@@ -5,7 +5,7 @@
 <style>
     @page {
         /* size: 10cm 24cm; */
-        size: 794px 960px;
+        size: 794px 956px;
         margin: 0;
     }
 
@@ -15,7 +15,7 @@
             /* width: 10cm;
             height: 24cm; */
             width: 794px;
-            height: 960px;
+            height: 956px;
             margin: 0;
             padding: 0;
         }
@@ -44,7 +44,7 @@
         /* width: 10cm;
         height: 24cm; */
         width: 794px;
-        height: 960px;
+        height: 956px;
         margin: 0;
         padding: 0;
     }
@@ -65,7 +65,7 @@
             if (!$printSection) {
                 var $printSection = document.createElement("div");
                 $printSection.style.width = "794px";
-                $printSection.style.height = "960px";
+                $printSection.style.height = "956px";
 
                 // $printSection.style.width = "10cm";
                 // $printSection.style.height = "24cm";
