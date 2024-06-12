@@ -65,6 +65,7 @@
     <!-- Content area -->
     <div class="content" id="nametag">
         <div id="printThis">
+            <!-- <img src="../../../assets/images/0615_nametag_bg-01.jpg" style="position: absolute;top:0;left:0; width: 794px; height: 956px;"/> -->
             <div id="editor1" contenteditable="true">
                 <?php
                 //영문일 경우 자간 간격 4px / 한글은 10px
@@ -90,23 +91,16 @@
                 echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div></div>';
 
-                echo '<div class="small_small_receipt">';
-
-
                 //학회팀 요청 영수증 성함 한글일 때 letter_spacing = 5
                 echo '<div class = "box_2_area">';
                 echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
-                echo '<div class="receipt receipt_price">' . $users['fee']. '</div></div>';
-
-
-                echo '<div class ="box_3_area">';
+                echo '<div class="receipt receipt_price">' . $users['fee']. '</div>';
                 echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
                 echo '<div class="receipt ln">' . $users['licence_number']. '</div>';
                 echo '<div class="receipt sn">' . $users['specialty_number']. '</div></div>';
                 
-                echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
@@ -125,11 +119,11 @@
 
 </div>
 <!-- /page container -->
-<style>
+<!-- <style>
     body {
         background-color: #fff;
     }
-</style>
+</style> -->
 <script>
     document.getElementById("btnPrint").onclick = function() {
         printElement(document.getElementById("printThis"));
@@ -144,16 +138,18 @@
             var $printSection = document.createElement("div");
             $printSection.style.width = "794px";
             $printSection.style.height = "956px";
-
             // $printSection.style.width = "10cm";
             // $printSection.style.height = "24cm";
+            $printSection.style.backgroundImage = "url('../../../assets/images/0615_nametag_bg-01.jpg');"
+            $printSection.style.backgroundPosition = "center";
+            $printSection.style.backgroundSize = "contain"
             $printSection.id = "printSection";
             document.body.appendChild($printSection);
         }
 
         $printSection.innerHTML = "";
         $printSection.appendChild(domClone);
-        //            console.log($printSection);
+                  // console.log($printSection);
         window.print();
     }
 </script>

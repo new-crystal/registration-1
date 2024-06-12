@@ -117,7 +117,7 @@
         align-items: center;
         color: #FFF;
         position: absolute;
-        top: 47%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
         opacity: 0.85;
@@ -131,7 +131,7 @@
         justify-content: center;
         align-items: center;
         position: absolute;
-        top: 48%;
+        top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);
         /* opacity: 0.85; */
@@ -311,13 +311,13 @@
             alert.style.display = "none";
             noAlert.style.display = "none";
         }, 3000)
-        // inputs.forEach((input) => {
-        //     textTime = setTimeout(() => {
-        //         input.value = "";
-        //         alert.style.display = "none";
-        //         noAlert.style.display = "none";
-        //     }, 10000)
-        // })
+        inputs.forEach((input) => {
+            textTime = setTimeout(() => {
+                input.value = "";
+                alert.style.display = "none";
+                noAlert.style.display = "none";
+            }, 10000)
+        })
     }
     /**우클릭 방지 */
     document.addEventListener("contextmenu", function(event) {

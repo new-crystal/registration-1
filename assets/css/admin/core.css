@@ -163,17 +163,14 @@
 }
 
 #printThis .box_2_area{
-  /* width: 50%;
-  float: right; */
-  /* position: relative;
-  padding: 12px 47px 0 0; */
-  padding-right: 55px;
+  width: 50%;
+  float: left;
 }
 
 #printThis .box_2_area div {
   text-align: right;
-  /* padding-top: 10px; */
-  /* padding-right: 8px; */
+  padding-top: 24px;
+  padding-right: 52px;
 }
 
 #printThis .box_2_area div:nth-child(2){
@@ -182,7 +179,7 @@
 }
 
 #printThis .box_2_area div:nth-child(2), #printThis .box_2_area div:nth-child(3){
-  padding-right: 60px;
+  padding-right: 115px;
 }
 
 #printThis .box_2_area div:nth-child(3){
@@ -190,13 +187,30 @@
 }
 
 
+#printThis .box_2_area div:nth-child(4){
+  padding-top: 324px;
+  text-align: left;
+  padding-left: 69px;
+}
+
+#printThis .box_2_area div:nth-child(5),#printThis .box_2_area div:nth-child(6),#printThis .box_2_area div:nth-child(7){
+  padding-right: 142px;
+}
+
+#printThis .box_2_area div:nth-child(5){
+  padding-top: 82px;
+  text-align: right;
+}
+
+#printThis .box_2_area div:nth-child(6),#printThis .box_2_area div:nth-child(7){
+  padding-top: 0px;
+}
+
+
 #printThis .box_3_area{
-  /* width: 50%; */
-  position: relative;
+  width: 50%;
   clear: both;
   float: right;
-  padding-right: 180px;    
-  top: -18px;
 }
 
 #printThis .box_3_area div{
@@ -206,14 +220,12 @@
 #printThis .box_3_area div:nth-child(1){
   text-align: left;
   padding-left: 54px;
-  position: relative;
-  top: -20px;
-  left: -49px;
 }
 
 #printThis .box_3_area div:nth-child(2){
   padding-top: 60px;
 }
+
 
 
 #printThis .small_small_nickname{
@@ -350,6 +362,17 @@
 
 #printThis:last-child .a4_area {
   page-break-after: avoid; /* 마지막 페이지에는 페이지 나눔을 적용하지 않도록 설정합니다. */
+}
+
+#printSection{
+  width: 794px;
+    height: 956px;
+    border: 1px solid transparent;
+    background-image: url("../../images/0615_nametag_bg-01.jpg");
+    /* background-size: 10cm 24cm; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #qrcode{
