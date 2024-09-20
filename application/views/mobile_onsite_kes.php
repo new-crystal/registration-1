@@ -5,9 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>On-site registration</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
     <style>
+        #on-site *{
+            font-family: "Nanum Gothic", sans-serif;
+        }
         input:focus {
             outline: none;
         }
@@ -16,7 +23,7 @@
             width: 18px;
             height: 18px;
             margin-right: 10px;
-            transform: translateY(0.5px);
+            transform: translateY(4.5px);
         }
 
         input[type=radio] {
@@ -38,6 +45,19 @@
             margin-top: 12px !important;
             margin-bottom: 8px !important;
             margin: 0;
+        }
+
+        p.inline-block::before{
+            content: '';
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            background: transparent;
+            border: 3px solid #c16500;
+            margin-bottom: 2px;
+            border-radius: 50%;
+            margin-right: 10px;
+            vertical-align: middle;
         }
 
         h2 {
@@ -95,7 +115,7 @@
 
         th {
             height: 50px;
-            background-color: rgb(186 230 253);
+            background-color: #e0e3eb;
         }
 
         .container {
@@ -229,8 +249,9 @@
             margin-top: 5rem;
         }
 
+
         @media screen and (max-width:500px) {
-            p {
+            p, span, label {
                 font-size: 0.9rem !important;
             }
 
@@ -269,6 +290,8 @@
 
         .term_wrap {
             margin-top: 100px;
+            width:90%;
+            margin: 100px auto 0 auto;
         }
 
         .term_wrap .term_box{
@@ -288,10 +311,10 @@
     </style>
 </head>
 
-<body class="flex items-center justify-center">
+<body id="on-site" class="flex items-center justify-center">
     <div id="scroll" class="w-full h-full flex items-center justify-center overflow-x-hidden overflow-y-scroll relative max-w-5xl">
         <div class="w-full max-w-5xl">
-            <div class="w-full max-w-5xl text-center text-2xl font-semibold bg-gradient-to-r from-green-400 to-blue-500 p-3 text-white fixed z-10">
+            <div class="w-full max-w-5xl text-center text-2xl font-semibold bg-gradient-to-r from-amber-400 to-amber-800 p-3 text-white fixed z-10">
                 <h1>On-site Registration<br>(현장 등록)</h1>
             </div>
             <section id="container" class="">
@@ -299,49 +322,44 @@
                 <h3 class="title mb-2">개인정보 수집 및 이용에 관한 안내</h3>
                 <div class="term_box">
                             <strong>목적</strong>
-                                <h6>대한내분비학회는 제22회 분과전문의 연수강좌를 위한 온라인 현장 등록 서비스를 제공합니다. 귀하의 개인정보를 기반으로 회원가입 및 등록 비용 결제를 완료할 수 있습니다.</h6>
+                                <h6>대한내분비학회는 2024 대한내분비학회 추계학술대회를 위한 온라인 현장 등록 서비스를 제공합니다. 귀하의 개인정보를 기반으로 회원가입 및 등록 비용 결제를 완료할 수 있습니다.</h6>
                             <strong>개인정보 수집</strong>
-                                <h6>대한내분비학회는 제22회 분과전문의 연수강좌에서는 온라인 현장 등록을 완료하기 위해 귀하께서 개인정보를 제공하셔야 합니다. 이름, 신분증(ID) 이메일, 비밀번호, 생년월일, 소속 기관/단체, 부서, 휴대전화 및 전화번호를 입력하도록 요청됩니다.</h6>
+                                <h6>대한내분비학회는 2024 대한내분비학회 추계학술대회에서는 온라인 현장 등록을 완료하기 위해 귀하께서 개인정보를 제공하셔야 합니다. 이름, 신분증(ID) 이메일, 비밀번호, 생년월일, 소속 기관/단체, 부서, 휴대전화 및 전화번호를 입력하도록 요청됩니다.</h6>
                             <strong>개인정보 보관</strong>
-                                <h6>대한내분비학회는 제22회 분과전문의 연수강좌는 귀하에게 회의 업데이트 및 뉴스레터와 같은 유용한 서비스를 제공하기 위해 귀하의 개인정보를 저장할 것입니다.</h6>
+                                <h6>대한내분비학회는 2024 대한내분비학회 추계학술대회는 귀하에게 회의 업데이트 및 뉴스레터와 같은 유용한 서비스를 제공하기 위해 귀하의 개인정보를 저장할 것입니다.</h6>
                 </div>
                 <div class="term_label flex items-center justify-center">
-                    <input type="checkbox" class="checkbox input required" data-name="terms 1" id="terms1" name="terms1" value="Y">
-                    <label for="terms1" id="terms">개인정보 수집 및 이용에 동의합니다. </label>
+                    <label for="terms1" id="terms"><input type="checkbox" class="checkbox input required" data-name="terms 1" id="terms1" name="terms1" value="Y">개인정보 수집 및 이용에 동의합니다. </label>
                 </div>	
             </div>
                 <div id="mobile_form" class="w-11/12 mx-auto px-3 h-screen">
                     <div id="page_1" class="py-1">
                         <div class="mo_wrap">
-                            <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">성명<span>*</span></p>
-                            <input type="text" id="KoreanName" name="nick_name" class="w-full" placeholder="국문이름을 입력해주세요.">
+                            <input type="text" id="KoreanName" name="nick_name" class="w-full" placeholder="국문이름을 입력해주세요."  autocomplete='off'/>
                         </div>
                         <div class="mo_wrap">
-                            <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">의사면허번호<span>*</span></p>
                             <div>
-                                <input type="text" id="ln" name="ln" class="w-[49%]" placeholder="의사면허번호를 입력해주세요." />
-                                <input type="checkbox" id="non_ln" value="N"/><label for="non_ln">없음</label>
+                                <input type="text" id="ln" name="ln" class="w-[49%]" placeholder="의사면허번호를 입력해주세요."  autocomplete='off'/>
+                                <label for="non_ln"> <input type="checkbox" id="non_ln" value="N"/>없음</label>
                                 <div>
                                     <span>* 의사면허번호를 정확하게 입력하시지 않으시면, 의협보고시 누락될 수 있습니다.</span>
                                 </div>
                             </div>
                         </div>
                         <div class="mo_wrap">
-                            <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">전문의번호</p>
                             <div>
-                                <input type="text" id="sn" name="sn" class="w-[49%]" placeholder="전문의번호를 입력해주세요." />
+                                <input type="text" id="sn" name="sn" class="w-[49%]" placeholder="전문의번호를 입력해주세요."  autocomplete='off'/>
                             </div>
                         </div>
                         <div class="mo_wrap">
-                            <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">이메일<span>*</span></p>
                             <div class="flex items-center justify-space">
-                                <input type="text" name="email1" id="Email1" maxlength="64" value="" class="w-[40%] mr-2">
+                                <input type="text" name="email1" id="Email1" maxlength="64" value="" class="w-[40%] mr-2" autocomplete='off'/>
                                 <p>@</p>
-                                <input type="text" name="email2" id="Email2" maxlength="64" value="" class="w-[40%] ml-2">
+                                <input type="text" name="email2" id="Email2" maxlength="64" value="" class="w-[40%] ml-2" autocomplete='off'/>
                                 <select name="email3" id="Email3" class="border w-[15%] h-9 ml-3" style="background-color:#ffffff;">
                                     <option value="" selected="selected">직접입력</option>
                                     <option value="naver.com">naver.com</option>
@@ -363,12 +381,10 @@
 
                         
                         <div class="mo_wrap">
-                            <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">휴대폰번호<span>*</span></p>
-                            <input type="text" id="phoneNumber" name="phone" class="w-full" placeholder="* -를 제외한 숫자만 입력해주세요" oninput="checkFirstDigit(event)">
+                            <input type="text" id="phoneNumber" name="phone" class="w-full" placeholder="* -를 제외한 숫자만 입력해주세요" oninput="checkFirstDigit(event)" autocomplete='off'/>
                         </div>
                         <div class="mo_wrap">
-                            <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">근무처<span>*</span></p>
                             <div>
                                 <select name="office" id="office" class="border p-1 w-2/5 h-9">
@@ -479,100 +495,150 @@
 										<option value="73" _addr="경기도 구리시 경춘로 153" _new_post="11923" >한양대학교 구리병원</option>	
 										<option value="74" _addr="서울시 성동구 왕십리로 222" _new_post="04763" >한양대학교병원</option>	
 									</select>
-				                <input type="text" name="office_etc" id="office_etc" value="" class="office_disabled p-2 w-2/5" disabled placeholder="*소속을 입력해주세요">
+				                <input type="text" name="office_etc" id="office_etc" value="" class="office_disabled p-2 w-2/5" disabled placeholder="*소속을 입력해주세요" autocomplete='off'/>
                             </div>
                             <!-- <input type="text" id="affiliation" name="org" class="w-full" placeholder="*소속을 입력해주세요"> -->
                         </div>
                         <div class="mo_wrap">
-                            <img src="../../assets/images/circle.png" class="inline-block" />
                             <p class="inline-block">근무처 주소<span>*</span></p>
                             <div>
-                                <input type="text" class="w-2/5 mb-2 mr-2 p-2" name="office_zip" id="office_zip" value="">
-                                <a href="#" onclick="sample6_execDaumPostcode()" class="bg-sky-900 text-white px-3 py-2">우편번호 찾기</a>
+                                <input type="text" class="w-2/5 mb-2 mr-2 p-2" name="office_zip" id="office_zip" value="" autocomplete='off'/>
+                                <a href="#" onclick="sample6_execDaumPostcode()" class="bg-sky-900 text-white px-3 py-2 hover:underline underline-offset-4">우편번호 찾기</a>
                                 <div>
-                                    <input type="text" class="w-2/5 mt-2 mr-2 p-2" name="office_addr" id="office_addr" value="" class="clear">
-                                    <input type="text" class="p-2 w-4/12" name="office_addr_etc" id="office_addr_etc" value="" placeholder="상세주소를 입력해주세요.">
+                                    <input type="text" class="w-2/5 mt-2 mr-2 p-2" name="office_addr" id="office_addr" value="" class="clear" autocomplete='off'/>
+                                    <input type="text" class="p-2 w-4/12" name="office_addr_etc" id="office_addr_etc" value="" placeholder="상세주소를 입력해주세요." autocomplete='off'/>
                                 </div>
                             </div>
                         </div>
                             <div class="mo_wrap">
-                                <img src="../../assets/images/circle.png" class="inline-block" />
-                                <p class="inline-block">평점신청 여부<span>*</span></p>
-                                <div class="h-12">
-                                    <input type="radio" id="need" />
-                                    <label for="need">필요</label>
-                                    <input type="radio" id="non_need" />
-                                    <label for="non_need">불필요</label>
+                                <p class="inline-block">대한내분비학회 회원 유무<span>*</span></p>
+                                <div class="">
+                                    <label for="member_y"> <input type="radio" id="member_y" name="member"/>회원</label>
+                                    <label for="member_n"> <input type="radio" id="member_n" name="member"/>비회원</label>
+                                    <div class="member_wrap my-4 hidden">
+                                        <input class="p-2 w-3/5 border" placeholder="대한내분비학회 홈페이지 아이디를 입력해주세요." id="kes_id"/>
+                                        <button type="button" class="bg-sky-900 text-white px-3 py-2 ml-2 hover:underline underline-offset-4">인증하기</button>
+                                        <span class="block my-4">*대한내분비학회 홈페이지 아이디를 입력해주세요.<br>준회원의 경우, 정회원 또는 평생회원으로 전환 후 신청하여 주시기 바랍니다.</span>
+                                        <button type="button" class="bg-fuchsia-700 text-white px-3 py-2 hover:underline underline-offset-4" onclick="window.location.href='https://www.endocrinology.or.kr/member/info.php'">대한내분비학회 회원 가입 바로가기</button>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="mo_wrap">
-                                <table class="tbl_type01">
-                                    <colgroup>
-                                        <col width="20%">
-                                        <col width="40%">
-                                        <col>
-                                    </colgroup>
-                                    <tr>
-                                        <th>참가형태</th>
-                                        <th><input type="radio" name="participation" id="participation_n"/><label for="participation_n">전임의 과정에 있거나<br>2024년도 분과전문의 자격인정시험에 응시 예정인<br> 대한내분비학회 회원(평생회원, 정회원)</label></th>
-                                        <th><input type="radio" name="participation" id="participation_y"/><label for="participation_y">분과전문의 자격을<br>이미 취득한<br>대한내분비학회 평생회원</label></th>
-                                    </tr>
-                                    <tr>
-                                        <th>대한내분비학회 <br>회원 인증</th>
-                                        <th colspan="2">
-
-                                            <input class="p-2 w-3/5" placeholder="대한내분비학회 홈페이지 아이디를 입력해주세요." id="kes_id"/><button type="button" class="bg-sky-900 text-white px-3 py-2 ml-2">인증하기</button>
-                                            <span class="block">*대한내분비학회 홈페이지 아이디를 입력해주세요.<br>준회원의 경우, 정회원 또는 평생회원으로 전환 후 신청하여 주시기 바랍니다.</span>
-                                            <button type="button" class="bg-fuchsia-700 text-white px-3 py-2" onclick="window.location.href='https://www.endocrinology.or.kr/member/info.php'">대한내분비학회 회원 가입 바로가기</button>
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <th>선택 구분</th>
-                                        <td colspan="2">
-                                            <div class="select_1">
-                                                <input class="select" type="radio" name="select_1" id="select_1-1" value="1"/>
-                                                <label for="select_1-1">전임의(임상강사) 과정인 자</label>
-                                                <br>
-                                                <input class="select" type="radio" name="select_1" id="select_1-2" value="2"/>
-                                                <label for="select_1-2">2024년도 분과전문의 시험 지원자</label>
-                                            </div>
-                                            <div class="select_2" style="display:none">
-                                                <input class="select" type="radio" name="select_2" id="select_2-1" value="3"/>
-                                                <label for="select_2-1">분과전문의 자격을 이미 취득한 자</label>
-                                                <br>
-                                                <input class="select" type="radio" name="select_2" id="select_2-2" value="4"/>
-                                                <label for="select_2-2">해당없음</label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>세부 구분</th>
-                                        <td colspan="2">
-                                            <input type="radio" name="category" class="category" id="category1" value="1"/><label for="category1">전임의</label>
-                                            <input type="radio" name="category" class="category" id="category2" value="2"/><label for="category2">봉직의</label>
-                                            <input type="radio" name="category" class="category" id="category3" value="3"/><label for="category3">전공의</label>
-                                            <input type="radio" name="category" class="category" id="category4" value="4"/><label for="category4">교수</label>
-                                            <input type="radio" name="category" class="category" id="category5" value="5"/><label for="category5">개원의</label>
-                                            <input type="radio" name="category" class="category" id="category6" value="6"/><label for="category6">기타</label>
-                                            <input id="category_other" class="p-2 border" disabled/>
-                                        </td>
-                                    </tr>
-                                </table>
+                                <p class="inline-block">등록구분<span>*</span></p>
+                                <div>
+                                    <select class="w-3/5 py-2 px-4 border" id="attendance_select">
+                                        <option value="">선택해주세요</option>
+                                        <option value="교수">교수(의사, 비의사)</option>
+                                        <option value="전문의">전문의</option>
+                                        <option value="개원의">개원의</option>
+                                        <option value="봉직의">봉직의</option>
+                                        <option value="전임의">전임의</option>
+                                        <option value="기초의학자">기초의학자</option>
+                                        <option value="공보의, 군의관">공보의, 군의관</option>
+                                        <option value="간호사, 영양사">간호사, 영양사</option>
+                                        <option value="연구원">연구원</option>
+                                        <option value="약사">약사</option>
+                                        <option value="기타">기타(기업 등)</option>
+                                        <option value="학생">학생(대학생, 대학원생)</option>
+                                        <option value="전공의">전공의</option>
+                                    </select>
+                                </div>
                             </div>
-                           <div class="mo_wrap">
-                           <img src="../../assets/images/circle.png" class="inline-block" />
-                                <p class="inline-block">등록비</p>
-                                <p class="text-pink-800">0원</p>
-                           </div>
-                            <div class="next_btn_box">
-                            <button id="submit_btn" class="next_btn w-60 h-15 bg-sky-900 text-white p-3 my-5 text-lg">Submit</button>
-                        </div>
-                        </div>
+
+                            <div class="mo_wrap">
+                                <p class="inline-block">Breakfast symposium 참석하시겠습니까?<span>*</span></p>
+                                <div class="ml-8">
+                                    <p>• 11월 02일(토) 07:30-08:00</p>
+                                    
+                                    <label for="breakfast_1"><input type="radio" name="breakfast" id="breakfast_1"/>Breakfast symposium 1</label>
+                                    <br/>
+                                   
+                                    <label for="breakfast_2"> <input type="radio" name="breakfast" id="breakfast_2"/>Breakfast symposium 2</label>
+                                    <br/>
+                                    
+                                    <label for="breakfast_3"><input type="radio" name="breakfast" id="breakfast_3"/>미참석</label>
+                                </div>
+                            </div>
+
+                            <div class="mo_wrap">
+                                <p class="inline-block">Satellite symposium 참석하시겠습니까?<span>*</span></p>
+                                <div class="ml-8">
+                                    <p>• 10월 31일(목) 19:00-20:00</p>
+                                 
+                                    <label for="satellite_1"><input type="radio" name="satellite1" id="satellite_1"/>Satellite symposium 1</label>
+                                    <br/>
+                                   
+                                    <label for="satellite_2"> <input type="radio" name="satellite1" id="satellite_2"/>Satellite symposium 2</label>
+                                    <br/>
+                                   
+                                    <label for="satellite_3"> <input type="radio" name="satellite1" id="satellite_3"/>미참석</label>
+
+                                    <p>• 11월 1일(금) 19:00-20:00</p>
+                                   
+                                    <label for="satellite_4"> <input type="radio" name="satellite2" id="satellite_4"/>Satellite symposium 3</label>
+                                    <br/>
+                                    
+                                    <label for="satellite_5"><input type="radio" name="satellite2" id="satellite_5"/>Satellite symposium 4</label>
+                                    <br/>
+                                    
+                                    <label for="satellite_6"><input type="radio" name="satellite2" id="satellite_6"/>미참석</label>
+                                </div>
+                            </div>
+
+
+                            <div class="mo_wrap">
+                                <p class="inline-block">등록할인코드를 사용하시겠습니까?<span>*</span></p>
+                                <div class="ml-8">
+                                   
+                                    <label for="promotion_code_y"> <input type="radio" id="promotion_code_y" name="promotion_code_yn"/>예</label>
+                                   
+                                    <label for="promotion_code_n"> <input type="radio" id="promotion_code_n" name="promotion_code_yn"/>아니오</label>
+                                    <div class="mt-4 hidden promotion_wrap">
+                                        <input class="p-2 w-3/5 border" placeholder="등록할인코드를 입력해주세요." id="promotion_code" autocomplete='off'/>
+                                        <button type="button" class="bg-sky-900 text-white px-3 py-2 ml-2">등록확인</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mo_wrap">
+                                <p class="inline-block">학술대회 등록 경로는?<span>*</span></p>
+                                <div class="">
+                                    <div class="mt-4">
+                                    
+                                    <label for="conference_info_1"><input type="checkbox" id="내분비학회 이메일" name="conference_info"/>내분비학회 이메일</label>
+                                    
+                                    
+                                    <label for="conference_info_2"><input type="checkbox" id="문자" name="conference_info"/>문자</label> 
+                                    </div>
+
+                                    <div class="mt-4">
+                                   
+                                    <label for="conference_info_3"> <input type="checkbox" id="유관단체 게시판" name="conference_info"/>유관단체 게시판</label>
+
+                                   
+                                    <label for="conference_info_4"> <input type="checkbox" id="의사협회 광고" name="conference_info"/>의사협회 광고</label>
+                                    </div>
+
+                                    <div class="mt-4">
+                                    
+                                    <label for="conference_info_5"><input type="checkbox" id="지인소개" name="conference_info"/>지인소개</label>
+                                    
+                                    
+                                    <label for="conference_info_6"><input type="checkbox" id="자발적 참석" name="conference_info"/>자발적 참석</label>
+                                    </div>
+
+                                    <div class="mt-4">
+                                       
+                                        <label for="conference_info_7"> <input type="checkbox" id="기타" name="conference_info"/>기타</label>
+                                        <input type="text" id="conference_info_etc"  autocomplete='off'/>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                  
+                    <button id="submit_btn" type="submit" class="block bg-sky-900 text-white font-bold px-3 py-4 mx-auto my-10 w-2/5 hover:underline underline-offset-4">제출하기</button></section>
                 </div>
-            </section>
         </div>
     </div>
     </div>
@@ -641,24 +707,47 @@
     const member = document.querySelector("#member");
     const nonMember = document.querySelector("#non_member")
 
-    const need = document.querySelector("#need");
-    const nonNeed = document.querySelector("#non_need")
+    // const need = document.querySelector("#need");
+    // const nonNeed = document.querySelector("#non_need")
 
     const affiliationSelect = document.querySelector("#office");
     const affiliationInput = document.querySelector("#office_etc");
+
+    const member_y = document.querySelector("#member_y")
+    const member_n = document.querySelector("#member_n")
+    const memberWrap = document.querySelector(".member_wrap")
+    const memeberInput = document.querySelector("#kes_id")
+
     const lnInput = document.querySelector("#ln");
     const lnCheckBox = document.querySelector("#non_ln");
 
-    const participation_n = document.querySelector("#participation_n");
-    const participation_y = document.querySelector("#participation_y");
+    // const participation_n = document.querySelector("#participation_n");
+    // const participation_y = document.querySelector("#participation_y");
 
-    const selectList = document.querySelectorAll(".select");
-    const select1 = document.querySelector(".select_1");
-    const select2 = document.querySelector(".select_2");
+    // const selectList = document.querySelectorAll(".select");
+    // const select1 = document.querySelector(".select_1");
+    // const select2 = document.querySelector(".select_2");
 
-    const categoryList = document.querySelectorAll(".category")
-    const categoryOther = document.querySelector("#category6");
-    const categoryOtherInput = document.querySelector("#category_other");
+    const attendance_select = document.querySelector("#attendance_select");
+
+    // const categoryList = document.querySelectorAll(".category")
+    // const categoryOther = document.querySelector("#category6");
+    // const categoryOtherInput = document.querySelector("#category_other");
+
+    const promotion_code_y = document.querySelector("#promotion_code_y");
+    const promotion_code_n = document.querySelector("#promotion_code_n");
+    const promotionWrap = document.querySelector(".promotion_wrap");
+
+    const breakfast1 = document.querySelector("#breakfast_1");
+    const breakfast2 = document.querySelector("#breakfast_2");
+    const breakfast3 = document.querySelector("#breakfast_3");
+
+    const satellite1 = document.querySelector("#satellite_1");
+    const satellite2 = document.querySelector("#satellite_2");
+    const satellite3 = document.querySelector("#satellite_3");
+    const satellite4 = document.querySelector("#satellite_4");
+    const satellite5 = document.querySelector("#satellite_5");
+    const satellite6 = document.querySelector("#satellite_6");
 
     const submitBtn = document.querySelector("#submit_btn");
 
@@ -684,43 +773,42 @@
     })
 
 
-
     /**참가 형태 선택 */
-    participation_n.addEventListener("change", ()=>{
-        getSelect1Box()
-    })
+    // participation_n.addEventListener("change", ()=>{
+    //     getSelect1Box()
+    // })
 
-    participation_y.addEventListener("change", ()=>{
-        getSelect1Box()
-    })
+    // participation_y.addEventListener("change", ()=>{
+    //     getSelect1Box()
+    // })
 
-    function getSelect1Box(){
-        if(participation_n.checked && !participation_y.checked){
-            select1.style.display = "";
-            select2.style.display = "none";
-        }else if(!participation_n.checked && participation_y.checked){
-            select1.style.display = "none";
-            select2.style.display = "";
-        }
-    }
-    categoryList.forEach((category)=>{
-        category.addEventListener("change",()=>{
-            selectedCategory = category.value
-            //console.log("category", category.value)
-            if(categoryOther.checked){
-                categoryOtherInput.disabled = false;
-            }else{
-                categoryOtherInput.disabled = true;
-            }
-        })
-    })
+    // function getSelect1Box(){
+    //     if(participation_n.checked && !participation_y.checked){
+    //         select1.style.display = "";
+    //         select2.style.display = "none";
+    //     }else if(!participation_n.checked && participation_y.checked){
+    //         select1.style.display = "none";
+    //         select2.style.display = "";
+    //     }
+    // }
+    // categoryList.forEach((category)=>{
+    //     category.addEventListener("change",()=>{
+    //         selectedCategory = category.value
+    //         //console.log("category", category.value)
+    //         if(categoryOther.checked){
+    //             categoryOtherInput.disabled = false;
+    //         }else{
+    //             categoryOtherInput.disabled = true;
+    //         }
+    //     })
+    // })
 
-    selectList.forEach((select)=>{
-        select.addEventListener("change", ()=>{
-            //console.log("select", select.value)
-            selectedOption = select.value;
-        })
-    })
+    // selectList.forEach((select)=>{
+    //     select.addEventListener("change", ()=>{
+    //         //console.log("select", select.value)
+    //         selectedOption = select.value;
+    //     })
+    // })
 
     /**한국어 유효성 검사 */
     KoreanName.addEventListener('input', (event) => {
@@ -753,24 +841,43 @@
     email_3.addEventListener("click", () => {
         email_2.value = email_3.options[email_3.selectedIndex].value
     })
-
-    nonNeed.addEventListener("click", () => {
-        if (nonNeed.checked) {
-            need.checked = false;
-            lnInput.disabled = true;
-            document.querySelector("#sn").disabled = true;
-        } else {
-            need.checked = true
-            lnInput.disabled = false;
-            document.querySelector("#sn").disabled = false;
+    
+    //회원 유무 check
+    member_y.addEventListener("change", ()=>{
+        if(member_y.checked){
+            memberWrap.classList.remove("hidden")
+        }else{
+            memberWrap.classList.add("hidden")
         }
     })
 
-    need.addEventListener("click", () => {
-        if (need.checked) {
-            nonNeed.checked = false;
-            lnInput.disabled = false;
-            document.querySelector("#sn").disabled = false;
+    member_n.addEventListener("change", ()=>{
+        if(member_y.checked){
+            memberWrap.classList.remove("hidden")
+        }else{
+            memberWrap.classList.add("hidden")
+        }
+    })
+
+    let promotion_code_yn = 'N';
+    //할인코드 유무 check
+    promotion_code_y.addEventListener("change", ()=>{
+        if(promotion_code_y.checked){
+            promotionWrap.classList.remove("hidden");
+            promotion_code_yn = 'Y'
+        }else{
+            promotionWrap.classList.add("hidden")
+            promotion_code_yn = 'N'
+        }
+    })
+
+    promotion_code_n.addEventListener("change", ()=>{
+        if(promotion_code_y.checked){
+            promotionWrap.classList.remove("hidden")
+            promotion_code_yn = 'Y'
+        }else{
+            promotionWrap.classList.add("hidden")
+            promotion_code_yn = 'N'
         }
     })
 
@@ -797,6 +904,20 @@
             document.querySelector("#office_etc").disabled = true;
             officeEtc = false;
         }
+    }
+
+    //개최정보 선택된 값 가져오기
+    function getSelectedCheckboxes() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="conference_info"]');
+        let selectedIds = [];
+
+
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedIds.push(checkbox.id);
+            }
+        });
+        return selectedIds;
     }
     
     function onSubmit() {
@@ -859,18 +980,82 @@
             return false;
         }
 
-        if (!need.checked && !nonNeed.checked) {
-            alert("평점신청 여부를 선택해주세요.");
-            need.focus()
+        if(!member_y.checked && !member_n.checked){
+            alert("대한내분비학회 회원 유무를 확인해주세요.")
+            member_y.focus();
             return false;
         }
 
-        if (need.checked && !ln.value && lnChecked) {
+        if(!member_y.checked && !member_n.checked){
+            alert("대한내분비학회 회원 유무를 확인해주세요.")
+            member_y.focus();
+            return false;
+        }
+
+        if(!attendance_select.options[attendance_select.selectedIndex].value){
+            alert("등록 구분을 확인해주세요.")
+            attendance_select.focus();
+            return false;
+        }
+
+        if(!breakfast1.checked && !breakfast2.checked && !breakfast2.checked){
+            alert("Breakfast symposium 참석여부를 확인해주세요.");
+            breakfast1.focus();
+            return false;
+        }
+
+        if(!satellite1.checked && !satellite2.checked && !satellite3.checked){
+            alert("Satellite symposium참석여부를 확인해주세요.");
+            satellite1.focus();
+            return false;
+        }
+
+        if(!satellite4.checked && !satellite5.checked && !satellite6.checked){
+            alert("Satellite symposium참석여부를 확인해주세요.");
+            satellite1.focus();
+            return false;
+        }
+
+        if (!ln.value) {
             alert("의사면허번호를 입력해주세요.");
             ln.focus()
             return false;
         }
 
+        let etc1 = "미참석";
+        let etc2 = "미참석";
+        let etc3 = "미참석";
+
+        if(breakfast1.checked){
+            etc1 = "Breakfast symposium 1";
+        }else if (breakfast2.checked){
+            etc1 = "Breakfast symposium 2";
+        }else if (breakfast3.checked){
+            etc1 = "미참석";
+        }else{
+             etc1 = "미참석";
+        }
+
+        if(satellite1.checked){
+            etc2 = "Satellite symposium 1";
+        }else if (satellite2.checked){
+            etc2 = "Satellite symposium 2";
+        }else if (satellite3.checked){
+            etc2 = "미참석";
+        }else{
+             etc2 = "미참석";
+        }
+        
+        if(satellite4.checked){
+            etc3 = "Satellite symposium 1";
+        }else if (satellite5.checked){
+            etc3 = "Satellite symposium 2";
+        }else if (satellite6.checked){
+            etc3 = "미참석";
+        }else{
+             etc3 = "미참석";
+        }
+        
         const url = "/onSite/mobile_kes";
         const data = {
             nick_name : KoreanName.value,
@@ -881,24 +1066,31 @@
             place: affiliationSelect.options[affiliationSelect.selectedIndex].innerText,
             place_etc : document.querySelector("#office_etc").value,
             address: document.querySelector("#office_addr").value + document.querySelector("#office_addr_etc").value,
-            is_score : need.checked ? "Y" : "N",
-            participation : participation_n ? "non-acquired" : "acquired",
+            member : member_y.checked ? "Y" : "N",
             kes_id : document.querySelector("#kes_id").value,
             option : selectedOption,
-            category : selectedCategory,
-            category_etc : document.querySelector("#category_other").value
+            etc1 : etc1, // Breakfast symposium
+            etc2 : etc2, // Satellite symposium 10월 31일(목)
+            etc3 : etc3, // Satellite symposium 11월 1일(금)
+            etc4 : promotion_code_yn, // 등록할인코드 Y/N
+            promotion_code :  document.querySelector("#promotion_code").value,
+            confer_info : getSelectedCheckboxes(),
+            type1 : attendance_select.options[attendance_select.selectedIndex].value
         }
+        
+        console.log(attendance_select.options[attendance_select.selectedIndex].value)
+        console.log(data.type1)
 
         $.ajax({
 		type: "POST",
 		url : url,
 		data: data,
 		success: function(result){
-            //window.location.href = "/onSite/mobile_kes";
+           // window.location.href = "/onSite/mobile_kes";
         },
 		error:function(e){  
             console.log(e)
-            alert("점수 저장 이슈가 발생했습니다. 관리자에게 문의해주세요.")
+            alert("현장등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
 		}
 	})  
     }

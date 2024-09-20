@@ -87,7 +87,7 @@ table th {
                         <!-- <th>등록시간</th> -->
                         <th>접수번호</th>
                         <th style="min-width: 100px">참석자유형</th>
-                        <th>참석자구분</th>
+                        <!-- <th>참석자구분</th> -->
                         <th>이름</th>
                         <th>소속</th>
                         <th>이메일</th>
@@ -114,7 +114,7 @@ table th {
                         // echo '<td>' . substr($item['time'], 0, 100) . '</td>';
                         echo '<td class="reg_num pointer">' . $item['registration_no'] . '</td>';
                         echo '<td>' . $item['attendance_type'] . '</td>';
-                        echo '<td>' . $item['member_type'] . '</td>';
+                        // echo '<td>' . $item['member_type'] . '</td>';
                         echo '<td class="user_d">' . $item['nick_name'] . '</td>';
                         echo '<td>' . $item['org'] . '</td>';
                         echo '<td><a href="/admin/user_detail?n=' . $item['registration_no'] . '" target="_self">' . $item['email'] . '</a></td>';

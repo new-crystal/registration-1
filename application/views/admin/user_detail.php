@@ -206,7 +206,7 @@
 
                                 <tr>
                                     <th>소속</th>
-                                    <td> <input class="form-control" type="text" value="<?php echo $item['org']; ?>" name="org" id="org">
+                                    <td style="background-color:#fafafa;"> <input class="form-control" type="text" value="<?php echo $item['org']; ?>" name="org" id="org" readonly>
 
                                     </td>
                                 </tr>

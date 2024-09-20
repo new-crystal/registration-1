@@ -18,7 +18,8 @@
                                         <option value="임원">임원</option>
                                         <option value="좌장">좌장</option>
                                         <option value="연자">연자</option>
-                                        <option value="패널">패널</option>
+                                        <!-- <option value="패널">패널</option> -->
+                                        <option value="후원사">후원사</option>
                                         <option value="기타">기타</option>
                                     </select>
                                 </div>

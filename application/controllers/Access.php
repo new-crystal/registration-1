@@ -469,7 +469,7 @@ class Access extends CI_Controller
                     'registration_no' => $qrcode
                 );
 
-                  /** day1 ~ day2 access 기록*/
+                  /** day1 ~ day2 access 기록 !!!*/
                   $qr_time = date("Y-m-d");
                   if ($qr_time == '2024-06-15') {
                       $infoqr = array(

@@ -64,6 +64,7 @@ class Entrance extends CI_Model
         return $this->db->get($this->access)->row_array();
     }
 
+        //날짜 변경 필요!!!
     public function history_day_2($where)
     {
         $query = $this->db->query("
