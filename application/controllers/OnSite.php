@@ -264,52 +264,45 @@ class OnSite extends CI_Controller
             $place = isset($_POST['place']) ? $_POST['place'] : null;
             $place_etc = isset($_POST['place_etc']) ? $_POST['place_etc'] : null;
             $address = isset($_POST['address']) ? $_POST['address'] : null;
-            $is_score = isset($_POST['is_score']) ? $_POST['is_score'] : null;
-            $participation = isset($_POST['participation']) ? $_POST['participation'] : null;
-            $option_number = isset($_POST['option']) ? $_POST['option'] : null;
-            $category_number = isset($_POST['category']) ? $_POST['category'] : null;
-            $category_other = isset($_POST['category_etc']) ? $_POST['category_etc'] : null;
-            
-            $option_text = "";
-            switch($option_number){
-                case 1 : 
-                    $option_text = "전임의(임상강사)";
-                    break;
-                case 2 :
-                    $option_text = "시험 지원자";
-                    break;
-                case 3 :
-                    $option_text = "자격증 취득자";
-                    break;
-                case 4 :
-                    $option_text = "해당없음";
-                    break;
-            }
-
-            $category_text = "";
-            switch($category_number){
-                case 1 : 
-                    $category_text = "전임의";
-                    break;
-                case 2 :
-                    $category_text = "봉직의";
-                    break;
-                case 3 :
-                    $category_text = "전공의";
-                    break;
-                case 4 :
-                    $category_text = "교수";
-                    break;
-                case 5 :
-                    $category_text = "개원의";
-                    break;
-                case 6 :
-                    $category_text = $category_other;
-                    break;
-            }
-
+            $member = isset($_POST['member']) ? $_POST['member'] : null;
+            $kes_id = isset($_POST['kes_id']) ? $_POST['kes_id'] : null;
+            $option = isset($_POST['option']) ? $_POST['option'] : null;
+            $attendance_type = isset($_POST['type1']) ? $_POST['type1'] : null;
+            $etc1 = isset($_POST['etc1']) ? $_POST['etc1'] : null;
+            $etc2 = isset($_POST['etc2']) ? $_POST['etc2'] : null;
+            $etc3 = isset($_POST['etc3']) ? $_POST['etc3'] : null;
+            $etc4 = isset($_POST['etc4']) ? $_POST['etc4'] : null;
+            $promotion_code = isset($_POST['promotion_code']) ? $_POST['promotion_code'] : null;
+            $confer_info = isset($_POST['confer_info']) ? $_POST['confer_info'] : null;
 
             $fee = 0;
+             if($member == "Y"){
+                if($attendance_type == "교수" || $attendance_type == "전문의" ||$attendance_type == "개원의" || $attendance_type == "봉직의" || $attendance_type == "전임의" ||$attendance_type == "기초의학자"){
+                    $fee = 120000;
+                }
+                else if ($attendance_type == "공보의, 군의관" || $attendance_type == "간호사, 영양사" ||$attendance_type == "연구원" || $attendance_type == "약사" || $attendance_type == "기타" ){
+                    $fee = 70000;
+                }
+                else if ($attendance_type == "학생" || $attendance_type == "전공의"){
+                    $fee = 0;
+                }
+             }
+             else if($member == "N"){
+                if($attendance_type == "교수" || $attendance_type == "전문의" ||$attendance_type == "개원의" || $attendance_type == "봉직의" || $attendance_type == "전임의" ||$attendance_type == "기초의학자"){
+                    $fee = 170000;
+                }
+                else if ($attendance_type == "공보의, 군의관" || $attendance_type == "간호사, 영양사" ||$attendance_type == "연구원" || $attendance_type == "약사" || $attendance_type == "기타" ){
+                    $fee = 90000;
+                }
+                else if ($attendance_type == "학생" || $attendance_type == "전공의"){
+                    $fee = 0;
+                }
+             }
+             else{
+                $fee = 0;
+             }
+            
+
             $time = date("Y-m-d H:i:s");
 
             // $uagent = $this->agent->agent_string();
@@ -319,15 +312,21 @@ class OnSite extends CI_Controller
                 'specialty_number' => preg_replace("/\s+/", "", $special_license),
                 'email' => preg_replace("/\s+/", "", $email),
                 'phone' => preg_replace("/\s+/", "", $phone),
-                'etc1' => $place, //근무처
-                'etc2' => $place_etc, //근무처 기타
-                'etc3' => $address, //근무처 주소
-                'is_score' => $is_score,
-                'attendance_type' => $participation,
-                'etc4' => $option_text, //선택 구분
-                'member_type' => $category_text,
+                'attendance_type' => 6,
+                'onsite_reg' => 1,
+                'breakfast_yn' => $etc1, // Breakfast symposium
+                'satellite1_yn' => $etc2, // Satellite symposium 10월 31일(목)
+                'satellite2_yn' => $etc3, // Satellite symposium 11월 1일(금)
+                'etc4' => $etc4, // 등록할인코드 Y/N
                 'fee' => $fee,
                 'time' => $time,
+                'etc2' => $place,
+                'etc3' => $place_etc,
+                'etc4' => $address,
+                'member' => $member,
+                'member_id' => $kes_id,
+                'etc5' => $promotion_code,
+                'conference_info' => implode("*", $confer_info)		
                 // 'uagent' => $uagent,
             );
             $this->users->add_onsite_user($info);

@@ -40,7 +40,7 @@
                         <div class="category-content no-padding">
                             <ul class="navigation navigation-main navigation-accordion">
                                   <!-- Main -->
-                                  <li class="navigation-header"><span>Print</span> <i class="icon-menu"
+                                  <!-- <li class="navigation-header"><span>Print</span> <i class="icon-menu"
                                         title="Main pages"></i></li>
                             <li style="margin-bottom: 2rem;">
                                     <a href="/admin/qr_layout_all?type=02" target="_blank">
@@ -91,7 +91,7 @@
                                         <span>QR 프린트용
                                         </span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <!-- Main -->
                                 <li class="navigation-header"><span>Main</span> <i class="icon-menu"
                                         title="Main pages"></i></li>
@@ -151,6 +151,20 @@
                                         </span>
                                     </a>
                                 </li> -->
+                                <li style="margin-bottom: 2rem;"<?php if ($primary_menu == 'faculty') echo 'class="active"' ?>>
+                                    <a href="/admin/faculty">
+                                        <i class="icon-users"></i>
+                                        <span>faculty 관리
+                                        </span>
+                                    </a>
+                                </li>
+                                <li style="margin-bottom: 2rem;">
+                                    <a href="/onSite/mobile_kes" target="_blank">
+                                        <i class="icon-user-plus"></i>
+                                        <span>현장등록페이지
+                                        </span>
+                                    </a>
+                                </li>
                                 <li style="margin-bottom: 2rem;">
                                     <a href="/access/scan_qr" target="_blank">
                                         <i class="icon-qrcode"></i>

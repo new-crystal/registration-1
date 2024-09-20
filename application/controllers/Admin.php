@@ -844,7 +844,7 @@ class Admin extends CI_Controller
             
             //DAY1 예상평점
             $score1 = floor($spent1 / 60);
-            $score1 = min(4, $score1);
+            $score1 = min(3, $score1);
 
             //DAY1 예상 내과전공의 평점
             $score3 = floor($spent1 / 180);
@@ -852,7 +852,7 @@ class Admin extends CI_Controller
 
             //DAY2 예상평점
             $score2 = floor($spent2 / 60);
-            $score2 = min(6, $score2);
+            $score2 = min(4, $score2);
 
             //DAY2 예상 내과전공의 평점
 
