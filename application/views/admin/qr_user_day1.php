@@ -75,6 +75,13 @@ table th {
             </div>
 
             <table class="table datatable-basic">
+                <colgroup>
+                    <col width="1%">
+                    <col width="5%">
+                    <col width="4%">
+                    <col width="2%">
+                    <col width="5%">
+                </colgroup>
                 <thead>
                     <tr>
                         <th></th>
@@ -170,7 +177,7 @@ function saveTime(button, reg_no){
 		url : url,
 		data: data,
 		success: function(result){
-            console.log(result)
+            //console.log(result)
             alert('출결시간이 변경되었습니다.');
             window.location.reload()
             //window.location.href = `/onSite/success?fee=${feeBox.innerText}`;
