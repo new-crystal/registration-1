@@ -109,14 +109,15 @@ class Users extends CI_Model
 	public function get_mail_user()
 	{
 		$query = $this->db->query("
-		SELECT *
-		FROM users a
-		WHERE a.QR_MAIL_SEND_YN = 'N'
+			SELECT *
+			FROM users a
+			WHERE a.QR_MAIL_SEND_YN = 'N'
 		");
 
 		return $query->result_array();
 	}
 
+	// !!! reg no 변경 필요 !!!
 	public function add_user($info)
 	{
 		$this->db->insert($this->users, $info);
@@ -126,7 +127,7 @@ class Users extends CI_Model
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
-
+	// !!! reg no 변경 필요 !!!
 	public function add_onsite_user($info)
 	{
 		$this->db->insert($this->users, $info);
@@ -291,13 +292,453 @@ class Users extends CI_Model
 			 WHERE DATE(TIME) = '2024-11-02'
 			GROUP BY registration_no
 		) b2 ON a.registration_no = b2.qr_registration_no
-		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반참석자' AND a.attendance_type != '기자'
+		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반 참가자' AND a.attendance_type != '기자'
 		ORDER BY a.id ASC
 ");
 		return $query->result_array();
 	}
+		/**speaker */
+		public function get_access_on_speaker_1()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_speaker_2()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_speaker_3()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+			/**day 1 access */
+			public function get_access_speaker_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_speaker_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_speaker_3()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
 
 
+				/** chairperson */
+		public function get_access_on_chairperson_1()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_chairperson_2()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_chairperson_3()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+			/** chairperson */
+			public function get_access_chairperson_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_chairperson_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_chairperson_3()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+
+			
+				/** panel */
+		public function get_access_on_panel_1()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_panel_2()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_panel_3()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+			/** panel */
+			public function get_access_panel_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_panel_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_panel_3()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+
+							/** faculty */
+		public function get_access_on_faculty_1()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_faculty_2()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_faculty_3()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+			/** faculty */
+			public function get_access_faculty_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_faculty_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_faculty_3()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+
+		/** Participant	 */
+		public function get_access_on_participant_1()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참가자' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_participant_2()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참가자' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_participant_3()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '일반참가자' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+			/** Participant */
+			public function get_access_participant_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참가자' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_participant_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참가자' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_participant_3()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '일반참가자' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			
+		/** other	 */
+		public function get_access_on_other_1()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_other_2()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+		public function get_access_on_other_3()
+		{
+			$query = $this->db->query("
+				SELECT *
+				FROM users a
+				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.onsite_reg = 1
+		");
+			return $query->result_array();
+		}
+
+			/** other */
+			public function get_access_other_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_other_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_other_3()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+
+			/** day 1 */
+			public function get_access_day_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+			
+			/** day 1 */
+			public function get_access_on_day_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.onsite_reg = 1
+			");
+				return $query->result_array();
+			}
+
+			/** day 2 */
+			public function get_access_day_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+			
+			/** day 2 */
+			public function get_access_on_day_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.onsite_reg = 1
+			");
+				return $query->result_array();
+			}
+
+			/** day 3 */
+			public function get_access_day_3()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_3 = 'Y' AND a.onsite_reg = 0
+			");
+				return $query->result_array();
+			}
+			
+			/** day 3 */
+			public function get_access_on_day_3()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_3 = 'Y' AND a.onsite_reg = 1
+			");
+				return $query->result_array();
+			}
+	
 }
 
 /* SQL 오류 (1064): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM

@@ -27,7 +27,7 @@
     }
 
     #success_container {
-        width: 42%;
+        width: 100%;
         margin: 0 auto;
         text-align: center;
         display: flex;
@@ -75,8 +75,8 @@
 <body class="flex items-center justify-center">
     <div id="success_container">
         <div>
-            <div class="w-full h-80 sm:h-1/3">
-                <img class="header_img" src="../../assets/images/access_header.png" class="h-full w-full" />
+            <div class="w-full">
+                <img class="header_img" src="../../assets/images/access_header.jpg" class="h-full w-full" />
             </div>
             <div>
                 <!-- <div class="text-zinc-400 text-xl sm:text-4xl">
@@ -87,13 +87,13 @@
                 </div> -->
                 <div class="text_box text-zinc-400">
                     <p>현장 등록이 완료되었습니다</p>
-                    <p>등록데스크에서 등록비 <span class="text-blue-900"><?php if (isset($fee)) echo $fee; ?>원</span> 결제 후</p>
+                    <p>등록데스크에서 등록비 <span class="text-blue-900"><?php if (isset($fee)) echo $fee; ?></span> 결제 후</p>
                     <p>네임택을 수령하여 입장해주세요.</p>
                 </div>
                 <div class="text_box text-blue-900 mt-10">
-                    <p>(대한내분비학회)</p>
+                    <!-- <p>(대한내분비학회)</p>
                     <p>국민은행</p>
-                    <p>803-25-0006-851</p>
+                    <p>803-25-0006-851</p> -->
                 </div>
             </div>
             <div class="text_box text-red-500 font-semibold my-20">
@@ -108,7 +108,7 @@
 </body>
 <script>
 function prev() {
-    location.replace("/onSite/mobile")
+    location.replace("/onSite/mobile_kes")
 }
 </script>
 

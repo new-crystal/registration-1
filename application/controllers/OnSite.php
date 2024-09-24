@@ -96,119 +96,17 @@ class OnSite extends CI_Controller
 
     public function mobile()
     {
-        if (isset($_GET['nick_name'])) {
-            $type = isset($_GET['type1']) ? $_GET['type1'] : null;
-            $type2 = isset($_GET['type2']) ? $_GET['type2'] : null;
-            $name = isset($_GET['nick_name']) ? $_GET['nick_name'] : null;
-            $phone = isset($_GET['phone']) ? $_GET['phone'] : null;
-            $email1 = isset($_GET['email1']) ? $_GET['email1'] : null;
-            $email2 = isset($_GET['email2']) ? $_GET['email2'] : null;
-            $org = isset($_GET['org']) ? $_GET['org'] : null;
-            $license = isset($_GET['ln']) ? $_GET['ln'] : null;
-            $special_license = isset($_GET['sn']) ? $_GET['sn'] : null;
-            $category_1 = isset($_GET['category-1']) ? $_GET['category-1'] : null;
-            $category_2 = isset($_GET['category-2']) ? $_GET['category-2'] : null;
-            $category_3 = isset($_GET['category-3']) ? $_GET['category-3'] : null;
-            $category_4 = isset($_GET['category-4']) ? $_GET['category-4'] : null;
-            $category_5 = isset($_GET['category-5']) ? $_GET['category-5'] : null;
-            $category_6 = isset($_GET['category-6']) ? $_GET['category-6'] : null;
-            $category_7 = isset($_GET['category-7']) ? $_GET['category-7'] : null;
-            $category_8 = isset($_GET['category-8']) ? $_GET['category-8'] : null;
-            $category_9 = isset($_GET['category-9']) ? $_GET['category-9'] : null;
-            $category_10 = isset($_GET['category-10']) ? $_GET['category-10'] : null;
-            $category_11 = isset($_GET['category-11']) ? $_GET['category-11'] : null;
-            $category_12 = isset($_GET['category-12']) ? $_GET['category-12'] : null;
-            $category_13 = isset($_GET['category-13']) ? $_GET['category-13'] : null;
-            $category_14 = isset($_GET['category-14']) ? $_GET['category-14'] : null;
-            $category_15 = isset($_GET['category-15']) ? $_GET['category-15'] : null;
-            $category_16 = isset($_GET['category-16']) ? $_GET['category-16'] : null;
-            $agree1 = isset($_GET['agree1']) ? $_GET['agree1'] : null;
-            $agree2 = isset($_GET['agree2']) ? $_GET['agree2'] : null;
-            $fee = 0;
-            $type3 = 0;
-            $etc1 = "신청";
-            $type1 = "";
-            if ($agree1 == "on") {
-                $agree1 = 1;
-            }
-            if ($agree2 == "on") {
-                $agree2 = 1;
-            }
-            if ($agree1 == null) {
-                $agree1 = 0;
-            }
-            if ($agree2 == null) {
-                $agree2 = 0;
-            }
-            if ($category_1) {
-                $fee = 90000;
-                $type3 = "회원";
-                $type = "전문의";
-            }
-            if ($category_2) {
-                $fee = 110000;
-                $type3 = "비회원";
-                $type = "전문의";
-            }
-            if ($category_3) {
-                $fee = 70000;
-                $type3 = "회원";
-                $type = "전공의";
-            }
-            if ($category_4) {
-                $fee = 90000;
-                $type3 = "비회원";
-                $type = "전공의";
-            }
-            if ($category_5) {
-                $fee = 70000;
-                $type3 = "회원";
-                $type = "기타";
-            }
-            if ($category_6) {
-                $fee = 90000;
-                $type3 = "비회원";
-                $type = "기타";
-            }
-            if ($category_7) {
-                $type = "전문의";
-                $type1 = "개원의";
-            }
-            if ($category_8) {
-                $type = "전문의";
-                $type1 = "봉직의";
-            }
-            if ($category_9) {
-                $type = "전문의";
-                $type1 = "교수";
-            }
-            if ($category_10) {
-                $type = "전문의";
-                $type1 = "전임의";
-            }
-            if ($category_11) {
-                $type = "기타";
-                $type1 = "기초의학자";
-            }
-            if ($category_12) {
-                $type = "기타";
-                $type1 = "간호사";
-            }
-            if ($category_13) {
-                $type = "기타";
-                $type1 = "약사";
-            }
-            if ($category_14) {
-                $type = "기타";
-                $type1 = "군의관";
-            }
-            if ($category_15) {
-                $type = "기타";
-                $type1 = "기타";
-            }
-            if ($category_16) {
-                $type1 = $category_16;
-            }
+        if (isset($_POST['nick_name'])) {
+            $type = isset($_POST['type1']) ? $_POST['type1'] : null;
+            $type2 = isset($_POST['type2']) ? $_POST['type2'] : null;
+            $type3 = isset($_POST['type3']) ? $_POST['type3'] : null;
+            $nick_name = isset($_POST['nick_name']) ? $_POST['nick_name'] : null;
+            $phone = isset($_POST['phone']) ? $_POST['phone'] : null;
+            $email = isset($_POST['email']) ? $_POST['email'] : null;
+            $org = isset($_POST['org']) ? $_POST['org'] : null;
+            $sn = isset($_POST['ln']) ? $_POST['ln'] : null;
+            $fee = isset($_POST['fee']) ? $_POST['fee'] : null;
+            $deposit_name =  isset($_POST['deposit_name']) ? $_POST['deposit_name'] : null;
 
             if ($fee == 0)
                 $deposit = '미결제';
@@ -216,38 +114,28 @@ class OnSite extends CI_Controller
                 $deposit = '미결제';
 
             $time = date("Y-m-d H:i:s");
-            if ($license) {
-                $etc1 = "필요";
-            } else {
-                $etc1 = "불필요";
-            }
+        
             // $uagent = $this->agent->agent_string();
 
-
-            $email = $email1 . "@" . $email2;
             $info = array(
-                'nick_name' => preg_replace("/\s+/", "", $name),
-                'ln' => preg_replace("/\s+/", "", $license),
-                'sn' => preg_replace("/\s+/", "", $special_license),
+                'nick_name' => preg_replace("/\s+/", "", $nick_name),
+                'sn' => preg_replace("/\s+/", "", $sn),
                 'org' => trim($org),
                 'org_nametag' => trim($org),
                 'phone' => preg_replace("/\s+/", "", $phone),
                 'email' => preg_replace("/\s+/", "", $email),
                 'type' => trim($type),
-                'type1' => trim($type1),
                 'type2' => $type2,
                 'type3' => trim($type3),
                 'fee' => $fee,
-                'time' => $time,
+                'deposit_date' => $time,
                 'deposit' => $deposit,
-                'etc1' => $etc1,
-                'agree1' => $agree1,
-                'agree2' => $agree2,
+                'deposit_name' => $deposit_name
                 // 'uagent' => $uagent,
             );
             $this->users->add_onsite_user($info);
             $data['fee'] = $fee;
-            $this->load->view('success', $data);
+            $this->load->view('success?fee='. $fee, $data);
         } else {
             $this->load->view('mobile_onsite');
         }
@@ -268,11 +156,11 @@ class OnSite extends CI_Controller
             $kes_id = isset($_POST['kes_id']) ? $_POST['kes_id'] : null;
             $option = isset($_POST['option']) ? $_POST['option'] : null;
             $attendance_type = isset($_POST['type1']) ? $_POST['type1'] : null;
-            $etc1 = isset($_POST['etc1']) ? $_POST['etc1'] : null;
-            $etc2 = isset($_POST['etc2']) ? $_POST['etc2'] : null;
-            $etc3 = isset($_POST['etc3']) ? $_POST['etc3'] : null;
+            //$etc1 = isset($_POST['etc1']) ? $_POST['etc1'] : null;
+            //$etc2 = isset($_POST['etc2']) ? $_POST['etc2'] : null;
+            //$etc3 = isset($_POST['etc3']) ? $_POST['etc3'] : null;
             $etc4 = isset($_POST['etc4']) ? $_POST['etc4'] : null;
-            $promotion_code = isset($_POST['promotion_code']) ? $_POST['promotion_code'] : null;
+            //$promotion_code = isset($_POST['promotion_code']) ? $_POST['promotion_code'] : null;
             $confer_info = isset($_POST['confer_info']) ? $_POST['confer_info'] : null;
 
             $fee = 0;
@@ -314,18 +202,20 @@ class OnSite extends CI_Controller
                 'phone' => preg_replace("/\s+/", "", $phone),
                 'attendance_type' => 6,
                 'onsite_reg' => 1,
-                'breakfast_yn' => $etc1, // Breakfast symposium
-                'satellite1_yn' => $etc2, // Satellite symposium 10월 31일(목)
-                'satellite2_yn' => $etc3, // Satellite symposium 11월 1일(금)
-                'etc4' => $etc4, // 등록할인코드 Y/N
+                //'breakfast_yn' => $etc1, // Breakfast symposium
+                //'satellite1_yn' => $etc2, // Satellite symposium 10월 31일(목)
+                //'satellite2_yn' => $etc3, // Satellite symposium 11월 1일(금)
+                //'etc4' => $etc4, // 등록할인코드 Y/N
                 'fee' => $fee,
                 'time' => $time,
+                'org' => $place,
+                'org_nametag' => $place,
                 'etc2' => $place,
                 'etc3' => $place_etc,
                 'etc4' => $address,
                 'member' => $member,
                 'member_id' => $kes_id,
-                'etc5' => $promotion_code,
+                //'etc5' => $promotion_code,
                 'conference_info' => implode("*", $confer_info)		
                 // 'uagent' => $uagent,
             );
@@ -341,5 +231,18 @@ class OnSite extends CI_Controller
     {
         $data['fee'] = $_GET['fee'];
         $this->load->view('success', $data);
+    }
+
+    public function checkEmail()
+    {
+        $email = $_POST['email'];
+        $where = array(
+            'email' => $email
+        );
+        $user = $this->users->get_user($where);
+
+        // 결과를 JSON 형태로 반환합니다.
+        header('Content-Type: application/json');
+        echo json_encode(array('user' => $user));
     }
 }
