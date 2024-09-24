@@ -312,8 +312,10 @@
 </head>
 
 <body id="on-site" class="flex items-center justify-center">
-    <div id="scroll" class="w-full h-full flex items-center justify-center overflow-x-hidden overflow-y-scroll relative max-w-5xl">
+    
+    <!-- <div id="scroll" class="w-full h-full flex items-center justify-center overflow-x-hidden overflow-y-scroll relative max-w-5xl"> -->
         <div class="w-full max-w-5xl">
+           
             <div class="w-full max-w-5xl text-center text-2xl font-semibold bg-gradient-to-r from-amber-400 to-amber-800 p-3 text-white fixed z-10">
                 <h1>On-site Registration<br>(현장 등록)</h1>
             </div>
@@ -357,8 +359,8 @@
                         <div class="mo_wrap">
                             <p class="inline-block">이메일<span>*</span></p>
                             <div class="flex items-center justify-space">
-                                <input type="text" name="email1" id="Email1" maxlength="64" value="" class="w-[40%] mr-2" autocomplete='off'/>
-                                <p>@</p>
+                                <input type="text" name="email1" id="Email1" maxlength="64" value="" class="w-[49%] mr-2" autocomplete='off'/>
+                                <!-- <p>@</p>
                                 <input type="text" name="email2" id="Email2" maxlength="64" value="" class="w-[40%] ml-2" autocomplete='off'/>
                                 <select name="email3" id="Email3" class="border w-[15%] h-9 ml-3" style="background-color:#ffffff;">
                                     <option value="" selected="selected">직접입력</option>
@@ -375,7 +377,7 @@
                                     <option value="korea.com">korea.com</option>
                                     <option value="gmail.com">gmail.com</option>
                                     <option value="hanmir.com">hanmir.com</option>
-                                </select>
+                                </select> -->
                             </div>
                             
 
@@ -513,13 +515,13 @@
                             <div class="mo_wrap">
                                 <p class="inline-block">대한내분비학회 회원 유무<span>*</span></p>
                                 <div class="">
-                                    <label for="member_y"> <input type="radio" id="member_y" name="member"/>회원</label>
-                                    <label for="member_n"> <input type="radio" id="member_n" name="member"/>비회원</label>
+                                    <label for="member_y"> <input type="radio" id="member_y" name="member" onchange="changeFee()"/>회원</label>
+                                    <label for="member_n"> <input type="radio" id="member_n" name="member" onchange="changeFee()"/>비회원</label>
                                     <div class="member_wrap my-4 hidden">
                                         <input class="p-2 w-3/5 border" placeholder="대한내분비학회 홈페이지 아이디를 입력해주세요." id="kes_id"/>
-                                        <button type="button" class="bg-sky-900 text-white px-3 py-2 ml-2 hover:underline underline-offset-4">인증하기</button>
+                                        <!-- <button type="button" class="bg-sky-900 text-white px-3 py-2 ml-2 hover:underline underline-offset-4">인증하기</button> -->
                                         <span class="block my-4">*대한내분비학회 홈페이지 아이디를 입력해주세요.<br>준회원의 경우, 정회원 또는 평생회원으로 전환 후 신청하여 주시기 바랍니다.</span>
-                                        <button type="button" class="bg-fuchsia-700 text-white px-3 py-2 hover:underline underline-offset-4" onclick="window.location.href='https://www.endocrinology.or.kr/member/info.php'">대한내분비학회 회원 가입 바로가기</button>
+                                        <a type="button" class="bg-fuchsia-700 text-white px-3 py-2 hover:underline underline-offset-4" href='https://www.endocrinology.or.kr/member/info.php' target="_blank">대한내분비학회 회원 가입 바로가기</a>
                                     </div>
                                 </div>
                             </div>
@@ -527,7 +529,7 @@
                             <div class="mo_wrap">
                                 <p class="inline-block">등록구분<span>*</span></p>
                                 <div>
-                                    <select class="w-3/5 py-2 px-4 border" id="attendance_select">
+                                    <select class="w-3/5 py-2 px-4 border" id="attendance_select" onchange="changeFee()">
                                         <option value="">선택해주세요</option>
                                         <option value="교수">교수(의사, 비의사)</option>
                                         <option value="전문의">전문의</option>
@@ -546,7 +548,7 @@
                                 </div>
                             </div>
 
-                            <div class="mo_wrap">
+                            <!-- <div class="mo_wrap">
                                 <p class="inline-block">Breakfast symposium 참석하시겠습니까?<span>*</span></p>
                                 <div class="ml-8">
                                     <p>• 11월 02일(토) 07:30-08:00</p>
@@ -559,8 +561,8 @@
                                     
                                     <label for="breakfast_3"><input type="radio" name="breakfast" id="breakfast_3"/>미참석</label>
                                 </div>
-                            </div>
-
+                            </div> -->
+<!-- 
                             <div class="mo_wrap">
                                 <p class="inline-block">Satellite symposium 참석하시겠습니까?<span>*</span></p>
                                 <div class="ml-8">
@@ -584,9 +586,9 @@
                                     
                                     <label for="satellite_6"><input type="radio" name="satellite2" id="satellite_6"/>미참석</label>
                                 </div>
-                            </div>
+                            </div> -->
 
-
+<!-- 
                             <div class="mo_wrap">
                                 <p class="inline-block">등록할인코드를 사용하시겠습니까?<span>*</span></p>
                                 <div class="ml-8">
@@ -599,7 +601,7 @@
                                         <button type="button" class="bg-sky-900 text-white px-3 py-2 ml-2">등록확인</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="mo_wrap">
                                 <p class="inline-block">학술대회 등록 경로는?<span>*</span></p>
@@ -636,10 +638,13 @@
                                 </div>
                             </div>
                     </div>
-                 
+                    <div class="mo_wrap">
+                        <p class="inline-block">등록비</p>
+                        <div id="fee" class="underline underline-offset-4"></div>
+                    </div>
                     <button id="submit_btn" type="submit" class="block bg-sky-900 text-white font-bold px-3 py-4 mx-auto my-10 w-2/5 hover:underline underline-offset-4">제출하기</button></section>
                 </div>
-        </div>
+        <!-- </div> -->
     </div>
     </div>
 </body>
@@ -701,8 +706,8 @@
     const phone = document.querySelector("#phoneNumber")
 
     const email_1 = document.querySelector("#Email1")
-    const email_2 = document.querySelector("#Email2")
-    const email_3 = document.querySelector("#Email3")
+    //const email_2 = document.querySelector("#Email2")
+    //const email_3 = document.querySelector("#Email3")
 
     const member = document.querySelector("#member");
     const nonMember = document.querySelector("#non_member")
@@ -734,13 +739,13 @@
     // const categoryOther = document.querySelector("#category6");
     // const categoryOtherInput = document.querySelector("#category_other");
 
-    const promotion_code_y = document.querySelector("#promotion_code_y");
-    const promotion_code_n = document.querySelector("#promotion_code_n");
-    const promotionWrap = document.querySelector(".promotion_wrap");
+    // const promotion_code_y = document.querySelector("#promotion_code_y");
+    // const promotion_code_n = document.querySelector("#promotion_code_n");
+    // const promotionWrap = document.querySelector(".promotion_wrap");
 
-    const breakfast1 = document.querySelector("#breakfast_1");
-    const breakfast2 = document.querySelector("#breakfast_2");
-    const breakfast3 = document.querySelector("#breakfast_3");
+    // const breakfast1 = document.querySelector("#breakfast_1");
+    // const breakfast2 = document.querySelector("#breakfast_2");
+    // const breakfast3 = document.querySelector("#breakfast_3");
 
     const satellite1 = document.querySelector("#satellite_1");
     const satellite2 = document.querySelector("#satellite_2");
@@ -748,6 +753,8 @@
     const satellite4 = document.querySelector("#satellite_4");
     const satellite5 = document.querySelector("#satellite_5");
     const satellite6 = document.querySelector("#satellite_6");
+
+    const feeBox = document.querySelector("#fee")
 
     const submitBtn = document.querySelector("#submit_btn");
 
@@ -816,6 +823,7 @@
         const onlyHangul = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
 
         if (!onlyHangul.test(inputValue)) {
+            alert('국문으로 입력해주세요')
             event.target.value = inputValue.replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]+/g, '');
         }
     });
@@ -838,10 +846,39 @@
         }
     }
 
-    email_3.addEventListener("click", () => {
-        email_2.value = email_3.options[email_3.selectedIndex].value
-    })
+    // email_3.addEventListener("click", () => {
+    //     email_2.value = email_3.options[email_3.selectedIndex].value
+    // })
     
+    email_1.addEventListener("blur", ()=>{
+        checkEmail()
+    })
+
+    //email 중복체크
+
+    function checkEmail(){
+        const url = '/onSite/checkEmail'
+        const data = {
+            email : email_1.value
+        }
+            $.ajax({
+                type: "POST",
+                url : url,
+                data: data,
+                success: function(result){
+                    //console.log(result)
+                    if(result.user !== null){
+                        alert('중복된 이메일입니다.')
+                        email_1.value = '';
+                    }
+                },
+                error:function(e){  
+                    console.log(e)
+                    alert("현장등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
+                }
+            })
+    }
+
     //회원 유무 check
     member_y.addEventListener("change", ()=>{
         if(member_y.checked){
@@ -859,27 +896,27 @@
         }
     })
 
-    let promotion_code_yn = 'N';
+   // let promotion_code_yn = 'N';
     //할인코드 유무 check
-    promotion_code_y.addEventListener("change", ()=>{
-        if(promotion_code_y.checked){
-            promotionWrap.classList.remove("hidden");
-            promotion_code_yn = 'Y'
-        }else{
-            promotionWrap.classList.add("hidden")
-            promotion_code_yn = 'N'
-        }
-    })
+    // promotion_code_y.addEventListener("change", ()=>{
+    //     if(promotion_code_y.checked){
+    //         promotionWrap.classList.remove("hidden");
+    //         promotion_code_yn = 'Y'
+    //     }else{
+    //         promotionWrap.classList.add("hidden")
+    //         promotion_code_yn = 'N'
+    //     }
+    // })
 
-    promotion_code_n.addEventListener("change", ()=>{
-        if(promotion_code_y.checked){
-            promotionWrap.classList.remove("hidden")
-            promotion_code_yn = 'Y'
-        }else{
-            promotionWrap.classList.add("hidden")
-            promotion_code_yn = 'N'
-        }
-    })
+    // promotion_code_n.addEventListener("change", ()=>{
+    //     if(promotion_code_y.checked){
+    //         promotionWrap.classList.remove("hidden")
+    //         promotion_code_yn = 'Y'
+    //     }else{
+    //         promotionWrap.classList.add("hidden")
+    //         promotion_code_yn = 'N'
+    //     }
+    // })
 
     submitBtn.addEventListener("click", ()=>{
         onSubmit()
@@ -920,6 +957,35 @@
         return selectedIds;
     }
     
+    function changeFee(){
+        const attendanceType = attendance_select.options[attendance_select.selectedIndex].value;
+        if(member_y.checked){
+                if(attendanceType == "교수" || attendanceType == "전문의" ||attendanceType == "개원의" || attendanceType == "봉직의" || attendanceType == "전임의" ||attendanceType == "기초의학자"){
+                    feeBox.innerHTML = "120000원";
+                }
+                else if (attendanceType == "공보의, 군의관" || attendanceType == "간호사, 영양사" ||attendanceType == "연구원" || attendanceType == "약사" || attendanceType == "기타" ){
+                    feeBox.innerHTML = "70000원";
+                }
+                else if (attendanceType == "학생" || attendanceType == "전공의"){
+                    attendanceType = "0원";
+                }
+             }
+             else if(member_n.checked){
+                if(attendanceType == "교수" || attendanceType == "전문의" ||attendanceType == "개원의" || attendanceType == "봉직의" || attendanceType == "전임의" ||attendanceType == "기초의학자"){
+                    attendanceType = "170000원";
+                }
+                else if (attendanceType == "공보의, 군의관" || attendanceType == "간호사, 영양사" ||attendanceType == "연구원" || attendanceType == "약사" || attendanceType == "기타" ){
+                    attendanceType = "90000원";
+                }
+                else if (attendanceType == "학생" || attendanceType == "전공의"){
+                    attendanceType = "0원";
+                }
+             }
+             else{
+                attendanceType = "0원";
+             }
+    }
+    
     function onSubmit() {
         //e.preventDefault();
         
@@ -951,7 +1017,7 @@
             return false;
         }
 
-        if (!email_1.value || !email_2.value) {
+        if (!email_1.value) {
             alert("이메일을 입력해주세요.");
             email_1.focus()
             return false;
@@ -998,23 +1064,23 @@
             return false;
         }
 
-        if(!breakfast1.checked && !breakfast2.checked && !breakfast2.checked){
-            alert("Breakfast symposium 참석여부를 확인해주세요.");
-            breakfast1.focus();
-            return false;
-        }
+        // if(!breakfast1.checked && !breakfast2.checked && !breakfast2.checked){
+        //     alert("Breakfast symposium 참석여부를 확인해주세요.");
+        //     breakfast1.focus();
+        //     return false;
+        // }
 
-        if(!satellite1.checked && !satellite2.checked && !satellite3.checked){
-            alert("Satellite symposium참석여부를 확인해주세요.");
-            satellite1.focus();
-            return false;
-        }
+        // if(!satellite1.checked && !satellite2.checked && !satellite3.checked){
+        //     alert("Satellite symposium참석여부를 확인해주세요.");
+        //     satellite1.focus();
+        //     return false;
+        // }
 
-        if(!satellite4.checked && !satellite5.checked && !satellite6.checked){
-            alert("Satellite symposium참석여부를 확인해주세요.");
-            satellite1.focus();
-            return false;
-        }
+        // if(!satellite4.checked && !satellite5.checked && !satellite6.checked){
+        //     alert("Satellite symposium참석여부를 확인해주세요.");
+        //     satellite1.focus();
+        //     return false;
+        // }
 
         if (!ln.value) {
             alert("의사면허번호를 입력해주세요.");
@@ -1026,42 +1092,42 @@
         let etc2 = "미참석";
         let etc3 = "미참석";
 
-        if(breakfast1.checked){
-            etc1 = "Breakfast symposium 1";
-        }else if (breakfast2.checked){
-            etc1 = "Breakfast symposium 2";
-        }else if (breakfast3.checked){
-            etc1 = "미참석";
-        }else{
-             etc1 = "미참석";
-        }
+        // if(breakfast1.checked){
+        //     etc1 = "Breakfast symposium 1";
+        // }else if (breakfast2.checked){
+        //     etc1 = "Breakfast symposium 2";
+        // }else if (breakfast3.checked){
+        //     etc1 = "미참석";
+        // }else{
+        //      etc1 = "미참석";
+        // }
 
-        if(satellite1.checked){
-            etc2 = "Satellite symposium 1";
-        }else if (satellite2.checked){
-            etc2 = "Satellite symposium 2";
-        }else if (satellite3.checked){
-            etc2 = "미참석";
-        }else{
-             etc2 = "미참석";
-        }
+        // if(satellite1.checked){
+        //     etc2 = "Satellite symposium 1";
+        // }else if (satellite2.checked){
+        //     etc2 = "Satellite symposium 2";
+        // }else if (satellite3.checked){
+        //     etc2 = "미참석";
+        // }else{
+        //      etc2 = "미참석";
+        // }
         
-        if(satellite4.checked){
-            etc3 = "Satellite symposium 1";
-        }else if (satellite5.checked){
-            etc3 = "Satellite symposium 2";
-        }else if (satellite6.checked){
-            etc3 = "미참석";
-        }else{
-             etc3 = "미참석";
-        }
+        // if(satellite4.checked){
+        //     etc3 = "Satellite symposium 1";
+        // }else if (satellite5.checked){
+        //     etc3 = "Satellite symposium 2";
+        // }else if (satellite6.checked){
+        //     etc3 = "미참석";
+        // }else{
+        //      etc3 = "미참석";
+        // }
         
         const url = "/onSite/mobile_kes";
         const data = {
             nick_name : KoreanName.value,
             ln : document.querySelector("#ln").value,
             sn : document.querySelector("#sn").value,
-            email : email_1.value + "@" +email_2.value,
+            email : email_1.value,
             phone:phone.value,
             place: affiliationSelect.options[affiliationSelect.selectedIndex].innerText,
             place_etc : document.querySelector("#office_etc").value,
@@ -1069,24 +1135,21 @@
             member : member_y.checked ? "Y" : "N",
             kes_id : document.querySelector("#kes_id").value,
             option : selectedOption,
-            etc1 : etc1, // Breakfast symposium
-            etc2 : etc2, // Satellite symposium 10월 31일(목)
-            etc3 : etc3, // Satellite symposium 11월 1일(금)
-            etc4 : promotion_code_yn, // 등록할인코드 Y/N
-            promotion_code :  document.querySelector("#promotion_code").value,
+            //etc1 : etc1, // Breakfast symposium
+            //etc2 : etc2, // Satellite symposium 10월 31일(목)
+            //etc3 : etc3, // Satellite symposium 11월 1일(금)
+            //etc4 : promotion_code_yn, // 등록할인코드 Y/N
+            //promotion_code :  document.querySelector("#promotion_code").value,
             confer_info : getSelectedCheckboxes(),
             type1 : attendance_select.options[attendance_select.selectedIndex].value
         }
-        
-        console.log(attendance_select.options[attendance_select.selectedIndex].value)
-        console.log(data.type1)
 
         $.ajax({
 		type: "POST",
 		url : url,
 		data: data,
 		success: function(result){
-           // window.location.href = "/onSite/mobile_kes";
+            window.location.href = `/onSite/success?fee=${feeBox.innerText}`;
         },
 		error:function(e){  
             console.log(e)

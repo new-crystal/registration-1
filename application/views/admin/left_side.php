@@ -113,22 +113,22 @@
                                     </a>
                                 </li>
                                 
-                                <!-- <li style="margin-bottom: 2rem;"
+                                <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'faculty') echo 'class="active"' ?>>
                                     <a href="/admin/faculty">
                                         <i class="icon-list-unordered"></i>
                                         <span>faculty 관리</span>
                                     </a>
-                                </li> -->
+                                </li>
                               
-                                <!-- <li style="margin-bottom: 2rem;"
+                                <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'qrcode') echo 'class="active"' ?>>
                                     <a href="/admin/access">
                                         <i class="icon-list-unordered"></i>
                                         <span> QR code
                                         </span>
                                     </a>
-                                </li> -->
+                                </li>
                                 <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'participant') echo 'class="active"' ?>>
                                     <a href="/admin/participant">
@@ -151,13 +151,13 @@
                                         </span>
                                     </a>
                                 </li> -->
-                                <li style="margin-bottom: 2rem;"<?php if ($primary_menu == 'faculty') echo 'class="active"' ?>>
+                                <!-- <li style="margin-bottom: 2rem;"<?php if ($primary_menu == 'faculty') echo 'class="active"' ?>>
                                     <a href="/admin/faculty">
                                         <i class="icon-users"></i>
                                         <span>faculty 관리
                                         </span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li style="margin-bottom: 2rem;">
                                     <a href="/onSite/mobile_kes" target="_blank">
                                         <i class="icon-user-plus"></i>

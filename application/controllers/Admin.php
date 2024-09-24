@@ -1683,38 +1683,65 @@ class Admin extends CI_Controller
         else {
             $data['primary_menu'] = 'participant';
             // $data['statistics'] = $this->users->get_access_statistics();
+            $wheres = array(
+                'qr_chk' => 'Y'
+            );
+               /**모든 유저 */
+            $data['users'] = $this->users->get_users();
 
-              /**모든 유저 */
-              $data['users'] = $this->users->get_users();
+            /**qr access 총 유저 */
+            $data['item'] = $this->users->get_qr_print_user($wheres);
 
-              /**qr access 총 유저 */
-              $data['item'] = $this->users->get_qr_print_user();
-  
-              $where = array(
-                  'deposit' => '결제대기'
-              );
-              $data['no_deposit'] = $this->users->get_access_user($where);
+            /**day1 ~ day3 access 각각 유저 */
+            $data['speaker_1'] = $this->users->get_access_speaker_1();
+            $data['speaker_2'] = $this->users->get_access_speaker_2();
+            $data['speaker_3'] = $this->users->get_access_speaker_3();
+            $data['on_speaker_1'] = $this->users->get_access_on_speaker_1();
+            $data['on_speaker_2'] = $this->users->get_access_on_speaker_2();
+            $data['on_speaker_3'] = $this->users->get_access_on_speaker_3();
 
-              $data['day1_chairperson'] = $this->participant-> get_day1_chairperson();
-              $data['day1_chairman'] = $this->participant-> get_day1_chairman();
-              $data['day1_panel'] = $this->participant-> get_day1_panel();
-              $data['day1_speaker'] = $this->participant-> get_day1_speaker();
-              $data['day1_participants'] = $this->participant-> get_day1_participants();
-              $data['day1_sponsor'] = $this->participant-> get_day1_sponsor();
-              $data['day1_etc'] = $this->participant-> get_day1_etc();
+            $data['chairperson_1'] = $this->users->get_access_chairperson_1();
+            $data['chairperson_2'] = $this->users->get_access_chairperson_2();
+            $data['chairperson_3'] = $this->users->get_access_chairperson_3();
+            $data['on_chairperson_1'] = $this->users->get_access_on_chairperson_1();
+            $data['on_chairperson_2'] = $this->users->get_access_on_chairperson_2();
+            $data['on_chairperson_3'] = $this->users->get_access_on_chairperson_3();
 
-              $data['day2_chairperson'] = $this->participant-> get_day2_chairperson();
-              $data['day2_chairman'] = $this->participant-> get_day2_chairman();
-              $data['day2_panel'] = $this->participant-> get_day2_panel();
-              $data['day2_speaker'] = $this->participant-> get_day2_speaker();
-              $data['day2_participants'] = $this->participant-> get_day2_participants();
-              $data['day2_sponsor'] = $this->participant-> get_day2_sponsor();
-              $data['day2_etc'] = $this->participant-> get_day2_etc();
-              
-              //총 인원
-              $data['total_day1'] = $this->participant-> get_day1_check();
-              $data['total_day2'] = $this->participant-> get_day2_check();
+            $data['panel_1'] = $this->users->get_access_panel_1();
+            $data['panel_2'] = $this->users->get_access_panel_2();
+            $data['panel_3'] = $this->users->get_access_panel_3();
+            $data['on_panel_1'] = $this->users->get_access_on_panel_1();
+            $data['on_panel_2'] = $this->users->get_access_on_panel_2();
+            $data['on_panel_3'] = $this->users->get_access_on_panel_3();
+            
+            $data['faculty_1'] = $this->users->get_access_faculty_1();
+            $data['faculty_2'] = $this->users->get_access_faculty_2();
+            $data['faculty_3'] = $this->users->get_access_faculty_3();
+            $data['on_faculty_1'] = $this->users->get_access_on_faculty_1();
+            $data['on_faculty_2'] = $this->users->get_access_on_faculty_2();
+            $data['on_faculty_3'] = $this->users->get_access_on_faculty_3();
+            
+            $data['participant_1'] = $this->users->get_access_participant_1();
+            $data['participant_2'] = $this->users->get_access_participant_2();
+            $data['participant_3'] = $this->users->get_access_participant_3();
+            $data['on_participant_1'] = $this->users->get_access_on_participant_1();
+            $data['on_participant_2'] = $this->users->get_access_on_participant_2();
+            $data['on_participant_3'] = $this->users->get_access_on_participant_3();
+            
+            $data['other_1'] = $this->users->get_access_other_1();
+            $data['other_2'] = $this->users->get_access_other_2();
+            $data['other_3'] = $this->users->get_access_other_3();
+            $data['on_other_1'] = $this->users->get_access_on_other_1();
+            $data['on_other_2'] = $this->users->get_access_on_other_2();
+            $data['on_other_3'] = $this->users->get_access_on_other_3();
 
+            $data['day_1'] = $this->users->get_access_day_1();
+            $data['day_2'] = $this->users->get_access_day_2();
+            $data['day_3'] = $this->users->get_access_day_3();
+            $data['on_day_1'] = $this->users->get_access_on_day_1();
+            $data['on_day_2'] = $this->users->get_access_on_day_2();
+            $data['on_day_3'] = $this->users->get_access_on_day_3();
+            
             $this->load->view('admin/left_side.php', $data);
             $this->load->view('admin/participant.php', $data);
         }

@@ -145,24 +145,21 @@
                                         <input class="form-control member_type" type="text" value="<?php echo $item['member_type']; ?>" name="member_type" id="member_type">
                                         <select class="form-control input-lg m-bot15" id="member_type_select">
                                             <option value="" selected="selected">직접입력</option>
-
-                                            <!-- 
-                                                <option value="수련의">수련의</option>
-                                                <option value="교직의">교직의</option> 
-                                                <option value="영양사">영양사</option>
-                                                <option value="간호사">간호사</option>
-                                                <option value="연구원">연구원</option>
-                                                <option value="학생">학생</option>
-                                                <option value="전시(부스)">전시(부스)</option>
-                                                <option value="군의관">군의관</option>
-                                                <option value="운동사">운동사</option>
-                                            -->
-                                            <option value="전임의">전임의</option>
-                                            <option value="봉직의">봉직의</option>
-                                            <option value="전공의">전공의</option>
-                                            <option value="교수">교수</option>
+                                            <option value="교수(의사, 비의사)">교수(의사, 비의사)</option>
+                                            <option value="전문의">전문의</option> 
                                             <option value="개원의">개원의</option>
-                                            <option value="기타">기타</option>
+                                            <option value="봉직의">봉직의</option>
+                                            <option value="전임의">전임의</option>
+                                            <option value="기초의학자">기초의학자</option>
+                                            <option value="공보의, 군의관">공보의, 군의관</option>
+                                            <option value="간호사, 영양사">간호사, 영양사</option>
+                                            <option value="연구원">연구원</option>
+                                            <option value="약사">약사</option>
+                                            <option value="기타(기업 등)">기타(기업 등)</option>
+                                            <option value="학생(대학생, 대학원생)">학생(대학생, 대학원생)</option>
+                                            <option value="전공의(사직포함)">전공의(사직포함)</option>
+                                            <!-- <option value="개원의">개원의</option> -->
+                                            <!-- <option value="기타">기타</option> -->
                                         </select>
                                     </td>
                                 </tr>
@@ -307,7 +304,7 @@
 
                                     </td>
                                 </tr> -->
-                                <tr>
+                                <!-- <tr>
                                     <th>숙박 신청여부</th>
                                     <td> <input id="committee" type="text" value="<?php echo $item['etc1'] ? $item['etc1'] : "-"; ?>" size="16" class="form-control" name="etc1">
 
@@ -318,7 +315,7 @@
                                     <td> <input id="committee" type="text" value="<?php echo $item['etc2'] ? $item['etc2'] : "-"; ?>" size="16" class="form-control" name="etc2">
 
                                     </td>
-                                </tr>
+                                </tr> -->
                                
                             </table>
 
