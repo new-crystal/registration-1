@@ -80,18 +80,17 @@ table th {
                         <th></th>
                         <th>접수번호</th>
                         <th style="min-width: 100px">참가자유형</th>
-                        <!-- <th>참석자구분</th> -->
                         <th>이름</th>
                         <th>소속</th>
-                        <th>이메일</th>
-                        <th>전화번호</th>
-                        <!-- <th>숙박신청</th>
-                        <th>저녁신청</th> -->
-                        <th>QR 문자 전송</th>
-                        <th>메일전송</th>
-                        <!-- <th>입장시간</th>
-                        <th>퇴장시간</th> -->
-                        <th>QR생성</th>
+
+                        <th>day1 입장시간</th>
+                        <th>day1 퇴장시간</th>
+
+                        <th>day2 입장시간</th>
+                        <th>day2 퇴장시간</th>
+
+                        <th>day3 입장시간</th>
+                        <th>day3 퇴장시간</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,35 +100,17 @@ table th {
                         echo '<td style="text-align: center;"><input type="checkbox" name="depositChk" class="depositChk" value="' .  $item['registration_no'] . '"></td>';
                         echo '<td class="reg_num pointer">' . $item['registration_no'] . '</td>';
                         echo '<td>' . $item['attendance_type'] . '</td>';
-                        // echo '<td>' . $item['member_type'] . '</td>';
-                        echo '<td class="user_d">' . $item['nick_name'] . '</td>';
+                        echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['nick_name'] . '</a></td>';
                         echo '<td>' . $item['org_nametag'] . '</td>';
-                        echo '<td><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['email'] . '</a></td>';
-                        echo '<td>' . $item['phone'] . '</td>';
-                        //
-                         echo '<td>';
-                        if ($item['QR_SMS_SEND_YN'] == "Y") {
-                            echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-success qr_btn"  data-id="' . $item['registration_no'] . '">문자발송</div></button>';
-                        } else {
-                            echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-non-success qr_btn" data-id="' . $item['registration_no'] . '">문자발송</div></button>';
-                        }
-                         echo '</td>';
-                        echo '<td>';
-                        if ($item['QR_MAIL_SEND_YN'] == "Y") {
-                            echo '<a href="/admin/qr_email?n=' . $item['registration_no'] . '" target="_blank"><div class="btn btn-non-warning qr_btn" >메일발송</div></a>';
-                        } else {
-                            echo '<a href="/admin/qr_email?n=' . $item['registration_no'] . '" target="_blank"><div class="btn btn-warning qr_btn" >메일발송</div></a>';
-                        }
-                        echo '</td>';
-                        //
-                        
-                        // echo '<td style="text-align: center;">' . $item['mintime'] . '</td>';
-                        // echo '<td style="text-align: center;">' . $item['maxtime'] . '</td>';
-                        // echo '<td style="text-align: center;">' . $item['etc1'] . '</td>';
-                        // echo '<td style="text-align: center;">' . $item['etc2'] . '</td>';
-                        echo '<td>';
-                        echo '<a  href="/admin/qr_layout?n=' . $item['registration_no'] . '" target="_blank"><div class="btn btn-info qr_btn" >QR보기</div></a>';
-                        echo '</td>';
+
+                         echo '<td style="text-align: center;">' .'<input type="time" class="mintime_input time_input day1" value="'. $item['mintime_day_1_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
+                         echo '<td style="text-align: center;">' .'<input type="time" class="maxtime_input time_input day1" value="'. $item['maxtime_day_1_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
+
+                         echo '<td style="text-align: center;">' .'<input type="time" class="mintime_input time_input day2" value="'. $item['mintime_day_2_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
+                         echo '<td style="text-align: center;">' .'<input type="time" class="maxtime_input time_input day2" value="'. $item['maxtime_day_2_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
+
+                         echo '<td style="text-align: center;">' .'<input type="time" class="mintime_input time_input day3" value="'. $item['mintime_day_3_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
+                         echo '<td style="text-align: center;">' .'<input type="time" class="maxtime_input time_input day3" value="'. $item['maxtime_day_3_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
                         echo '</tr>';
                     }
                     ?>
@@ -160,6 +141,47 @@ regNumList.forEach((num)=>{
         copy(num.innerText)
     })
 })
+
+function saveTime(button, reg_no){
+    const timeInput = button.parentNode.querySelector('.time_input');
+    // console.log(reg_no)
+    // console.log(timeInput.value)
+    // console.log(timeInput.classList)
+    let date = ""
+    if(timeInput.classList.contains("day1")){
+        date = "2024-10-31"
+    }
+    else if(timeInput.classList.contains("day2")){
+        date = "2024-11-01"
+    }
+    else if(timeInput.classList.contains("day3")){
+         date = "2024-11-02"
+    }
+
+    const url = "/access/edit_record"
+    const data = {
+        date : date,
+        time : timeInput.value,
+        reg_no : reg_no
+    }
+
+    $.ajax({
+		type: "POST",
+		url : url,
+		data: data,
+		success: function(result){
+            console.log(result)
+            alert('출결시간이 변경되었습니다.');
+            window.location.reload()
+            //window.location.href = `/onSite/success?fee=${feeBox.innerText}`;
+        },
+		error:function(e){  
+            console.log(e)
+            alert("현장등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
+		}
+	})  
+    
+}
 
 function copy(text) {
         if (navigator.clipboard) {
