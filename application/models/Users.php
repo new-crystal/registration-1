@@ -149,7 +149,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = '202402_O-' . str_pad($id, 4, '0', STR_PAD_LEFT);
+		$registration_no = '2024B_R' . str_pad($id, 4, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
@@ -159,7 +159,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = '202402_O' . str_pad($id, 4, '0', STR_PAD_LEFT);
+		$registration_no = '2024B_R' . str_pad($id, 4, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
