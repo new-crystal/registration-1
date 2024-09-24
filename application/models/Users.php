@@ -89,20 +89,46 @@ class Users extends CI_Model
 	public function get_qr_user()
 	{
 		$query = $this->db->query("
-		SELECT *, time_format(b.duration,'%H시간 %i분') as d_format
+			SELECT a.*, 
+			TIME_FORMAT(b.maxtime_day_1, '%H:%i') as maxtime_day_1_formatted,
+			TIME_FORMAT(b.mintime_day_1, '%H:%i') as mintime_day_1_formatted,
+			TIME_FORMAT(b1.maxtime_day_2, '%H:%i') as maxtime_day_2_formatted,
+			TIME_FORMAT(b1.mintime_day_2, '%H:%i') as mintime_day_2_formatted,
+			TIME_FORMAT(b2.maxtime_day_3, '%H:%i') as maxtime_day_3_formatted,
+			TIME_FORMAT(b2.mintime_day_3, '%H:%i') as mintime_day_3_formatted
 		FROM users a
 		LEFT JOIN (
 			SELECT registration_no as qr_registration_no,
-				MAX(time) as maxtime,
-				MIN(time) as mintime,
+				MAX(time) as maxtime_day_1,
+				MIN(time) as mintime_day_1,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			WHERE DATE(TIME) = CURDATE()
+			WHERE DATE(TIME) = '2024-10-31'
 			GROUP BY registration_no
-		) b ON a.registration_no = b.qr_registration_no
-		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료'
-		ORDER BY a.id ASC
-");
+		) AS b ON a.registration_no = b.qr_registration_no
+		LEFT JOIN (
+			SELECT registration_no as qr_registration_no,
+				MAX(time) as maxtime_day_2,
+				MIN(time) as mintime_day_2,
+				TIMEDIFF(MAX(time), MIN(time)) as duration
+			FROM access
+			WHERE DATE(TIME) = '2024-11-01'
+			GROUP BY registration_no
+		) AS b1 ON a.registration_no = b1.qr_registration_no
+		LEFT JOIN (
+			SELECT registration_no as qr_registration_no,
+				MAX(time) as maxtime_day_3,
+				MIN(time) as mintime_day_3,
+				TIMEDIFF(MAX(time), MIN(time)) as duration
+			FROM access
+			WHERE DATE(TIME) = '2024-11-02'
+			GROUP BY registration_no
+		) AS b2 ON a.registration_no = b2.qr_registration_no
+		WHERE a.qr_generated = 'Y' 
+			AND a.deposit = '결제완료'
+		ORDER BY a.id ASC;
+
+		");
 		return $query->result_array();
 	}
 

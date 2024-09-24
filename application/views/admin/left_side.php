@@ -179,6 +179,33 @@
                                         </span>
                                     </a>
                                 </li>
+                                 
+                                <li style="margin-bottom: 2rem;"
+                                    <?php if ($primary_menu == 'day1') echo 'class="active"' ?>>
+                                    <a href="/admin/time_day1">
+                                        <i class="icon-list-unordered"></i>
+                                        <span> Day별 출결
+                                        </span>
+                                    </a>
+                                </li>
+                                 
+                                <!-- <li style="margin-bottom: 2rem;"
+                                    <?php if ($primary_menu == 'day2') echo 'class="active"' ?>>
+                                    <a href="/admin/time_day2">
+                                        <i class="icon-list-unordered"></i>
+                                        <span> Day 2 출결
+                                        </span>
+                                    </a>
+                                </li>
+                                 
+                                <li style="margin-bottom: 2rem;"
+                                    <?php if ($primary_menu == 'day3') echo 'class="active"' ?>>
+                                    <a href="/admin/time_day3">
+                                        <i class="icon-list-unordered"></i>
+                                        <span> Day 3 출결
+                                        </span>
+                                    </a>
+                                </li> -->
                                 <!-- <li style="margin-bottom: 2rem;" >
                                     <a href="https://kosso.org/main/admin/registration_list.php" target="_blank">
                                         <i class="icon-home2"></i>

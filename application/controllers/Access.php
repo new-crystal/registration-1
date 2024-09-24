@@ -919,4 +919,24 @@ class Access extends CI_Controller
         }
     }
 
+    public function edit_record()
+    {
+        $date = $_POST['date'];
+        $timeInput =  $_POST['time'];
+        $reg_no = $_POST['reg_no'];
+
+        $dateTimeString = $date . ' ' . $timeInput;
+        $dateTime = DateTime::createFromFormat('Y-m-d H:i', $dateTimeString);
+        $dateInfo = $dateTime->format('Y-m-d H:i:s');
+
+        $info = array(
+            'registration_no' => $reg_no,
+            'time' => $dateInfo,
+            'type' => 1
+        );
+
+      $this->entrance->record($info);
+    
+    }
+
 }

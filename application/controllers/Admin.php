@@ -44,6 +44,7 @@ class Admin extends CI_Controller
         }
         $this->load->view('footer');
     }
+
     public function qr_user()
     {
         $this->load->view('admin/header');
@@ -56,6 +57,57 @@ class Admin extends CI_Controller
 
             $this->load->view('admin/left_side.php', $data);
             $this->load->view('admin/qr_user', $data);
+        }
+        $this->load->view('footer');
+    }
+
+      
+    public function time_day1()
+    {
+        $this->load->view('admin/header');
+        if (!isset($this->session->admin_data['logged_in']))
+            $this->load->view('admin/login');
+        else {
+            // 
+            $data['primary_menu'] = 'day1';
+            $data['users'] = $this->users->get_qr_user();
+
+            $this->load->view('admin/left_side.php', $data);
+            $this->load->view('admin/qr_user_day1', $data);
+        }
+        $this->load->view('footer');
+    }
+
+      
+    public function time_day2()
+    {
+        $this->load->view('admin/header');
+        if (!isset($this->session->admin_data['logged_in']))
+            $this->load->view('admin/login');
+        else {
+            // 
+            $data['primary_menu'] = 'day2';
+            $data['users'] = $this->users->get_qr_user();
+
+            $this->load->view('admin/left_side.php', $data);
+            $this->load->view('admin/qr_user_day2', $data);
+        }
+        $this->load->view('footer');
+    }
+
+      
+    public function time_day3()
+    {
+        $this->load->view('admin/header');
+        if (!isset($this->session->admin_data['logged_in']))
+            $this->load->view('admin/login');
+        else {
+            // 
+            $data['primary_menu'] = 'day3';
+            $data['users'] = $this->users->get_qr_user();
+
+            $this->load->view('admin/left_side.php', $data);
+            $this->load->view('admin/qr_user_day3', $data);
         }
         $this->load->view('footer');
     }
