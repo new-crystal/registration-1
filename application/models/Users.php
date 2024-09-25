@@ -80,7 +80,7 @@ class Users extends CI_Model
 		$query = $this->db->query("
 		SELECT *
 			FROM users a
-			WHERE a.qr_chk_day_2 = 'Y' OR a.qr_chk_day_1 = 'Y'
+			WHERE a.qr_chk_day_2 = 'Y' OR a.qr_chk_day_1 = 'Y' OR a.qr_chk_day_3 = 'Y'
 			ORDER BY a.id ASC;
 ");
 		return $query->result_array();

@@ -314,12 +314,14 @@
 <body id="on-site" class="flex items-center justify-center">
     
     <!-- <div id="scroll" class="w-full h-full flex items-center justify-center overflow-x-hidden overflow-y-scroll relative max-w-5xl"> -->
-        <div class="w-full max-w-5xl">
-           
-            <div class="w-full max-w-5xl text-center text-2xl font-semibold bg-gradient-to-r from-amber-400 to-amber-800 p-3 text-white fixed z-10">
-                <h1>On-site Registration<br>(현장 등록)</h1>
+        <div class="w-full ">
+            <div class="header fixed z-10">
+                <img class="header_img" src="../../assets/images/access_header.jpg" />
+                <div class="w-full text-center text-2xl font-semibold bg-gradient-to-r from-amber-400 to-amber-800 p-3 text-white mx-auto">
+                    <h1>현장 등록</h1>
+                </div>
             </div>
-            <section id="container" class="">
+            <section id="container" class="w-full max-w-5xl mx-auto pt-60">
             <div class="term_wrap">
                 <h3 class="title mb-2">개인정보 수집 및 이용에 관한 안내</h3>
                 <div class="term_box">
@@ -640,7 +642,7 @@
                     </div>
                     <div class="mo_wrap">
                         <p class="inline-block">등록비</p>
-                        <div id="fee" class="underline underline-offset-4"></div>
+                        <div id="fee" class="underline underline-offset-4 text-rose-700 font-bold text-lg"></div>
                     </div>
                     <button id="submit_btn" type="submit" class="block bg-sky-900 text-white font-bold px-3 py-4 mx-auto my-10 w-2/5 hover:underline underline-offset-4">제출하기</button></section>
                 </div>
@@ -972,17 +974,17 @@
              }
              else if(member_n.checked){
                 if(attendanceType == "교수" || attendanceType == "전문의" ||attendanceType == "개원의" || attendanceType == "봉직의" || attendanceType == "전임의" ||attendanceType == "기초의학자"){
-                    attendanceType = "170000원";
+                    feeBox.innerHTML = "170000원";
                 }
                 else if (attendanceType == "공보의, 군의관" || attendanceType == "간호사, 영양사" ||attendanceType == "연구원" || attendanceType == "약사" || attendanceType == "기타" ){
-                    attendanceType = "90000원";
+                    feeBox.innerHTML = "90000원";
                 }
                 else if (attendanceType == "학생" || attendanceType == "전공의"){
-                    attendanceType = "0원";
+                    feeBox.innerHTML = "0원";
                 }
              }
              else{
-                attendanceType = "0원";
+                feeBox.innerHTML = "0원";
              }
     }
     

@@ -101,7 +101,7 @@
                 <p>(현장 등록 참석자 학회 사이트 내에 다운로드 불가)</p>
             </div>
             <div>
-                <button class="pre_btn py-4 px-5 border mb-3 hover:bg-slate-100" onclick="prev()">이전으로</button>
+                <button class="pre_btn py-4 px-5 border mb-3 hover:bg-slate-100" onclick="prev()">현장등록 페이지 바로가기</button>
             </div>
         </div>
     </div>

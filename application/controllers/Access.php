@@ -919,6 +919,7 @@ class Access extends CI_Controller
         }
     }
 
+    //sujeong / 시간 임의로 추가하기 
     public function edit_record()
     {
         $date = $_POST['date'];
