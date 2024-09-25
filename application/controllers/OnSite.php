@@ -200,8 +200,9 @@ class OnSite extends CI_Controller
                 'specialty_number' => preg_replace("/\s+/", "", $special_license),
                 'email' => preg_replace("/\s+/", "", $email),
                 'phone' => preg_replace("/\s+/", "", $phone),
-                'attendance_type' => 6,
+                'attendance_type' => '일반참가자',
                 'onsite_reg' => 1,
+                'member_type' => $attendance_type,
                 //'breakfast_yn' => $etc1, // Breakfast symposium
                 //'satellite1_yn' => $etc2, // Satellite symposium 10월 31일(목)
                 //'satellite2_yn' => $etc3, // Satellite symposium 11월 1일(금)

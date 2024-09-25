@@ -79,7 +79,7 @@
                         } ?>
 
                     </div>
-                    <button class="w-[150px] h-[40px] bg-slate-300 mt-20 hover:bg-slate-400 active:bg-slate-500" type="button" id="open">새창</button>
+                    <!-- <button class="w-[150px] h-[40px] bg-slate-300 mt-20 hover:bg-slate-400 active:bg-slate-500" type="button" id="open">새창</button> -->
                 </div>
                 <form action="/admin/access" id="qr_form" name="qr_form" class="w-full h-[88vh] flex flex-col items-center justify-center bg-slate-50">
 
@@ -195,7 +195,7 @@
     const submit = document.querySelector("#submit");
     const qrTexts = document.querySelectorAll(".qr_text")
     const table = document.querySelector(".qr-info-table")
-    const open = document.querySelector("#open")
+    // const open = document.querySelector("#open")
     const name = document.querySelector("#name")
     const enName = document.querySelector("#en_name")
     const nation = document.querySelector("#nation")
@@ -375,9 +375,9 @@
         })
     }
 
-    open.addEventListener("click", () => {
-        openQR()
-    })
+    // open.addEventListener("click", () => {
+    //     openQR()
+    // })
 
     // 메시지 이벤트 리스너 등록
     window.addEventListener('message', (e) => {

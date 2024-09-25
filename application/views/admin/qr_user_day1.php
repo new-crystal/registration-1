@@ -109,13 +109,16 @@ table th {
                         echo '<td>' . $item['attendance_type'] . '</td>';
                         echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['nick_name'] . '</a></td>';
                         echo '<td>' . $item['org_nametag'] . '</td>';
-
+                        
+                        //day 1 출결 시간
                          echo '<td style="text-align: center;">' .'<input type="time" class="mintime_input time_input day1" value="'. $item['mintime_day_1_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
                          echo '<td style="text-align: center;">' .'<input type="time" class="maxtime_input time_input day1" value="'. $item['maxtime_day_1_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
 
+                         //day 2 출결 시간
                          echo '<td style="text-align: center;">' .'<input type="time" class="mintime_input time_input day2" value="'. $item['mintime_day_2_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
                          echo '<td style="text-align: center;">' .'<input type="time" class="maxtime_input time_input day2" value="'. $item['maxtime_day_2_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
 
+                        //day 3 출결 시간
                          echo '<td style="text-align: center;">' .'<input type="time" class="mintime_input time_input day3" value="'. $item['mintime_day_3_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
                          echo '<td style="text-align: center;">' .'<input type="time" class="maxtime_input time_input day3" value="'. $item['maxtime_day_3_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
                         echo '</tr>';
@@ -149,11 +152,12 @@ regNumList.forEach((num)=>{
     })
 })
 
+//sujeong / 시간 저장하기
 function saveTime(button, reg_no){
     const timeInput = button.parentNode.querySelector('.time_input');
-    // console.log(reg_no)
-    // console.log(timeInput.value)
-    // console.log(timeInput.classList)
+    // console.log(reg_no) //등록번호
+    // console.log(timeInput.value) //선택한 시간
+    // console.log(timeInput.classList) // day
     let date = ""
     if(timeInput.classList.contains("day1")){
         date = "2024-10-31"
@@ -180,7 +184,6 @@ function saveTime(button, reg_no){
             //console.log(result)
             alert('출결시간이 변경되었습니다.');
             window.location.reload()
-            //window.location.href = `/onSite/success?fee=${feeBox.innerText}`;
         },
 		error:function(e){  
             console.log(e)
@@ -191,85 +194,16 @@ function saveTime(button, reg_no){
 }
 
 function copy(text) {
-        if (navigator.clipboard) {
-            navigator.clipboard
-                .writeText(text)
-                .then(() => {
-                    alert('클립보드에 복사되었습니다.');
-                })
-                .catch(() => {
-                    alert('복사를 다시 시도해주세요.');
-                });
-        }
+    if (navigator.clipboard) {
+        navigator.clipboard
+            .writeText(text)
+            .then(() => {
+                alert('클립보드에 복사되었습니다.');
+            })
+            .catch(() => {
+                alert('복사를 다시 시도해주세요.');
+            });
     }
-
-
-function onClickMsm(number) {
-    const url = `/admin/send_msm?n=${number}`
-    window.open(url, "Certificate", "width=800, height=1000, top=30, left=30")
-}
-
-
-$('.depositChk').click(function() {
-    // var formName = $('#depositForm');
-
-    // var formName2 = $('#nametagForm');
-    // var formName3 = $('#deposit_mail_Form');
-    var userId = $(this).val();
-    var checkHtml = '<input type="hidden" class="userId user' + userId + '" name="userId[]" value="' + userId +
-        '" id="">'
-
-    if ($(this).prop('checked')) {
-        const loading = document.querySelector(".loading")
-        loading.style.display = ""
-        // formName.append(checkHtml);
-        // formName3.append(checkHtml);
-    } else {
-        $('.user' + userId).remove();
     }
-})
-
-$('#depositForm').click(function(e) {
-    e.preventDefault()
-    if (window.confirm("※ 전체 문자 전송을 하시겠습니까?")) {
-        var formName4 = $('#depositForm');
-        $('.depositChk').prop('checked', true).each(function() {
-            const loading = document.querySelector(".loading_box")
-            loading.style.display = ""
-            var userId = $(this).val();
-            console.log(userId)
-            var checkHtml = '<input type="hidden" class="userId user' + userId +
-                '" name="userId[]" value="' + userId +
-                '" id="">';
-            formName4.append(checkHtml);
-            formName4.submit()
-        });
-    } else {
-        window.location = "/admin/qr_user";
-
-    }
-});
-
-$('#deposit_mail_Form').click(function(e) {
-    e.preventDefault()
-    if (window.confirm("※ 전체 메일 발송을 하시겠습니까?")) {
-        var formName6 = $('#deposit_mail_Form');
-        $('.depositChk').prop('checked', true).each(function() {
-            const loading = document.querySelector(".loading_box")
-            loading.style.display = ""
-            var userId = $(this).val();
-            var checkHtml = '<input type="hidden" class="userId user' + userId +
-                '" name="userId[]" value="' + userId +
-                '" id="">';
-            formName6.append(checkHtml);
-            formName6.submit()
-        });
-    } else {
-        window.location = "/admin/qr_user";
-
-    }
-
-
-});
 </script>
 </body>
