@@ -609,31 +609,18 @@
                                 <p class="inline-block">학술대회 등록 경로는?<span>*</span></p>
                                 <div class="">
                                     <div class="mt-4">
-                                    
-                                    <label for="conference_info_1"><input type="checkbox" id="내분비학회 이메일" name="conference_info"/>내분비학회 이메일</label>
-                                    
-                                    
-                                    <label for="conference_info_2"><input type="checkbox" id="문자" name="conference_info"/>문자</label> 
+                                        <label for="conference_info_1"><input type="checkbox" id="내분비학회 이메일" name="conference_info"/>내분비학회 이메일</label>
+                                        <label for="conference_info_2"><input type="checkbox" id="문자" name="conference_info"/>문자</label> 
                                     </div>
-
                                     <div class="mt-4">
-                                   
-                                    <label for="conference_info_3"> <input type="checkbox" id="유관단체 게시판" name="conference_info"/>유관단체 게시판</label>
-
-                                   
-                                    <label for="conference_info_4"> <input type="checkbox" id="의사협회 광고" name="conference_info"/>의사협회 광고</label>
+                                        <label for="conference_info_3"> <input type="checkbox" id="유관단체 게시판" name="conference_info"/>유관단체 게시판</label>
+                                        <label for="conference_info_4"> <input type="checkbox" id="의사협회 광고" name="conference_info"/>의사협회 광고</label>
                                     </div>
-
                                     <div class="mt-4">
-                                    
-                                    <label for="conference_info_5"><input type="checkbox" id="지인소개" name="conference_info"/>지인소개</label>
-                                    
-                                    
-                                    <label for="conference_info_6"><input type="checkbox" id="자발적 참석" name="conference_info"/>자발적 참석</label>
+                                        <label for="conference_info_5"><input type="checkbox" id="지인소개" name="conference_info"/>지인소개</label>
+                                        <label for="conference_info_6"><input type="checkbox" id="자발적 참석" name="conference_info"/>자발적 참석</label>
                                     </div>
-
                                     <div class="mt-4">
-                                       
                                         <label for="conference_info_7"> <input type="checkbox" id="기타" name="conference_info"/>기타</label>
                                         <input type="text" id="conference_info_etc"  autocomplete='off'/>
                                     </div>

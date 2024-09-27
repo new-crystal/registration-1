@@ -13,14 +13,14 @@ body {
     padding: 0;
 }
 
-/* @media print {
-        #printThis {
+@media print {
+    #printThis {
         width: 10cm;
         height: 24cm;
         margin: 0;
         padding: 0;
     }
-} */
+}
 
 @font-face {
     font-family: NanumSquare;
@@ -65,7 +65,7 @@ body {
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
                 $orgLength = mb_strlen($users['org_nametag'], "UTF-8");
-                $reg_num = explode("-", $users['registration_no'])[1];
+                $reg_num = explode("_", $users['registration_no'])[1];
                 // $reg_num = "";
                 // echo $nicknameLength;
                 echo '<div class="a4_area">';
