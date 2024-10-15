@@ -149,7 +149,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = '2024B_R' . str_pad($id, 4, '0', STR_PAD_LEFT);
+		$registration_no = '2024B_R2' . str_pad($id, 3, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
@@ -159,7 +159,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = '2024B_R' . str_pad($id, 4, '0', STR_PAD_LEFT);
+		$registration_no = '2024B_R2' . str_pad($id, 3, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
@@ -318,7 +318,7 @@ class Users extends CI_Model
 			 WHERE DATE(TIME) = '2024-11-02'
 			GROUP BY registration_no
 		) b2 ON a.registration_no = b2.qr_registration_no
-		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반 참가자' AND a.attendance_type != '기자'
+		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반참가자' AND a.attendance_type != '기자'
 		ORDER BY a.id ASC
 ");
 		return $query->result_array();

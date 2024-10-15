@@ -4,7 +4,7 @@
 
 <style>
     @page {
-        /* size: 10cm 24cm; */
+        size: 10cm 24cm;
         size: 794px 956px;
         margin: 0;
     }
@@ -12,10 +12,10 @@
         
     @media print {
             #printThis {
-            /* width: 10cm;
-            height: 24cm; */
-            width: 794px;
-            height: 956px;
+            width: 10cm;
+            height: 24cm;
+            /* width: 794px;
+            height: 956px; */
             margin: 0;
             padding: 0;
         }
@@ -40,10 +40,10 @@
     }
 
     #printThis {
-        /* width: 10cm;
-        height: 24cm; */
-        width: 794px;
-        height: 956px;
+        width: 10cm;
+        height: 24cm;
+        /* width: 794px;
+        height: 956px; */
         margin: 0;
         padding: 0;
     }
@@ -72,6 +72,8 @@
                 $only_letters = preg_match('/^[a-zA-Z\s]+$/', $users['nick_name']);
                 $letter_spacing = ($only_letters) ? '0px' : '10px';
                 $letter_spacing_receipt = ($only_letters) ? '0px' : '5px';
+
+                $lucky_num = explode("_",$users['registration_no'])[1]; 
     
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
@@ -85,21 +87,21 @@
                 //성함 조건식 
                 //1. 3글자 //영문 letter_spacing = 0, 한글 = 10
                 echo '<div class = "box_1_area">';
-              
+                echo '<div class="start_num">' .$lucky_num . '</div>';
                 echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
                 
                 echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
-                echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div></div>';
-
-                //학회팀 요청 영수증 성함 한글일 때 letter_spacing = 5
-                echo '<div class = "box_2_area">';
-                echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
-                echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
+                echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
                 echo '<div class="receipt receipt_price">' . $users['fee']. '</div>';
-                echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
                 echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
-                echo '<div class="receipt ln">' . $users['licence_number']. '</div>';
-                echo '<div class="receipt sn">' . $users['specialty_number']. '</div></div>';
+                echo '<div class="receipt end_num">' .$lucky_num . '</div></div>';
+                //학회팀 요청 영수증 성함 한글일 때 letter_spacing = 5
+                // echo '<div class = "box_2_area">';
+                // echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
+                // echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
+                // echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
+                // echo '<div class="receipt ln">' . $users['licence_number']. '</div>';
+                // echo '<div class="receipt sn">' . $users['specialty_number']. '</div></div>';
                 
                 echo '</div>';
                 echo '</div>';
@@ -136,11 +138,11 @@
 
         if (!$printSection) {
             var $printSection = document.createElement("div");
-            $printSection.style.width = "794px";
-            $printSection.style.height = "956px";
-            // $printSection.style.width = "10cm";
-            // $printSection.style.height = "24cm";
-            $printSection.style.backgroundImage = "url('../../../assets/images/0615_nametag_bg-01.jpg');"
+            // $printSection.style.width = "794px";
+            // $printSection.style.height = "956px";
+            $printSection.style.width = "10cm";
+            $printSection.style.height = "24cm";
+            $printSection.style.backgroundImage = "url('../../../assets/images/nametag.png');"
             $printSection.style.backgroundPosition = "center";
             $printSection.style.backgroundSize = "contain"
             $printSection.id = "printSection";

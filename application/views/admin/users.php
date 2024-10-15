@@ -61,10 +61,10 @@ table th {
             <div class="panel-heading">
                 <h5 class="panel-title">등록 인원</h5>
                 <div class="heading-elements">
-                    <form action="/admin/excel_download" method="post">
+                    <!-- <form action="/admin/excel_download" method="post">
                         <button class="btn btn-primary pull-right"><i class="icon-download4"></i> &nbspExcel
                             Download</button>
-                    </form>
+                    </form> -->
                     <form action="/admin/all_deposit_check" method="post" id="all_depositForm">
                         <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i> 전체 QR생성</button>
                     </form>
