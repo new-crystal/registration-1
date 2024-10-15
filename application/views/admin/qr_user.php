@@ -63,12 +63,12 @@ table th {
                     <!-- <form action="/admin/excel_download" method="post">
                         <button class="btn btn-primary pull-right"><i class="icon-download4"></i> QR기록 다운로드</button>
                     </form> -->
-                    <!-- <form action="/admin/send_all_mail" method="post" id="deposit_mail_Form">
-                        <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i> 전체메일발송</button>
+                    <form action="/admin/send_all_mail" method="post" id="deposit_mail_Form">
+                        <button class="btn btn-success pull-right"><i class="icon-checkmark"></i> 전체메일발송</button>
                     </form>
                     <form action="/admin/send_all_msm" method="post" id="depositForm">
-                        <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i> 전체문자발송</button>
-                    </form> -->
+                        <button class="btn btn-outline-warning pull-right"><i class="icon-checkmark"></i> 전체문자발송</button>
+                    </form>
                     <a class="btn btn-primary pull-right" href="/access/row_scan_qr" target="_blank"><i class="icon-qrcode"></i> 출결
                         QR</a>
                 </div>

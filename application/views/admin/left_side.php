@@ -137,13 +137,6 @@
                                         </span>
                                     </a>
                                 </li>
-                                <li style="margin-bottom: 2rem;">
-                                    <a href="/admin/qr_excel_download" target="_blank">
-                                        <i class="icon-download4"></i>
-                                        <span>QR 기록 다운로드
-                                        </span>
-                                    </a>
-                                </li>
                                 <!-- <li style="margin-bottom: 2rem;" <?php if ($primary_menu == 'notice') echo 'class="active"' ?>>
                                     <a href="/admin/notice">
                                         <i class="icon-pushpin"></i>
@@ -188,7 +181,13 @@
                                         </span>
                                     </a>
                                 </li>
-                                 
+                                <li style="margin-bottom: 2rem;">
+                                    <a href="/admin/qr_excel_download" target="_blank">
+                                        <i class="icon-download4"></i>
+                                        <span>QR 기록 다운로드
+                                        </span>
+                                    </a>
+                                </li>
                                 <!-- <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'day2') echo 'class="active"' ?>>
                                     <a href="/admin/time_day2">

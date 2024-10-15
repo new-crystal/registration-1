@@ -196,7 +196,7 @@ input {
 ?>
 <body id="body" class="flex items-center justify-center">
     <div id="container" class="w-full h-full flex items-center">
-        <div class="alert">
+        <div class="alert" style="display: none;">
             <p class="alert_text">출결 체크 완료!</p>
             <h6 class="alert_text">예상 평점 <?php echo $score ?>점</h6>
         </div>
@@ -354,6 +354,7 @@ window.onload = () => {
     inputs.forEach((input) => {
         textTime = setTimeout(() => {
             input.value = ""
+            alert.style.display = "none";
             noAlert.style.display = "none";
         }, 10000)
     })
