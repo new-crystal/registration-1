@@ -102,15 +102,18 @@
     }
 
     .input_box {
-        transform: translate(19px, 202px);
+        transform: translate(1012px, -87px);
         width: 1750px;
         height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .alert {
         width: 100%;
         height: 260px;
-        background: #004471;
+        background: #ffc425;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -121,6 +124,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         opacity: 0.85;
+        z-index: 999;
     }
 
     .no_alert{
@@ -144,6 +148,8 @@
         position: relative;
         /* animation: fadeInUp 1s; */
         font-family: Gong;
+        -webkit-text-stroke-width: 5px;
+        -webkit-text-stroke-color: #004471;
     }
 
     .alert>h6 {
@@ -174,7 +180,7 @@
         <div class="h-full">
             <div>
                 <div>
-                    <img src="../../assets/images/2024_row_app_loading_bg-1.jpg" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
+                    <img src="../../assets/images/2024_row_app_loading_bg.jpg" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
                     <dl>
 
                         <script type="text/javascript">
@@ -192,14 +198,14 @@
                                 });
                             });
                         </script>
-                        <div class="input_box">
+                        <div>
                             <?php echo form_open('/access/row_scan_qr', 'id="accessForm" name="accessForm"') ?>
                             <fieldset>
                                 <div class="fresh"></div>
-                                <div>
+                                <div class="input_box">
                                     <dl class="pl-2">
                                         <dd>
-                                            <input type="text" name="qrcode" id="qrcode" class="h-20 px-3 py-3 mt-5 border-indigo-900 mx-auto" style="transform: translate(74px,-20px);width: 800px; color:transparent" placeholder="" autofocus autocomplete='off'/>
+                                            <input type="text" name="qrcode" id="qrcode" class="h-20 px-3 py-3 mt-5 border-indigo-900 mx-auto" style="width: 800px; color:transparent" placeholder="" autofocus autocomplete='off'/>
                                         </dd>
                                     </dl>
 
@@ -212,25 +218,27 @@
                                     <dl class="pl-2">
                                         <div id="qr_org" class="qr_info_wrap">
                                             <div class="info_content">
-                                                <input type="text" style="position: relative;top: 113px;" class="qr_info input name" value="<?php if (isset($entrance_org)) echo $entrance_org ?>" readonly />
+                                                <input type="text" class="qr_info input name" value="<?php if (isset($entrance_org)) echo $entrance_org ?>" readonly />
                                             </div>
                                         </div>
                                     </dl>
                                     <dl class="pl-2">
                                         <div id="qr_entrance" class="qr_info_wrap">
                                             <div class="info_content">
-                                                <input type="text"class="qr_info input" style="margin-top:0; position: relative; left: 895px; top: -210px;" value="<?php if (isset($enter)) { $enter = date("Y-m-d H:i", strtotime($enter));echo $enter;} ?>" readonly>
+                                                <input type="text"class="qr_info input" style="margin-top:0;" value="<?php if (isset($enter)) { $enter = date("Y-m-d H:i", strtotime($enter));echo $enter;} ?>" readonly>
                                             </div>
 
                                         </div>
+                                      
+                                    </dl>
+                                    <dl class="pl-2">
                                         <div id="qr_exit" class="qr_info_wrap">
                                             <div class="info_content">
-                                                <input type="text" style="margin-top:0; transform: translate(834px, -4px);" class="qr_info input" value="<?php if (isset($leave)) { $leave = date("Y-m-d H:i", strtotime($leave)); echo $leave; } ?>
+                                                <input type="text" style="margin-top:0;" class="qr_info input" value="<?php if (isset($leave)) { $leave = date("Y-m-d H:i", strtotime($leave)); echo $leave; } ?>
                                                 " readonly>
                                             </div>
                                         </div>
                                     </dl>
-
                                     <div class="w-full flex items-center justify-center">
                                         <button type="submit" value="등록" class="btnPoint w-full flex items-center justify-center" style="transform: translate(55px,434px);"></button>
                                     </div>
@@ -307,17 +315,17 @@
         clearTimeout(alertTime);
         clearTimeout(textTime)
         checkAlert()
-        alertTime = setTimeout(() => {
-            alert.style.display = "none";
-            noAlert.style.display = "none";
-        }, 3000)
-        inputs.forEach((input) => {
-            textTime = setTimeout(() => {
-                input.value = "";
-                alert.style.display = "none";
-                noAlert.style.display = "none";
-            }, 10000)
-        })
+        // alertTime = setTimeout(() => {
+        //     alert.style.display = "none";
+        //     noAlert.style.display = "none";
+        // }, 3000)
+        // inputs.forEach((input) => {
+        //     textTime = setTimeout(() => {
+        //         input.value = "";
+        //         alert.style.display = "none";
+        //         noAlert.style.display = "none";
+        //     }, 10000)
+        // })
     }
     /**우클릭 방지 */
     document.addEventListener("contextmenu", function(event) {
