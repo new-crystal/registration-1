@@ -102,9 +102,9 @@ input {
 }
 
 .input_box {
-    transform: translate(37px, 492px);
-    width: 861px;
-    height: 770px;
+    transform: translate(247px, 754px);
+    width: 630px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -119,11 +119,11 @@ input {
 }
 
 .leave_time {
-    transform: translateY(58px);
+    /* transform: translateY(58px); */
 }
 
 .name {
-    transform: translateY(-102px);
+    /* transform: translateY(-102px); */
 }
 
 .alert {
@@ -184,7 +184,7 @@ input {
         }
 
         .entrance_time {
-            transform: translate(-13px, -62px);
+            /* transform: translate(-13px, -62px); */
         }
 
 /* input {
@@ -194,7 +194,7 @@ input {
 <?php 
 // echo $history_day_2;
 ?>
-<body id="body" class="flex items-center justify-center">
+<body id="body" class="flex items-center justify-center" style="overflow: hidden;">
     <div id="container" class="w-full h-full flex items-center">
         <div class="alert" style="display: none;">
             <p class="alert_text">출결 체크 완료!</p>
@@ -206,7 +206,7 @@ input {
         <div class="h-full">
             <div>
                 <div>
-                    <img src="../../assets/images/2024_app_loading_bg-1.jpg" onclick="replace()" style="position: absolute;z-index: -999;width: 100vw;" />
+                    <img src="../../assets/images/2024_app_loading_bg.jpg" onclick="replace()" style="position: absolute;z-index: -999;width: 100vw;" />
                     <dl>
 
                         <script type="text/javascript">
@@ -245,7 +245,7 @@ input {
                                     <dl class="pl-2">
                                         <div id="qr_org" class="qr_info_wrap">
                                             <div class="info_content">
-                                                <input type="text" style="margin-top: 25px;" class="qr_info input name" value="<?php if (isset($entrance_org)) echo $entrance_org ?>" readonly />
+                                                <input type="text" class="qr_info input name" value="<?php if (isset($entrance_org)) echo $entrance_org ?>" readonly />
                                             </div>
                                         </div>
                                     </dl>
@@ -260,7 +260,7 @@ input {
                                         <div id="qr_exit" class="qr_info_wrap">
 
                                             <div class="info_content">
-                                                <input type="text" style="margin-top:0" class="qr_info input leave_time"
+                                                <input type="text" style="margin-top:20px" class="qr_info input leave_time"
                                                     value="<?php if (isset($leave)) { $leave = date("Y-m-d H:i", strtotime($leave)); echo $leave; } ?>" readonly>
                                             </div>
                                         </div>
