@@ -170,7 +170,7 @@
   right: 20px; */
   width: 11%;
   position: relative;
-  top: -151px;
+  top: -158px;
   right: -144px;
 }
 
@@ -276,6 +276,11 @@
   line-height: 68px;
 }
 
+#printThis .nick_name.small{
+  font-size: 53px;
+  padding: 0px;
+}
+
 #printThis .nick_name.lang_en{
     letter-spacing: 0px;
     padding: 30px 10px 0 10px;
@@ -305,7 +310,7 @@
 
 #printThis .end_num{
   position: relative;
-  top: 186px;
+  top: 194px;
   padding-right: 20px;
 }
 
