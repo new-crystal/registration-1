@@ -69,7 +69,7 @@ table th {
                         <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i> 전체 QR생성</button>
                     </form>
                     <form action="/admin/deposit_check" method="post" id="depositForm">
-                        <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i> QR생성</button>
+                        <button class="btn btn-primary pull-right"><i class="icon-checkmark"></i> 입금확인</button>
                     </form>
                     <form action="/admin/non_deposit_check" method="post" id="non_depositForm">
                         <button class="btn btn-danger pull-right"><i class="icon-cross2"></i> 미결제처리</button>

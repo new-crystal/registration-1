@@ -315,17 +315,17 @@
         clearTimeout(alertTime);
         clearTimeout(textTime)
         checkAlert()
-        // alertTime = setTimeout(() => {
-        //     alert.style.display = "none";
-        //     noAlert.style.display = "none";
-        // }, 3000)
-        // inputs.forEach((input) => {
-        //     textTime = setTimeout(() => {
-        //         input.value = "";
-        //         alert.style.display = "none";
-        //         noAlert.style.display = "none";
-        //     }, 10000)
-        // })
+        alertTime = setTimeout(() => {
+            alert.style.display = "none";
+            noAlert.style.display = "none";
+        }, 3000)
+        inputs.forEach((input) => {
+            textTime = setTimeout(() => {
+                input.value = "";
+                alert.style.display = "none";
+                noAlert.style.display = "none";
+            }, 10000)
+        })
     }
     /**우클릭 방지 */
     document.addEventListener("contextmenu", function(event) {
