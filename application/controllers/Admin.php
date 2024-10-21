@@ -1800,6 +1800,13 @@ class Admin extends CI_Controller
             $data['on_participant_1'] = $this->users->get_access_on_participant_1();
             $data['on_participant_2'] = $this->users->get_access_on_participant_2();
             $data['on_participant_3'] = $this->users->get_access_on_participant_3();
+
+            $data['satellite_1'] = $this->users->get_access_satellite_1();
+            $data['satellite_2'] = $this->users->get_access_satellite_2();
+            $data['satellite_3'] = $this->users->get_access_satellite_3();
+            $data['on_satellite_1'] = $this->users->get_access_on_satellite_1();
+            $data['on_satellite_2'] = $this->users->get_access_on_satellite_2();
+            $data['on_satellite_3'] = $this->users->get_access_on_satellite_3();
             
             $data['other_1'] = $this->users->get_access_other_1();
             $data['other_2'] = $this->users->get_access_other_2();

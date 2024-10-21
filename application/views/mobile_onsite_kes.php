@@ -533,7 +533,10 @@
                                     <select class="w-3/5 py-2 px-4 border" id="category_select" onchange="changeFee()">
                                         <option value="">선택해주세요</option>
                                         <option value="일반참가자">일반참가자</option>
-                                        <option value="Satellite 참가자">Satellite 참가자</option> 
+                                        <option value="Satellite 1 참가자">Satellite 1 참가자</option> 
+                                        <option value="Satellite 2 참가자">Satellite 2 참가자</option> 
+                                        <option value="Satellite 3 참가자">Satellite 3 참가자</option> 
+                                        <option value="Satellite 4 참가자">Satellite 4 참가자</option> 
                                     </select>
                                 </div>
                             </div>
