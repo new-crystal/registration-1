@@ -96,13 +96,13 @@ $qrcode = $_GET["qrcode"] ?? "";
                                 <tr>
                                     <th>event 1(스탬프)수령 유무</th>
                                     <td id="event_1" class="qr_text">
-                                        <?php echo isset($event['event1']) ? $event['event1'] : ''; ?>
+                                        <?php echo isset($user['event1']) ? $user['event1'] : ''; ?>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>event 2(포스터) 수령 유무</th>
                                     <td id="event_2" class="qr_text">
-                                        <?php echo isset($event['event2']) ? $event['event2'] : ''; ?>
+                                        <?php echo isset($user['event2']) ? $user['event2'] : ''; ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -122,7 +122,7 @@ $qrcode = $_GET["qrcode"] ?? "";
                                 <tr>
                                     <th>Event Memo</th>
                                     <td id="event_memo" class="qr_text">
-                                        <?php if (isset($event['event_memo'])) echo $event['event_memo']; ?>
+                                        <?php if (isset($user['event_memo'])) echo $user['event_memo']; ?>
                                     </td>
                                 </tr>
                             </table>
@@ -194,4 +194,19 @@ $qrcode = $_GET["qrcode"] ?? "";
         }
     })
 
+    function getEvent(){
+        const event1body = document.querySelector("#event_1");
+        const event2body = document.querySelector("#event_2");
+
+        if(event1body.innerText == "Y"){
+            yellowBackground(event1body)
+        }
+        if(event2body.innerText == "Y"){
+            violetBackground(event2body)
+        }
+    }
+
+    window.onload = ()=>{
+        getEvent()
+    }
 </script>

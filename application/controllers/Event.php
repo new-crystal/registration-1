@@ -111,7 +111,7 @@ class Event extends CI_Controller{
             
             $this->load->view('stamp/left_side.php', $data);
 
-            $data['event'] = $this->users-> get_user($where);
+            $data['user'] = $this->users-> get_user($where);
             
             $this->load->view('stamp/access', $data);
               
