@@ -156,6 +156,7 @@ class OnSite extends CI_Controller
             $kes_id = isset($_POST['kes_id']) ? $_POST['kes_id'] : null;
             $option = isset($_POST['option']) ? $_POST['option'] : null;
             $attendance_type = isset($_POST['type1']) ? $_POST['type1'] : null;
+            $category = isset($_POST['type2']) ? $_POST['type2'] : null;
             //$etc1 = isset($_POST['etc1']) ? $_POST['etc1'] : null;
             //$etc2 = isset($_POST['etc2']) ? $_POST['etc2'] : null;
             //$etc3 = isset($_POST['etc3']) ? $_POST['etc3'] : null;
@@ -164,31 +165,36 @@ class OnSite extends CI_Controller
             $confer_info = isset($_POST['confer_info']) ? $_POST['confer_info'] : null;
 
             $fee = 0;
-             if($member == "Y"){
-                if($attendance_type == "교수" || $attendance_type == "전문의" ||$attendance_type == "개원의" || $attendance_type == "봉직의" || $attendance_type == "전임의" ||$attendance_type == "기초의학자"){
-                    $fee = 120000;
-                }
-                else if ($attendance_type == "공보의, 군의관" || $attendance_type == "간호사, 영양사" ||$attendance_type == "연구원" || $attendance_type == "약사" || $attendance_type == "기타" ){
-                    $fee = 70000;
-                }
-                else if ($attendance_type == "학생" || $attendance_type == "전공의"){
+            if($category == "일반참가자"){
+                if($member == "Y"){
+                    if($attendance_type == "교수" || $attendance_type == "전문의" ||$attendance_type == "개원의" || $attendance_type == "봉직의" || $attendance_type == "전임의" ||$attendance_type == "기초의학자"){
+                        $fee = 120000;
+                    }
+                    else if ($attendance_type == "공보의, 군의관" || $attendance_type == "간호사, 영양사" ||$attendance_type == "연구원" || $attendance_type == "약사" || $attendance_type == "기타" ){
+                        $fee = 70000;
+                    }
+                    else if ($attendance_type == "학생" || $attendance_type == "전공의"){
+                        $fee = 0;
+                    }
+                 }
+                 else if($member == "N"){
+                    if($attendance_type == "교수" || $attendance_type == "전문의" ||$attendance_type == "개원의" || $attendance_type == "봉직의" || $attendance_type == "전임의" ||$attendance_type == "기초의학자"){
+                        $fee = 170000;
+                    }
+                    else if ($attendance_type == "공보의, 군의관" || $attendance_type == "간호사, 영양사" ||$attendance_type == "연구원" || $attendance_type == "약사" || $attendance_type == "기타" ){
+                        $fee = 90000;
+                    }
+                    else if ($attendance_type == "학생" || $attendance_type == "전공의"){
+                        $fee = 0;
+                    }
+                 }
+                 else{
                     $fee = 0;
-                }
-             }
-             else if($member == "N"){
-                if($attendance_type == "교수" || $attendance_type == "전문의" ||$attendance_type == "개원의" || $attendance_type == "봉직의" || $attendance_type == "전임의" ||$attendance_type == "기초의학자"){
-                    $fee = 170000;
-                }
-                else if ($attendance_type == "공보의, 군의관" || $attendance_type == "간호사, 영양사" ||$attendance_type == "연구원" || $attendance_type == "약사" || $attendance_type == "기타" ){
-                    $fee = 90000;
-                }
-                else if ($attendance_type == "학생" || $attendance_type == "전공의"){
+                 }
+            }else{
                     $fee = 0;
-                }
-             }
-             else{
-                $fee = 0;
-             }
+            }
+            
             
 
             $time = date("Y-m-d H:i:s");
@@ -200,7 +206,7 @@ class OnSite extends CI_Controller
                 'specialty_number' => preg_replace("/\s+/", "", $special_license),
                 'email' => preg_replace("/\s+/", "", $email),
                 'phone' => preg_replace("/\s+/", "", $phone),
-                'attendance_type' => '일반참가자',
+                'attendance_type' => $category,
                 'onsite_reg' => 1,
                 'member_type' => $attendance_type,
                 //'breakfast_yn' => $etc1, // Breakfast symposium

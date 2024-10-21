@@ -527,7 +527,16 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="mo_wrap">
+                                <p class="inline-block">참가자 구분<span>*</span></p>
+                                <div>
+                                    <select class="w-3/5 py-2 px-4 border" id="category_select" onchange="changeFee()">
+                                        <option value="">선택해주세요</option>
+                                        <option value="일반참가자">일반참가자</option>
+                                        <option value="Satellite 참가자">Satellite 참가자</option> 
+                                    </select>
+                                </div>
+                            </div>
                             <div class="mo_wrap">
                                 <p class="inline-block">등록구분<span>*</span></p>
                                 <div>
@@ -721,20 +730,8 @@
     // const selectList = document.querySelectorAll(".select");
     // const select1 = document.querySelector(".select_1");
     // const select2 = document.querySelector(".select_2");
-
+    const categorySelect = document.querySelector("#category_select");
     const attendance_select = document.querySelector("#attendance_select");
-
-    // const categoryList = document.querySelectorAll(".category")
-    // const categoryOther = document.querySelector("#category6");
-    // const categoryOtherInput = document.querySelector("#category_other");
-
-    // const promotion_code_y = document.querySelector("#promotion_code_y");
-    // const promotion_code_n = document.querySelector("#promotion_code_n");
-    // const promotionWrap = document.querySelector(".promotion_wrap");
-
-    // const breakfast1 = document.querySelector("#breakfast_1");
-    // const breakfast2 = document.querySelector("#breakfast_2");
-    // const breakfast3 = document.querySelector("#breakfast_3");
 
     const satellite1 = document.querySelector("#satellite_1");
     const satellite2 = document.querySelector("#satellite_2");
@@ -948,31 +945,38 @@
     
     function changeFee(){
         const attendanceType = attendance_select.options[attendance_select.selectedIndex].value;
-        if(member_y.checked){
-                if(attendanceType == "교수" || attendanceType == "전문의" ||attendanceType == "개원의" || attendanceType == "봉직의" || attendanceType == "전임의" ||attendanceType == "기초의학자"){
-                    feeBox.innerHTML = "120000원";
-                }
-                else if (attendanceType == "공보의, 군의관" || attendanceType == "간호사, 영양사" ||attendanceType == "연구원" || attendanceType == "약사" || attendanceType == "기타" ){
-                    feeBox.innerHTML = "70000원";
-                }
-                else if (attendanceType == "학생" || attendanceType == "전공의"){
-                    attendanceType = "0원";
-                }
-             }
-             else if(member_n.checked){
-                if(attendanceType == "교수" || attendanceType == "전문의" ||attendanceType == "개원의" || attendanceType == "봉직의" || attendanceType == "전임의" ||attendanceType == "기초의학자"){
-                    feeBox.innerHTML = "170000원";
-                }
-                else if (attendanceType == "공보의, 군의관" || attendanceType == "간호사, 영양사" ||attendanceType == "연구원" || attendanceType == "약사" || attendanceType == "기타" ){
-                    feeBox.innerHTML = "90000원";
-                }
-                else if (attendanceType == "학생" || attendanceType == "전공의"){
+        const category = categorySelect.options[categorySelect.selectedIndex].value;
+
+        if(category == "일반참가자"){
+
+            if(member_y.checked){
+                    if(attendanceType == "교수" || attendanceType == "전문의" ||attendanceType == "개원의" || attendanceType == "봉직의" || attendanceType == "전임의" ||attendanceType == "기초의학자"){
+                        feeBox.innerHTML = "120000원";
+                    }
+                    else if (attendanceType == "공보의, 군의관" || attendanceType == "간호사, 영양사" ||attendanceType == "연구원" || attendanceType == "약사" || attendanceType == "기타" ){
+                        feeBox.innerHTML = "70000원";
+                    }
+                    else if (attendanceType == "학생" || attendanceType == "전공의"){
+                        attendanceType = "0원";
+                    }
+                 }
+                 else if(member_n.checked){
+                    if(attendanceType == "교수" || attendanceType == "전문의" ||attendanceType == "개원의" || attendanceType == "봉직의" || attendanceType == "전임의" ||attendanceType == "기초의학자"){
+                        feeBox.innerHTML = "170000원";
+                    }
+                    else if (attendanceType == "공보의, 군의관" || attendanceType == "간호사, 영양사" ||attendanceType == "연구원" || attendanceType == "약사" || attendanceType == "기타" ){
+                        feeBox.innerHTML = "90000원";
+                    }
+                    else if (attendanceType == "학생" || attendanceType == "전공의"){
+                        feeBox.innerHTML = "0원";
+                    }
+                 }
+                 else{
                     feeBox.innerHTML = "0원";
-                }
-             }
-             else{
+                 }
+            }else{
                 feeBox.innerHTML = "0원";
-             }
+            }
     }
     
     function onSubmit() {
@@ -1071,6 +1075,12 @@
         //     return false;
         // }
 
+        if(!categorySelect.options[categorySelect.selectedIndex].value){
+            alert("참석자 구분을 확인해주세요.")
+            categorySelect.focus();
+            return false;
+        }
+
         if (!ln.value) {
             alert("의사면허번호를 입력해주세요.");
             ln.focus()
@@ -1130,7 +1140,8 @@
             //etc4 : promotion_code_yn, // 등록할인코드 Y/N
             //promotion_code :  document.querySelector("#promotion_code").value,
             confer_info : getSelectedCheckboxes(),
-            type1 : attendance_select.options[attendance_select.selectedIndex].value
+            type1 : attendance_select.options[attendance_select.selectedIndex].value,
+            type2 : categorySelect.options[categorySelect.selectedIndex].value
         }
 
         $.ajax({
