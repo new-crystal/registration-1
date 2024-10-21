@@ -77,8 +77,8 @@ $day_3_users = count($day_3) + count($on_day_3);
         </tr>
         
         <tr>
-            <th class="bg-red-100" rowspan="6">사전등록</th>
-            <th class="bg-red-100">Speaker</th>
+            <th class="bg-red-100" rowspan="7">사전등록</th>
+            <th class="bg-red-100">연자</th>
             <td>
                 <?php echo isset($speaker_1) ?  count($speaker_1)  : 0; ?>
             </td>
@@ -107,7 +107,7 @@ $day_3_users = count($day_3) + count($on_day_3);
 
         </tr>
         <tr>
-            <th class="bg-red-100">Chairperson</th>
+            <th class="bg-red-100">좌장</th>
             <td>
                 <?php echo isset($chairperson_1) ?  count($chairperson_1)  : 0; ?>
             </td>
@@ -136,7 +136,7 @@ $day_3_users = count($day_3) + count($on_day_3);
 
         </tr>
         <tr>
-            <th class="bg-red-100">Panel</th>
+            <th class="bg-red-100">패널</th>
             <td>
                 <?php echo isset($panel_1) ?  count($panel_1)  : 0; ?>
             </td>
@@ -164,7 +164,7 @@ $day_3_users = count($day_3) + count($on_day_3);
             </td>
         </tr>
         <tr>
-            <th class="bg-red-100">Faculty</th>
+            <th class="bg-red-100">임원</th>
             <td>
                 <?php echo isset($faculty_1) ?  count($faculty_1)  : 0; ?>
             </td>
@@ -193,7 +193,7 @@ $day_3_users = count($day_3) + count($on_day_3);
         </tr>
 
         <tr>
-            <th class="bg-red-100">Participant</th>
+            <th class="bg-red-100">일반참가자</th>
             <td>
                 <?php echo isset($participant_1) ?  count($participant_1)  : 0; ?>
             </td>
@@ -220,8 +220,38 @@ $day_3_users = count($day_3) + count($on_day_3);
                 ?>
             </td>
         </tr>
+
         <tr>
-            <th class="bg-red-100">Others</th>
+            <th class="bg-red-100">Satellite 참가자</th>
+            <td>
+                <?php echo isset($satellite_1) ?  count($satellite_1)  : 0; ?>
+            </td>
+            <td>
+                <?php echo isset($satellite_2) ?  count($satellite_2) : 0; ?>
+            </td>
+            <td>
+                <?php echo isset($satellite_3) ? count($satellite_3) : 0; ?>
+            </td>
+            <td>
+                <?php
+                /**day1 */
+                if (isset($satellite_1) && !isset($satellite_2) && !isset($satellite_3)) {
+                    echo  count($satellite_1);
+                }
+                /**day 2 */
+                else if (isset($satellite_1) && isset($satellite_2) && !isset($satellite_3)) {
+                    echo  count($satellite_1) + count($satellite_2);
+                }
+                /**day 3 */
+                else if (isset($satellite_1) && isset($satellite_2) && isset($satellite_3)) {
+                    echo  count($satellite_1) + count($satellite_2) + count($satellite_3);
+                }
+                ?>
+            </td>
+        </tr>
+
+        <tr>
+            <th class="bg-red-100">기타</th>
             <td>
                 <?php echo isset($other_1) ?  count($other_1)  : 0; ?>
             </td>
@@ -272,8 +302,8 @@ $day_3_users = count($day_3) + count($on_day_3);
         </tr>
 
         <tr>
-            <th class="bg-blue-100" rowspan="6">현장등록</th>
-            <th class="bg-blue-100">Speaker</th>
+            <th class="bg-blue-100" rowspan="7">현장등록</th>
+            <th class="bg-blue-100">연자</th>
             <td>
                 <?php echo isset($on_speaker_1) ?  count($on_speaker_1)  : 0; ?>
             </td>
@@ -302,7 +332,7 @@ $day_3_users = count($day_3) + count($on_day_3);
             </td>
         </tr>
         <tr>
-            <th class="bg-blue-100">Chairperson</th>
+            <th class="bg-blue-100">좌장</th>
             <td>
                 <?php echo isset($on_chairperson_1) ?  count($on_chairperson_1)  : 0; ?>
             </td>
@@ -331,7 +361,7 @@ $day_3_users = count($day_3) + count($on_day_3);
 
         </tr>
         <tr>
-            <th class="bg-blue-100">Panel</th>
+            <th class="bg-blue-100">패널</th>
             <td>
                 <?php echo isset($on_panel_1) ?  count($on_panel_1)  : 0; ?>
             </td>
@@ -359,7 +389,7 @@ $day_3_users = count($day_3) + count($on_day_3);
             </td>
         </tr>
         <tr>
-            <th class="bg-blue-100">Faculty</th>
+            <th class="bg-blue-100">임원</th>
             <td>
                 <?php echo isset($on_faculty_1) ?  count($on_faculty_1)  : 0; ?>
             </td>
@@ -388,7 +418,7 @@ $day_3_users = count($day_3) + count($on_day_3);
         </tr>
 
         <tr>
-            <th class="bg-blue-100">Participant</th>
+            <th class="bg-blue-100">일반참가자</th>
             <td>
                 <?php echo isset($on_participant_1) ?  count($on_participant_1)  : 0; ?>
             </td>
@@ -415,8 +445,37 @@ $day_3_users = count($day_3) + count($on_day_3);
                 ?>
             </td>
         </tr>
+
         <tr>
-            <th class="bg-blue-100">Others</th>
+            <th class="bg-blue-100">Satellite 참가자</th>
+            <td>
+                <?php echo isset($on_satellite_1) ?  count($on_satellite_1)  : 0; ?>
+            </td>
+            <td>
+                <?php echo isset($on_satellite_2) ?  count($on_satellite_2) : 0; ?>
+            </td>
+            <td>
+                <?php echo isset($on_satellite_3) ? count($on_satellite_3) : 0; ?>
+            </td>
+            <td>
+                <?php
+                /**day1 */
+                if (isset($on_satellite_1) && !isset($on_satellite_2) && !isset($on_satellite_3)) {
+                    echo  count($on_satellite_1);
+                }
+                /**day 2 */
+                else if (isset($on_satellite_1) && isset($on_satellite_2) && !isset($on_satellite_3)) {
+                    echo  count($on_satellite_1) + count($on_satellite_2);
+                }
+                /**day 3 */
+                else if (isset($on_satellite_1) && isset($on_satellite_2) && isset($on_satellite_3)) {
+                    echo  count($on_satellite_1) + count($on_satellite_2) + count($on_satellite_3);
+                }
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <th class="bg-blue-100">기타</th>
             <td>
                 <?php echo isset($on_other_1) ?  count($on_other_1)  : 0; ?>
             </td>
