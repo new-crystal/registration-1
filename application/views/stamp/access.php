@@ -121,9 +121,16 @@ $qrcode = $_GET["qrcode"] ?? "";
                                 </tr>
             
                                 <tr>
-                                    <th>email</th>
-                                    <td id="email" class="qr_text">
-                                        <?php if (isset($user['email'])) echo $user['email']; ?>
+                                    <th>소속</th>
+                                    <td id="org" class="qr_text">
+                                        <?php if (isset($user['org'])) echo $user['org']; ?>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>참석 구분</th>
+                                    <td id="attendance_type" class="qr_text">
+                                        <?php if (isset($user['attendance_type'])) echo $user['attendance_type']; ?>
                                     </td>
                                 </tr>
                                 
@@ -161,7 +168,6 @@ $qrcode = $_GET["qrcode"] ?? "";
 
     const event_1 = document.querySelector('#event_1');
     const event_2 = document.querySelector('#event_2');
-
 
     function yellowBackground(target){
         target.classList.add("bg-amber-300");
@@ -212,11 +218,17 @@ $qrcode = $_GET["qrcode"] ?? "";
         const event1body = document.querySelector("#event_1");
         const event2body = document.querySelector("#event_2");
 
+        const booth = document.querySelector("#attendance_type")
+
         if(event1body.innerText == "Y"){
             yellowBackground(event1body)
         }
         if(event2body.innerText == "Y"){
             violetBackground(event2body)
+        }
+
+        if(booth.innerText == "후원사"){
+            booth.classList.add("bg-red-400")
         }
     }
 

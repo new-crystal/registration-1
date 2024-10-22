@@ -52,7 +52,7 @@
                                 <tr>
                                     <th>Event 1 수령 유무</th>
                                     <td> 
-                                        <input id="" type="text" value="<?php echo $item['event_1']; ?>" size="16" class="form-control event_1" name="event_1">
+                                        <input id="" type="text" value="<?php echo $item['event1']; ?>" size="16" class="form-control event_1" name="event_1">
                                         <select class="form-control input-lg m-bot15" id="event_1_select">
                                             <option value="" selected="selected">직접입력</option>
                                             <option value="Y">Y</option>
@@ -63,14 +63,14 @@
                                 </tr>
                                 <tr>
                                     <th>Event 1 수령 시간</th>
-                                    <td> <input id="dp1" type="text" value="<?php echo $item['event_1_time']; ?>" size="16" class="form-control yn" name="event_1_time" readonly>
+                                    <td> <input id="dp1" type="text" value="<?php echo $item['event1_time']; ?>" size="16" class="form-control yn" name="event_1_time" readonly>
 
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Event 2 수령 유무</th>
                                     <td> 
-                                        <input id="dp1" type="text" value="<?php echo $item['event_2']; ?>" size="16" class="form-control event_2" name="event_2">
+                                        <input id="dp1" type="text" value="<?php echo $item['event2']; ?>" size="16" class="form-control event_2" name="event_2">
                                         <select class="form-control input-lg m-bot15" id="event_2_select">
                                             <option value="" selected="selected">직접입력</option>
                                             <option value="Y">Y</option>
@@ -80,7 +80,7 @@
                                 </tr>
                                 <tr>
                                     <th>Event 2 수령 시간</th>
-                                    <td> <input id="dp1" type="text" value="<?php echo $item['event_2_time']; ?>" size="16" class="form-control yn" name="event_2_time" readonly>
+                                    <td> <input id="dp1" type="text" value="<?php echo $item['event2_time']; ?>" size="16" class="form-control yn" name="event_2_time" readonly>
 
                                     </td>
                                 </tr>
@@ -99,30 +99,9 @@
                                     <th>Registration No.</th>
                                     <td style="background-color:#fafafa;"> <input class="form-control" type="text" value="<?php echo $item['registration_no']; ?>" name="registration_no" id="registration_no" readonly></td>
                                 </tr>
-
-                                <tr>
-                                    <th>등록시간</th>
-                                    <td> <input id="time" type="text" value="<?php echo substr($item['time'], 0, 10) ?>" size="16" class="form-control" name="time">
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th>국가</th>
-                                    <td> <input type="text" class="form-control" value="<?php echo $item['nation']; ?>" name="nation" id="ln"></td>
-                                </tr>
                                 <tr>
                                     <th>이름</th>
-                                    <td>
-                                        
-                                        <div style="display: flex; align-items: center;"><span>
-                                                fullname:</span>
-                                            <input class="form-control" type="text" value="<?php echo $item['first_name'] . " " . $item['last_name']; ?>" name="fullname" id="nick_name" style="width:330px;background-color:#fafafa;" disabled>
-                                        </div>
-                                        <div style="display: flex; align-items: center;">
-                                            <p style="margin:0">성함(국문):</p> <input class="form-control" type="text" style="width:230px" value="<?php echo $item['name_kor']; ?>" name="name_kor" id="nick_name">
-                                        </div>
-
-                                    </td>
+                                    <td style="background-color:#fafafa;"> <input class="form-control" type="text" value="<?php echo $item['nick_name']; ?>" name="nick_name" id="nick_name" disabled></td>
                                 </tr>
 
                                 <tr>
