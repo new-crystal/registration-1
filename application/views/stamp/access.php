@@ -174,11 +174,11 @@ $qrcode = $_GET["qrcode"] ?? "";
     eventBtnList.forEach((btn)=>{
         btn.addEventListener("click", (e)=>{
             console.log(e.target.classList)
-            if(window.location.search !== "" && e.target.classList.contains !== "Y"){
+            if(window.location.search !== "" && !e.target.classList.contains("Y")){
                 if(window.confirm(`event ${e.target.dataset.id} 상품 수령을 완료로 변경하시겠습니까`)){
                     window.location.href = `/event/update_gift?num=${e.target.dataset.id}&qrcode=${window.location.search.split("=")[1]}&status=Y`;
                 }
-            }else if(window.location.search !== "" && e.target.classList.contains == "Y"){
+            }else if(window.location.search !== "" && e.target.classList.contains("Y")){
                 if(window.confirm(`event ${e.target.dataset.id} 상품 수령을 취소로 변경하시겠습니까`)){
                     window.location.href = `/event/update_gift?num=${e.target.dataset.id}&qrcode=${window.location.search.split("=")[1]}&status=N`;
                 }
