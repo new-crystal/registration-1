@@ -20,6 +20,11 @@ table th {
     left: 52%;
     transform: translate(-50%, -50%);
 }
+
+.pointer:hover{
+    text-decoration: underline;
+    text-underline-position: under;
+}
 </style>
 <!-- Main content -->
 <div class="content-wrapper">
