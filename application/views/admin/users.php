@@ -25,6 +25,36 @@ table th {
     text-decoration: underline;
     text-underline-position: under;
 }
+
+#popup{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 99999;
+}
+
+.popup_bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translateX(-200px);
+    z-index: 9999;
+}
+
+.popup-hidden{
+    display: none;
+}
+
+.popup-visible {
+  display: block;
+}
 </style>
 <!-- Main content -->
 <div class="content-wrapper">
@@ -47,6 +77,9 @@ table th {
                     repeatCount="indefinite" begin="0.3" />
             </circle>
         </svg>
+    </div>
+    <div class="popup_bg popup-hidden">
+        <div id="popup" class="popup-hidden">복사 완료!</div>
     </div>
     <div class="page-header">
         <div class="page-header-content">
@@ -189,6 +222,26 @@ function copy(text) {
                 .writeText(text)
                 .then(() => {
                   //  alert('클립보드에 복사되었습니다.');
+                  const popup = document.getElementById("popup");  
+                  const popupBackground = document.querySelector(".popup_bg");  
+
+                    // 팝업을 보이게 설정
+                    popup.classList.remove("popup-hidden");
+                    popup.classList.add("popup-visible");
+
+                    // 팝업을 보이게 설정
+                    popupBackground.classList.remove("popup-hidden");
+                    popupBackground.classList.add("popup-visible");
+                    
+                    // 2초 후에 팝업을 다시 숨김
+                    setTimeout(function() {
+                        popup.classList.remove("popup-visible");
+                        popup.classList.add("popup-hidden");
+
+                        popupBackground.classList.remove("popup-visible");
+                        popupBackground.classList.add("popup-hidden");
+
+                    }, 1500);
                 })
                 .catch(() => {
                     alert('복사를 다시 시도해주세요.');
