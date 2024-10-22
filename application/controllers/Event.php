@@ -143,6 +143,7 @@ class Event extends CI_Controller{
     {
         $qrcode = isset($_GET['qrcode']) ? $_GET['qrcode'] : null;
         $number = isset($_GET['num']) ? $_GET['num'] : null;
+        $status = isset($_GET['status']) ? $_GET['status'] : null;
         $time = date("Y-m-d H:i:s");
         $where = array(
             'registration_no' => $qrcode
@@ -150,12 +151,12 @@ class Event extends CI_Controller{
 
         if($number == 1){
             $info = array(
-                'event1' => 'Y',
+                'event1' => $status,
                 'event1_time' => $time
             );
         }else if($number == 2){
             $info = array(
-                'event2' => 'Y',
+                'event2' => $status,
                 'event2_time' => $time
             );
         }

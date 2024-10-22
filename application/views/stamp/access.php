@@ -56,6 +56,14 @@
     .memoHeader {
         background-color: #fb8500 !important;
     }
+
+    .event1.Y{
+        background-color: rgb(252 211 77);
+    }
+
+    .event2.Y{
+        background-color: rgb(196 181 253);
+    }
 </style>
 <?php
 
@@ -128,8 +136,8 @@ $qrcode = $_GET["qrcode"] ?? "";
                             </table>
 
                         <div class="w-[550px] flex items-center justify-around *:w-[250px] *:h-[50px] *:border">
-                            <button class="hover:bg-gray-200 event_btn" type="button" data-id="1">Event 1 상품 수령 완료</button>
-                            <button class="hover:bg-gray-200 event_btn" type="button" data-id="2">Event 2 상품 수령 완료</button>
+                            <button class="hover:bg-amber-300 event_btn event1 <?php echo $user['event1']; ?>" type="button" data-id="1">Event 1 상품 수령 완료</button>
+                            <button class="hover:bg-violet-300 event_btn event2 <?php echo $user['event2']; ?>" type="button" data-id="2">Event 2 상품 수령 완료</button>
                         </div>
                     </div>
                 </form>
@@ -156,20 +164,26 @@ $qrcode = $_GET["qrcode"] ?? "";
 
 
     function yellowBackground(target){
-        target.style.background = 'yellow';
+        target.classList.add("bg-amber-300");
     }
 
     function violetBackground(target){
-        target.style.background = 'violet';
+        target.classList.add("bg-violet-300");
     }
 
     eventBtnList.forEach((btn)=>{
         btn.addEventListener("click", (e)=>{
-            if(window.location.search !== ""){
+            console.log(e.target.classList)
+            if(window.location.search !== "" && e.target.classList.contains !== "Y"){
                 if(window.confirm(`event ${e.target.dataset.id} 상품 수령을 완료로 변경하시겠습니까`)){
-                    window.location.href = `/event/update_gift?num=${e.target.dataset.id}&qrcode=${window.location.search.split("=")[1]}`;
+                    window.location.href = `/event/update_gift?num=${e.target.dataset.id}&qrcode=${window.location.search.split("=")[1]}&status=Y`;
                 }
-            }else{
+            }else if(window.location.search !== "" && e.target.classList.contains == "Y"){
+                if(window.confirm(`event ${e.target.dataset.id} 상품 수령을 취소로 변경하시겠습니까`)){
+                    window.location.href = `/event/update_gift?num=${e.target.dataset.id}&qrcode=${window.location.search.split("=")[1]}&status=N`;
+                }
+            }
+            else if(window.location.search == ""){
                 alert('QR 코드를 입력해주세요!')
             }
         })
