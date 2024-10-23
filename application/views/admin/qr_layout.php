@@ -73,7 +73,7 @@
                 $letter_spacing = ($only_letters) ? '0px' : '20px';
                 $letter_spacing_receipt = ($only_letters) ? '0px' : '5px';
 
-                $lucky_num = explode("_",$users['registration_no'])[1]; 
+                $lucky_num = explode("_R",$users['registration_no'])[1]; 
     
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");

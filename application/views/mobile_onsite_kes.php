@@ -503,7 +503,7 @@
                             </div>
                             <!-- <input type="text" id="affiliation" name="org" class="w-full" placeholder="*소속을 입력해주세요"> -->
                         </div>
-                        <div class="mo_wrap">
+                        <!-- <div class="mo_wrap">
                             <p class="inline-block">근무처 주소<span>*</span></p>
                             <div>
                                 <input type="text" class="w-2/5 mb-2 mr-2 p-2" name="office_zip" id="office_zip" value="" autocomplete='off'/>
@@ -513,7 +513,7 @@
                                     <input type="text" class="p-2 w-4/12" name="office_addr_etc" id="office_addr_etc" value="" placeholder="상세주소를 입력해주세요." autocomplete='off'/>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                             <div class="mo_wrap">
                                 <p class="inline-block">대한내분비학회 회원 유무<span>*</span></p>
                                 <div class="">
@@ -649,56 +649,7 @@
     </div>
     </div>
 </body>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("office_addr_etc").value = extraAddr;
-                
-                } else {
-                    document.getElementById("office_addr_etc").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('office_zip').value = data.zonecode;
-                document.getElementById("office_addr").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("office_addr_etc").focus();
-            }
-        }).open();
-    }
-</script>
 <script>
     const mobileForm = document.querySelector("#mobile_form");
 
@@ -920,8 +871,8 @@
         const postcodeInput = document.querySelector("#office_zip");
         const addressInput = document.querySelector("#office_addr");
 
-        postcodeInput.value = selectedOption.getAttribute('_new_post');
-        addressInput.value = selectedOption.getAttribute('_addr');
+        // postcodeInput.value = selectedOption.getAttribute('_new_post');
+        // addressInput.value = selectedOption.getAttribute('_addr');
 
         if(selectedOption.getAttribute('_new_post') === ""){
             document.querySelector("#office_etc").disabled = false;
@@ -1131,9 +1082,9 @@
             sn : document.querySelector("#sn").value,
             email : email_1.value,
             phone:phone.value,
-            place: affiliationSelect.options[affiliationSelect.selectedIndex].innerText,
-            place_etc : document.querySelector("#office_etc").value,
-            address: document.querySelector("#office_addr").value + document.querySelector("#office_addr_etc").value,
+            //place: affiliationSelect.options[affiliationSelect.selectedIndex].innerText,
+            //place_etc : document.querySelector("#office_etc").value,
+            //address: document.querySelector("#office_addr").value + document.querySelector("#office_addr_etc").value,
             member : member_y.checked ? "Y" : "N",
             kes_id : document.querySelector("#kes_id").value,
             option : selectedOption,
@@ -1148,17 +1099,17 @@
         }
 
         $.ajax({
-		type: "POST",
-		url : url,
-		data: data,
-		success: function(result){
-            window.location.href = `/onSite/success?fee=${feeBox.innerText}`;
-        },
-		error:function(e){  
-            console.log(e)
-            alert("현장등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
-		}
-	})  
+            type: "POST",
+            url : url,
+            data: data,
+            success: function(result){
+                window.location.href = `/onSite/success?fee=${feeBox.innerText}`;
+            },
+            error:function(e){  
+                console.log(e)
+                alert("현장등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
+            }
+	    })  
     }
     // mobileForm.addEventListener("submit", (e)=>{
     //     //e.preventDefault();

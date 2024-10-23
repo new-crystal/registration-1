@@ -1,60 +1,60 @@
 <script type="text/javascript" src="/assets/js/admin/lecture_history.js"></script>
 <style>
-table th {
-    padding: 0;
-    font-size: 1.2rem;
-}
+    table th {
+        padding: 0;
+        font-size: 1.2rem;
+    }
 
-.loading_box {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: translateX(-200px);
-    z-index: 9999;
-}
+    .loading_box {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: translateX(-200px);
+        z-index: 9999;
+    }
 
-.loading {
-    position: absolute;
-    top: 10%;
-    left: 52%;
-    transform: translate(-50%, -50%);
-}
+    .loading {
+        position: absolute;
+        top: 10%;
+        left: 52%;
+        transform: translate(-50%, -50%);
+    }
 
-.pointer:hover{
-    text-decoration: underline;
-    text-underline-position: under;
-}
+    .pointer:hover{
+        text-decoration: underline;
+        text-underline-position: under;
+    }
 
-#popup{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #333;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  z-index: 99999;
-}
+    #popup{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #333;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        z-index: 99999;
+    }
 
-.popup_bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    transform: translateX(-200px);
-    z-index: 9999;
-}
+    .popup_bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        transform: translateX(-200px);
+        z-index: 9999;
+    }
 
-.popup-hidden{
-    display: none;
-}
+    .popup-hidden{
+        display: none;
+    }
 
-.popup-visible {
-  display: block;
-}
+    .popup-visible {
+        display: block;
+    }
 </style>
 <!-- Main content -->
 <div class="content-wrapper">
