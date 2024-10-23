@@ -224,27 +224,27 @@ $day_3_users = count($day_3) + count($on_day_3);
         <tr>
             <th class="bg-red-100">Satellite 1 참가자(동아ST)</th>
             <td>
-                <?php echo isset($satellite_1) ?  count($satellite_1)  : 0; ?>
+                <?php echo isset($satellite_1_1) ?  count($satellite_1_1)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($satellite_2) ?  count($satellite_2) : 0; ?>
+                <?php echo isset($satellite_2_1) ?  count($satellite_2_1) : 0; ?>
             </td>
             <td>
-                <?php echo isset($satellite_3) ? count($satellite_3) : 0; ?>
+                <?php echo isset($satellite_3_1) ? count($satellite_3_1) : 0; ?>
             </td>
             <td>
                 <?php
                 /**day1 */
-                if (isset($satellite_1) && !isset($satellite_2) && !isset($satellite_3)) {
-                    echo  count($satellite_1);
+                if (isset($satellite_1_1) && !isset($satellite_2_1) && !isset($satellite_3_1)) {
+                    echo  count($satellite_1_1);
                 }
                 /**day 2 */
-                else if (isset($satellite_1) && isset($satellite_2) && !isset($satellite_3)) {
-                    echo  count($satellite_1) + count($satellite_2);
+                else if (isset($satellite_1_1) && isset($satellite_2_1) && !isset($satellite_3_1)) {
+                    echo  count($satellite_1_1) + count($satellite_2_1);
                 }
                 /**day 3 */
-                else if (isset($satellite_1) && isset($satellite_2) && isset($satellite_3)) {
-                    echo  count($satellite_1) + count($satellite_2) + count($satellite_3);
+                else if (isset($satellite_1_1) && isset($satellite_2_1) && isset($satellite_3_1)) {
+                    echo  count($satellite_1_1) + count($satellite_2_1) + count($satellite_3_1);
                 }
                 ?>
             </td>
@@ -253,27 +253,27 @@ $day_3_users = count($day_3) + count($on_day_3);
         <tr>
             <th class="bg-red-100">Satellite 2 참가자(종근당)</th>
             <td>
-                <?php echo isset($satellite_1) ?  count($satellite_1)  : 0; ?>
+                <?php echo isset($satellite_1_2) ?  count($satellite_1_2)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($satellite_2) ?  count($satellite_2) : 0; ?>
+                <?php echo isset($satellite_2_2) ?  count($satellite_2_2) : 0; ?>
             </td>
             <td>
-                <?php echo isset($satellite_3) ? count($satellite_3) : 0; ?>
+                <?php echo isset($satellite_3_2) ? count($satellite_3_2) : 0; ?>
             </td>
             <td>
                 <?php
                 /**day1 */
-                if (isset($satellite_1) && !isset($satellite_2) && !isset($satellite_3)) {
-                    echo  count($satellite_1);
+                if (isset($satellite_1_2) && !isset($satellite_2_2) && !isset($satellite_3_2)) {
+                    echo  count($satellite_1_2);
                 }
                 /**day 2 */
-                else if (isset($satellite_1) && isset($satellite_2) && !isset($satellite_3)) {
-                    echo  count($satellite_1) + count($satellite_2);
+                else if (isset($satellite_1_2) && isset($satellite_2_2) && !isset($satellite_3_2)) {
+                    echo  count($satellite_1_2) + count($satellite_2_2);
                 }
                 /**day 3 */
-                else if (isset($satellite_1) && isset($satellite_2) && isset($satellite_3)) {
-                    echo  count($satellite_1) + count($satellite_2) + count($satellite_3);
+                else if (isset($satellite_1_2) && isset($satellite_2_2) && isset($satellite_3_2)) {
+                    echo  count($satellite_1_2) + count($satellite_2_2) + count($satellite_3_2);
                 }
                 ?>
             </td>
@@ -282,27 +282,27 @@ $day_3_users = count($day_3) + count($on_day_3);
         <tr>
             <th class="bg-red-100">Satellite 3 참가자(대웅바이오)</th>
             <td>
-                <?php echo isset($satellite_1) ?  count($satellite_1)  : 0; ?>
+                <?php echo isset($satellite_1_3) ?  count($satellite_1_3)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($satellite_2) ?  count($satellite_2) : 0; ?>
+                <?php echo isset($satellite_2_3) ?  count($satellite_2_3) : 0; ?>
             </td>
             <td>
-                <?php echo isset($satellite_3) ? count($satellite_3) : 0; ?>
+                <?php echo isset($satellite_3_3) ? count($satellite_3_3) : 0; ?>
             </td>
             <td>
                 <?php
                 /**day1 */
-                if (isset($satellite_1) && !isset($satellite_2) && !isset($satellite_3)) {
-                    echo  count($satellite_1);
+                if (isset($satellite_1_3) && !isset($satellite_2_3) && !isset($satellite_3_3)) {
+                    echo  count($satellite_1_3);
                 }
                 /**day 2 */
-                else if (isset($satellite_1) && isset($satellite_2) && !isset($satellite_3)) {
-                    echo  count($satellite_1) + count($satellite_2);
+                else if (isset($satellite_1_3) && isset($satellite_2_3) && !isset($satellite_3_3)) {
+                    echo  count($satellite_1_3) + count($satellite_2_3);
                 }
                 /**day 3 */
-                else if (isset($satellite_1) && isset($satellite_2) && isset($satellite_3)) {
-                    echo  count($satellite_1) + count($satellite_2) + count($satellite_3);
+                else if (isset($satellite_1_3) && isset($satellite_2_3) && isset($satellite_3_3)) {
+                    echo  count($satellite_1_3) + count($satellite_2_3) + count($satellite_3_3);
                 }
                 ?>
             </td>
@@ -311,27 +311,27 @@ $day_3_users = count($day_3) + count($on_day_3);
         <tr>
             <th class="bg-red-100">Satellite 4 참가자(오가논)</th>
             <td>
-                <?php echo isset($satellite_1) ?  count($satellite_1)  : 0; ?>
+                <?php echo isset($satellite_1_4) ?  count($satellite_1_4)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($satellite_2) ?  count($satellite_2) : 0; ?>
+                <?php echo isset($satellite_2_4) ?  count($satellite_2_4) : 0; ?>
             </td>
             <td>
-                <?php echo isset($satellite_3) ? count($satellite_3) : 0; ?>
+                <?php echo isset($satellite_3_4) ? count($satellite_3_4) : 0; ?>
             </td>
             <td>
                 <?php
                 /**day1 */
-                if (isset($satellite_1) && !isset($satellite_2) && !isset($satellite_3)) {
-                    echo  count($satellite_1);
+                if (isset($satellite_1_4) && !isset($satellite_2_4) && !isset($satellite_3_4)) {
+                    echo  count($satellite_1_4);
                 }
                 /**day 2 */
-                else if (isset($satellite_1) && isset($satellite_2) && !isset($satellite_3)) {
-                    echo  count($satellite_1) + count($satellite_2);
+                else if (isset($satellite_1_4) && isset($satellite_2_4) && !isset($satellite_3_4)) {
+                    echo  count($satellite_1_4) + count($satellite_2_4);
                 }
                 /**day 3 */
-                else if (isset($satellite_1) && isset($satellite_2) && isset($satellite_3)) {
-                    echo  count($satellite_1) + count($satellite_2) + count($satellite_3);
+                else if (isset($satellite_1_4) && isset($satellite_2_4) && isset($satellite_3_4)) {
+                    echo  count($satellite_1_4) + count($satellite_2_4) + count($satellite_3_4);
                 }
                 ?>
             </td>
@@ -537,27 +537,27 @@ $day_3_users = count($day_3) + count($on_day_3);
         <tr>
             <th class="bg-blue-100">Satellite 1 참가자(동아ST)</th>
             <td>
-                <?php echo isset($on_satellite_1) ?  count($on_satellite_1)  : 0; ?>
+                <?php echo isset($on_satellite_1_1) ?  count($on_satellite_1_1)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($on_satellite_2) ?  count($on_satellite_2) : 0; ?>
+                <?php echo isset($on_satellite_2_1) ?  count($on_satellite_2_1) : 0; ?>
             </td>
             <td>
-                <?php echo isset($on_satellite_3) ? count($on_satellite_3) : 0; ?>
+                <?php echo isset($on_satellite_3_1) ? count($on_satellite_3_1) : 0; ?>
             </td>
             <td>
                 <?php
                 /**day1 */
-                if (isset($on_satellite_1) && !isset($on_satellite_2) && !isset($on_satellite_3)) {
-                    echo  count($on_satellite_1);
+                if (isset($on_satellite_1_1) && !isset($on_satellite_2_1) && !isset($on_satellite_3_1)) {
+                    echo  count($on_satellite_1_1);
                 }
                 /**day 2 */
-                else if (isset($on_satellite_1) && isset($on_satellite_2) && !isset($on_satellite_3)) {
-                    echo  count($on_satellite_1) + count($on_satellite_2);
+                else if (isset($on_satellite_1_1) && isset($on_satellite_2_1) && !isset($on_satellite_3_1)) {
+                    echo  count($on_satellite_1_1) + count($on_satellite_2_1);
                 }
                 /**day 3 */
-                else if (isset($on_satellite_1) && isset($on_satellite_2) && isset($on_satellite_3)) {
-                    echo  count($on_satellite_1) + count($on_satellite_2) + count($on_satellite_3);
+                else if (isset($on_satellite_1_1) && isset($on_satellite_2_1) && isset($on_satellite_3_1)) {
+                    echo  count($on_satellite_1_1) + count($on_satellite_2_1) + count($on_satellite_3_1);
                 }
                 ?>
             </td>
@@ -566,27 +566,27 @@ $day_3_users = count($day_3) + count($on_day_3);
         <tr>
             <th class="bg-blue-100">Satellite 2 참가자(종근당)</th>
             <td>
-                <?php echo isset($on_satellite_1) ?  count($on_satellite_1)  : 0; ?>
+                <?php echo isset($on_satellite_1_2) ?  count($on_satellite_1_2)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($on_satellite_2) ?  count($on_satellite_2) : 0; ?>
+                <?php echo isset($on_satellite_2_2) ?  count($on_satellite_2_2) : 0; ?>
             </td>
             <td>
-                <?php echo isset($on_satellite_3) ? count($on_satellite_3) : 0; ?>
+                <?php echo isset($on_satellite_3_2) ? count($on_satellite_3_2) : 0; ?>
             </td>
             <td>
                 <?php
                 /**day1 */
-                if (isset($on_satellite_1) && !isset($on_satellite_2) && !isset($on_satellite_3)) {
-                    echo  count($on_satellite_1);
+                if (isset($on_satellite_1_2) && !isset($on_satellite_2_2) && !isset($on_satellite_3_2)) {
+                    echo  count($on_satellite_1_2);
                 }
                 /**day 2 */
-                else if (isset($on_satellite_1) && isset($on_satellite_2) && !isset($on_satellite_3)) {
-                    echo  count($on_satellite_1) + count($on_satellite_2);
+                else if (isset($on_satellite_1_2) && isset($on_satellite_2_2) && !isset($on_satellite_3_2)) {
+                    echo  count($on_satellite_1_2) + count($on_satellite_2_2);
                 }
                 /**day 3 */
-                else if (isset($on_satellite_1) && isset($on_satellite_2) && isset($on_satellite_3)) {
-                    echo  count($on_satellite_1) + count($on_satellite_2) + count($on_satellite_3);
+                else if (isset($on_satellite_1_2) && isset($on_satellite_2_2) && isset($on_satellite_3_2)) {
+                    echo  count($on_satellite_1_2) + count($on_satellite_2_2) + count($on_satellite_3_2);
                 }
                 ?>
             </td>
@@ -595,27 +595,27 @@ $day_3_users = count($day_3) + count($on_day_3);
         <tr>
             <th class="bg-blue-100">Satellite 3 참가자(대웅바이오)</th>
             <td>
-                <?php echo isset($on_satellite_1) ?  count($on_satellite_1)  : 0; ?>
+                <?php echo isset($on_satellite_1_3) ?  count($on_satellite_1_3)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($on_satellite_2) ?  count($on_satellite_2) : 0; ?>
+                <?php echo isset($on_satellite_2_3) ?  count($on_satellite_2_3) : 0; ?>
             </td>
             <td>
-                <?php echo isset($on_satellite_3) ? count($on_satellite_3) : 0; ?>
+                <?php echo isset($on_satellite_3_3) ? count($on_satellite_3_3) : 0; ?>
             </td>
             <td>
                 <?php
                 /**day1 */
-                if (isset($on_satellite_1) && !isset($on_satellite_2) && !isset($on_satellite_3)) {
-                    echo  count($on_satellite_1);
+                if (isset($on_satellite_1_3) && !isset($on_satellite_2_3) && !isset($on_satellite_3_3)) {
+                    echo  count($on_satellite_1_3);
                 }
                 /**day 2 */
-                else if (isset($on_satellite_1) && isset($on_satellite_2) && !isset($on_satellite_3)) {
-                    echo  count($on_satellite_1) + count($on_satellite_2);
+                else if (isset($on_satellite_1_3) && isset($on_satellite_2_3) && !isset($on_satellite_3_3)) {
+                    echo  count($on_satellite_1_3) + count($on_satellite_2_3);
                 }
                 /**day 3 */
-                else if (isset($on_satellite_1) && isset($on_satellite_2) && isset($on_satellite_3)) {
-                    echo  count($on_satellite_1) + count($on_satellite_2) + count($on_satellite_3);
+                else if (isset($on_satellite_1_3) && isset($on_satellite_2_3) && isset($on_satellite_3_3)) {
+                    echo  count($on_satellite_1_3) + count($on_satellite_2_3) + count($on_satellite_3_3);
                 }
                 ?>
             </td>
@@ -624,27 +624,27 @@ $day_3_users = count($day_3) + count($on_day_3);
         <tr>
             <th class="bg-blue-100">Satellite 4 참가자(오가논)</th>
             <td>
-                <?php echo isset($on_satellite_1) ?  count($on_satellite_1)  : 0; ?>
+                <?php echo isset($on_satellite_1_4) ?  count($on_satellite_1_4)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($on_satellite_2) ?  count($on_satellite_2) : 0; ?>
+                <?php echo isset($on_satellite_2_4) ?  count($on_satellite_2_4) : 0; ?>
             </td>
             <td>
-                <?php echo isset($on_satellite_3) ? count($on_satellite_3) : 0; ?>
+                <?php echo isset($on_satellite_3_4) ? count($on_satellite_3_4) : 0; ?>
             </td>
             <td>
                 <?php
                 /**day1 */
-                if (isset($on_satellite_1) && !isset($on_satellite_2) && !isset($on_satellite_3)) {
-                    echo  count($on_satellite_1);
+                if (isset($on_satellite_1_4) && !isset($on_satellite_2_4) && !isset($on_satellite_3_4)) {
+                    echo  count($on_satellite_1_4);
                 }
                 /**day 2 */
-                else if (isset($on_satellite_1) && isset($on_satellite_2) && !isset($on_satellite_3)) {
-                    echo  count($on_satellite_1) + count($on_satellite_2);
+                else if (isset($on_satellite_1_4) && isset($on_satellite_2_4) && !isset($on_satellite_3_4)) {
+                    echo  count($on_satellite_1_4) + count($on_satellite_2_4);
                 }
                 /**day 3 */
-                else if (isset($on_satellite_1) && isset($on_satellite_2) && isset($on_satellite_3)) {
-                    echo  count($on_satellite_1) + count($on_satellite_2) + count($on_satellite_3);
+                else if (isset($on_satellite_1_4) && isset($on_satellite_2_4) && isset($on_satellite_3_4)) {
+                    echo  count($on_satellite_1_4) + count($on_satellite_2_4) + count($on_satellite_3_4);
                 }
                 ?>
             </td>

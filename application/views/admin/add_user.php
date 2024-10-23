@@ -14,11 +14,15 @@
                                 <label class="col-sm-2 control-label">참가유형</label>
                                 <div class="col-sm-10">
                                     <select class="form-control input-lg m-bot15" name="attendance_type" id="attendance_type">
-                                        <option value="일반 참가자">일반 참가자</option>
+                                        <option value="일반참가자">일반 참가자</option>
                                         <option value="임원">임원</option>
                                         <option value="좌장">좌장</option>
                                         <option value="연자">연자</option>
-                                        <!-- <option value="패널">패널</option> -->
+                                        <option value="패널">패널</option>
+                                        <option value="Satellite 1 참가자(동아ST)">Satellite 1 참가자(동아ST)</option>
+                                        <option value="Satellite 2 참가자(종근당)">Satellite 2 참가자(종근당)</option>
+                                        <option value="Satellite 3 참가자(대웅바이오)">Satellite 3 참가자(대웅바이오)</option>
+                                        <option value="Satellite 4 참가자(오가논)">Satellite 4 참가자(오가논)</option>
                                         <option value="후원사">후원사</option>
                                         <option value="기타">기타</option>
                                     </select>
@@ -79,7 +83,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">전화번호 *</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="phone" id="phone" placeholder="*필수 연락처 ('-'를 제외한 숫자만 입력하세요)">
+                                    <input class="form-control" type="text" name="phone" id="phone" placeholder="*필수 연락처 ('-'를 제외한 숫자만 입력해주세요.)">
                                 </div>
                             </div>
                             <div class="form-group">

@@ -108,7 +108,8 @@
                             <tr>
                                 <th>성함</th>
                                 <td id="name" class="qr_text">
-                                    <?php if (isset($user['nick_name'])) echo $user['nick_name'] ?></td>
+                                    <?php if (isset($user['nick_name'])) echo $user['nick_name'] ?>
+                                </td>
                             </tr>
                             <tr>
                                 <th>소속</th>
@@ -130,12 +131,13 @@
                             <tr>
                                 <th>등록비</th>
                                 <td id="fee" class="qr_text">
-                                    <?php if (isset($user['fee'])) echo $user['fee'] ?></td>
+                                    <?php if (isset($user['fee'])) echo $user['fee'] ?>
+                                </td>
                             </tr>
                         </table>
                         <table class="qr-info-table mb-80 w-2/5" id="qrTable">
                             <colgroup>
-                                <col width="30%" />
+                                <col width="30%"/>
                                 <col />
                             </colgroup>
                             <tr>
@@ -166,11 +168,9 @@
 
                             <tr>
                                 <th class="memoHeader">메모</th>
-                                <td id="memo" class="qr_text"><?php if (isset($user['memo'])) { echo $user['memo'] == 'null' ? "" : $user['memo'];}?></td>
-                            </tr>
-                            <tr>
-                                <th class="memoHeader">결제 메모</th>
-                                <td id="deposit_memo" class="qr_text"><?php if (isset($user['deposit_memo'])) { echo $user['deposit_memo'] == 'null' ? "" : $user['deposit_memo'];}?></td>
+                                <td id="memo" class="qr_text">
+                                    <?php if (isset($user['memo'])) { echo $user['memo'] == 'null' ? "" : $user['memo'];}?>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -209,7 +209,7 @@
     const fee = document.querySelector("#fee")
     const is_score = document.querySelector("#is_score")
     const memo = document.querySelector("#memo")
-    const deposit_memo = document.querySelector("#deposit_memo")
+
     const number = document.querySelector("#number")
     const remark1 = document.querySelector("#remark1")
     const remark2 = document.querySelector("#remark2")
@@ -312,8 +312,7 @@
                         .trim();
                     memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "")
                         .trim();
-                    deposit_memo.innerText = htmlDocument.querySelector("#deposit_memo").innerText.replace(/<br\s*\/?>/gi, "")
-                        .trim();
+
                     remark1.innerText = htmlDocument.querySelector("#remark1").innerText.replace(/<br\s*\/?>/gi, "")
                         .trim();
                     remark2.innerText = htmlDocument.querySelector("#remark2").innerText.replace(/<br\s*\/?>/gi, "")
@@ -343,7 +342,6 @@
                 changeBackgroundColorIfNotEmpty(remark2);
                 changeBackgroundColorIfNotEmpty(remark3);
                 changeBackgroundColorIfNotEmpty(remark4);
-                changeBackgroundColorIfNotEmpty(deposit_memo);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);

@@ -216,7 +216,7 @@ table th {
 //            }
 //        })
 
-function copy(text) {
+    function copy(text) {
         if (navigator.clipboard) {
             navigator.clipboard
                 .writeText(text)
@@ -233,7 +233,7 @@ function copy(text) {
                     popupBackground.classList.remove("popup-hidden");
                     popupBackground.classList.add("popup-visible");
                     
-                    // 2초 후에 팝업을 다시 숨김
+                    // 1초 후에 팝업을 다시 숨김
                     setTimeout(function() {
                         popup.classList.remove("popup-visible");
                         popup.classList.add("popup-hidden");
@@ -241,7 +241,7 @@ function copy(text) {
                         popupBackground.classList.remove("popup-visible");
                         popupBackground.classList.add("popup-hidden");
 
-                    }, 1500);
+                    }, 1000);
                 })
                 .catch(() => {
                     alert('복사를 다시 시도해주세요.');
@@ -249,15 +249,15 @@ function copy(text) {
         }
     }
 
-function onClickMemo(id) {
-    const url = `/admin/memo?n=${id}`;
-    window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
-}
+    function onClickMemo(id) {
+        const url = `/admin/memo?n=${id}`;
+        window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
+    }
 
-function onClickReceipt(id) {
-    const url = `/admin/receipt?n=${id}`
-    window.open(url, "Certificate", "width=500, height=300, top=30, left=30")
-}
+    function onClickReceipt(id) {
+        const url = `/admin/receipt?n=${id}`
+        window.open(url, "Certificate", "width=500, height=300, top=30, left=30")
+    }
 
 
 $('.depositChk').click(function() {
