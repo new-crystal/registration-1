@@ -1801,12 +1801,45 @@ class Admin extends CI_Controller
             $data['on_participant_2'] = $this->users->get_access_on_participant_2();
             $data['on_participant_3'] = $this->users->get_access_on_participant_3();
 
-            $data['satellite_1'] = $this->users->get_access_satellite_1();
-            $data['satellite_2'] = $this->users->get_access_satellite_2();
-            $data['satellite_3'] = $this->users->get_access_satellite_3();
-            $data['on_satellite_1'] = $this->users->get_access_on_satellite_1();
-            $data['on_satellite_2'] = $this->users->get_access_on_satellite_2();
-            $data['on_satellite_3'] = $this->users->get_access_on_satellite_3();
+            //Satellite 1 참가자(동아ST)
+            $data['satellite_1_1'] = $this->users->get_access_satellite_1_1();
+            $data['satellite_2_1'] = $this->users->get_access_satellite_2_1();
+            $data['satellite_3_1'] = $this->users->get_access_satellite_3_1();
+
+            $data['on_satellite_1_1'] = $this->users->get_access_on_satellite_1_1();
+            $data['on_satellite_2_1'] = $this->users->get_access_on_satellite_2_1();
+            $data['on_satellite_3_1'] = $this->users->get_access_on_satellite_3_1();
+
+
+            //Satellite 2 참가자(종근당)
+            $data['satellite_1_2'] = $this->users->get_access_satellite_1_2();
+            $data['satellite_2_2'] = $this->users->get_access_satellite_2_2();
+            $data['satellite_3_2'] = $this->users->get_access_satellite_3_2();
+
+            $data['on_satellite_1_2'] = $this->users->get_access_on_satellite_1_2();
+            $data['on_satellite_2_2'] = $this->users->get_access_on_satellite_2_2();
+            $data['on_satellite_3_2'] = $this->users->get_access_on_satellite_3_2();
+
+
+            //Satellite 3 참가자(대웅바이오)
+            $data['satellite_1_3'] = $this->users->get_access_satellite_1_3();
+            $data['satellite_2_3'] = $this->users->get_access_satellite_2_3();
+            $data['satellite_3_3'] = $this->users->get_access_satellite_3_3();
+          
+            $data['on_satellite_1_3'] = $this->users->get_access_on_satellite_1_3();
+            $data['on_satellite_2_3'] = $this->users->get_access_on_satellite_2_3();
+            $data['on_satellite_3_3'] = $this->users->get_access_on_satellite_3_3();
+    
+
+            //Satellite 4 참가자(오가논)
+            $data['satellite_1_4'] = $this->users->get_access_satellite_1_4();
+            $data['satellite_2_4'] = $this->users->get_access_satellite_2_4();
+            $data['satellite_3_4'] = $this->users->get_access_satellite_3_4();
+
+            $data['on_satellite_1_4'] = $this->users->get_access_on_satellite_1_4();
+            $data['on_satellite_2_4'] = $this->users->get_access_on_satellite_2_4();
+            $data['on_satellite_3_4'] = $this->users->get_access_on_satellite_3_4();
+
             
             $data['other_1'] = $this->users->get_access_other_1();
             $data['other_2'] = $this->users->get_access_other_2();
