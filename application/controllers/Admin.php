@@ -944,7 +944,9 @@ class Admin extends CI_Controller
             // $score = floor($spent / 60);
             // $max_score = $this->schedule->get_maxscore();
             // $score = min($max_score, $score);
+
             $onsite = "";            
+            
             if($row['onsite_reg'] == 0){
                 $onsite = "사전등록";            
             }else{

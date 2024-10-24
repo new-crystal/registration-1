@@ -52,6 +52,9 @@
         padding: 4px;
         background-color: #ffbe0b;
         display: block;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 1.4;
     }
 
     .memoHeader {
@@ -75,7 +78,7 @@
                     <div id="notice">
                         <?php
                         foreach ($notice as $item) {
-                            echo '<input class="notice" value="' .  $item['notice'] . '" readonly/>';
+                            echo '<input class="notice" value="※ ' .  $item['notice'] . '" readonly/>';
                         } ?>
 
                     </div>
