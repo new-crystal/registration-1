@@ -133,6 +133,7 @@
                         <th>등록구분</th>
                         <th>등록비</th>
                         <th>입금여부</th>
+                        <th>회원 ID</th>
                         <th>메모</th>
                     </tr>
                 </thead>
@@ -176,6 +177,7 @@
                             echo '<td style="color:blue;">';
                         }
                         echo '' . $item['deposit'] . '</td>';
+                        echo '<td class="pointer" onClick="copy(\'' .$item['member_id']. '\')">'. $item['member_id'] . '</td>';
                         echo '</td>';
                         if ($item['memo'] != "" && $item['memo'] != 'null') {
                             echo '<td>';
