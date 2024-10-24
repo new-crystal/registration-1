@@ -204,6 +204,6 @@ function copy(text) {
                 alert('복사를 다시 시도해주세요.');
             });
     }
-    }
+}
 </script>
 </body>

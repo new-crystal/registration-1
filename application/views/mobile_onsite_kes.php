@@ -643,7 +643,7 @@
                         <p class="inline-block">등록비</p>
                         <div id="fee" class="underline underline-offset-4 text-rose-700 font-bold text-lg"></div>
                     </div>
-                    <button id="submit_btn" type="submit" class="block bg-sky-900 text-white font-bold px-3 py-4 mx-auto my-10 w-2/5 hover:underline underline-offset-4">제출하기</button></section>
+                    <button id="submit_btn" type="submit" class="block bg-amber-400 text-white font-bold px-3 py-4 mx-auto my-10 w-2/5 hover:underline underline-offset-4">제출하기</button></section>
                 </div>
         <!-- </div> -->
     </div>
