@@ -195,6 +195,9 @@ class OnSite extends CI_Controller
                     $fee = 0;
             }
             
+            if($place =="기타"){
+                $place = $place_etc;
+            }
             
 
             $time = date("Y-m-d H:i:s");
