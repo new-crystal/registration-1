@@ -99,6 +99,11 @@
                                     <td><input class="form-control" type="text" name="fee" value="<?php echo $item['fee']; ?>">
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th>할인코드</th>
+                                    <td><input class="form-control" type="text" name="etc5" value="<?php echo $item['etc5']; ?>">
+                                    </td>
+                                </tr>
                                 <!-- <tr>
                                     <th>Welcome Reception 참석 여부</th>
                                     <td> <input id="dp1" type="text" value="<?php echo $item['welcome_reception_yn']; ?>" size="16" class="form-control yn" name="welcome_reception_yn">
@@ -123,6 +128,7 @@
 
                                     </td>
                                 </tr> -->
+
                                 <tr>
                                     <th>참가유형</th>
                                     <td>
@@ -165,7 +171,7 @@
                                         </select>
                                     </td>
                                 </tr>
-                              
+<!--                               
                               
                                 <tr>
                                     <th>qr print 여부(N/Y)</th>
@@ -180,7 +186,7 @@
                                     <th>day 2 출결여부(N/Y)</th>
                                     <td><input class="form-control yn" type="text" value="<?php echo $item['qr_chk_day_2']; ?>" name="qr_chk_day_2" id="phone" readonly>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </table>
                         </div>
                         <div class="detail_table">
@@ -215,8 +221,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>회원유무</th>
-                                    <td> <input class="form-control" type="text" value="<?php echo $item['member']; ?>" name="member" id="member">
+                                    <th>국내학회 회원ID</th>
+                                    <td> <input class="form-control" type="text" value="<?php echo $item['member_id']; ?>" name="member_id" id="member_id">
                                     </td>
                                 </tr>
 

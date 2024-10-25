@@ -48,7 +48,7 @@
     }
 
     .notice {
-        width: 500px;
+        width: 800px;
         padding: 4px;
         background-color: #f56e44;
         display: block;
