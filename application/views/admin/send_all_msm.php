@@ -93,8 +93,8 @@ if ($err) {
 } else if (!$users) {
 ?>
     <script>
-        alert('문자메시지를 전송할 유저가 없습니다.');
-        window.location.href = "/admin/qr_user";
+        //alert('문자메시지를 전송할 유저가 없습니다.');
+        //window.location.href = "/admin/qr_user";
     </script>
 <?php
 }

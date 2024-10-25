@@ -640,6 +640,13 @@
                             </div>
                     </div>
                     <div class="mo_wrap">
+                                <p class="inline-block">결제 방법<span>*</span></p>
+                                <div class="">
+                                    <label for="card"> <input type="radio" id="card" name="deposit_method"/>카드 결제</label>
+                                    <label for="bank"> <input type="radio" id="bank" name="deposit_method"/>계좌이체</label> 
+                                </div>
+                            </div>
+                    <div class="mo_wrap">
                         <p class="inline-block">등록비</p>
                         <div id="fee" class="underline underline-offset-4 text-rose-700 font-bold text-lg"></div>
                     </div>
@@ -935,7 +942,9 @@
     
     function onSubmit() {
         //e.preventDefault();
-        
+        const card = document.querySelector("#card");
+        const bank = document.querySelector("#bank");
+
         if(!document.querySelector("#terms1").checked){
             alert("개인정보 수집 및 이용에 동의해주세요.");
             document.querySelector("#terms1").focus()
@@ -1011,6 +1020,12 @@
             return false;
         }
 
+        if(!card.checked && !bank.checked){
+            alert("결제 방법을 확인해주세요.")
+            card.focus();
+            return false;
+        }
+
         // if(!breakfast1.checked && !breakfast2.checked && !breakfast2.checked){
         //     alert("Breakfast symposium 참석여부를 확인해주세요.");
         //     breakfast1.focus();
@@ -1074,7 +1089,14 @@
         // }else{
         //      etc3 = "미참석";
         // }
-        
+        let deposit_method = "";
+
+        if(card.checked){
+            deposit_method = "신용카드";
+        }else if(bank.checked){
+            deposit_method = "계좌이체";
+        }
+
         const url = "/onSite/mobile_kes";
         const data = {
             nick_name : KoreanName.value,
@@ -1095,7 +1117,8 @@
             //promotion_code :  document.querySelector("#promotion_code").value,
             confer_info : getSelectedCheckboxes(),
             type1 : attendance_select.options[attendance_select.selectedIndex].value,
-            type2 : categorySelect.options[categorySelect.selectedIndex].value
+            type2 : categorySelect.options[categorySelect.selectedIndex].value,
+            deposit_method : deposit_method
         }
 
         $.ajax({

@@ -163,6 +163,7 @@ class OnSite extends CI_Controller
             $etc4 = isset($_POST['etc4']) ? $_POST['etc4'] : null;
             //$promotion_code = isset($_POST['promotion_code']) ? $_POST['promotion_code'] : null;
             $confer_info = isset($_POST['confer_info']) ? $_POST['confer_info'] : null;
+            $deposit_method = isset($_POST['deposit_method']) ? $_POST['deposit_method'] : null;
 
             $fee = 0;
             $remark1 = "";
@@ -249,6 +250,7 @@ class OnSite extends CI_Controller
                 'member' => $member,
                 'member_id' => $kes_id,
                 'remark1' => $remark1,
+                'deposit_method' => $deposit_method,
                 //'etc5' => $promotion_code,
                 'conference_info' => implode("*", $confer_info)		
                 // 'uagent' => $uagent,
