@@ -503,7 +503,7 @@ class Admin extends CI_Controller
                 'attendance_type' => $userType,
                 'qr_generated' => "Y"
             );
-            $data['users'] = $this->users->get_users_order('nick_name', $where);
+            $data['item'] = $this->users->get_users_order('nick_name', $where);
             $this->load->view('admin/qr_layout_all', $data);
             // }
         }
@@ -589,8 +589,8 @@ class Admin extends CI_Controller
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('nick_name', '이름', 'required');
-            $this->form_validation->set_rules('org', '소속', 'required');
-            $this->form_validation->set_rules('phone', '전화번호', 'required');
+            // $this->form_validation->set_rules('org', '소속', 'required');
+            // $this->form_validation->set_rules('phone', '전화번호', 'required');
 
             if ($this->form_validation->run() === FALSE) {
                 $this->load->view('admin/add_user');
@@ -611,25 +611,25 @@ class Admin extends CI_Controller
                 //            error_log(print_r($name, TRUE), 3, '/tmp/errors.log');
 
                 $remark1 = "";
-                if(strpos($attendance_type, "Satellite")){
+                if(strpos($attendance_type, "Satellite") !== false){
                     $fee = 0;
 
-                    if(strpos($attendance_type, "1")){
+                    if(strpos($attendance_type, "동아ST") !== false){
                         $attendance_type = "세틀라이트 등록자";
                         $remark1 = "세틀라이트 1(동아ST)";
                     }
                     
-                    if(strpos($attendance_type, "2")){
+                    if(strpos($attendance_type, "종근당") !== false){
                         $attendance_type = "세틀라이트 등록자";
                         $remark1 = "세틀라이트 2(종근당)";
                     }
                     
-                    if(strpos($attendance_type, "3")){
+                    if(strpos($attendance_type, "대웅바이오") !== false){
                         $attendance_type = "세틀라이트 등록자";
                         $remark1 = "세틀라이트 3(대웅바이오)";
                     }
                     
-                    if(strpos($attendance_type, "4")){
+                    if(strpos($attendance_type, "오가논") !== false){
                         $attendance_type = "세틀라이트 등록자";
                         $remark1 = "세틀라이트 4(오가논)";
                     }
@@ -643,7 +643,8 @@ class Admin extends CI_Controller
                     'attendance_type' => trim($attendance_type),
                     'member_type' => trim($member_type),
                     'member' => trim($member),
-                    'time' => $time,
+                    'etc10' => $time,
+                    'etc11' => $time,
                     'uagent' => $uagent,
                     'deposit' => '결제대기',
                     'memo' => $memo,
@@ -740,11 +741,12 @@ class Admin extends CI_Controller
             if ($this->form_validation->run() === FALSE) {
                 //                $this->load->view('admin');
             } else {
-                // $remark1 = $this->input->post('remark1');
-                // $remark2 = $this->input->post('remark2');
-                // $remark3 = $this->input->post('remark3');
-                // $remark4 = $this->input->post('remark4');
+                $remark1 = $this->input->post('remark1');
+                $remark2 = $this->input->post('remark2');
+                $remark3 = $this->input->post('remark3');
+                $remark4 = $this->input->post('remark4');
                 $memo = $this->input->post('memo');
+                $deposit_memo = $this->input->post('deposit_memo');
                 
                 $fee = $this->input->post('fee');
                 // $welcome_reception_yn = $this->input->post('welcome_reception_yn');
@@ -762,7 +764,7 @@ class Admin extends CI_Controller
                 $nick_name = $this->input->post('nick_name');
                 $org = $this->input->post('org');
                 $org_nametag = $this->input->post('org_nametag');
-                $member = $this->input->post('member');
+                $member_id = $this->input->post('member_id');
                 // $department = $this->input->post('department');
 
                 $licence_number = $this->input->post('licence_number');
@@ -785,22 +787,43 @@ class Admin extends CI_Controller
                 //$onsite = $this->input->post('onsite_reg');
                 $etc1 = $this->input->post('etc1');
                 $etc2 = $this->input->post('etc2');
+                $etc5 = $this->input->post('etc5');
 
                 if ($memo == "") {
                     $memo = null;
                 }
-                // if($onsite == "현장등록"){
-                //     $onsite_reg = '1';
-                // }else if($onsite == "사전등록"){
-                //     $onsite_reg = '0';
-                // }
+
+                if(strpos($attendance_type, "Satellite") !== false){
+                    $fee = 0;
+
+                    if(strpos($attendance_type, "동아ST") !== false){
+                        $attendance_type = "세틀라이트 등록자";
+                        $remark1 = "세틀라이트 1(동아ST)";
+                    }
+                    
+                    if(strpos($attendance_type, "종근당") !== false){
+                        $attendance_type = "세틀라이트 등록자";
+                        $remark1 = "세틀라이트 2(종근당)";
+                    }
+                    
+                    if(strpos($attendance_type, "대웅바이오") !== false){
+                        $attendance_type = "세틀라이트 등록자";
+                        $remark1 = "세틀라이트 3(대웅바이오)";
+                    }
+                    
+                    if(strpos($attendance_type, "오가논") !== false){
+                        $attendance_type = "세틀라이트 등록자";
+                        $remark1 = "세틀라이트 4(오가논)";
+                    }
+            }
                 $updateTime = date("Y-m-d H:i:s");
                 $info = array(
-                    // 'remark1' => $remark1,
-                    // 'remark2' => $remark2,
-                    // 'remark3' => $remark3,
-                    // 'remark4' => $remark4,
+                    'remark1' => $remark1,
+                    'remark2' => $remark2,
+                    'remark3' => $remark3,
+                    'remark4' => $remark4,
                     'memo' => $memo,
+                    'deposit_memo' => $deposit_memo,
                     'fee' => $fee,
                     // 'welcome_reception_yn' => $welcome_reception_yn,
                     // 'satellite_yn' => $satellite_yn,
@@ -809,7 +832,7 @@ class Admin extends CI_Controller
                     'nick_name' => $nick_name,
                     'org' => $org,
                     'org_nametag' => $org_nametag,
-                    'member' => $member,
+                    'member_id' => $member_id,
                     // 'department' => $department,
                     'member_type' => $member_type,
                     'attendance_type' => $attendance_type,
@@ -834,7 +857,8 @@ class Admin extends CI_Controller
                     // 'onsite_reg' => $onsite_reg,
                     'time' => substr($time, 0, 10),
                     'etc1' => $etc1,
-                    'etc2' => $etc2
+                    'etc2' => $etc2,
+                    'etc5' => $etc5,
                 );
 
                 $this->users->update_user($info, $where);

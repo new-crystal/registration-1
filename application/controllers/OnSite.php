@@ -239,7 +239,8 @@ class OnSite extends CI_Controller
                 //'satellite2_yn' => $etc3, // Satellite symposium 11월 1일(금)
                 //'etc4' => $etc4, // 등록할인코드 Y/N
                 'fee' => $fee,
-                'time' => $time,
+                'etc10' => $time,
+                'etc11' => $time,
                 'org' => $place,
                 'org_nametag' => $place,
                 'etc2' => $place,

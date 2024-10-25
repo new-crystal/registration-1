@@ -4,18 +4,18 @@
 
 <style>
     @page {
-        /* size: 10cm 24cm; */
-        size: 794px 956px;
+        size: 10cm 24cm;
+        /* size: 794px 956px; */
         margin: 0;
     }
 
         
     @media print {
             #printThis {
-            /* width: 10cm;
-            height: 24cm; */
-            width: 794px;
-            height: 956px;
+            width: 10cm;
+            height: 24cm;
+            /* width: 794px;
+            height: 956px; */
             margin: 0;
             padding: 0;
         }
@@ -41,10 +41,10 @@
     }
 
     #printThis {
-        /* width: 10cm;
-        height: 24cm; */
-        width: 794px;
-        height: 956px;
+        width: 10cm;
+        height: 24cm;
+        /* width: 794px;
+        height: 956px; */
         margin: 0;
         padding: 0;
     }
@@ -64,11 +64,11 @@
 
             if (!$printSection) {
                 var $printSection = document.createElement("div");
-                $printSection.style.width = "794px";
-                $printSection.style.height = "956px";
+                // $printSection.style.width = "794px";
+                // $printSection.style.height = "956px";
 
-                // $printSection.style.width = "10cm";
-                // $printSection.style.height = "24cm";
+                $printSection.style.width = "10cm";
+                $printSection.style.height = "24cm";
                 $printSection.id = "printSection";
                 document.body.appendChild($printSection);
             }
@@ -92,47 +92,56 @@
     <div class="content" id="nametag">
         <div id="printThis">
             <?php
+            //print_r($item);
             $num_int = 1;
-            foreach ($users as $users) {
-                   //영문일 경우 자간 간격 4px / 한글은 10px
-                   $only_letters = preg_match('/^[a-zA-Z\s]+$/', $users['nick_name']);
-                   $letter_spacing = ($only_letters) ? '0px' : '10px';
-                   $letter_spacing_receipt = ($only_letters) ? '0px' : '5px';
-       
-                   $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
-                   $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
-                   $orgLength = mb_strlen($users['org_nametag'], "UTF-8");
-                   // $reg_num = explode("-", $users['registration_no'])[1];
-   
-                   echo '<div class="a4_area">';
-                   echo '<div class="bg_area">';
-                   echo '<div class="txt_con">';
-                   // echo '<div class="reg_num_1">' .$users['registration_no'] . '</div>';
-                   //성함 조건식 
-                   //1. 3글자 //영문 letter_spacing = 0, 한글 = 10
-                   echo '<div class = "box_1_area">';
-                 
-                   echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
-                   
-                   echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
-                   echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div></div>';
-   
-             
-   
-   
-                   //학회팀 요청 영수증 성함 한글일 때 letter_spacing = 5
-                   echo '<div class = "box_2_area">';
-                   echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
-                   echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
-                   echo '<div class="receipt receipt_price">' . $users['fee']. '</div>';
-                   echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
-                   echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
-                   echo '<div class="receipt ln">' . $users['licence_number']. '</div>';
-                   echo '<div class="receipt sn">' . $users['specialty_number']. '</div></div>';
-                   
+            foreach ($item as $users) {
+                     //영문일 경우 자간 간격 4px / 한글은 10px
+                $only_letters = preg_match('/^[a-zA-Z\s]+$/', $users['nick_name']);
+                $letter_spacing = ($only_letters) ? '0px' : '20px';
+                $letter_spacing_receipt = ($only_letters) ? '0px' : '5px';
+
+                $lucky_num = explode("_R",$users['registration_no'])[1]; 
     
-                   echo '</div>';
-                   echo '</div>';
+                $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
+                $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
+                $orgLength = mb_strlen($users['org_nametag'], "UTF-8");
+                // $reg_num = explode("-", $users['registration_no'])[1];
+
+                echo '<div class="a4_area">';
+                echo '<div class="bg_area">';
+                echo '<div class="txt_con">';
+                // echo '<div class="reg_num_1">' .$users['registration_no'] . '</div>';
+                //성함 조건식 
+                //1. 3글자 //영문 letter_spacing = 0, 한글 = 10
+                echo '<div class = "box_1_area">';
+                echo '<div class="start_num">' .$lucky_num . '</div>';
+               
+               if($nicknameLength <= 3){
+                echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
+               }else if($nicknameLength > 3  && $nicknameLength <= 5){
+                   echo '<div class="nick_name small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';   
+               }else if($nicknameLength > 5 && $nicknameLength < 20 ){
+                echo '<div class="nick_name small_small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">'. $users['nick_name'] . '</div>';   
+               }else if($nicknameLength >= 20 ){
+                echo '<div class="nick_name small_small_small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';   
+               }
+
+                echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
+                echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
+                echo '<div class="receipt receipt_price">' . $users['fee']. '</div>';
+                echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
+                echo '<div class="receipt end_num">' .$lucky_num . '</div></div>';
+                //학회팀 요청 영수증 성함 한글일 때 letter_spacing = 5
+                // echo '<div class = "box_2_area">';
+                // echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
+                // echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';
+                // echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
+                // echo '<div class="receipt ln">' . $users['licence_number']. '</div>';
+                // echo '<div class="receipt sn">' . $users['specialty_number']. '</div></div>';
+                
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
                 $num_int = $num_int + 1;
             }
             ?>
