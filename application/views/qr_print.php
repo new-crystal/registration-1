@@ -78,12 +78,16 @@ body {
                    //1. 3글자 //영문 letter_spacing = 0, 한글 = 10
                    echo '<div class = "box_1_area">';
                    echo '<div class="start_num">' .$lucky_num . '</div>';
-                   if($nicknameLength > 3){
-                    echo '<div class="nick_name small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
-                   }else{
-                       echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
-                       
+                   if($nicknameLength <= 3){
+                    echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
+                   }else if($nicknameLength > 3  && $nicknameLength <= 5){
+                       echo '<div class="nick_name small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';   
+                   }else if($nicknameLength > 5 && $nicknameLength < 20 ){
+                    echo '<div class="nick_name small_small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">'. $users['nick_name'] . '</div>';   
+                   }else if($nicknameLength >= 20 ){
+                    echo '<div class="nick_name small_small_small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';   
                    }
+    
                    echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
                    echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
                    echo '<div class="receipt receipt_price">' . $users['fee']. '</div>';

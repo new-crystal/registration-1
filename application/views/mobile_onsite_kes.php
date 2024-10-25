@@ -315,13 +315,13 @@
     
     <!-- <div id="scroll" class="w-full h-full flex items-center justify-center overflow-x-hidden overflow-y-scroll relative max-w-5xl"> -->
         <div class="w-full ">
-            <div class="header fixed z-10">
+            <div class="header z-10">
                 <img class="header_img" src="../../assets/images/access_header.jpg" />
                 <div class="w-full text-center text-2xl font-semibold bg-gradient-to-r from-amber-400 to-amber-800 p-3 text-white mx-auto">
                     <h1>현장 등록</h1>
                 </div>
             </div>
-            <section id="container" class="w-full max-w-5xl mx-auto pt-60">
+            <section id="container" class="w-full max-w-5xl mx-auto">
             <div class="term_wrap">
                 <h3 class="title mb-2">개인정보 수집 및 이용에 관한 안내</h3>
                 <div class="term_box">
@@ -758,15 +758,15 @@
     // })
 
     /**한국어 유효성 검사 */
-    KoreanName.addEventListener('input', (event) => {
-        const inputValue = event.target.value;
-        const onlyHangul = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
+    // KoreanName.addEventListener('input', (event) => {
+    //     const inputValue = event.target.value;
+    //     const onlyHangul = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
 
-        if (!onlyHangul.test(inputValue)) {
-            alert('국문으로 입력해주세요')
-            event.target.value = inputValue.replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]+/g, '');
-        }
-    });
+    //     if (!onlyHangul.test(inputValue)) {
+    //         alert('국문으로 입력해주세요')
+    //         event.target.value = inputValue.replace(/[^\uAC00-\uD7AF\u1100-\u11FF\u3130-\u318F]+/g, '');
+    //     }
+    // });
 
     /**휴대폰 유효성 검사 */
     phone.addEventListener('input', (event) => {
