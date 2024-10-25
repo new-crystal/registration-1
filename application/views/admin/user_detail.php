@@ -100,6 +100,11 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th>결제방법</th>
+                                    <td><input class="form-control" type="text" name="deposit_method" value="<?php echo $item['deposit_method']; ?>">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th>할인코드</th>
                                     <td><input class="form-control" type="text" name="etc5" value="<?php echo $item['etc5']; ?>">
                                     </td>

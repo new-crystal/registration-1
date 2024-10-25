@@ -277,6 +277,7 @@ class Users extends CI_Model
 	public function get_msm_user($where)
 	{
 		$this->db->where($where);
+		$this->db->where('attendance_type !=', '세틀라이트 등록자');
 		return $this->db->get($this->users)->result_array();
 	}
 

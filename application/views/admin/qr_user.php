@@ -108,10 +108,14 @@ table th {
                         echo '<td>' . $item['phone'] . '</td>';
                         //
                          echo '<td>';
-                        if ($item['QR_SMS_SEND_YN'] == "Y") {
-                            echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-success qr_btn"  data-id="' . $item['registration_no'] . '">문자발송</div></button>';
-                        } else {
-                            echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-non-success qr_btn" data-id="' . $item['registration_no'] . '">문자발송</div></button>';
+                        if($item['attendance_type'] !== "세틀라이트 등록자"){
+                            if ($item['QR_SMS_SEND_YN'] == "Y") {
+                                echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-success qr_btn"  data-id="' . $item['registration_no'] . '">문자발송</div></button>';
+                            } else {
+                                echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-non-success qr_btn" data-id="' . $item['registration_no'] . '">문자발송</div></button>';
+                            }
+                        }else{
+                            
                         }
                          echo '</td>';
                         // echo '<td>';
