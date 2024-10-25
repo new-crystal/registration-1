@@ -50,7 +50,7 @@
     .notice {
         width: 500px;
         padding: 4px;
-        background-color: #ffbe0b;
+        background-color: #f56e44;
         display: block;
         font-weight: bold;
         font-size: 18px;
@@ -59,6 +59,9 @@
 
     .memoHeader {
         background-color: #fb8500 !important;
+    }
+    .notice.red{
+        background-color: #ffbe0b;
     }
 </style>
 
@@ -76,10 +79,15 @@
             <div class="panel panel-flat">
                 <div>
                     <div id="notice">
-                        <?php
-                        foreach ($notice as $item) {
-                            echo '<input class="notice" value="※ ' .  $item['notice'] . '" readonly/>';
-                        } ?>
+                    <?php
+                        foreach ($notice as $i => $item) { // $i는 인덱스, $item은 배열의 값
+                            $bg = '';
+                            if($i % 2 == 0){
+                                $bg = "red";
+                            }
+                            echo '<input class="notice '.$bg.'" value="※ ' .  $item['notice'] . '" readonly/>'; // $item['notice']로 접근
+                        }
+                    ?>
 
                     </div>
                     <!-- <button class="w-[150px] h-[40px] bg-slate-300 mt-20 hover:bg-slate-400 active:bg-slate-500" type="button" id="open">새창</button> -->
@@ -144,35 +152,42 @@
                                 <col />
                             </colgroup>
                             <tr>
-                                <th class="memoHeader">remark1</th>
+                                <th class="memoHeader">remark1<br/>(하단텍 및 구분)</th>
                                 <td id="remark1" class="qr_text">
                                     <?php if (isset($user['remark1'])) echo $user['remark1'] ?>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="memoHeader">remark2</th>
+                                <th class="memoHeader">remark2<br/>(Lunch with experts)</th>
                                 <td id="remark2" class="qr_text">
                                     <?php if (isset($user['remark2'])) echo $user['remark2'] ?>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="memoHeader">remark3</th>
+                                <th class="memoHeader">remark3<br/>(정보받기&안내)</th>
                                 <td id="remark3" class="qr_text">
                                     <?php if (isset($user['remark3'])) echo $user['remark3'] ?>
                                 </td>
                             </tr>
 
-                            <tr>
+                            <!-- <tr>
                                 <th class="memoHeader">remark4</th>
                                 <td id="remark4" class="qr_text">
                                     <?php if (isset($user['remark4'])) echo $user['remark4'] ?>
                                 </td>
-                            </tr>
+                            </tr> -->
 
                             <tr>
                                 <th class="memoHeader">메모</th>
                                 <td id="memo" class="qr_text">
                                     <?php if (isset($user['memo'])) { echo $user['memo'] == 'null' ? "" : $user['memo'];}?>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th class="memoHeader">등록메모</th>
+                                <td id="deposit_memo" class="qr_text">
+                                    <?php if (isset($user['deposit_memo'])) { echo $user['deposit_memo'] == 'null' ? "" : $user['deposit_memo'];}?>
                                 </td>
                             </tr>
                         </table>
@@ -212,12 +227,13 @@
     const fee = document.querySelector("#fee")
     const is_score = document.querySelector("#is_score")
     const memo = document.querySelector("#memo")
+    const deposit_memo = document.querySelector("#deposit_memo")
 
     const number = document.querySelector("#number")
     const remark1 = document.querySelector("#remark1")
     const remark2 = document.querySelector("#remark2")
     const remark3 = document.querySelector("#remark3")
-    const remark4 = document.querySelector("#remark4")
+    //const remark4 = document.querySelector("#remark4")
     const memoBtn = document.querySelector("#memo_btn")
     const content = document.querySelector(".content")
     const notice = document.querySelector("#notice")
@@ -315,7 +331,8 @@
                         .trim();
                     memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "")
                         .trim();
-
+                    deposit_memo.innerText = htmlDocument.querySelector("#deposit_memo").innerText.replace(/<br\s*\/?>/gi, "")
+                        .trim();
                     remark1.innerText = htmlDocument.querySelector("#remark1").innerText.replace(/<br\s*\/?>/gi, "")
                         .trim();
                     remark2.innerText = htmlDocument.querySelector("#remark2").innerText.replace(/<br\s*\/?>/gi, "")
@@ -323,8 +340,8 @@
                     remark3.innerText = htmlDocument.querySelector("#remark3").innerText.replace(/<br\s*\/?>/gi,
                             "")
                         .trim();
-                    remark4.innerText = htmlDocument.querySelector("#remark4").innerText.replace(/<br\s*\/?>/gi, "")
-                        .trim();
+                    // remark4.innerText = htmlDocument.querySelector("#remark4").innerText.replace(/<br\s*\/?>/gi, "")
+                    //     .trim();
                     notice.innerHTML = htmlDocument.querySelector("#notice").innerHTML
                 } else {
                     number.innerText = qrvalue
@@ -344,7 +361,7 @@
                 changeBackgroundColorIfNotEmpty(remark1);
                 changeBackgroundColorIfNotEmpty(remark2);
                 changeBackgroundColorIfNotEmpty(remark3);
-                changeBackgroundColorIfNotEmpty(remark4);
+               // changeBackgroundColorIfNotEmpty(remark4);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);

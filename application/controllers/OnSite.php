@@ -165,6 +165,7 @@ class OnSite extends CI_Controller
             $confer_info = isset($_POST['confer_info']) ? $_POST['confer_info'] : null;
 
             $fee = 0;
+            $remark1 = "";
             if($category == "일반참가자"){
                 if($member == "Y"){
                     if($attendance_type == "교수" || $attendance_type == "전문의" ||$attendance_type == "개원의" || $attendance_type == "봉직의" || $attendance_type == "전임의" ||$attendance_type == "기초의학자"){
@@ -191,13 +192,34 @@ class OnSite extends CI_Controller
                  else{
                     $fee = 0;
                  }
-            }else{
+            }else if($category !== "일반참가자"){
                     $fee = 0;
+
+                    if(strpos($category, "1")){
+                        $category = "세틀라이트 등록자";
+                        $remark1 = "세틀라이트 1(동아ST)";
+                    }
+                    
+                    if(strpos($category, "2")){
+                        $category = "세틀라이트 등록자";
+                        $remark1 = "세틀라이트 2(종근당)";
+                    }
+                    
+                    if(strpos($category, "3")){
+                        $category = "세틀라이트 등록자";
+                        $remark1 = "세틀라이트 3(대웅바이오)";
+                    }
+                    
+                    if(strpos($category, "4")){
+                        $category = "세틀라이트 등록자";
+                        $remark1 = "세틀라이트 4(오가논)";
+                    }
             }
             
             if($place =="기타"){
                 $place = $place_etc;
             }
+
             
 
             $time = date("Y-m-d H:i:s");
@@ -225,6 +247,7 @@ class OnSite extends CI_Controller
                 'etc4' => $address,
                 'member' => $member,
                 'member_id' => $kes_id,
+                'remark1' => $remark1,
                 //'etc5' => $promotion_code,
                 'conference_info' => implode("*", $confer_info)		
                 // 'uagent' => $uagent,
