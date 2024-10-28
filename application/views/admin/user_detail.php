@@ -96,17 +96,20 @@
                             <table>
                                 <tr>
                                     <th>등록비</th>
-                                    <td><input class="form-control" type="text" name="fee" value="<?php echo $item['fee']; ?>">
+                                    <td>
+                                        <input class="form-control" type="text" name="fee" value="<?php echo $item['fee']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>결제방법</th>
-                                    <td><input class="form-control" type="text" name="deposit_method" value="<?php echo $item['deposit_method']; ?>">
+                                    <td>
+                                        <input class="form-control" type="text" name="deposit_method" value="<?php echo $item['deposit_method']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>할인코드</th>
-                                    <td><input class="form-control" type="text" name="etc5" value="<?php echo $item['etc5']; ?>">
+                                    <td>
+                                        <input class="form-control" type="text" name="etc5" value="<?php echo $item['etc5']; ?>">
                                     </td>
                                 </tr>
                                 <!-- <tr>
@@ -174,6 +177,12 @@
                                             <!-- <option value="개원의">개원의</option> -->
                                             <!-- <option value="기타">기타</option> -->
                                         </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>홈페이지인증ID</th>
+                                    <td>
+                                        <input class="form-control" type="text" name="member_id" value="<?php echo $item['member_id']; ?>">
                                     </td>
                                 </tr>
 <!--                               
