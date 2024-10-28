@@ -143,8 +143,8 @@ $qrcode = $_GET["qrcode"] ?? "";
                             </table>
 
                         <div class="w-[550px] flex items-center justify-around *:w-[250px] *:h-[50px] *:border">
-                            <button class="hover:bg-amber-300 event_btn event1 <?php echo $user['event1']; ?>" type="button" data-id="1">Event 1 상품 수령 완료</button>
-                            <button class="hover:bg-violet-300 event_btn event2 <?php echo $user['event2']; ?>" type="button" data-id="2">Event 2 상품 수령 완료</button>
+                            <button class="hover:bg-amber-300 event_btn event1 <?php echo $user['event1']; ?>" type="button" data-id="1">Event 1 (스탬프) 상품 수령 완료</button>
+                            <button class="hover:bg-violet-300 event_btn event2 <?php echo $user['event2']; ?>" type="button" data-id="2">Event 2 (포스터)  상품 수령 완료</button>
                         </div>
                     </div>
                 </form>
@@ -168,6 +168,27 @@ $qrcode = $_GET["qrcode"] ?? "";
 
     const event_1 = document.querySelector('#event_1');
     const event_2 = document.querySelector('#event_2');
+
+    const content = document.querySelector(".content")
+    const qrForm = document.querySelector("#qr_form");
+    const qrcode = document.querySelector("#qrcode_input");
+    let qrvalue = "";
+    
+    content.addEventListener("click", () => {
+        qrcode.focus();
+    })
+
+    qrcode.focus();
+
+    qrForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        convertToEnglish();
+        qrvalue = qrcode.value
+        qrvalue = qrcode.value.replace(/\s/g, "");
+        //qrcode.value = "";
+        window.location.href=`/event/access?qrcode=${qrvalue}`;
+        qrcode.focus();
+    })
 
     function yellowBackground(target){
         target.classList.add("bg-amber-300");
@@ -234,5 +255,70 @@ $qrcode = $_GET["qrcode"] ?? "";
 
     window.onload = ()=>{
         getEvent()
+    }
+
+     // 한글 음절 및 개별 자모에 대한 영문 자판 매핑
+     const initialConsonant = ['r', 'R', 's', 'e', 'E', 'f', 'a', 'q', 'Q', 't', 'T', 'd', 'w', 'W', 'c', 'z', 'x', 'v', 'g'];
+    const medialVowel = ['k', 'o', 'i', 'O', 'j', 'p', 'u', 'P', 'h', 'hk', 'ho', 'hl', 'y', 'n', 'nj', 'np', 'nl', 'b', 'm', 'ml', 'l'];
+    const finalConsonant = ['', 'r', 'R', 'rt', 's', 'sw', 'sg', 'e', 'f', 'fr', 'fa', 'fq', 'ft', 'fx', 'fv', 'fg', 'a', 'q', 'qt', 't', 'T', 'd', 'w', 'c', 'z', 'x', 'v', 'g'];
+
+    // 개별 자음과 모음에 대한 매핑 (분리된 상태로 입력된 경우 처리)
+    const singleConsonantMap = {
+      'ㄱ': 'r', 'ㄲ': 'R', 'ㄴ': 's', 'ㄷ': 'e', 'ㄸ': 'E', 'ㄹ': 'f', 'ㅁ': 'a',
+      'ㅂ': 'q', 'ㅃ': 'Q', 'ㅅ': 't', 'ㅆ': 'T', 'ㅇ': 'd', 'ㅈ': 'w', 'ㅉ': 'W',
+      'ㅊ': 'c', 'ㅋ': 'z', 'ㅌ': 'x', 'ㅍ': 'v', 'ㅎ': 'g'
+    };
+    
+    const singleVowelMap = {
+      'ㅏ': 'k', 'ㅐ': 'o', 'ㅑ': 'i', 'ㅒ': 'O', 'ㅓ': 'j', 'ㅔ': 'p',
+      'ㅕ': 'u', 'ㅖ': 'P', 'ㅗ': 'h', 'ㅘ': 'hk', 'ㅙ': 'ho', 'ㅚ': 'hl',
+      'ㅛ': 'y', 'ㅜ': 'n', 'ㅝ': 'nj', 'ㅞ': 'np', 'ㅟ': 'nl', 'ㅠ': 'b',
+      'ㅡ': 'm', 'ㅢ': 'ml', 'ㅣ': 'l'
+    };
+
+    // 한글 음절을 자모로 분리하는 함수
+    function decomposeHangul(syllable) {
+      const hangulBase = 44032; // '가'의 유니코드 값
+      const initialBase = 588;  // 초성 범위
+      const medialBase = 28;    // 중성 범위
+
+      const code = syllable.charCodeAt(0) - hangulBase;
+
+      const initialIdx = Math.floor(code / initialBase);
+      const medialIdx = Math.floor((code % initialBase) / medialBase);
+      const finalIdx = code % medialBase;
+
+      return [initialIdx, medialIdx, finalIdx];
+    }
+
+
+    // 한글 음절과 개별 자모를 모두 처리하여 영어 자판에 맞게 변환하는 함수
+    function convertToEnglish() {
+      const input = document.getElementById('qrcode_input').value;
+      let result = '';
+
+      for (let char of input) {
+        const code = char.charCodeAt(0);
+
+        // 한글 음절인지 확인
+        if (code >= 44032 && code <= 55203) {
+          const [initialIdx, medialIdx, finalIdx] = decomposeHangul(char);
+          result += initialConsonant[initialIdx] + medialVowel[medialIdx] + finalConsonant[finalIdx];
+        } 
+        // 개별 자음 처리
+        else if (singleConsonantMap[char]) {
+          result += singleConsonantMap[char];
+        } 
+        // 개별 모음 처리
+        else if (singleVowelMap[char]) {
+          result += singleVowelMap[char];
+        } 
+        // 한글이 아닌 문자는 그대로 출력
+        else {
+          result += char;
+        }
+      }
+
+      document.getElementById('qrcode_input').value = result;
     }
 </script>
