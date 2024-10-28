@@ -87,7 +87,11 @@
                 //성함 조건식 
                 //1. 3글자 //영문 letter_spacing = 0, 한글 = 10
                 echo '<div class = "box_1_area">';
-                echo '<div class="start_num">' .$lucky_num . '</div>';
+                if($nicknameLength >= 3){
+                    echo '<div class="start_num">' .$lucky_num . '</div>';
+                }else if($nicknameLength > 3){
+                    echo '<div class="start_num small">' .$lucky_num . '</div>';
+                }
                
                if($nicknameLength <= 3){
                 echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
