@@ -97,7 +97,7 @@
                     <div class="w-2/5 flex flex-col items-center justify-center">
                         <h1 class="text-5xl mt-32 font-semibold ">QR CODE 입력 </h1>
                         <div class="w-[850px] flex justify-between">
-                            <input id="qrcode_input" name="qrcode" class="w-[400px] h-[50px] mt-20 p-3 " type="text" autofocus placeholder="영문 확인해주세요!!" />
+                            <input id="qrcode_input" name="qrcode" class="w-[400px] h-[50px] mt-20 p-3 " type="text" autofocus placeholder="꼭 출결 찍어주세요!!!!" />
                             <button class="w-[150px] h-[40px] bg-slate-300 mt-20 mb-20 hover:bg-slate-400 active:bg-slate-500 text-black" type="submit" id="submit">등록</button>
                             <button class="w-[150px] h-[40px] bg-indigo-950 mt-20 mb-20 hover:bg-slate-300 active:bg-slate-300 text-white" type="button" id="memo_btn">메모</button>
                         </div>
