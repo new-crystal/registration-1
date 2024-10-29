@@ -177,6 +177,7 @@ class OnSite extends CI_Controller
                     }
                     else if ($attendance_type == "학생" || $attendance_type == "전공의"){
                         $fee = 0;
+                        $remark1 = "학생증 / 재직증명서 확인";
                     }
                  }
                  else if($member == "N"){
@@ -188,6 +189,7 @@ class OnSite extends CI_Controller
                     }
                     else if ($attendance_type == "학생" || $attendance_type == "전공의"){
                         $fee = 0;
+                        $remark1 = "학생증 / 재직증명서 확인";
                     }
                  }
                  else{
