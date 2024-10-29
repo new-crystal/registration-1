@@ -262,7 +262,7 @@
                                         </span>
                                     </a>
                                 </li> -->
-                                <li style="margin-bottom: 2rem;">
+                                <!-- <li style="margin-bottom: 2rem;">
                                     <a href="/admin/qr_layout_all?type=02" target="_blank">
                                         <i class="icon-printer2"></i>
                                         <span>임원 QR 출력
@@ -290,7 +290,7 @@
                                         <span>패널 QR 출력
                                         </span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <!-- /main -->
                             </ul>
                         </div>

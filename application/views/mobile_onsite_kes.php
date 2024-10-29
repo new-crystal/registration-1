@@ -907,7 +907,7 @@
     function changeFee(){
         const attendanceType = attendance_select.options[attendance_select.selectedIndex].value;
         const category = categorySelect.options[categorySelect.selectedIndex].value;
-
+        //console.log(attendanceType)
         if(category == "일반참가자"){
 
             if(member_y.checked){
@@ -918,7 +918,7 @@
                         feeBox.innerHTML = "70000원";
                     }
                     else if (attendanceType == "학생" || attendanceType == "전공의"){
-                        attendanceType = "0원";
+                        feeBox.innerHTML = "0원";
                     }
                  }
                  else if(member_n.checked){

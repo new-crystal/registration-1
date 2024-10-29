@@ -32,13 +32,19 @@
                                 <label class="col-sm-2 control-label">참석 구분</label>
                                 <div class="col-sm-10">
                                     <select class="form-control input-lg m-bot15" name="member_type" id="member_type">
-                                        <option value="전임의">전임의</option>
-                                        <option value="봉직의">봉직의</option>
-                                        <option value="전공의">전공의</option>
-                                        <option value="교수">교수</option>
-                                        <option value="개원의">개원의</option>
-                                        <option value="후원사">후원사</option>
-                                        <option value="기타">기타</option>
+                                            <option value="교수(의사, 비의사)">교수(의사, 비의사)</option>
+                                            <option value="전문의">전문의</option> 
+                                            <option value="개원의">개원의</option>
+                                            <option value="봉직의">봉직의</option>
+                                            <option value="전임의">전임의</option>
+                                            <option value="기초의학자">기초의학자</option>
+                                            <option value="공보의, 군의관">공보의, 군의관</option>
+                                            <option value="간호사, 영양사">간호사, 영양사</option>
+                                            <option value="연구원">연구원</option>
+                                            <option value="약사">약사</option>
+                                            <option value="기타(기업 등)">기타(기업 등)</option>
+                                            <option value="학생(대학생, 대학원생)">학생(대학생, 대학원생)</option>
+                                            <option value="전공의(사직포함)">전공의(사직포함)</option>
                                             <!-- <option value="교직의">교직의</option>
                                             <option value="수련의">수련의</option>
                                             <option value="영양사">영양사</option>

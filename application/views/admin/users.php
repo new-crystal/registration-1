@@ -28,7 +28,7 @@
 
     #popup{
         position: absolute;
-        top: 50%;
+        top: 20%;
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: #333;
@@ -155,7 +155,7 @@
                         echo '<td>' . $item['attendance_type'] . '</td>';
                         // echo '<td>' . $item['member_type'] . '</td>';
                         echo '<td class="user_d pointer" onClick="copy(\'' .$item['nick_name']. '\')">' . $item['nick_name'] . '</td>';
-                        echo '<td class="pointer" onClick="copy(\'' .$item['org']. '\')">' . $item['org'] . '</td>';
+                        echo '<td class="pointer" onClick="copy(\'' .$item['org_nametag']. '\')">' . $item['org_nametag'] . '</td>';
                         echo '<td class="pointer" onClick="copy(\'' .$item['email']. '\')">' . $item['email'] . '</td>';
                         echo '<td class="pointer" onClick="copy(\'' .$item['phone']. '\')">' . $item['phone'] . '</td>';
                         echo '<td><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $onsite . '</a></td>';
