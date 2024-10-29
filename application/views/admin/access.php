@@ -354,7 +354,9 @@
             }).then((data) => {
                 executeFunctionInChildWindow(qrcode);
             }).then(() => {
-                window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
+                if(attendance_type.innerText === "일반참가자" || attendance_type.innerText === "세틀라이트 등록자"){
+                    window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
+                }
             }).then(() => {
 
                 changeBackgroundColorIfNotEmpty(memo);
