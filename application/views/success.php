@@ -107,9 +107,17 @@
     </div>
 </body>
 <script>
-function prev() {
-    location.replace("/onSite/mobile_kes")
-}
+    goPrev();
+
+    function prev() {
+        window.location.replace("/onSite/mobile_kes")
+    };
+
+    function goPrev(){
+        setTimeout(()=>{
+            prev();
+        },10000)
+    };
 </script>
 
 </html>
