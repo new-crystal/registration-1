@@ -19,18 +19,18 @@ class Users extends CI_Model
 	public function get_users_time()
 	{
 		$query = $this->db->query("
-    SELECT *, time_format(b.duration,'%H시간 %i분') as d_format
-    FROM users a
-    LEFT JOIN (
-        SELECT registration_no as qr_registration_no,
-            MAX(time) as maxtime,
-            MIN(time) as mintime,
-            TIMEDIFF(MAX(time), MIN(time)) as duration
-        FROM access
-        GROUP BY registration_no
-    ) b ON a.registration_no = b.qr_registration_no
-    ORDER BY a.id ASC
-");
+			SELECT *, time_format(b.duration,'%H시간 %i분') as d_format
+			FROM users a
+			LEFT JOIN (
+				SELECT registration_no as qr_registration_no,
+					MAX(time) as maxtime,
+					MIN(time) as mintime,
+					TIMEDIFF(MAX(time), MIN(time)) as duration
+				FROM access
+				GROUP BY registration_no
+			) b ON a.registration_no = b.qr_registration_no
+			ORDER BY a.id ASC
+		");
 		return $query->result_array();
 	}
 
@@ -63,7 +63,7 @@ class Users extends CI_Model
 		$query = $this->db->query("
 		SELECT *
 			FROM users a
-			WHERE a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반 참가자' AND a.attendance_type != '후원사'
+			WHERE a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반참가자' AND a.attendance_type != '후원사'
 			ORDER BY a.id ASC;
 		");
 		return $query->result_array();
