@@ -107,7 +107,7 @@
                     ?>
 
                     </div>
-                    <!-- <button class="w-[150px] h-[40px] bg-slate-300 mt-20 hover:bg-slate-400 active:bg-slate-500" type="button" id="open">새창</button> -->
+                    <button class="w-[150px] h-[40px] bg-slate-300 mt-20 hover:bg-slate-400 active:bg-slate-500" type="button" id="open">새창</button>
                 </div>
                 <form action="/admin/access" id="qr_form" name="qr_form" class="w-full h-[88vh] flex flex-col items-center justify-center bg-slate-50">
 
@@ -145,15 +145,15 @@
                                     <?php if (isset($user['org'])) echo $user['org'] ?></td>
                             </tr>
                             <tr>
-                                <th>참석 구분</th>
-                                <td id="member_type" class="qr_text">
-                                    <?php if (isset($user['member_type'])) echo $user['member_type']; ?>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th>참가 유형</th>
                                 <td id="attendance_type" class="qr_text">
                                     <?php if (isset($user['attendance_type'])) echo $user['attendance_type']; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>참석 구분</th>
+                                <td id="member_type" class="qr_text">
+                                    <?php if (isset($user['member_type'])) echo $user['member_type']; ?>
                                 </td>
                             </tr>
                             <tr>
@@ -231,7 +231,7 @@
     const submit = document.querySelector("#submit");
     const qrTexts = document.querySelectorAll(".qr_text")
     const table = document.querySelector(".qr-info-table")
-    // const open = document.querySelector("#open")
+    const open = document.querySelector("#open")
     const name = document.querySelector("#name")
     const enName = document.querySelector("#en_name")
     const nation = document.querySelector("#nation")
@@ -245,13 +245,16 @@
     const fee = document.querySelector("#fee")
     const is_score = document.querySelector("#is_score")
     const memo = document.querySelector("#memo")
-    const deposit_memo = document.querySelector("#deposit_memo")
-
     const number = document.querySelector("#number")
     const remark1 = document.querySelector("#remark1")
     const remark2 = document.querySelector("#remark2")
     const remark3 = document.querySelector("#remark3")
-    //const remark4 = document.querySelector("#remark4")
+    const remark4 = document.querySelector("#remark4")
+    const remark5 = document.querySelector("#remark5")
+    const special_request_food = document.querySelector("#special_request_food")
+    // const remark6 = document.querySelector("#remark6")
+    // const remark7 = document.querySelector("#remark7")
+    // const remark8 = document.querySelector("#remark8")
     const memoBtn = document.querySelector("#memo_btn")
     const content = document.querySelector(".content")
     const notice = document.querySelector("#notice")
@@ -259,6 +262,7 @@
     var childWindow;
     let popUpWindow;
     let qrvalue = "";
+    let bc = "";
 
     content.addEventListener("click", () => {
         qrcode.focus();
@@ -284,7 +288,7 @@
     }
 
     function changeBackgroundColorIfNotEmpty(element) {
-        if (element.innerText !== "" && element.innerText !== "N") {
+        if (element.innerText !== "" && element.innerText !== "해당 없음") {
             element.style.backgroundColor = "#ffe566";
         } else {
             element.style.backgroundColor = "#fff";
@@ -325,80 +329,47 @@
 
     function fetchData(qrcode) {
         // Ajax 요청 수행
-        fetch(`/admin/access?qrcode=${qrcode}`)
-            .then(response => response.text())
-            .then(data => {
-                const parser = new DOMParser();
-                const htmlDocument = parser.parseFromString(data, 'text/html');
-                //console.log(htmlDocument)
-                if (htmlDocument.querySelector("#number").innerText) {
-                    number.innerText = htmlDocument.querySelector("#number").innerText.replace(/<br\s*\/?>/gi, "")
-                        .trim();  
-                    name.innerText = htmlDocument.querySelector("#name").innerText.replace(/<br\s*\/?>/gi, "")
-                        .trim();
-                    affiliation.innerText = htmlDocument.querySelector("#affiliation").innerText.replace(/<br\s*\/?>/gi,
-                            "")
-                        .trim();
-                    attendance_type.innerText = htmlDocument.querySelector("#attendance_type").innerText.replace(
-                            /<br\s*\/?>/gi, "")
-                        .trim();
-                    category.innerText = htmlDocument.querySelector("#member_type").innerText.replace(
-                            /<br\s*\/?>/gi, "")
-                        .trim();
-                    fee.innerText = htmlDocument.querySelector("#fee").innerText.replace(/<br\s*\/?>/gi, "")
-                        .trim();
-                    memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "")
-                        .trim();
-                    deposit_memo.innerText = htmlDocument.querySelector("#deposit_memo").innerText.replace(/<br\s*\/?>/gi, "")
-                        .trim();
-                    remark1.innerText = htmlDocument.querySelector("#remark1").innerText.replace(/<br\s*\/?>/gi, "")
-                        .trim();
-                    remark2.innerText = htmlDocument.querySelector("#remark2").innerText.replace(/<br\s*\/?>/gi, "")
-                        .trim();
-                    remark3.innerText = htmlDocument.querySelector("#remark3").innerText.replace(/<br\s*\/?>/gi,
-                            "")
-                        .trim();
-                    // remark4.innerText = htmlDocument.querySelector("#remark4").innerText.replace(/<br\s*\/?>/gi, "")
-                    //     .trim();
-                    notice.innerHTML = htmlDocument.querySelector("#notice").innerHTML
-                } else {
-                    number.innerText = qrvalue
-                    name.innerText = "없는 QR입니다."
-                    org.innerText = ""
-                    category.innerText = ""
-                    etc1.innerText = ""
-                    throw new Error("없는 QR입니다.");
-                }
-            }).then((data) => {
-                executeFunctionInChildWindow(qrcode);
-            }).then(() => {
-                if(attendance_type.innerText === "일반참가자" || attendance_type.innerText === "세틀라이트 등록자"){
+        executeFunctionInChildWindow(qrcode);
+
+        $.ajax({
+                type: "GET",
+                url : `/admin/access?qrcode=${qrcode}`,
+                //data: data,
+                success: function(result){
                     window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
+                    changeBackgroundColorIfNotEmpty(remark1);
+                    changeBackgroundColorIfNotEmpty(remark2);
+                    changeBackgroundColorIfNotEmpty(remark3);
+                    // changeBackgroundColorIfNotEmpty(special_request_food);
+                    changeBackgroundColorIfNotEmpty(memo);
+                    window.location.href = `/admin/access?qrcode=${qrcode}`;
+                },
+                error:function(e){  
+                    console.log(e)
+                    alert("출결등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
                 }
-            }).then(() => {
-
-                changeBackgroundColorIfNotEmpty(memo);
-                changeBackgroundColorIfNotEmpty(remark1);
-                changeBackgroundColorIfNotEmpty(remark2);
-                changeBackgroundColorIfNotEmpty(remark3);
-               // changeBackgroundColorIfNotEmpty(remark4);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
+            })  
     }
-
 
     function executeFunctionInChildWindow(data) {
-
-        if (childWindow && !childWindow.closed) {
-            childWindow.postMessage({
-                qrcode: data
-            }, '*');
-        } else {
-
-        }
+        bc = new BroadcastChannel("test_channel");
+       
+        bc.postMessage({
+            qrcode: data
+        });
+        
     }
+
+    // function executeFunctionInChildWindow(data) {
+
+    //     if (childWindow && !childWindow.closed) {
+    //         childWindow.postMessage({
+    //             qrcode: data
+    //         }, '*');
+    //     } else {
+
+    //     }
+    // }
 
     // 자식 창으로부터의 메시지를 받아 처리하는 함수
     function receiveMessage(event) {
@@ -414,15 +385,59 @@
         })
     }
 
-    // open.addEventListener("click", () => {
-    //     openQR()
-    // })
+    open.addEventListener("click", () => {
+        openQR()
+    })
 
     // 메시지 이벤트 리스너 등록
     window.addEventListener('message', (e) => {
         // childWindow = null;
         receiveMessage(e)
     }, false);
+
+    function saveTime(){
+        const qrvalue = window.location.search.split("=")[1]
+        console.log(qrvalue)
+        
+        const url = "/access/add_record"
+        const data = {
+            reg_no : qrvalue,
+            type: 2
+        }
+        if(qrvalue){
+            $.ajax({
+                type: "POST",
+                url : url,
+                data: data,
+                success: function(result){
+
+                    const alert = document.querySelector("#alert");
+                    const alertText = document.querySelector(".alert_text");
+
+                    alert.style.display = "";
+                    const today = new Date();
+                    const time = document.querySelector(".time");
+
+                    time.innerText = `${today.toLocaleString()}`
+
+                    setTimeout(() => {
+                        alert.style.display = "none";
+                    }, 1500)
+                    // window.location.reload()
+                    bc.postMessage({
+                        qrcode: qrvalue,
+                        type:2,
+                        nickname:enName.innerText
+                    });
+                },
+                error:function(e){  
+                    console.log(e)
+                    alert("출결등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
+                }
+            })  
+        }
+    }
+
 
     window.onload = () => {
         whiteBackGrond()
@@ -446,11 +461,8 @@
         }
     })
 
-    // qrcode.addEventListener("input", ()=>{
-    //     convertToEnglish();
-    // })
 
-    // 한글 음절 및 개별 자모에 대한 영문 자판 매핑
+       // 한글 음절 및 개별 자모에 대한 영문 자판 매핑
     const initialConsonant = ['r', 'R', 's', 'e', 'E', 'f', 'a', 'q', 'Q', 't', 'T', 'd', 'w', 'W', 'c', 'z', 'x', 'v', 'g'];
     const medialVowel = ['k', 'o', 'i', 'O', 'j', 'p', 'u', 'P', 'h', 'hk', 'ho', 'hl', 'y', 'n', 'nj', 'np', 'nl', 'b', 'm', 'ml', 'l'];
     const finalConsonant = ['', 'r', 'R', 'rt', 's', 'sw', 'sg', 'e', 'f', 'fr', 'fa', 'fq', 'ft', 'fx', 'fv', 'fg', 'a', 'q', 'qt', 't', 'T', 'd', 'w', 'c', 'z', 'x', 'v', 'g'];
@@ -514,59 +526,5 @@
 
       document.getElementById('qrcode_input').value = result;
     }
-
-    function saveTime(){
-        console.log(qrvalue)
-        
-        const url = "/access/add_record"
-        const data = {
-            reg_no : qrvalue,
-            type: 2
-        }
-        if(qrvalue){
-            $.ajax({
-                type: "POST",
-                url : url,
-                data: data,
-                success: function(result){
-
-                    const alert = document.querySelector("#alert");
-                    const alertText = document.querySelector(".alert_text");
-
-                    alert.style.display = "";
-                    const today = new Date();
-                    const time = document.querySelector(".time");
-
-                    time.innerText = `${today.toLocaleString()}`
-
-                    setTimeout(() => {
-                        alert.style.display = "none";
-                    }, 1500)
-                    // window.location.reload()
-                    bc.postMessage({
-                        qrcode: qrvalue,
-                        type:2,
-                        nickname:enName.innerText
-                    });
-                },
-                error:function(e){  
-                    console.log(e)
-                    alert("출결등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
-                }
-            })  
-        }
-    }
-
-    window.onload = () => {
-        whiteBackGrond()
-        if (qrvalue) {
-            number.innerText = qrvalue
-        }
-    }
-
-    function whiteBackGrond() {
-        memo.style.backgrond = "#FFF"
-    }
-
 </script>
 </body>

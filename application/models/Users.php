@@ -63,7 +63,7 @@ class Users extends CI_Model
 		$query = $this->db->query("
 		SELECT *
 			FROM users a
-			WHERE a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반참가자' AND a.attendance_type != '후원사'
+			WHERE a.attendance_type != '좌장' AND a.attendance_type != '임원' AND a.attendance_type != '패널' AND a.attendance_type != '연자' AND a.attendance_type != '일반참석자' AND a.attendance_type != '후원사'
 			ORDER BY a.id ASC;
 		");
 		return $query->result_array();
@@ -163,7 +163,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = '2024B_R3'. str_pad(substr($id, -3), 3, '0', STR_PAD_LEFT);
+		$registration_no = 'KSSO2025-0'. str_pad(substr($id, -3), 3, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
@@ -173,7 +173,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = '2024B_R3'. str_pad(substr($id, -3), 3, '0', STR_PAD_LEFT);
+		$registration_no = 'KSSO2025-0'. str_pad(substr($id, -3), 3, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
@@ -333,7 +333,7 @@ class Users extends CI_Model
 			 WHERE DATE(TIME) = '2024-11-02'
 			GROUP BY registration_no
 		) b2 ON a.registration_no = b2.qr_registration_no
-		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반참가자' AND a.attendance_type != '기자' AND a.attendance_type != '세틀라이트 등록자'
+		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반참석자' AND a.attendance_type != '기자' AND a.attendance_type != '세틀라이트 등록자'
 		ORDER BY a.id ASC
 ");
 		return $query->result_array();
@@ -849,7 +849,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참가자' AND a.onsite_reg = 1
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1
 		");
 			return $query->result_array();
 		}
@@ -859,7 +859,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참가자' AND a.onsite_reg = 1
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1
 		");
 			return $query->result_array();
 		}
@@ -869,7 +869,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type  = '일반참가자' AND a.onsite_reg = 1
+				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 1
 		");
 			return $query->result_array();
 		}
@@ -882,7 +882,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참가자' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -892,7 +892,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type  = '일반참가자' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -902,7 +902,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type  = '일반참가자' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -914,7 +914,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 1
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 1
 		");
 			return $query->result_array();
 		}
@@ -924,7 +924,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 1
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 1
 		");
 			return $query->result_array();
 		}
@@ -934,7 +934,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 1
+				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 1
 		");
 			return $query->result_array();
 		}
@@ -945,7 +945,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -955,7 +955,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -965,7 +965,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참가자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}

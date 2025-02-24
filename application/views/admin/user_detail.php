@@ -109,7 +109,7 @@
                                 <tr>
                                     <th>할인코드</th>
                                     <td>
-                                        <input class="form-control" type="text" name="etc5" value="<?php echo $item['etc5']; ?>">
+                                        <input class="form-control" type="text" name="etc1" value="<?php echo $item['etc1']; ?>">
                                     </td>
                                 </tr>
                                 <!-- <tr>
@@ -143,15 +143,30 @@
                                         <input class="form-control attendance_type" type="text" value="<?php echo $item['attendance_type']; ?>" name="attendance_type" id="attendance_type">
                                         <select class="form-control input-lg m-bot15" id="attendance_type_select">
                                             <option value="" selected="selected">직접입력</option>
-                                            <option value="일반참가자">일반 참가자</option>
+                                            <option value="일반참석자">일반참석자</option>
                                             <option value="임원">임원</option>
                                             <option value="좌장">좌장</option>
                                             <option value="연자">연자</option>
                                             <option value="패널">패널</option>
-                                            <option value="Satellite 1 참가자(동아ST)">Satellite 1 참가자(동아ST)</option>
+                                            <option value="기자">기자</option>
+                                            <!-- <option value="Satellite 1 참가자(동아ST)">Satellite 1 참가자(동아ST)</option>
                                             <option value="Satellite 2 참가자(종근당)">Satellite 2 참가자(종근당)</option>
                                             <option value="Satellite 3 참가자(대웅바이오)">Satellite 3 참가자(대웅바이오)</option>
-                                            <option value="Satellite 4 참가자(오가논)">Satellite 4 참가자(오가논)</option>
+                                            <option value="Satellite 4 참가자(오가논)">Satellite 4 참가자(오가논)</option> -->
+                                        </select>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <th>분야 구분</th>
+                                    <td>
+                                        <input class="form-control occupation_type" type="text" value="<?php echo $item['occupation_type']; ?>" name="occupation_type" id="occupation_type">
+                                        <select class="form-control input-lg m-bot15" id="occupation_type_select">
+                                            <option value="" selected="selected">직접입력</option>
+                                            <option value="의료">의료</option>
+                                            <option value="영양">영양</option>
+                                            <option value="운동">운동</option>
+                                            <option value="기타">기타</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -161,30 +176,30 @@
                                         <input class="form-control member_type" type="text" value="<?php echo $item['member_type']; ?>" name="member_type" id="member_type">
                                         <select class="form-control input-lg m-bot15" id="member_type_select">
                                             <option value="" selected="selected">직접입력</option>
-                                            <option value="교수(의사, 비의사)">교수(의사, 비의사)</option>
-                                            <option value="전문의">전문의</option> 
+                                            <option value="교수">교수</option>
                                             <option value="개원의">개원의</option>
                                             <option value="봉직의">봉직의</option>
                                             <option value="전임의">전임의</option>
-                                            <option value="기초의학자">기초의학자</option>
-                                            <option value="공보의, 군의관">공보의, 군의관</option>
-                                            <option value="간호사, 영양사">간호사, 영양사</option>
+                                            <option value="전공의">전공의</option> 
+                                            <option value="영양사">영양사</option>
+                                            <option value="운동사">운동사</option>
+                                            <option value="간호사">간호사</option>
+                                            <option value="군의관">군의관</option>
+                                            <option value="공보의">공보의</option>
                                             <option value="연구원">연구원</option>
-                                            <option value="약사">약사</option>
-                                            <option value="기타(기업 등)">기타(기업 등)</option>
-                                            <option value="학생(대학생, 대학원생)">학생(대학생, 대학원생)</option>
-                                            <option value="전공의(사직포함)">전공의(사직포함)</option>
+                                            <option value="학생">학생</option>
+                                            <option value="기타">기타</option>
                                             <!-- <option value="개원의">개원의</option> -->
                                             <!-- <option value="기타">기타</option> -->
                                         </select>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th>홈페이지인증ID</th>
                                     <td>
                                         <input class="form-control" type="text" name="member_id" value="<?php echo $item['member_id']; ?>">
                                     </td>
-                                </tr>
+                                </tr> -->
 <!--                               
                               
                                 <tr>
@@ -212,7 +227,7 @@
 
                                 <tr>
                                     <th>등록시간</th>
-                                    <td> <input id="time" type="text" value="<?php echo substr($item['time'], 0, 10) ?>" size="16" class="form-control" name="time">
+                                    <td> <input id="time" type="text" value="<?php echo substr($item['reg_date'], 0, 10) ?>" size="16" class="form-control" name="reg_date">
                                     </td>
                                 </tr>
 
@@ -235,8 +250,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>국내학회 회원ID</th>
-                                    <td> <input class="form-control" type="text" value="<?php echo $item['member_id']; ?>" name="member_id" id="member_id">
+                                    <th>국내학회 회원</th>
+                                    <td> <input class="form-control" type="text" value="<?php echo $item['member']; ?>" name="member" id="member">
                                     </td>
                                 </tr>
 
@@ -246,6 +261,46 @@
 
                                     </td>
                                 </tr> -->
+                                <tr>
+                                    <th>대한의사협회 평점</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['is_score']; ?>" name="is_score" id="is_score">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>내과전공의 외부학술회의 평점</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['is_score1']; ?>" name="is_score1" id="is_score1">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>내과분과전문의 자격갱신 평점</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['is_score2']; ?>" name="is_score2" id="is_score2">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>한국영양교육평가원 평점</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['is_score3']; ?>" name="is_score3" id="is_score3">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>운동사 평점신청</th>
+                                    <td>
+                                        <div style="display:flex;  align-items: center;">
+                                            <input class="form-control" type="text" value="<?php echo $item['is_score4']; ?>" name="is_score4" id="is_score4">
+                                        </div>
+                                    </td>
+                                </tr>
                                 <tr>
                                     <th>의사면허번호</th>
                                     <td>
@@ -262,7 +317,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- <tr>
+                                <tr>
                                     <th>영양사면허번호</th>
                                     <td>
                                         <div style="display:flex;  align-items: center;">
@@ -277,8 +332,8 @@
                                             <input class="form-control" type="text" value="<?php echo $item['dietitian_number']; ?>" name="dietitian_number" id="dietitian_number">
                                         </div>
                                     </td>
-                                </tr> -->
-                                <!-- <tr>
+                                </tr>
+                                <tr>
                                     <th>생년월일(YYYY-MM-DD)</th>
                                     <td>
                                         <div style="display:flex;  align-items: center;">
@@ -286,14 +341,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th>운동사 평점신청</th>
-                                    <td>
-                                        <div style="display:flex;  align-items: center;">
-                                            <input class="form-control" type="text" value="<?php echo $item['is_score1']; ?>" name="is_score1" id="is_score1">
-                                        </div>
-                                    </td>
-                                </tr> -->
+                             
                                 <tr>
                                     <th>연락처</th>
                                     <td>
