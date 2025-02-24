@@ -108,11 +108,16 @@ class Event extends CI_Controller{
             $where = array(
                 'registration_no' => $qrcode
             );    
+
+            $gift_where = array(
+                'event1' => 'Y'
+            );
+            
+            $data['user'] = $this->users-> get_user($where);
+            $data['gift_user'] = $this->users-> get_user_array($gift_where);
+            
             
             $this->load->view('stamp/left_side.php', $data);
-
-            $data['user'] = $this->users-> get_user($where);
-            
             $this->load->view('stamp/access', $data);
               
         }

@@ -64,11 +64,25 @@
     .event2.Y{
         background-color: rgb(196 181 253);
     }
+    .gift_box{
+        position: absolute;
+        top:32px;
+        left: 40px;
+        font-size: 24px;
+        font-weight: 700;
+    }
 </style>
 <?php
 
 $qrcode = $_GET["qrcode"] ?? "";
 
+//sujeong - 남은 선물 개수 
+$total_gift_count = 350;
+
+$gift_count = $gift_user;
+// $gift_count = count($gift_user);
+
+$remain_count = $total_gift_count - $gift_count;
 ?>
 
 <div class="page-container">
@@ -76,6 +90,7 @@ $qrcode = $_GET["qrcode"] ?? "";
 
         <div class="content">
             <div class="panel panel-flat">
+                <div class="gift_box">남은 선물: <?php echo $remain_count; ?></div>
                 <form action="/event/access" id="qr_form" name="qr_form" class="w-full h-[88vh] flex flex-col items-center justify-center bg-slate-50">
 
                     <div class="w-2/5 flex flex-col items-center justify-center">
@@ -108,11 +123,17 @@ $qrcode = $_GET["qrcode"] ?? "";
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th>event 1 상품수령시간</th>
+                                    <td id="event_1_time" class="qr_text">
+                                        <?php echo isset($user['event1_time']) ? $user['event1_time'] : ''; ?>
+                                    </td>
+                                </tr>
+                                <!-- <tr>
                                     <th>event 2(포스터) 수령 유무</th>
                                     <td id="event_2" class="qr_text">
                                         <?php echo isset($user['event2']) ? $user['event2'] : ''; ?>
                                     </td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <th>성함</th>
                                     <td id="en_name" class="qr_text">
@@ -143,8 +164,8 @@ $qrcode = $_GET["qrcode"] ?? "";
                             </table>
 
                         <div class="w-[550px] flex items-center justify-around *:w-[250px] *:h-[50px] *:border">
-                            <button class="hover:bg-amber-300 event_btn event1 <?php echo $user['event1']; ?>" type="button" data-id="1">Event 1 (스탬프) 상품 수령 완료</button>
-                            <button class="hover:bg-violet-300 event_btn event2 <?php echo $user['event2']; ?>" type="button" data-id="2">Event 2 (포스터)  상품 수령 완료</button>
+                            <button class="hover:bg-amber-300 event_btn event1 <?php echo $user['event1']; ?>" type="button" data-id="1">Event 1 (스탬프) 상품 수령</button>
+                            <!-- <button class="hover:bg-violet-300 event_btn event2 <?php echo $user['event2']; ?>" type="button" data-id="2">Event 2 (포스터)  상품 수령 완료</button> -->
                         </div>
                     </div>
                 </form>
@@ -167,7 +188,7 @@ $qrcode = $_GET["qrcode"] ?? "";
     const memo_btn = document.querySelector('#memo_btn');
 
     const event_1 = document.querySelector('#event_1');
-    const event_2 = document.querySelector('#event_2');
+    //const event_2 = document.querySelector('#event_2');
 
     const content = document.querySelector(".content")
     const qrForm = document.querySelector("#qr_form");
@@ -205,11 +226,16 @@ $qrcode = $_GET["qrcode"] ?? "";
                 if(window.confirm(`event ${e.target.dataset.id} 상품 수령을 완료로 변경하시겠습니까`)){
                     window.location.href = `/event/update_gift?num=${e.target.dataset.id}&qrcode=${window.location.search.split("=")[1]}&status=Y`;
                 }
-            }else if(window.location.search !== "" && e.target.classList.contains("Y")){
-                if(window.confirm(`event ${e.target.dataset.id} 상품 수령을 취소로 변경하시겠습니까`)){
-                    window.location.href = `/event/update_gift?num=${e.target.dataset.id}&qrcode=${window.location.search.split("=")[1]}&status=N`;
-                }
             }
+            //sujeong / 상품 수령 주석
+            else if(window.location.search !== "" && e.target.classList.contains("Y")){
+               alert('상품을 이미 수령했습니다.')
+            }
+            // else if(window.location.search !== "" && e.target.classList.contains("Y")){
+            //     if(window.confirm(`event ${e.target.dataset.id} 상품 수령을 취소로 변경하시겠습니까`)){
+            //         window.location.href = `/event/update_gift?num=${e.target.dataset.id}&qrcode=${window.location.search.split("=")[1]}&status=N`;
+            //     }
+            // }
             else if(window.location.search == ""){
                 alert('QR 코드를 입력해주세요!')
             }
@@ -237,16 +263,16 @@ $qrcode = $_GET["qrcode"] ?? "";
 
     function getEvent(){
         const event1body = document.querySelector("#event_1");
-        const event2body = document.querySelector("#event_2");
+        //const event2body = document.querySelector("#event_2");
 
         const booth = document.querySelector("#attendance_type")
 
         if(event1body.innerText == "Y"){
             yellowBackground(event1body)
         }
-        if(event2body.innerText == "Y"){
-            violetBackground(event2body)
-        }
+        // if(event2body.innerText == "Y"){
+        //     violetBackground(event2body)
+        // }
 
         if(booth.innerText == "후원사"){
             booth.classList.add("bg-red-400")
@@ -255,6 +281,19 @@ $qrcode = $_GET["qrcode"] ?? "";
 
     window.onload = ()=>{
         getEvent()
+
+        let clearTimeOut = '';
+        clearTimeout(clearTimeOut);
+        
+        clearTimeOut = setTimeout(()=>{
+            //10초 마다 표 내용 지우는 함수 추가
+            const eventTdList = document.querySelectorAll(".qr_text");
+
+            eventTdList.forEach((td)=>{
+                td.innerText = '';
+                td.classList.remove("bg-amber-300");
+            })
+        },10000)
     }
 
      // 한글 음절 및 개별 자모에 대한 영문 자판 매핑

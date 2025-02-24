@@ -962,16 +962,16 @@
             return false;
         }
 
-        if(!document.querySelector("#ln").value && !lnCheckBox.checked){
-            alert("의사면허번호를 입력해주세요.");
-            //lnCheckBox.focus()
-            window.scrollTo({
-                top:0,
-                left:0,
-                behavior:"smooth"
-            })
-            return false;
-        }
+        // if(!document.querySelector("#ln").value && !lnCheckBox.checked){
+        //     alert("의사면허번호를 입력해주세요.");
+        //     //lnCheckBox.focus()
+        //     window.scrollTo({
+        //         top:0,
+        //         left:0,
+        //         behavior:"smooth"
+        //     })
+        //     return false;
+        // }
 
         if (!email_1.value) {
             alert("이메일을 입력해주세요.");
@@ -1050,11 +1050,11 @@
             return false;
         }
 
-        if (!ln.value) {
-            alert("의사면허번호를 입력해주세요.");
-            ln.focus()
-            return false;
-        }
+        // if (!ln.value) {
+        //     alert("의사면허번호를 입력해주세요.");
+        //     ln.focus()
+        //     return false;
+        // }
 
         let etc1 = "미참석";
         let etc2 = "미참석";

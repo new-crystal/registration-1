@@ -76,7 +76,7 @@ http://app.webeon.net/
 감사합니다.
 
 2024 대한내분비학회 추계학술대회 및 학연산 심포지엄 준비사무국 드림.
-', 'refkey' => 'RESTAPITEST1548722798', 'subject' => '[2024 대한내분비학회 추계학술대회 및 학연산 심포지엄]', 'image_cnt' =>
+', 'refkey' => 'RESTAPITEST1548722798', 'subject' => '[제61차 대한비만학회 춘계학술대회]', 'image_cnt' =>
             '1', '
              images0' => new CURLFILE('assets/images/QR/qrcode_' . $registration_no . '.jpg')
         ),

@@ -54,7 +54,7 @@ $day_3_users = count($day_3) + count($on_day_3);
         <tr>
             <th class="total_table bg-slate-300" rowspan=2>Total</th>
             <th rowspan=2 class="total_table bg-slate-300 total">
-                <?php echo $day_1_users + $day_2_users + $day_2_users; ?>
+                <?php echo $day_1_users + $day_2_users + $day_3_users; ?>
             </th>
             <td class="total_table bg-sky-200">10월 31일(목)</td>
             <td class="total_table bg-amber-200">11월 1일(금)</td>
