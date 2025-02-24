@@ -176,7 +176,7 @@ class Event extends CI_Controller{
         $object = new PHPExcel();
         $object->setActiveSheetIndex(0);
     
-        $table_columns = array("등록번호", "이름", "이메일", "전화번호", "Event 1 수령 유무", "Event 1 수령 시간", "Event 2 수령 유무", "Event 2 수령 시간", "Event 메모");
+        $table_columns = array("등록번호", "이름", "이메일", "전화번호", "Event 1 수령 유무", "Event 1 수령 시간", "Event 메모");
     
         $column = 0;
     
@@ -196,9 +196,9 @@ class Event extends CI_Controller{
             $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row, $row['phone']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row['event1']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['event1_time']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row['event2']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row['event2_time']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row['event_memo']);
+            // $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row['event2']);
+            // $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row['event2_time']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row['event_memo']);
     
             $excel_row++;
         }
