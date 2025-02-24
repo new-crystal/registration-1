@@ -471,14 +471,14 @@ class Access extends CI_Controller
 
                   /** day1 ~ day2 access 기록 !!!*/
                   $qr_time = date("Y-m-d");
-                  if ($qr_time == '2024-10-31') {
+                  if ($qr_time == '2025-03-14') {
                       $infoqr = array(
                           'qr_chk_day_1' => 'Y',
                           'qr_chk' => 'Y'
                       );
                       $this->users->update_qr_status($infoqr, $where);
                   }
-                  if ($qr_time == '2024-11-01') {
+                  if ($qr_time == '2025-03-15') {
                       $infoqr = array(
                           'qr_chk_day_2' =>  'Y',
                           'qr_chk' => 'Y'
@@ -715,14 +715,14 @@ class Access extends CI_Controller
 
                 /** day1 ~ day2 access 기록!!!*/
                 $qr_time = date("Y-m-d");
-                if ($qr_time == '2024-10-31') {
+                if ($qr_time == '2025-03-14') {
                     $infoqr = array(
                         'qr_chk_day_1' => 'Y',
                         'qr_chk' => 'Y'
                     );
                     $this->users->update_qr_status($infoqr, $where);
                 }
-                if ($qr_time == '2024-11-01') {
+                if ($qr_time == '2025-03-15') {
                     $infoqr = array(
                         'qr_chk_day_2' =>  'Y',
                         'qr_chk' => 'Y'
@@ -933,25 +933,89 @@ class Access extends CI_Controller
         }
     }
 
-    //sujeong / 시간 임의로 추가하기 
-    public function edit_record()
-    {
-        $date = $_POST['date'];
-        $timeInput =  $_POST['time'];
-        $reg_no = $_POST['reg_no'];
+   
+       //sujeong / 시간 임의로 추가하기 
+       public function edit_record()
+       {
+           $date = $_POST['date'];
+           $timeInput =  $_POST['time'];
+           $reg_no = $_POST['reg_no'];
+   
+           $dateTimeString = $date . ' ' . $timeInput;
+           $dateTime = DateTime::createFromFormat('Y-m-d H:i', $dateTimeString);
+           $dateInfo = $dateTime->format('Y-m-d H:i:s');
+   
+           $where = array(
+            'registration_no' => $reg_no
+            );
 
-        $dateTimeString = $date . ' ' . $timeInput;
-        $dateTime = DateTime::createFromFormat('Y-m-d H:i', $dateTimeString);
-        $dateInfo = $dateTime->format('Y-m-d H:i:s');
+           $info = array(
+               'registration_no' => $reg_no,
+               'time' => $dateInfo,
+               'type' => 1
+           );
 
-        $info = array(
-            'registration_no' => $reg_no,
-            'time' => $dateInfo,
-            'type' => 1
-        );
+           $qr_time = $date;
+           if ($qr_time == '2025-03-14') {
+               $infoqr = array(
+                   //'qr_chk_day_1' => 'Y',
+                   'qr_chk' => 'Y'
+               );
+               $this->users->update_qr_status($infoqr, $where);
+           }
+           if ($qr_time == '2025-03-15') {
+               $infoqr = array(
+                  // 'qr_chk_day_2' =>  'Y',
+                   'qr_chk' => 'Y'
+               );
+               $this->users->update_qr_status($infoqr, $where);
+           }
+         $this->entrance->record($info);
+       
+       }
 
-      $this->entrance->record($info);
-    
-    }
+       public function add_record()
+       {
+            $reg_no = $_POST['reg_no'];
+            $type = $_POST['type'];
+            $time = date("Y-m-d H:i:s");
+
+            $info = array(
+                'registration_no' => $reg_no,
+                'time' => $time,
+                'type' => $type
+            );
+
+            $where = array(
+                'registration_no' => $reg_no
+            );
+
+            $qr_time = date("Y-m-d");
+            if ($qr_time == '2025-03-14') {
+                $infoqr = array(
+                    'qr_chk_day_1' => 'Y',
+                    'qr_chk' => 'Y'
+                );
+                $this->users->update_qr_status($infoqr, $where);
+            }
+            if ($qr_time == '2025-03-15') {
+                $infoqr = array(
+                    'qr_chk_day_2' =>  'Y',
+                    'qr_chk' => 'Y'
+                );
+                $this->users->update_qr_status($infoqr, $where);
+            }
+
+            if ($qr_time == '2024-11-30') {
+                $infoqr = array(
+                    'qr_chk_day_3' =>  'Y',
+                    'qr_chk' => 'Y'
+                );
+                $this->users->update_qr_status($infoqr, $where);
+            }
+
+        $this->entrance->record($info);
+        
+       }
 
 }

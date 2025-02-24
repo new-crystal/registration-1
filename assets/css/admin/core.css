@@ -106,7 +106,7 @@
     /* width: 794px;
     height: 956px; */
     border: 1px solid transparent;
-    background-image: url('../../images/nametag.png');
+    background-image: url('../../images/2025/nametag2025.png');
     /* background-size: 10cm 24cm; */
     background-size: contain;
     background-repeat: no-repeat;
@@ -129,7 +129,7 @@
 }
 
 #printThis .org{
-  font-size: 24px;
+  font-size: 18px;
   padding: 0 10px;
   top: 16%;
   word-break: keep-all;
@@ -143,7 +143,7 @@
 }
 
 #printThis .org.small_org{
-  height: 90px;
+  height: 60px;
 }
 
 .small_receipt {
@@ -161,17 +161,17 @@
   height: 100%;
   float: left;
   position: relative;
-  padding: 162px 0px 0px 0px;
+  padding: 170px 0px 0px 0px;
 }
 
 #printThis .start_num{
   /* position: absolute;
   top: 10px;
   right: 20px; */
-  width: 11%;
+  width: 32%;
   position: relative;
-  top: -149px;
-  right: -144px;
+  top: -49px;
+  right: -12px;
 }
 
 #printThis .start_num.small{
@@ -316,7 +316,7 @@
 }
 
 #printThis .receipt_price{
-  padding-bottom: 214px;
+  padding-bottom: 390px;
 }
 
 #printThis .receipt_name{

@@ -95,9 +95,6 @@ table th {
 
                         <th>day2 입장시간</th>
                         <th>day2 퇴장시간</th>
-
-                        <th>day3 입장시간</th>
-                        <th>day3 퇴장시간</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -107,7 +104,7 @@ table th {
                         echo '<td style="text-align: center;"><input type="checkbox" name="depositChk" class="depositChk" value="' .  $item['registration_no'] . '"></td>';
                         echo '<td class="reg_num pointer">' . $item['registration_no'] . '</td>';
                         echo '<td>' . $item['attendance_type'] . '</td>';
-                        echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['nick_name'] . '</a></td>';
+                        echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['last_name'] ." ". $item['first_name'] .'</a></td>';
                         echo '<td>' . $item['org_nametag'] . '</td>';
                         
                         //day 1 출결 시간
@@ -118,10 +115,7 @@ table th {
                          echo '<td style="text-align: center;">' .'<input type="time" class="mintime_input time_input day2" value="'. $item['mintime_day_2_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
                          echo '<td style="text-align: center;">' .'<input type="time" class="maxtime_input time_input day2" value="'. $item['maxtime_day_2_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
 
-                        //day 3 출결 시간
-                         echo '<td style="text-align: center;">' .'<input type="time" class="mintime_input time_input day3" value="'. $item['mintime_day_3_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
-                         echo '<td style="text-align: center;">' .'<input type="time" class="maxtime_input time_input day3" value="'. $item['maxtime_day_3_formatted'] .'"/><button onclick="saveTime(this,`' . $item['registration_no'] . '`)">save</button></td>';
-                        echo '</tr>';
+
                     }
                     ?>
 
@@ -160,14 +154,14 @@ function saveTime(button, reg_no){
     // console.log(timeInput.classList) // day
     let date = ""
     if(timeInput.classList.contains("day1")){
-        date = "2024-10-31"
+        date = "2024-11-29"
     }
     else if(timeInput.classList.contains("day2")){
-        date = "2024-11-01"
+        date = "2024-11-30"
     }
-    else if(timeInput.classList.contains("day3")){
-         date = "2024-11-02"
-    }
+    // else if(timeInput.classList.contains("day3")){
+    //      date = "2024-11-02"
+    // }
 
     const url = "/access/edit_record"
     const data = {
@@ -187,7 +181,7 @@ function saveTime(button, reg_no){
         },
 		error:function(e){  
             console.log(e)
-            alert("현장등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
+            alert("출결등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
 		}
 	})  
     

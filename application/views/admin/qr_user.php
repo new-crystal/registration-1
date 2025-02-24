@@ -63,9 +63,9 @@ table th {
                     <!-- <form action="/admin/excel_download" method="post">
                         <button class="btn btn-primary pull-right"><i class="icon-download4"></i> QR기록 다운로드</button>
                     </form> -->
-                    <!-- <form action="/admin/send_all_mail" method="post" id="deposit_mail_Form">
+                    <form action="/admin/send_all_mail" method="post" id="deposit_mail_Form">
                         <button class="btn btn-success pull-right"><i class="icon-checkmark"></i> 전체메일발송</button>
-                    </form> -->
+                    </form>
                     <form action="/admin/send_all_msm" method="post" id="depositForm">
                         <button class="btn btn-outline-warning pull-right"><i class="icon-checkmark"></i> 전체문자발송</button>
                     </form>
@@ -88,7 +88,7 @@ table th {
                         <!-- <th>숙박신청</th>
                         <th>저녁신청</th> -->
                         <th>QR 문자 전송</th>
-                        <!-- <th>메일전송</th> -->
+                        <th>메일전송</th>
                         <!-- <th>입장시간</th>
                         <th>퇴장시간</th> -->
                         <th>QR생성</th>
@@ -108,17 +108,22 @@ table th {
                         echo '<td>' . $item['phone'] . '</td>';
                         //
                          echo '<td>';
-                        if($item['attendance_type'] !== "세틀라이트 등록자"){
-                            if ($item['QR_SMS_SEND_YN'] == "Y") {
-                                echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-success qr_btn"  data-id="' . $item['registration_no'] . '">문자발송</div></button>';
-                            } else {
-                                echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-non-success qr_btn" data-id="' . $item['registration_no'] . '">문자발송</div></button>';
-                            }
-                        }else{
+                        // if($item['attendance_type'] !== "세틀라이트 등록자"){
+                        //     if ($item['QR_SMS_SEND_YN'] == "Y") {
+                        //         echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-success qr_btn"  data-id="' . $item['registration_no'] . '">문자발송</div></button>';
+                        //     } else {
+                        //         echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-non-success qr_btn" data-id="' . $item['registration_no'] . '">문자발송</div></button>';
+                        //     }
+                        // }else{
                             
-                        }
+                        // }
+                        echo '<button style="background:transparent;border:none" onclick="onClickMsm(\'' . $item['registration_no'] . '\')"><div class="msm_btn btn btn-non-success qr_btn" data-id="' . $item['registration_no'] . '">문자발송</div></button>';
                          echo '</td>';
-                        // echo '<td>';
+
+                         echo '<td>';
+                         echo '<a href="/admin/qr_email?n=' . $item['registration_no'] . '" target="_blank"><div class="btn btn-warning qr_btn" >메일발송</div></a>';
+                         echo '</td>';
+                         // echo '<td>';
                         // if ($item['QR_MAIL_SEND_YN'] == "Y") {
                         //     echo '<a href="/admin/qr_email?n=' . $item['registration_no'] . '" target="_blank"><div class="btn btn-non-warning qr_btn" >메일발송</div></a>';
                         // } else {

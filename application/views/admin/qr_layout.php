@@ -73,7 +73,7 @@
                 $letter_spacing = ($only_letters) ? '0px' : '20px';
                 $letter_spacing_receipt = ($only_letters) ? '0px' : '5px';
 
-                $lucky_num = explode("_R",$users['registration_no'])[1]; 
+                // $lucky_num = explode("_R",$users['registration_no'])[1]; 
     
                 $lang = preg_match("/[\xE0-\xFF][\x80-\xFF][\x80-\xFF]/", $users['nick_name']);
                 $nicknameLength = mb_strlen($users['nick_name'], "UTF-8");
@@ -88,9 +88,9 @@
                 //1. 3글자 //영문 letter_spacing = 0, 한글 = 10
                 echo '<div class = "box_1_area">';
                 if($nicknameLength >= 3){
-                    echo '<div class="start_num">' .$lucky_num . '</div>';
+                    echo '<div class="start_num">' .$users['registration_no'] . '</div>';
                 }else if($nicknameLength > 3){
-                    echo '<div class="start_num small">' .$lucky_num . '</div>';
+                    echo '<div class="start_num small">' .$users['registration_no'] . '</div>';
                 }
                
                if($nicknameLength <= 3){
@@ -107,7 +107,8 @@
                 echo '<div id="qrcode" class=""><img src="/assets/images/QR/qrcode_' . $users['registration_no'] . '.jpg"></div>';
                 echo '<div class="receipt receipt_price">' . $users['fee']. '</div>';
                 echo '<div class="receipt receipt_name">' . $users['nick_name'] . '</div>';
-                echo '<div class="receipt end_num">' .$lucky_num . '</div></div>';
+                // echo '<div class="receipt end_num">' .$lucky_num . '</div>';
+                echo '</div>';
                 //학회팀 요청 영수증 성함 한글일 때 letter_spacing = 5
                 // echo '<div class = "box_2_area">';
                 // echo '<div class="receipt receipt_num">' .$users['registration_no'] . '</div>';

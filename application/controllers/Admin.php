@@ -602,7 +602,7 @@ class Admin extends CI_Controller
                 $attendance_type = $this->input->post('attendance_type');
                 $member_type = $this->input->post('member_type');
                 // $type1 = $this->input->post('type1');
-                $member = $this->input->post('member');
+                // $member = $this->input->post('member');
                 $memo = $this->input->post('memo');
 
                 $time = date("Y-m-d H:i:s");
@@ -642,9 +642,9 @@ class Admin extends CI_Controller
                     'email' => preg_replace("/\s+/", "", $email),
                     'attendance_type' => trim($attendance_type),
                     'member_type' => trim($member_type),
-                    'member' => trim($member),
-                    'etc10' => $time,
-                    'etc11' => $time,
+                    // 'member' => trim($member),
+                    'reg_date' => $time,
+                    'deposit_date' => $time,
                     'uagent' => $uagent,
                     'deposit' => '결제대기',
                     'memo' => $memo,
