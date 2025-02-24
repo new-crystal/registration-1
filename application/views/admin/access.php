@@ -53,7 +53,7 @@
         background-color: #f56e44;
         display: block;
         font-weight: bold;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1.4;
     }
 
@@ -63,6 +63,23 @@
     .notice.red{
         background-color: #ffbe0b;
     }
+    .access_btn{
+        position:absolute;
+        bottom: 150px;
+        left:50%;
+        transform: translateX(-50%);
+        width: 150px;
+        height: 50px;
+        background-color: orangered;
+        font-size: 20px;
+        font-weight: 800;
+        color:#FFF;
+    }
+
+    .access_btn:hover{
+        background-color: red;
+    }
+
 </style>
 
 <div class="page-container">
@@ -193,6 +210,7 @@
                         </table>
                     </div>
                 </form>
+                <button type="button" onclick="saveTime()" class="access_btn">출결</button>
             </div>
         </div>
     </div>
@@ -496,5 +514,59 @@
 
       document.getElementById('qrcode_input').value = result;
     }
+
+    function saveTime(){
+        console.log(qrvalue)
+        
+        const url = "/access/add_record"
+        const data = {
+            reg_no : qrvalue,
+            type: 2
+        }
+        if(qrvalue){
+            $.ajax({
+                type: "POST",
+                url : url,
+                data: data,
+                success: function(result){
+
+                    const alert = document.querySelector("#alert");
+                    const alertText = document.querySelector(".alert_text");
+
+                    alert.style.display = "";
+                    const today = new Date();
+                    const time = document.querySelector(".time");
+
+                    time.innerText = `${today.toLocaleString()}`
+
+                    setTimeout(() => {
+                        alert.style.display = "none";
+                    }, 1500)
+                    // window.location.reload()
+                    bc.postMessage({
+                        qrcode: qrvalue,
+                        type:2,
+                        nickname:enName.innerText
+                    });
+                },
+                error:function(e){  
+                    console.log(e)
+                    alert("출결등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
+                }
+            })  
+        }
+    }
+
+    window.onload = () => {
+        whiteBackGrond()
+        if (qrvalue) {
+            number.innerText = qrvalue
+        }
+    }
+
+    function whiteBackGrond() {
+        memo.style.backgrond = "#FFF"
+    }
+
 </script>
 </body>

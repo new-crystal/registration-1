@@ -74,6 +74,20 @@ class Users extends CI_Model
 		$this->db->where($where);
 		return $this->db->get($this->users)->row_array();
 	}
+
+	public function get_user_array($where)
+	{
+		// $this->db->where($where);
+		// return $this->db->get($this->users)->result_array();
+		$this->db->select('COUNT(*) as count');
+		$this->db->from('users');
+		$this->db->where('event1', 'Y');
+		
+		$query = $this->db->get();
+		return $query->row()->count;
+
+	}
+
 	public function get_qr_print_user()
 	{
 		
@@ -103,7 +117,7 @@ class Users extends CI_Model
 				MIN(time) as mintime_day_1,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			WHERE DATE(TIME) = '2024-10-31'
+			WHERE DATE(TIME) = '2025-03-14'
 			GROUP BY registration_no
 		) AS b ON a.registration_no = b.qr_registration_no
 		LEFT JOIN (
@@ -112,7 +126,7 @@ class Users extends CI_Model
 				MIN(time) as mintime_day_2,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			WHERE DATE(TIME) = '2024-11-01'
+			WHERE DATE(TIME) = '2025-03-15'
 			GROUP BY registration_no
 		) AS b1 ON a.registration_no = b1.qr_registration_no
 		LEFT JOIN (
@@ -149,7 +163,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = '2024B_R2' . str_pad($id, 3, '0', STR_PAD_LEFT);
+		$registration_no = '2024B_R3'. str_pad(substr($id, -3), 3, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
@@ -159,7 +173,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = '2024B_R2' . str_pad($id, 3, '0', STR_PAD_LEFT);
+		$registration_no = '2024B_R3'. str_pad(substr($id, -3), 3, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}
