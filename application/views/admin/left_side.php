@@ -152,7 +152,7 @@
                                     </a>
                                 </li> -->
                                 <li style="margin-bottom: 2rem;">
-                                    <a href="/onSite/mobile_kes" target="_blank">
+                                    <a href="https://kosso.org/main/onsite_registration.php" target="_blank">
                                         <i class="icon-user-plus"></i>
                                         <span>현장등록페이지
                                         </span>

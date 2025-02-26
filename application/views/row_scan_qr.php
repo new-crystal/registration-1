@@ -102,7 +102,7 @@
     }
 
     .input_box {
-        transform: translate(1012px, -87px);
+        transform: translate(233px, 35px);
         width: 1750px;
         height: 350px;
         display: flex;
@@ -180,7 +180,7 @@
         <div class="h-full">
             <div>
                 <div>
-                    <img src="../../assets/images/2024_row_app_loading_bg.jpg" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
+                    <img src="../../assets/images/2025/main_h.jpg" onclick="window.location.replace()" style="position: absolute;z-index: -999;width: 1920px;" />
                     <dl>
 
                         <script type="text/javascript">

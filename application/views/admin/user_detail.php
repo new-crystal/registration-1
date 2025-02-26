@@ -56,7 +56,9 @@
                         <div class="detail_table">
                             <table>
                                 <tr>
-                                    <td colspan="2"><button type="button" class="btn btn-primary" onclick="print('<?php echo $item['registration_no']; ?>')">QR Print</button>
+                                    <td colspan="2">
+                                        <button type="button" class="btn btn-primary" onclick="print('<?php echo $item['registration_no']; ?>')">QR Print</button>
+                                        <button type="button" onclick="saveTime('<?php echo $item['registration_no']; ?>')" class="access_btn">출결</button>
                                     </td>
                                 </tr>
                                 <tr>
@@ -464,6 +466,42 @@
         const re = /^[YN]$/;
         if (!re.test(text)) {
             alert("Y, N만 입력 가능합니다.")
+        }
+    }
+
+    function saveTime(qrvalue){
+        
+        const url = "/access/add_record"
+        const data = {
+            reg_no : qrvalue,
+            type : 4
+        }
+        if(qrvalue){
+            $.ajax({
+                type: "POST",
+                url : url,
+                data: data,
+                success: function(result){
+
+                    const alert = document.querySelector("#alert");
+                    const alertText = document.querySelector(".alert_text");
+
+                    alert.style.display = "";
+                    const today = new Date();
+                    const time = document.querySelector(".time");
+
+                    time.innerText = `${today.toLocaleString()}`
+
+                    setTimeout(() => {
+                        alert.style.display = "none";
+                    }, 1500)
+                    // window.location.reload()
+                },
+                error:function(e){  
+                    console.log(e)
+                    alert("출결등록 이슈가 발생했습니다. 관리자에게 문의해주세요.")
+                }
+            })  
         }
     }
 </script>

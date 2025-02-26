@@ -306,14 +306,14 @@
     const watingBox = document.querySelector(".wating");
     const alert_modal = document.querySelector(".alert_modal");
     
-    const bc = new BroadcastChannel("test_channel");
+    const bc = new BroadcastChannel("reg1");
     
     bc.onmessage = (data)=>{
-        //console.log(data)
         childFunction(data.data)
     }
     
     function childFunction(data) {
+
         if (data.qrcode && data.type !== 2) {
             window.location.href = `/qrcode/open?qrcode=${data.qrcode}`
         }else if(data.qrcode && data.type == 2){

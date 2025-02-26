@@ -125,7 +125,7 @@
                         <!-- <th>등록시간</th> -->
                         <th>접수번호</th>
                         <th style="min-width: 100px">참석자유형</th>
-                        <!-- <th>참석자구분</th> -->
+                        <th>참석자구분</th>
                         <th>이름</th>
                         <th>소속</th>
                         <th>이메일</th>
@@ -133,7 +133,7 @@
                         <th>등록구분</th>
                         <th>등록비</th>
                         <th>입금여부</th>
-                        <th>회원 ID</th>
+                        <!-- <th>회원 ID</th> -->
                         <th>메모</th>
                     </tr>
                 </thead>
@@ -153,7 +153,7 @@
                         // echo '<td>' . substr($item['time'], 0, 100) . '</td>';
                         echo '<td class="pointer" onClick="copy(\'' .$item['registration_no']. '\')">' . $item['registration_no'] . '</td>';
                         echo '<td>' . $item['attendance_type'] . '</td>';
-                        // echo '<td>' . $item['member_type'] . '</td>';
+                        echo '<td>' . $item['member_type'] . '</td>';
                         echo '<td class="user_d pointer" onClick="copy(\'' .$item['nick_name']. '\')">' . $item['nick_name'] . '</td>';
                         echo '<td class="pointer" onClick="copy(\'' .$item['org_nametag']. '\')">' . $item['org_nametag'] . '</td>';
                         echo '<td class="pointer" onClick="copy(\'' .$item['email']. '\')">' . $item['email'] . '</td>';
@@ -177,7 +177,7 @@
                             echo '<td style="color:blue;">';
                         }
                         echo '' . $item['deposit'] . '</td>';
-                        echo '<td class="pointer" onClick="copy(\'' .$item['member_id']. '\')">'. $item['member_id'] . '</td>';
+                        // echo '<td class="pointer" onClick="copy(\'' .$item['member_id']. '\')">'. $item['member_id'] . '</td>';
                         echo '</td>';
                         if ($item['memo'] != "" && $item['memo'] != 'null') {
                             echo '<td>';

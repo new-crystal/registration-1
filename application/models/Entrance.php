@@ -7,6 +7,19 @@ class Entrance extends CI_Model
     private $access = "access";
     private $users = "users";
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        date_default_timezone_set('Asia/Seoul');
+        $this->load->model('users');
+        $this->load->model('entrance');
+        $this->load->model('schedule');
+        ini_set('memory_limit', '-1');
+        $this->load->library("time_spent");
+        $this->load->config('common');
+    }
+
     public function record($info)
     {
         if ($this->db->insert($this->access, $info))
@@ -18,6 +31,9 @@ class Entrance extends CI_Model
     //날짜 변경 필요!!!
     public function history_all()
     {
+        $day_1 = $this->config->item('day_1');
+        $day_2 = $this->config->item('day_2');
+        $day_3 = $this->config->item('day_3');
         //
         //        $this->db->join('users as a', 'access.phone = a.phone','left');
         //        $this->db->select('a.type, a.type2, a.nick_name, access.phone, a.email, a.org, a.addr, access.time, access.id as idx');
@@ -40,7 +56,7 @@ class Entrance extends CI_Model
                 MIN(time) as mintime_day1,
                 TIMEDIFF(MAX(time), MIN(time)) as duration_day1
             FROM access
-            WHERE DATE(TIME) = '2024-10-31'
+            WHERE DATE(TIME) = '$day_1'
             GROUP BY registration_no
         ) b1 ON a.registration_no = b1.qr_registration_no
         LEFT JOIN (
@@ -49,7 +65,7 @@ class Entrance extends CI_Model
                 MIN(time) as mintime_day2,
                 TIMEDIFF(MAX(time), MIN(time)) as duration_day2
             FROM access
-            WHERE DATE(TIME) = '2024-11-01'
+            WHERE DATE(TIME) = '$day_2'
             GROUP BY registration_no
         ) b2 ON a.registration_no = b2.qr_registration_no
           LEFT JOIN (
@@ -58,7 +74,7 @@ class Entrance extends CI_Model
                 MIN(time) as mintime_day3,
                 TIMEDIFF(MAX(time), MIN(time)) as duration_day3
             FROM access
-            WHERE DATE(TIME) = '2024-11-02'
+            WHERE DATE(TIME) =  '$day_3'
             GROUP BY registration_no
         ) b3 ON a.registration_no = b3.qr_registration_no
         ORDER BY a.nick_name ASC;
@@ -77,6 +93,10 @@ class Entrance extends CI_Model
         //날짜 변경 필요!!!
     public function history_day_2($where)
     {
+        $day_1 = $this->config->item('day_1');
+        $day_2 = $this->config->item('day_2');
+        $day_3 = $this->config->item('day_3');
+
         $query = $this->db->query("
         SELECT *,
             time_format(b.duration,'%H시간 %i분') as d_format,
@@ -90,7 +110,7 @@ class Entrance extends CI_Model
                 MIN(time) as mintime_day1,
                 TIMEDIFF(MAX(time), MIN(time)) as duration_day1
             FROM access
-            WHERE DATE(TIME) = '2024-06-15'
+            WHERE DATE(TIME) = ". $day_1 ."
             GROUP BY registration_no
         ) b1 ON a.registration_no = b1.qr_registration_no
         LEFT JOIN (
@@ -99,7 +119,7 @@ class Entrance extends CI_Model
                 MIN(time) as mintime_day2,
                 TIMEDIFF(MAX(time), MIN(time)) as duration_day2
             FROM access
-            WHERE DATE(TIME) = '2024-06-16'
+            WHERE DATE(TIME) =  ". $day_2 ."
             GROUP BY registration_no
         ) b2 ON a.registration_no = b2.qr_registration_no
         WHERE a.registration_no = '$where'
