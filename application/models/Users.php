@@ -11,6 +11,19 @@ class Users extends CI_Model
 	private $abstractsAuthor = "ABSTRACT_AUTHOR";
 	private $upload_file = "upload_file";
 
+	public function __construct()
+    {
+        parent::__construct();
+
+        date_default_timezone_set('Asia/Seoul');
+        $this->load->model('users');
+        $this->load->model('entrance');
+        $this->load->model('schedule');
+        ini_set('memory_limit', '-1');
+        $this->load->library("time_spent");
+        $this->load->config('common');
+    }
+
 	public function get_users()
 	{
 		return $this->db->get($this->users)->result_array();
@@ -102,14 +115,16 @@ class Users extends CI_Model
 
 	public function get_qr_user()
 	{
+		$day_1 = $this->config->item('day_1');
+		$day_2 = $this->config->item('day_2');
+		$day_3 = $this->config->item('day_3');
+
 		$query = $this->db->query("
 			SELECT a.*, 
 			TIME_FORMAT(b.maxtime_day_1, '%H:%i') as maxtime_day_1_formatted,
 			TIME_FORMAT(b.mintime_day_1, '%H:%i') as mintime_day_1_formatted,
 			TIME_FORMAT(b1.maxtime_day_2, '%H:%i') as maxtime_day_2_formatted,
-			TIME_FORMAT(b1.mintime_day_2, '%H:%i') as mintime_day_2_formatted,
-			TIME_FORMAT(b2.maxtime_day_3, '%H:%i') as maxtime_day_3_formatted,
-			TIME_FORMAT(b2.mintime_day_3, '%H:%i') as mintime_day_3_formatted
+			TIME_FORMAT(b1.mintime_day_2, '%H:%i') as mintime_day_2_formatted
 		FROM users a
 		LEFT JOIN (
 			SELECT registration_no as qr_registration_no,
@@ -117,7 +132,7 @@ class Users extends CI_Model
 				MIN(time) as mintime_day_1,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			WHERE DATE(TIME) = '2025-03-14'
+			WHERE DATE(TIME) = '$day_1'
 			GROUP BY registration_no
 		) AS b ON a.registration_no = b.qr_registration_no
 		LEFT JOIN (
@@ -126,18 +141,9 @@ class Users extends CI_Model
 				MIN(time) as mintime_day_2,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			WHERE DATE(TIME) = '2025-03-15'
+			WHERE DATE(TIME) = '$day_2'
 			GROUP BY registration_no
 		) AS b1 ON a.registration_no = b1.qr_registration_no
-		LEFT JOIN (
-			SELECT registration_no as qr_registration_no,
-				MAX(time) as maxtime_day_3,
-				MIN(time) as mintime_day_3,
-				TIMEDIFF(MAX(time), MIN(time)) as duration
-			FROM access
-			WHERE DATE(TIME) = '2024-11-02'
-			GROUP BY registration_no
-		) AS b2 ON a.registration_no = b2.qr_registration_no
 		WHERE a.qr_generated = 'Y' 
 			AND a.deposit = '결제완료'
 		ORDER BY a.id ASC;
@@ -306,6 +312,10 @@ class Users extends CI_Model
 	//faculty page / 일반참석자, 기자 제외
 	public function get_faculty()
 	{
+		$day_1 = $this->config->item('day_1');
+		$day_2 = $this->config->item('day_2');
+		$day_3 = $this->config->item('day_3');
+		
 		$query = $this->db->query("
 		SELECT *, time_format(b.duration,'%H시간 %i분') as d_format
 		FROM users a
@@ -314,7 +324,7 @@ class Users extends CI_Model
 				MIN(time) as mintime_day_1,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			 WHERE DATE(TIME) = '2024-10-31'
+			 WHERE DATE(TIME) = '$day_1'
 			GROUP BY registration_no
 		) b ON a.registration_no = b.qr_registration_no
 		LEFT JOIN (
@@ -322,7 +332,7 @@ class Users extends CI_Model
 				MIN(time) as mintime_day_2,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			 WHERE DATE(TIME) = '2024-11-01'
+			 WHERE DATE(TIME) = '$day_2'
 			GROUP BY registration_no
 		) b1 ON a.registration_no = b1.qr_registration_no
 		LEFT JOIN (
@@ -330,7 +340,7 @@ class Users extends CI_Model
 				MIN(time) as mintime_day_3,
 				TIMEDIFF(MAX(time), MIN(time)) as duration
 			FROM access
-			 WHERE DATE(TIME) = '2024-11-02'
+			 WHERE DATE(TIME) = ". $day_3 ."
 			GROUP BY registration_no
 		) b2 ON a.registration_no = b2.qr_registration_no
 		WHERE a.qr_generated = 'Y' AND a.deposit = '결제완료' AND a.attendance_type != '일반참석자' AND a.attendance_type != '기자' AND a.attendance_type != '세틀라이트 등록자'

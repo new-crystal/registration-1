@@ -23,6 +23,7 @@ class Access extends CI_Controller
         $this->load->model('schedule');
         ini_set('memory_limit', '-1');
         $this->load->library("time_spent");
+        $this->load->config('common');
     }
 
     public function index()
@@ -468,24 +469,26 @@ class Access extends CI_Controller
                 $where = array(
                     'registration_no' => $qrcode
                 );
-
+                $day_1 = $this->config->item('day_1');
+                $day_2 = $this->config->item('day_2');
+                $day_3 = $this->config->item('day_3');
                   /** day1 ~ day2 access 기록 !!!*/
                   $qr_time = date("Y-m-d");
-                  if ($qr_time == '2025-03-14') {
+                  if ($qr_time == $day_1) {
                       $infoqr = array(
                           'qr_chk_day_1' => 'Y',
                           'qr_chk' => 'Y'
                       );
                       $this->users->update_qr_status($infoqr, $where);
                   }
-                  if ($qr_time == '2025-03-15') {
+                  if ($qr_time == $day_2) {
                       $infoqr = array(
                           'qr_chk_day_2' =>  'Y',
                           'qr_chk' => 'Y'
                       );
                       $this->users->update_qr_status($infoqr, $where);
                   }
-                  if ($qr_time == '2024-11-02') {
+                  if ($qr_time == $day_3) {
                     $infoqr = array(
                         'qr_chk_day_3' =>  'Y',
                         'qr_chk' => 'Y'
@@ -713,23 +716,27 @@ class Access extends CI_Controller
                     'registration_no' => $qrcode
                 );
 
+                $day_1 = $this->config->item('day_1');
+                $day_2 = $this->config->item('day_2');
+                $day_3 = $this->config->item('day_3');
+
                 /** day1 ~ day2 access 기록!!!*/
                 $qr_time = date("Y-m-d");
-                if ($qr_time == '2025-03-14') {
+                if ($qr_time == $day_1) {
                     $infoqr = array(
                         'qr_chk_day_1' => 'Y',
                         'qr_chk' => 'Y'
                     );
                     $this->users->update_qr_status($infoqr, $where);
                 }
-                if ($qr_time == '2025-03-15') {
+                if ($qr_time ==  $day_2) {
                     $infoqr = array(
                         'qr_chk_day_2' =>  'Y',
                         'qr_chk' => 'Y'
                     );
                     $this->users->update_qr_status($infoqr, $where);
                 }
-                if ($qr_time == '2024-11-02') {
+                if ($qr_time == $day_3) {
                     $infoqr = array(
                         'qr_chk_day_3' =>  'Y',
                         'qr_chk' => 'Y'
@@ -955,15 +962,20 @@ class Access extends CI_Controller
                'type' => 1
            );
 
+           $day_1 = $this->config->item('day_1');
+           $day_2 = $this->config->item('day_2');
+           $day_3 = $this->config->item('day_3');
+           
+
            $qr_time = $date;
-           if ($qr_time == '2025-03-14') {
+           if ($qr_time == $day_1) {
                $infoqr = array(
                    //'qr_chk_day_1' => 'Y',
                    'qr_chk' => 'Y'
                );
                $this->users->update_qr_status($infoqr, $where);
            }
-           if ($qr_time == '2025-03-15') {
+           if ($qr_time == $day_2) {
                $infoqr = array(
                   // 'qr_chk_day_2' =>  'Y',
                    'qr_chk' => 'Y'
@@ -990,15 +1002,20 @@ class Access extends CI_Controller
                 'registration_no' => $reg_no
             );
 
+            
+           $day_1 = $this->config->item('day_1');
+           $day_2 = $this->config->item('day_2');
+           $day_3 = $this->config->item('day_3');
+
             $qr_time = date("Y-m-d");
-            if ($qr_time == '2025-03-14') {
+            if ($qr_time == $day_1) {
                 $infoqr = array(
                     'qr_chk_day_1' => 'Y',
                     'qr_chk' => 'Y'
                 );
                 $this->users->update_qr_status($infoqr, $where);
             }
-            if ($qr_time == '2025-03-15') {
+            if ($qr_time == $day_2) {
                 $infoqr = array(
                     'qr_chk_day_2' =>  'Y',
                     'qr_chk' => 'Y'
@@ -1006,7 +1023,7 @@ class Access extends CI_Controller
                 $this->users->update_qr_status($infoqr, $where);
             }
 
-            if ($qr_time == '2024-11-30') {
+            if ($qr_time == $day_3) {
                 $infoqr = array(
                     'qr_chk_day_3' =>  'Y',
                     'qr_chk' => 'Y'

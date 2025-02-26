@@ -14,3 +14,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['limit_count'] = 175;
+$config['day_1'] = '2025-03-14';
+$config['day_2'] = '2025-03-15';
+$config['day_3'] = '2025-00-00';

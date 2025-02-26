@@ -104,7 +104,7 @@ table th {
                         echo '<td style="text-align: center;"><input type="checkbox" name="depositChk" class="depositChk" value="' .  $item['registration_no'] . '"></td>';
                         echo '<td class="reg_num pointer">' . $item['registration_no'] . '</td>';
                         echo '<td>' . $item['attendance_type'] . '</td>';
-                        echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['last_name'] ." ". $item['first_name'] .'</a></td>';
+                        echo '<td class="user_d"><a href="/admin/user_detail?n=' . $item['registration_no'] . '"target="_top">' . $item['nick_name'] .'</a></td>';
                         echo '<td>' . $item['org_nametag'] . '</td>';
                         
                         //day 1 출결 시간
@@ -146,7 +146,7 @@ regNumList.forEach((num)=>{
     })
 })
 
-//sujeong / 시간 저장하기
+//sujeong / 시간 저장하기 !!!! 날짜변경 필요
 function saveTime(button, reg_no){
     const timeInput = button.parentNode.querySelector('.time_input');
     // console.log(reg_no) //등록번호
@@ -154,10 +154,10 @@ function saveTime(button, reg_no){
     // console.log(timeInput.classList) // day
     let date = ""
     if(timeInput.classList.contains("day1")){
-        date = "2024-11-29"
+        date = "2025-03-14"
     }
     else if(timeInput.classList.contains("day2")){
-        date = "2024-11-30"
+        date = "2025-03-15"
     }
     // else if(timeInput.classList.contains("day3")){
     //      date = "2024-11-02"
