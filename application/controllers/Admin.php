@@ -888,11 +888,19 @@ class Admin extends CI_Controller
         $object = new PHPExcel();
         $object->setActiveSheetIndex(0);
 
-        $table_columns = array("등록번호", "이름","참가 여부","사전등록 유무","의사면허번호", "전문의번호", "이메일",  "휴대폰번호", "근무처", "네임택용 근무처","구분");
-
-        // $table_columns = array("등록번호", "이름","참가 여부","사전등록 유무","의사면허번호", "전문의번호", "이메일",  "휴대폰번호", "근무처", "네임택용 근무처","구분","학생증","신분증명서","직군추가입력","할인코드 등록여부","할인코드", "홈페이지인증ID", "학술대회등록경로", "등록금",  "결제방법", "결제상태", "가상계좌번호", "최초등록일",  "최종등록일", "홈페이지 메모", "역할", "직책", "Breakfast symposium", "Satellite symposium 04/06(목)", "Satellite symposium 04/07(금)", "참석자 구분", "remark1", "remark2", "remark3", "remark4", "memo", "Day 1 참석여부", "Day 1 입실 시간", "Day 1 퇴실 시간", "체류시간", "Break 제외 시간", "Day 1 예상평점", "Day 2 참석여부", "Day 2 입실 시간", "Day 2 퇴실 시간", "체류시간", "Break 제외 시간", "Day 2 예상평점", "Day 2 대한내과학회 전공의 외부학술대회 예상평점", "Day 3 참석여부", "Day 3 입실 시간", "Day 3 퇴실 시간", "체류시간", "Break 제외 시간", "Day 3 예상평점", "Day 3 대한내과학회 전공의 외부학술대회 예상평점");
-
-
+        $table_columns = array(
+            "등록번호", "등록일", "학회 참석 여부" ,"사전등록여부", "ID(E-mail)", "KSSO 회원 여부", "성함", "소속", 
+            "네임텍용 소속", "부서", "휴대폰 번호", "참가 유형", "분야 구분", "참석 구분", 
+            "대한의사협회 평점", "의사면허번호", "내과전공의 외부학술회의 평점", 
+            "내과분과전문의 자격갱신 평점", "전문의번호", "한국영양교육평가원 평점", 
+            "영양사면허번호", "임상영양사자격번호", "생년월일", "운동사 평점", "결제 상태", 
+            "등록비", "결제일", "결제방식", "등록 메모", "프로모션 코드", 
+            "Welcome Reception", "Satellite Symposium", "Breakfast Symposium", "Luncheon Symposium", "개최 정보 습득 방법",
+             "remark1", "remark2", "remark3", "remark4", "memo", 
+             "Day 1 참석여부", "Day 1 입실 시간", "Day 1 퇴실 시간", "체류시간", "Break 제외 시간", "Day 1 예상평점", 
+             "Day 2 참석여부", "Day 2 입실 시간", "Day 2 퇴실 시간", "체류시간", "Break 제외 시간", "Day 2 예상평점"
+        );
+    
         $column = 0;
 
         foreach ($table_columns as $field) {
@@ -961,7 +969,7 @@ class Admin extends CI_Controller
             
             //DAY1 예상평점
             $score1 = floor($spent1 / 60);
-            $score1 = min(2, $score1);
+            $score1 = min(4, $score1);
 
             //DAY1 예상 내과전공의 평점
             // $score3 = floor($spent1 / 180);
@@ -1011,56 +1019,61 @@ class Admin extends CI_Controller
             $object->getActiveSheet()->getStyle("H" . $excel_row)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 
             $object->getActiveSheet()->setCellValueByColumnAndRow(0, $excel_row, $row['registration_no']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row['nick_name']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(1, $excel_row, $row['reg_date']);
             $object->getActiveSheet()->setCellValueByColumnAndRow(2, $excel_row,  $chk);
             $object->getActiveSheet()->setCellValueByColumnAndRow(3, $excel_row,  $onsite);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row['licence_number']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['specialty_number']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row['email']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row['phone']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row['org']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $row['org_nametag']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $row['member_type']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row['etc6']); //학생증
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(12, $excel_row, $row['etc7']); // 신분증명서
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, $row['etc8']); // 직군 추가 입력
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, $row['etc1']); // 등록할인코드 (Y/N) 
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, $row['etc5']); // 할인코드
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $row['member_id']); // 홈페이지인증ID
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row['conference_info']); // 학술대회등록경로
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $row['fee']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $row['deposit_method']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $row['deposit']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $row['etc9']); //가상계좌번호
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $row['etc10']); //최초등록일
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(23, $excel_row, $row['etc11']); //최종등록일호
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(24, $excel_row, $row['deposit_memo']); //홈페이지 메모
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(25, $excel_row, $row['etc12']); //역할
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(26, $excel_row, $row['etc13']); //직책
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(27, $excel_row, $row['breakfast_yn']); //Breakfast symposium
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(28, $excel_row, $row['satellite1_yn']); //Satellite symposium 04/06(목)
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(29, $excel_row, $row['satellite2_yn']); //Satellite symposium 04/07(금)
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(30, $excel_row, $row['attendance_type']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(31, $excel_row, $row['remark1']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(32, $excel_row, $row['remark2']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(33, $excel_row, $row['remark3']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(34, $excel_row, $row['remark4']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(35, $excel_row, $row['memo']);
-          
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row,  $row['qr_chk_day_1']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(37, $excel_row, date("H:i", strtotime($row['mintime_day1'])));  //DAY1입실
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(38, $excel_row, date("H:i", strtotime($row['maxtime_day1'])));  //DAY1퇴실
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(39, $excel_row, $row['d_format_day1']);                //DAY1체류시간
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(40, $excel_row, hoursandmins($spent1));                  //DAY1 breack 제외 시간 
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(41, $excel_row, $score1);                                 //DAY1 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(4, $excel_row, $row['email']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(5, $excel_row, $row['member']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(6, $excel_row, $row['nick_name']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(7, $excel_row, $row['org']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(8, $excel_row, $row['org_nametag']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(9, $excel_row, $row['department']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(10, $excel_row, $row['phone']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(11, $excel_row, $row['attendance_type']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(12, $excel_row, $row['occupation_type']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(13, $excel_row, $row['member_type']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(14, $excel_row, $row['is_score']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(15, $excel_row, $row['licence_number']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(16, $excel_row, $row['is_score1']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(17, $excel_row, $row['is_score2']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(18, $excel_row, $row['specialty_number']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(19, $excel_row, $row['is_score3']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(20, $excel_row, $row['nutritionist_number']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(21, $excel_row, $row['dietitian_number']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(22, $excel_row, $row['date_of_birth']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(23, $excel_row, $row['is_score4']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(24, $excel_row, $row['deposit']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(25, $excel_row, $row['fee']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(26, $excel_row, $row['deposit_date']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(27, $excel_row, $row['deposit_method']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(28, $excel_row, $row['deposit_memo']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(29, $excel_row, $row['etc1']); 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(30, $excel_row, $row['welcome_reception_yn']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(31, $excel_row, $row['satellite1_yn']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(32, $excel_row, $row['breakfast_yn']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(33, $excel_row, $row['luncheon_yn']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(34, $excel_row, $row['conference_info']);
 
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(42, $excel_row,  $row['qr_chk_day_2']);
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(43, $excel_row, date("H:i", strtotime($row['mintime_day2'])));  //DAY2입실
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(44, $excel_row, date("H:i", strtotime($row['maxtime_day2'])));  //DAY2퇴실
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(45, $excel_row, $row['d_format_day2']);                           //DAY2체류시간
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(46, $excel_row, hoursandmins($spent2));                       //DAY2 breack 제외 시간 
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(47, $excel_row, $score2);                       //DAY2 예상 평점
-            // $object->getActiveSheet()->setCellValueByColumnAndRow(48, $excel_row, $score2_1);                       //DAY2 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(35, $excel_row, $row['remark1']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(36, $excel_row, $row['remark2']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(37, $excel_row, $row['remark3']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(38, $excel_row, $row['remark4']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(39, $excel_row, $row['memo']);
+          
+            $object->getActiveSheet()->setCellValueByColumnAndRow(40, $excel_row,  $row['qr_chk_day_1']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(41, $excel_row, date("H:i", strtotime($row['mintime_day1'])));  //DAY1입실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(42, $excel_row, date("H:i", strtotime($row['maxtime_day1'])));  //DAY1퇴실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(43, $excel_row, $row['d_format_day1']);                //DAY1체류시간
+            $object->getActiveSheet()->setCellValueByColumnAndRow(44, $excel_row, hoursandmins($spent1));                  //DAY1 breack 제외 시간 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(45, $excel_row, $score1);                                 //DAY1 예상 평점
+
+            $object->getActiveSheet()->setCellValueByColumnAndRow(46, $excel_row,  $row['qr_chk_day_2']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(47, $excel_row, date("H:i", strtotime($row['mintime_day2'])));  //DAY2입실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(48, $excel_row, date("H:i", strtotime($row['maxtime_day2'])));  //DAY2퇴실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(49, $excel_row, $row['d_format_day2']);                           //DAY2체류시간
+            $object->getActiveSheet()->setCellValueByColumnAndRow(50, $excel_row, hoursandmins($spent2));                       //DAY2 breack 제외 시간 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(51, $excel_row, $score2);                       //DAY2 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(52, $excel_row, $score2_1);                       //DAY2 예상 평점
 
             // $object->getActiveSheet()->setCellValueByColumnAndRow(49, $excel_row, $row['qr_chk_day_3']);
             // $object->getActiveSheet()->setCellValueByColumnAndRow(50, $excel_row, date("H:i", strtotime($row['mintime_day3'])));  //DAY3입실
