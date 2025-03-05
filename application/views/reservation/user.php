@@ -1,19 +1,5 @@
 <?php
 
-
-//[Todo]
-//1. 날짜 & 시간 맞춰서 스크롤 내리기
-
-$date = date('m.d.');
-
-$day = "";
-
-if($date == "03.14."){
-    $day = "day1";
-}else if ($date == "03.15."){
-    $day = "day2";
-}
-
 $day1_time_list = array(
     array(
         'time' => "15:00-16:00",
@@ -119,9 +105,9 @@ $day1_time_list = updateTimeList($day1_time_list, $day1_users);
                 <span class="bold">DAY1</span>_2025.3.14.(Fri)
             </div>
         </div>
-        <div class="time_container">
+        <div class="time_container day1">
             <?php
-                //  print_r($date);
+                //   print_r($time);
                 foreach($day1_time_list as $day1){ 
                     $nickname = $day1['nickname'] ? mb_substr($day1['nickname'], 0, 1) . '*' .mb_substr($day1['nickname'], -1): "";
                     $phone = $day1['phone'] ? substr($day1['phone'], 0, 3) . '****'.substr($day1['phone'], -4): "";
@@ -284,4 +270,46 @@ $day1_time_list = updateTimeList($day1_time_list, $day1_users);
             }
         });
     }
+
+    //시간 맞춰 스크롤 내리기
+    document.addEventListener("DOMContentLoaded", function () {
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentDate = now.toISOString().split("T")[0]; // YYYY-MM-DD 형식
+        const today = new Date().toISOString().slice(0, 10); // 현재 날짜
+        let targetDay = "";
+
+        // 현재 날짜에 따라 day1 또는 day2 선택
+        if (today === "2025-03-14") {
+            targetDay = "day1";
+        } else if (today === "2025-03-15") {
+            targetDay = "day2";
+        }
+
+        if (targetDay) {
+            const timeContainer = document.querySelector(`.time_container.${targetDay}`);
+            if (!timeContainer) return;
+
+            const timeSlots = timeContainer.querySelectorAll(".time");
+            let closestSlot = null;
+            let minDiff = Infinity;
+
+            timeSlots.forEach((slot) => {
+                const timeText = slot.textContent.trim(); 
+                const slotHour = parseInt(timeText.split(":")[0]); 
+
+                const timeDiff = slotHour - currentHour;
+                if (timeDiff >= 0 && timeDiff < minDiff) {
+                    minDiff = timeDiff;
+                    closestSlot = slot;
+                }
+            });
+
+            // 가장 가까운 시간 슬롯으로 스크롤 이동
+            if (closestSlot) {
+                closestSlot.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        }
+});
+
 </script>
