@@ -1,0 +1,143 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+input{
+    background-color: #FFF;
+    border-radius: 20px;
+}
+
+input:disabled{
+    background-color: #fafafa;
+}
+
+input:focus{
+    outline: none;
+}
+.bold{
+    font-weight: 700;
+}
+
+.day{
+    min-width:200px;
+    width: 33%;
+    height: 40px;
+    color: #FFF;
+    margin: 0 auto;
+    border-radius: 24px;
+    background-color: #22205e;
+    position: relative;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 0 12px;
+}
+
+.day.day1{
+    top: -20px;
+}
+
+.time_container{
+    width:90%;
+    margin: 0 auto;
+    /* background-color: orange; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.time_container > div{
+    width: 48%;
+    aspect-ratio: 450.28 / 366.71; /* 비율 설정 */
+    background-image: url('/assets/images/2025/time_box2.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.time_container.day2 > div{
+    margin-top: 20px;
+}
+
+.time{
+    color:#383c94;
+    font-weight: 700;
+    padding-top: 20%;
+}
+
+.disabled .time{
+    color: #909090;
+}
+
+.input_box{
+    height: 45%;
+    margin: 8px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.input_box > input{
+    width:90%;
+    height: 40%;
+    padding-left: 12px;
+}
+
+.input_box > input::placeholder{
+    color: #ababab;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.day_footer{
+    width: 100vw;
+    height: 140px;
+    background-color: #3c8665;
+    color: #FFF;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.day_footer .reservation_btn{
+    display: block;
+    width: 40%;
+    min-width: 120px;
+    height: 40px;
+    border-radius: 24px;
+    margin: 12px auto;
+    border: 2px solid #FFF;
+}
+
+@media screen and (min-width:460px) {
+    .input_box{
+        height: 50%;
+        margin: 12px auto;
+    }
+
+    .input_box > input{
+        height: 49%;
+        margin-top: 8px;
+    }
+}
+
+
+
+@media screen and (min-width:760px) {
+    .input_box{
+        height: 50%;
+        margin: 40px auto 0 auto;
+    }
+
+    .input_box > input{
+        height: 50%;
+        margin-top: 12px;
+    }
+}
