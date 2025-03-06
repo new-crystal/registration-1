@@ -31,10 +31,6 @@
         outline: none;
     }
 
-    .btn_box{
-  
-    }
-
     .btn_box > button{
         padding: 8px 16px;
     }
@@ -47,6 +43,10 @@
     <div class="container">
         <form class="flex flex-col items-start justify-center mt-10">
             <div class="font-bold text-4xl underline underline-offset-4 mb-4">Day 1</div>
+            <div class="btn_box ml-20">
+                <button class="bg-cyan-400 text-white font-bold reservation" data-day="day1">예약하기</button>
+                <button type="button" class="bg-orange-600 text-white font-bold cancel" data-day="day1">수정하기</button>
+            </div>
             <div class="flex flex-col items-start">
                 <div class="w-5/6 flex items-center justify-start mt-10">
                     <div class="btn_box ml-20">
@@ -91,9 +91,9 @@
                             <div>
                                 <div class="person <?php echo $disabled; ?>"></div>
                                 <p><?php echo $item['time']; ?></p>
-                                <input class="person_input" placeholder="예약자 성함" data-idx="<?php echo $startTime; ?>" value="<?php echo $nickname; ?>" <?php echo $disabled; ?>/>
-                                <input class="phone_input" placeholder="예약자 휴대폰 번호" data-idx="<?php echo $startTime ?>" value="<?php echo $phone; ?>" <?php echo $disabled; ?>/>
-                                <button type="button" class="msm_btn font-bold px-4 py-2 mt-2 <?php echo $checked; ?>" data-id="<?php echo $startTime; ?>" >문자발송</button>
+                                <input class="person_input day1" placeholder="예약자 성함" data-idx="<?php echo $startTime; ?>" value="<?php echo $nickname; ?>" <?php echo $disabled; ?>/>
+                                <input class="phone_input day1" placeholder="예약자 휴대폰 번호" data-day="day1" value="<?php echo $phone; ?>" <?php echo $disabled; ?>/>
+                                <button type="button" class="msm_btn font-bold px-4 py-2 mt-2 <?php echo $checked; ?>" data-id="<?php echo $startTime; ?>"  data-day="day1">문자발송</button>
                             </div>
                         <?php } ?>
 
@@ -101,6 +101,10 @@
             </div>
 
             <div class="font-bold text-4xl underline underline-offset-4 mb-4 mt-12">Day 2</div>
+            <div class="btn_box ml-20">
+                <button class="bg-cyan-400 text-white font-bold reservation" data-day="day2" s>예약하기</button>
+                <button type="button" class="bg-orange-600 text-white font-bold cancel" data-day="day2">수정하기</button>
+            </div>
             <div class="flex flex-col items-start">
                 <div class="w-5/6 flex items-center justify-start mt-10">
                     <div class="btn_box ml-20">
@@ -157,9 +161,9 @@
                             <div>
                                 <div class="person <?php echo $disabled; ?>"></div>
                                 <p><?php echo $item['time']; ?></p>
-                                <input class="person_input" placeholder="예약자 성함" data-idx="<?php echo $startTime; ?>" value="<?php echo $nickname; ?>" <?php echo $disabled; ?>/>
-                                <input class="phone_input" placeholder="예약자 휴대폰 번호" data-idx="<?php echo $startTime ?>" value="<?php echo $phone; ?>" <?php echo $disabled; ?>/>
-                                <button type="button" class="msm_btn font-bold px-4 py-2 mt-2 <?php echo $checked; ?>" data-id="<?php echo $startTime; ?>" >문자발송</button>
+                                <input class="person_input day2" placeholder="예약자 성함" data-idx="<?php echo $startTime; ?>" value="<?php echo $nickname; ?>" <?php echo $disabled; ?>/>
+                                <input class="phone_input day2" placeholder="예약자 휴대폰 번호" data-day="day2" value="<?php echo $phone; ?>" <?php echo $disabled; ?>/>
+                                <button type="button" class="msm_btn font-bold px-4 py-2 mt-2 <?php echo $checked; ?>" data-id="<?php echo $startTime; ?>" data-day="day2" >문자발송</button>
                             </div>
                         <?php } ?>
 
@@ -179,7 +183,6 @@
 
     reservationBtnList.forEach((reBtn) => {
         reBtn.addEventListener("click", (e) => {
-         
             e.preventDefault();
             saveData(e)
         });
@@ -188,13 +191,10 @@
     cancelBtnList.forEach((cancelBtn) => {
         cancelBtn.addEventListener("click", (e) => {
             //e.preventDefault();
-            // 버튼의 data-id와 data-part를 가져옴
-            const timeId = e.target.dataset.id;
-            const part = e.target.dataset.part;
+            const day = e.target.dataset.day;
 
-            // 해당 part와 time_id에 맞는 input 필드들을 가져옴
-            const personInputs = document.querySelectorAll(`.person_input[data-idx="${timeId}"][data-part="${part}"]`);
-            const phoneInputs = document.querySelectorAll(`.phone_input[data-idx="${timeId}"][data-part="${part}"]`);
+            const personInputs = document.querySelectorAll(`.person_input.${day}`);
+            const phoneInputs = document.querySelectorAll(`.phone_input.${day}`);
 
             // input 필드의 disabled 속성 해제
             personInputs.forEach((personInput) => {
@@ -226,27 +226,24 @@
     function saveData(e){
         let reservations = [];
         // 버튼의 data-id와 data-part를 가져옴
-        const timeId = e.target.dataset.id;
-        const part = e.target.dataset.part;
+        const day = e.target.dataset.day;
 
-        // 해당 time_id에 해당하는 입력 필드만 가져오기 (data-id가 timeId와 일치하는 입력 필드)
-        const personInputs = document.querySelectorAll(`.person_input[data-idx="${timeId}"][data-part="${part}"]`);
-        const phoneInputs = document.querySelectorAll(`.phone_input[data-idx="${timeId}"][data-part="${part}"]`);
+        const personInputs = document.querySelectorAll(`.person_input.${day}`);
+        const phoneInputs = document.querySelectorAll(`.phone_input.${day}`);
 
         personInputs.forEach((personInput, index) => {
             const phoneInput = phoneInputs[index]; // 동일 인덱스의 휴대폰 필드를 매칭
 
                 reservations.push({
-                    part: part,
-                    name: personInput.value, 
-                    phone: phoneInput.value, 
-                    location: personInput.getAttribute('data-id')  // data-id를 location으로 사용
+                    time_id: personInput.dataset.idx,
+                    day: phoneInput.dataset.day,
+                    nickname: personInput.value, 
+                    phone: phoneInput.value
                 });
      
         });
 
         const data = {
-            time_id: timeId,  // 현재 클릭한 버튼의 time_id
             reservations: reservations
         }
     
@@ -255,7 +252,7 @@
 
     function postData(data) {
         $.ajax({
-            url: "/reservation/post_name",
+            url: "/reservation/fetch_user",
             type: "POST",
             data: JSON.stringify(data),
             dataType: "JSON",
@@ -274,10 +271,10 @@
 
     msmBtnList.forEach((msmBtn)=>{
         msmBtn.addEventListener("click", (e)=>{
-            const location = e.target.dataset.location;
             const timeId = e.target.dataset.id;
+            const day = e.target.dataset.day;
 
-            const url = `/reservation/send_msm?n=${timeId}&m=${location}&d=day1`;
+            const url = `/reservation/send_msm?n=${timeId}&d=${day}`;
             if (window.confirm("※ 문자 전송을 하시겠습니까?")) {
                 window.open(url, "Certificate", "width=800, height=1000, top=30, left=30")
             } else {
@@ -286,14 +283,14 @@
         })
     })
 
-    phoneInputList.forEach((phone)=>{
-        phone.addEventListener("blur", (e)=>{
-            const regPhone = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-            if(!regPhone.test(e.target.value)){
-                alert("휴대폰 번호를 확인해주세요.")
-                e.target.value = "";
-            }
-        })
-    })
+    // phoneInputList.forEach((phone)=>{
+    //     phone.addEventListener("blur", (e)=>{
+    //         const regPhone = /^(01[016789]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+    //         if(!regPhone.test(e.target.value)){
+    //             alert("휴대폰 번호를 확인해주세요.")
+    //             e.target.value = "";
+    //         }
+    //     })
+    // })
 
 </script>

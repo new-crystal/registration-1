@@ -96,5 +96,42 @@ class Reservation extends CI_Controller {
 	   }
 	}
 
+	public function fetch_user()
+	{	
+	   // UTF-8 인코딩 헤더 설정
+	   header('Content-Type: application/json; charset=utf-8');
+
+	   // JSON 데이터를 받음
+	   $inputData = file_get_contents('php://input');
+	   $decodedData = json_decode($inputData, true);
+   
+	   if ($decodedData) {
+		//    $timeId = $decodedData['time_id'];
+		   $reservations = $decodedData['reservations'];
+		//    $day = $decodedData['day'];
+   
+		   // 예약자 정보를 저장할 배열
+		   $info = [];
+   
+		   // 예약 정보를 배열에 추가
+		   foreach ($reservations as $reservation) {
+			   $info[] = array(
+				   'time_id' => $reservation['time_id'],  // 모든 예약 항목에 time_id 추가
+				   'day' => $reservation['day'],
+				   'nickname' => $reservation['nickname'],
+				   'phone' => $reservation['phone']
+			   );
+		   }
+   
+		   // DB 업데이트 실행
+		   $this->room->update_name($info);
+   
+		   // JSON 응답 전송
+		   echo json_encode(array("status" => "success", "message" => "Data updated successfully"), JSON_UNESCAPED_UNICODE);
+	   } else {
+		   echo json_encode(array("status" => "error", "message" => "Invalid JSON data"), JSON_UNESCAPED_UNICODE);
+	   }
+	}
+
 
 }

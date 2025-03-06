@@ -28,29 +28,6 @@ class Room extends CI_Model
 		return $query->result_array();
 	}
 
-
-    public function get_reservations3()
-	{
-		$query = $this->db->query("
-                    SELECT 
-                       *
-                    FROM reservation
-                    WHERE day = 'day3'
-	");
-		return $query->result_array();
-	}
-
-    public function get_reservations4()
-	{
-		$query = $this->db->query("
-                    SELECT 
-                       *
-                    FROM reservation
-                    WHERE day = 'day4'
-	");
-		return $query->result_array();
-	}
-
     public function update_name($info)
     {
         foreach ($info as $reservation) {
@@ -65,7 +42,7 @@ class Room extends CI_Model
                 $this->db->where('day', $reservation['day']);
                 $this->db->update('reservation', array(
                     'day' => $reservation['day'],
-                    'nickname' => $reservation['name'],
+                    'nickname' => $reservation['nickname'],
                     'phone' => $reservation['phone']
                 ));
             } else {
@@ -73,7 +50,7 @@ class Room extends CI_Model
                 $this->db->insert('reservation', array(
                     'day' => $reservation['day'],
                     'time_id' => $reservation['time_id'],
-                    'nickname' => $reservation['name'],
+                    'nickname' => $reservation['nickname'],
                     'phone' => $reservation['phone']
                 ));
             }
