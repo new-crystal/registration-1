@@ -95,7 +95,7 @@ define('PER_PAGE_COUNT', 10);
 
 
 define('ADMIN_ID', 'admin');
-define('ADMIN_PASS', 'lecture');
+define('ADMIN_PASS', 'ksso202%');
 
 define('RESERVATION_ID', 'admin');
-define('RESERVATION_PASS', 'intoon1234!');
+define('RESERVATION_PASS', 'ksso202%');

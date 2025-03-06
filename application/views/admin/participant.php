@@ -69,12 +69,12 @@ $day_2_users = count($day_2) + count($on_day_2);
     <table class="w-9/12 text-2xl mb-20 mt-20">
         <tr class="text-black">
             <th colspan="2" class="bg-sky-950 text-white">등록구분</th>
-            <th  class="bg-amber-200">11월 1일(금)</th>
-            <th  class="bg-green-200">11월 2일(토)</th>
+            <th class="bg-sky-200">3월 14일(금)</th>
+            <th class="bg-amber-200">3월 15일(토)</th>
         </tr>
         
         <tr>
-            <th class="bg-red-100" rowspan="6">사전등록</th>
+            <th class="bg-red-100" rowspan="8">사전등록</th>
             <th class="bg-red-100">연자</th>
             <td>
                 <?php echo isset($speaker_1) ?  count($speaker_1)  : 0; ?>
@@ -120,7 +120,24 @@ $day_2_users = count($day_2) + count($on_day_2);
                 <?php echo isset($participant_2) ?  count($participant_2) : 0; ?>
             </td>
         </tr>
-
+        <tr>
+            <th class="bg-red-100">Satellite Symposium 1 참석자</th>
+            <td>
+                <?php echo isset($participant_1) ?  count($participant_1)  : 0; ?>
+            </td>
+            <td>
+                <?php echo isset($participant_2) ?  count($participant_2) : 0; ?>
+            </td>
+        </tr>
+        <tr>
+            <th class="bg-red-100">Satellite Symposium 2 참석자</th>
+            <td>
+                <?php echo isset($participant_1) ?  count($participant_1)  : 0; ?>
+            </td>
+            <td>
+                <?php echo isset($participant_2) ?  count($participant_2) : 0; ?>
+            </td>
+        </tr>
         <tr>
             <th class="bg-red-100">기타</th>
             <td>
@@ -148,7 +165,7 @@ $day_2_users = count($day_2) + count($on_day_2);
         </tr>
 
         <tr>
-            <th class="bg-blue-100" rowspan="6">현장등록</th>
+            <th class="bg-blue-100" rowspan="8">현장등록</th>
             <th class="bg-blue-100">연자</th>
             <td>
                 <?php echo isset($on_speaker_1) ?  count($on_speaker_1)  : 0; ?>
@@ -194,7 +211,24 @@ $day_2_users = count($day_2) + count($on_day_2);
                 <?php echo isset($on_participant_2) ?  count($on_participant_2) : 0; ?>
             </td>
         </tr>
-
+        <tr>
+            <th class="bg-blue-100">Satellite Symposium 1 참석자</th>
+            <td>
+                <?php echo isset($participant_1) ?  count($participant_1)  : 0; ?>
+            </td>
+            <td>
+                <?php echo isset($participant_2) ?  count($participant_2) : 0; ?>
+            </td>
+        </tr>
+        <tr>
+            <th class="bg-blue-100">Satellite Symposium 2 참석자</th>
+            <td>
+                <?php echo isset($participant_1) ?  count($participant_1)  : 0; ?>
+            </td>
+            <td>
+                <?php echo isset($participant_2) ?  count($participant_2) : 0; ?>
+            </td>
+        </tr>
         <tr>
             <th class="bg-blue-100">기타</th>
             <td>

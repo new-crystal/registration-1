@@ -47,16 +47,22 @@ if ($err) {
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => "POST",
         CURLOPT_POSTFIELDS => array(
-            'phone' =>  $users['phone'], 'callback' => '01066742507',
+            'phone' =>  $users['phone'], 'callback' => '01030098530',
             'message' => '
-[체험 프로그램 시간 안내]
+[미팅룸 예약안내]
 안녕하세요 ' .  $users['nickname'] .'님,
-금일 예약하신 체험 프로그램은 '. $users['time_id'] .'입니다.
+신청하신 미팅룸 예약은 '. $users['time_id'] .'입니다.
 예약 시간 20분 전이니 시간에 늦지 않게 부스 앞으로 와주시면 감사하겠습니다.
 
-※시작 5분전 부스 앞에서 본인의 예약을 스탭에게 확인해주세요. 
-5분 전에 예약이 확인되지 않을 경우 현장 대기자들에게 순서가 넘어 갈 수 있습니다.※'
-, 'refkey' => 'RESTAPITEST1548722798', 'subject' => '[제네시스 | 뱅앤올룹슨 버추얼 베뉴 라이브 체험 부스 예약안내]'
+※사용 시간 5분전 미팅룸(그랜드홀6)앞에서
+ 스탭에게 예약 문자 확인을 부탁드립니다.
+
+예약 취소를 원할시 문자를 받으신 연락처로
+취소 문자 발송 부탁드립니다. 
+
+운영사무국 드림.
+'
+, 'refkey' => 'RESTAPITEST1548722798', 'subject' => '[대한비만학회 춘계학술대회 미팅룸 예약 안내]'
 , 'image_cnt' =>'1'
             ),
             CURLOPT_HTTPHEADER => array(
