@@ -188,6 +188,13 @@
                                         </span>
                                     </a>
                                 </li>
+                                <li style="margin-bottom: 2rem;">
+                                    <a href="/admin/qr_blank_user" target="_blank">
+                                        <i class="icon-printer2"></i>
+                                        <span>QR 프린트용
+                                        </span>
+                                    </a>
+                                </li> 
                                 <!-- <li style="margin-bottom: 2rem;"
                                     <?php if ($primary_menu == 'day2') echo 'class="active"' ?>>
                                     <a href="/admin/time_day2">

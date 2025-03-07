@@ -43,6 +43,7 @@ $day_2_users = count($day_2) + count($on_day_2);
 <div class="text-center flex flex-col items-center justify-center">
     <h1 class="text-6xl font-semibold text-orange-600 my-10">제61차 대한비만학회 춘계학술대회</h1>
     <h6 class="text-3xl font-semibold mb-20 ">현장 참석자 데이터</h6>
+    <h6 class="text-3xl font-semibold mb-20 ">현장 총 등록 인원 : <?=count($users)?>명</h6>
     <h6 class="text-3xl font-semibold mb-20 ">현장 QR 출결 :
         <?php echo count($item) ?> 명 / 미출결:
         <?php echo $non_qr ?>
@@ -123,19 +124,19 @@ $day_2_users = count($day_2) + count($on_day_2);
         <tr>
             <th class="bg-red-100">Satellite Symposium 1 참석자</th>
             <td>
-                <?php echo isset($participant_1) ?  count($participant_1)  : 0; ?>
+                <?php echo isset($satellite_1_1) ?  count($satellite_1_1)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($participant_2) ?  count($participant_2) : 0; ?>
+                <?php echo isset($satellite_2_1) ?  count($satellite_2_1) : 0; ?>
             </td>
         </tr>
         <tr>
             <th class="bg-red-100">Satellite Symposium 2 참석자</th>
             <td>
-                <?php echo isset($participant_1) ?  count($participant_1)  : 0; ?>
+                <?php echo isset($satellite_1_2) ?  count($satellite_1_2)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($participant_2) ?  count($participant_2) : 0; ?>
+                <?php echo isset($satellite_2_2) ?  count($satellite_2_2) : 0; ?>
             </td>
         </tr>
         <tr>
@@ -214,19 +215,19 @@ $day_2_users = count($day_2) + count($on_day_2);
         <tr>
             <th class="bg-blue-100">Satellite Symposium 1 참석자</th>
             <td>
-                <?php echo isset($participant_1) ?  count($participant_1)  : 0; ?>
+                <?php echo isset($on_satellite_1_1) ?  count($on_satellite_1_1)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($participant_2) ?  count($participant_2) : 0; ?>
+                <?php echo isset($on_satellite_2_1) ?  count($on_satellite_2_1) : 0; ?>
             </td>
         </tr>
         <tr>
             <th class="bg-blue-100">Satellite Symposium 2 참석자</th>
             <td>
-                <?php echo isset($participant_1) ?  count($participant_1)  : 0; ?>
+                <?php echo isset($on_satellite_1_2) ?  count($on_satellite_1_2)  : 0; ?>
             </td>
             <td>
-                <?php echo isset($participant_2) ?  count($participant_2) : 0; ?>
+                <?php echo isset($on_satellite_2_2) ?  count($on_satellite_2_2) : 0; ?>
             </td>
         </tr>
         <tr>

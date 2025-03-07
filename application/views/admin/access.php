@@ -125,7 +125,12 @@
         -webkit-text-stroke-color: #004471;
         }
 
-
+    .flex_beteween{
+        width:100%;
+        height:4rem;
+        display:flex;
+        justify-content: space-between;
+    }
 </style>
 
 <div class="page-container">
@@ -159,10 +164,11 @@
 
                     <div class="w-2/5 flex flex-col items-center justify-center">
                         <h1 class="text-5xl mt-32 font-semibold ">QR CODE 입력 </h1>
-                        <div class="w-[850px] flex justify-between">
+                        <div class="w-[1050px] flex justify-between">
                             <input id="qrcode_input" name="qrcode" class="w-[400px] h-[50px] mt-20 p-3 " type="text" autofocus placeholder="꼭 출결 찍어주세요!!" />
                             <button class="w-[150px] h-[40px] bg-slate-300 mt-20 mb-20 hover:bg-slate-400 active:bg-slate-500 text-black" type="submit" id="submit">등록</button>
                             <button class="w-[150px] h-[40px] bg-indigo-950 mt-20 mb-20 hover:bg-slate-300 active:bg-slate-300 text-white" type="button" id="memo_btn">메모</button>
+                           
                         </div>
                     </div>
 
@@ -181,8 +187,9 @@
                             </tr>
                             <tr>
                                 <th>성함</th>
-                                <td id="name" class="qr_text">
-                                    <?php if (isset($user['nick_name'])) echo $user['nick_name'] ?>
+                                <td class="qr_text flex_beteween">
+                                    <input id="name" value="<?php if (isset($user['nick_name'])) echo $user['nick_name'] ?>"/>
+                                    <button class="w-[150px] h-[40px] bg-indigo-950 mt-20 mb-20 hover:bg-slate-300 active:bg-slate-300 text-white" type="button" id="nickname_btn">성함 변경</button>
                                 </td>
                             </tr>
                             <tr>
@@ -232,14 +239,6 @@
                                     <?php if (isset($user['remark3'])) echo $user['remark3'] ?>
                                 </td>
                             </tr>
-
-                            <!-- <tr>
-                                <th class="memoHeader">remark4</th>
-                                <td id="remark4" class="qr_text">
-                                    <?php if (isset($user['remark4'])) echo $user['remark4'] ?>
-                                </td>
-                            </tr> -->
-
                             <tr>
                                 <th class="memoHeader">메모</th>
                                 <td id="memo" class="qr_text">
@@ -308,6 +307,10 @@
     // const remark7 = document.querySelector("#remark7")
     // const remark8 = document.querySelector("#remark8")
     const memoBtn = document.querySelector("#memo_btn")
+    
+    //sujeong / 성함 변경 버튼
+    const nicknameBtn = document.querySelector("#nickname_btn");
+
     const content = document.querySelector(".content")
     const notice = document.querySelector("#notice")
     const attendance_date = document.querySelector("#attendance_date")
@@ -399,7 +402,7 @@
                 number.innerText = htmlDocument.querySelector("#number").innerText.replace(/<br\s*\/?>/gi, "")
                     .replace(
                         /\s/g, "");
-                name.innerText = htmlDocument.querySelector("#name").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                name.value = htmlDocument.querySelector("#name").value.replace(/<br\s*\/?>/gi, "").replace(
                     /\s/g, "");
                     affiliation.innerText = htmlDocument.querySelector("#affiliation").innerText.replace(/<br\s*\/?>/gi, "").replace(
                     /\s/g, "");
@@ -528,7 +531,7 @@
 
     accessBtn.addEventListener("click", (e)=>{
         e.preventDefault()
-        console.log("hello~")
+        // console.log("hello~")
         saveTime()
     })
 
@@ -541,6 +544,7 @@
 
     memoBtn.addEventListener("click", () => {
         const registerNum = number.innerText;
+
         const url = `/admin/memo?n=${registerNum}`;
         if (registerNum) {
             const memoWindow = window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
@@ -551,8 +555,31 @@
                     memo.innerText = childInputValue;
                 }
             });
+        }else{
+            alert("QR 코드를 확인해주세요.")
         }
     })
+
+    nicknameBtn.addEventListener("click", ()=>{
+        const regiNum = number.innerText;
+        const url = `/admin/memo_nickname?n=${regiNum}`;
+        if (regiNum) {
+            const memoWindow = window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
+
+            window.addEventListener("message", (event) => {
+                if (event.source === memoWindow) {
+                    const childInputValue = event.data;
+                    // memo.innerText = childInputValue;
+                    // console.log("hi")
+                    fetchData(childInputValue)
+                }
+            });
+        }else{
+            alert("QR 코드를 확인해주세요.")
+        }
+    })
+
+
 
 
        // 한글 음절 및 개별 자모에 대한 영문 자판 매핑
