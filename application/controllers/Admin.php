@@ -695,6 +695,44 @@ class Admin extends CI_Controller
             }
         }
     }
+
+    
+    public function memo_nickname()
+    {
+
+        if (!isset($this->session->admin_data['logged_in']))
+            $this->load->view('admin/login');
+        else {
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+            // 
+            $data['primary_menu'] = 'user_qr';
+            $userId = $_GET['n'];
+            $where = array(
+                'registration_no' => $userId
+            );
+            $data['item'] = $this->users->get_user($where);
+
+            $this->form_validation->set_rules('nickname', 'Memo', 'required');
+
+            if ($this->form_validation->run() === FALSE) {
+                $this->load->view('admin/memo_nickname', $data);
+            } else {
+
+                $nickname = $this->input->post('nickname');
+
+                if ($nickname === "") {
+                    $info = array("nick_name" => null); // 메모 필드를 null로 설정하여 삭제
+                } else {
+                    $info = array("nick_name" => $nickname);
+                }
+
+
+                $this->users->add_memo($info, $where);
+            }
+        }
+    }
+
     public function delete_user()
     {
 
@@ -1891,92 +1929,92 @@ class Admin extends CI_Controller
             /**day1 ~ day3 access 각각 유저 */
             $data['speaker_1'] = $this->users->get_access_speaker_1();
             $data['speaker_2'] = $this->users->get_access_speaker_2();
-            $data['speaker_3'] = $this->users->get_access_speaker_3();
+            // $data['speaker_3'] = $this->users->get_access_speaker_3();
             $data['on_speaker_1'] = $this->users->get_access_on_speaker_1();
             $data['on_speaker_2'] = $this->users->get_access_on_speaker_2();
-            $data['on_speaker_3'] = $this->users->get_access_on_speaker_3();
+            // $data['on_speaker_3'] = $this->users->get_access_on_speaker_3();
 
             $data['chairperson_1'] = $this->users->get_access_chairperson_1();
             $data['chairperson_2'] = $this->users->get_access_chairperson_2();
-            $data['chairperson_3'] = $this->users->get_access_chairperson_3();
+            // $data['chairperson_3'] = $this->users->get_access_chairperson_3();
             $data['on_chairperson_1'] = $this->users->get_access_on_chairperson_1();
             $data['on_chairperson_2'] = $this->users->get_access_on_chairperson_2();
-            $data['on_chairperson_3'] = $this->users->get_access_on_chairperson_3();
+            // $data['on_chairperson_3'] = $this->users->get_access_on_chairperson_3();
 
             $data['panel_1'] = $this->users->get_access_panel_1();
             $data['panel_2'] = $this->users->get_access_panel_2();
-            $data['panel_3'] = $this->users->get_access_panel_3();
+            // $data['panel_3'] = $this->users->get_access_panel_3();
             $data['on_panel_1'] = $this->users->get_access_on_panel_1();
             $data['on_panel_2'] = $this->users->get_access_on_panel_2();
-            $data['on_panel_3'] = $this->users->get_access_on_panel_3();
+            // $data['on_panel_3'] = $this->users->get_access_on_panel_3();
             
             $data['faculty_1'] = $this->users->get_access_faculty_1();
             $data['faculty_2'] = $this->users->get_access_faculty_2();
-            $data['faculty_3'] = $this->users->get_access_faculty_3();
+            // $data['faculty_3'] = $this->users->get_access_faculty_3();
             $data['on_faculty_1'] = $this->users->get_access_on_faculty_1();
             $data['on_faculty_2'] = $this->users->get_access_on_faculty_2();
-            $data['on_faculty_3'] = $this->users->get_access_on_faculty_3();
+            // $data['on_faculty_3'] = $this->users->get_access_on_faculty_3();
             
             $data['participant_1'] = $this->users->get_access_participant_1();
             $data['participant_2'] = $this->users->get_access_participant_2();
-            $data['participant_3'] = $this->users->get_access_participant_3();
+            // $data['participant_3'] = $this->users->get_access_participant_3();
             $data['on_participant_1'] = $this->users->get_access_on_participant_1();
             $data['on_participant_2'] = $this->users->get_access_on_participant_2();
-            $data['on_participant_3'] = $this->users->get_access_on_participant_3();
+            // $data['on_participant_3'] = $this->users->get_access_on_participant_3();
 
             //Satellite 1 참가자(동아ST)
             $data['satellite_1_1'] = $this->users->get_access_satellite_1_1();
             $data['satellite_2_1'] = $this->users->get_access_satellite_2_1();
-            $data['satellite_3_1'] = $this->users->get_access_satellite_3_1();
+            // $data['satellite_3_1'] = $this->users->get_access_satellite_3_1();
 
             $data['on_satellite_1_1'] = $this->users->get_access_on_satellite_1_1();
             $data['on_satellite_2_1'] = $this->users->get_access_on_satellite_2_1();
-            $data['on_satellite_3_1'] = $this->users->get_access_on_satellite_3_1();
+            // $data['on_satellite_3_1'] = $this->users->get_access_on_satellite_3_1();
 
 
             //Satellite 2 참가자(종근당)
             $data['satellite_1_2'] = $this->users->get_access_satellite_1_2();
             $data['satellite_2_2'] = $this->users->get_access_satellite_2_2();
-            $data['satellite_3_2'] = $this->users->get_access_satellite_3_2();
+            // $data['satellite_3_2'] = $this->users->get_access_satellite_3_2();
 
             $data['on_satellite_1_2'] = $this->users->get_access_on_satellite_1_2();
             $data['on_satellite_2_2'] = $this->users->get_access_on_satellite_2_2();
-            $data['on_satellite_3_2'] = $this->users->get_access_on_satellite_3_2();
+            // $data['on_satellite_3_2'] = $this->users->get_access_on_satellite_3_2();
 
 
             //Satellite 3 참가자(대웅바이오)
-            $data['satellite_1_3'] = $this->users->get_access_satellite_1_3();
-            $data['satellite_2_3'] = $this->users->get_access_satellite_2_3();
-            $data['satellite_3_3'] = $this->users->get_access_satellite_3_3();
+            // $data['satellite_1_3'] = $this->users->get_access_satellite_1_3();
+            // $data['satellite_2_3'] = $this->users->get_access_satellite_2_3();
+            // $data['satellite_3_3'] = $this->users->get_access_satellite_3_3();
           
-            $data['on_satellite_1_3'] = $this->users->get_access_on_satellite_1_3();
-            $data['on_satellite_2_3'] = $this->users->get_access_on_satellite_2_3();
-            $data['on_satellite_3_3'] = $this->users->get_access_on_satellite_3_3();
+            // $data['on_satellite_1_3'] = $this->users->get_access_on_satellite_1_3();
+            // $data['on_satellite_2_3'] = $this->users->get_access_on_satellite_2_3();
+            // $data['on_satellite_3_3'] = $this->users->get_access_on_satellite_3_3();
     
 
-            //Satellite 4 참가자(오가논)
-            $data['satellite_1_4'] = $this->users->get_access_satellite_1_4();
-            $data['satellite_2_4'] = $this->users->get_access_satellite_2_4();
-            $data['satellite_3_4'] = $this->users->get_access_satellite_3_4();
+            // //Satellite 4 참가자(오가논)
+            // $data['satellite_1_4'] = $this->users->get_access_satellite_1_4();
+            // $data['satellite_2_4'] = $this->users->get_access_satellite_2_4();
+            // $data['satellite_3_4'] = $this->users->get_access_satellite_3_4();
 
-            $data['on_satellite_1_4'] = $this->users->get_access_on_satellite_1_4();
-            $data['on_satellite_2_4'] = $this->users->get_access_on_satellite_2_4();
-            $data['on_satellite_3_4'] = $this->users->get_access_on_satellite_3_4();
+            // $data['on_satellite_1_4'] = $this->users->get_access_on_satellite_1_4();
+            // $data['on_satellite_2_4'] = $this->users->get_access_on_satellite_2_4();
+            // $data['on_satellite_3_4'] = $this->users->get_access_on_satellite_3_4();
 
             
             $data['other_1'] = $this->users->get_access_other_1();
             $data['other_2'] = $this->users->get_access_other_2();
-            $data['other_3'] = $this->users->get_access_other_3();
+            // $data['other_3'] = $this->users->get_access_other_3();
             $data['on_other_1'] = $this->users->get_access_on_other_1();
             $data['on_other_2'] = $this->users->get_access_on_other_2();
-            $data['on_other_3'] = $this->users->get_access_on_other_3();
+            // $data['on_other_3'] = $this->users->get_access_on_other_3();
 
             $data['day_1'] = $this->users->get_access_day_1();
             $data['day_2'] = $this->users->get_access_day_2();
-            $data['day_3'] = $this->users->get_access_day_3();
+            // $data['day_3'] = $this->users->get_access_day_3();
             $data['on_day_1'] = $this->users->get_access_on_day_1();
             $data['on_day_2'] = $this->users->get_access_on_day_2();
-            $data['on_day_3'] = $this->users->get_access_on_day_3();
+            // $data['on_day_3'] = $this->users->get_access_on_day_3();
             
             $this->load->view('admin/left_side.php', $data);
             $this->load->view('admin/participant.php', $data);

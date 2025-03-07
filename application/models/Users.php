@@ -369,15 +369,15 @@ class Users extends CI_Model
 			return $query->result_array();
 		}
 
-		public function get_access_on_speaker_3()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
+		// public function get_access_on_speaker_3()
+		// {
+		// 	$query = $this->db->query("
+		// 		SELECT *
+		// 		FROM users a
+		// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 1
+		// ");
+		// 	return $query->result_array();
+		// }
 
 			/**day 1 access */
 			public function get_access_speaker_1()
@@ -400,15 +400,15 @@ class Users extends CI_Model
 				return $query->result_array();
 			}
 	
-			public function get_access_speaker_3()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 0
-			");
-				return $query->result_array();
-			}
+			// public function get_access_speaker_3()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '연자' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
 
 
 				/** chairperson */
@@ -432,15 +432,15 @@ class Users extends CI_Model
 			return $query->result_array();
 		}
 
-		public function get_access_on_chairperson_3()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
+		// public function get_access_on_chairperson_3()
+		// {
+		// 	$query = $this->db->query("
+		// 		SELECT *
+		// 		FROM users a
+		// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 1
+		// ");
+		// 	return $query->result_array();
+		// }
 
 			/** chairperson */
 			public function get_access_chairperson_1()
@@ -463,15 +463,15 @@ class Users extends CI_Model
 				return $query->result_array();
 			}
 	
-			public function get_access_chairperson_3()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 0
-			");
-				return $query->result_array();
-			}
+			// public function get_access_chairperson_3()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '좌장' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
 
 			
 				/** panel */
@@ -495,15 +495,15 @@ class Users extends CI_Model
 			return $query->result_array();
 		}
 
-		public function get_access_on_panel_3()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
+		// public function get_access_on_panel_3()
+		// {
+		// 	$query = $this->db->query("
+		// 		SELECT *
+		// 		FROM users a
+		// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 1
+		// ");
+		// 	return $query->result_array();
+		// }
 
 			/** panel */
 			public function get_access_panel_1()
@@ -526,15 +526,15 @@ class Users extends CI_Model
 				return $query->result_array();
 			}
 	
-			public function get_access_panel_3()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 0
-			");
-				return $query->result_array();
-			}
+			// public function get_access_panel_3()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '패널' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
 
 							/** faculty */
 		public function get_access_on_faculty_1()
@@ -557,15 +557,15 @@ class Users extends CI_Model
 			return $query->result_array();
 		}
 
-		public function get_access_on_faculty_3()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
+		// public function get_access_on_faculty_3()
+		// {
+		// 	$query = $this->db->query("
+		// 		SELECT *
+		// 		FROM users a
+		// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 1
+		// ");
+		// 	return $query->result_array();
+		// }
 
 			/** faculty */
 			public function get_access_faculty_1()
@@ -588,141 +588,15 @@ class Users extends CI_Model
 				return $query->result_array();
 			}
 	
-			public function get_access_faculty_3()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 0
-			");
-				return $query->result_array();
-			}
-	
-
-		/** Satellite 1 참가자(동아ST)*/
-		public function get_access_on_satellite_1_1()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type LIKE '%세틀라이트%'  AND a.remark1 LIKE '%동아ST%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
-
-		public function get_access_on_satellite_2_1()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type LIKE '%세틀라이트%'  AND a.remark1 LIKE '%동아ST%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
-
-		public function get_access_on_satellite_3_1()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type LIKE '%세틀라이트%'  AND a.remark1 LIKE '%동아ST%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
-
-		/** Satellite 2 참가자(종근당)*/
-		public function get_access_on_satellite_1_2()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type LIKE '%세틀라이트%'  AND a.remark1 LIKE '%종근당%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
-
-		public function get_access_on_satellite_2_2()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type LIKE '%세틀라이트%'  AND a.remark1 LIKE '%종근당%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
-
-		public function get_access_on_satellite_3_2()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type LIKE '%세틀라이트%'  AND a.remark1 LIKE '%종근당%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
-
-		
-		/** Satellite 3 참가자(대웅바이오)*/
-		public function get_access_on_satellite_1_3()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type LIKE '%세틀라이트%'  AND a.remark1 LIKE '%대웅바이오%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
-
-		public function get_access_on_satellite_2_3()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type LIKE '%세틀라이트%'  AND a.remark1 LIKE '%대웅바이오%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
-
-		public function get_access_on_satellite_3_3()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type LIKE '%세틀라이트%' AND a.remark1 LIKE '%대웅바이오%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
-
-			/** Satellite 4 참가자(오가논)*/
-			public function get_access_on_satellite_1_4()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type LIKE '%세틀라이트%' AND a.remark1 LIKE '%오가논%' AND a.onsite_reg = 1
-			");
-				return $query->result_array();
-			}
-	
-			public function get_access_on_satellite_2_4()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type LIKE '%세틀라이트%' AND a.remark1 LIKE '%오가논%' AND a.onsite_reg = 1
-			");
-				return $query->result_array();
-			}
-	
-			public function get_access_on_satellite_3_4()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type LIKE '%세틀라이트%' AND a.remark1 LIKE '%오가논%' AND a.onsite_reg = 1
-			");
-				return $query->result_array();
-			}
+			// public function get_access_faculty_3()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '임원' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
 	
 
 			/** satellite 1 (동아ST)*/
@@ -731,7 +605,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 LIKE '%세틀1%' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite1' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -741,20 +615,20 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 LIKE '%세틀1%' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite1' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
 	
-			public function get_access_satellite_3_1()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 LIKE '%세틀1%' AND a.onsite_reg = 0
-			");
-				return $query->result_array();
-			}
+			// public function get_access_satellite_3_1()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 LIKE '%세틀1%' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
 
 			
 			/** satellite 2 (종근당)*/
@@ -763,7 +637,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 LIKE '%세틀2%' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite2' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -773,20 +647,20 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 LIKE '%세틀2%' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite2' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
 	
-			public function get_access_satellite_3_2()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 LIKE '%세틀2%' AND a.onsite_reg = 0
-			");
-				return $query->result_array();
-			}
+			// public function get_access_satellite_3_2()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 LIKE '%세틀2%' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
 
 				
 			/** satellite 3 (대웅바이오)*/
@@ -851,7 +725,58 @@ class Users extends CI_Model
 			// ");
 			// 	return $query->result_array();
 			// }
+			/** satellite 1 (동아ST)*/
+			public function get_access_on_satellite_1_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite1' AND a.onsite_reg = 1
+			");
+				return $query->result_array();
+			}
 	
+			public function get_access_on_satellite_2_1()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite1' AND a.onsite_reg = 1
+			");
+				return $query->result_array();
+			}
+	
+			// public function get_access_satellite_3_1()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 LIKE '%세틀1%' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
+
+			
+			/** satellite 2 (종근당)*/
+			public function get_access_on_satellite_1_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite2' AND a.onsite_reg = 1
+			");
+				return $query->result_array();
+			}
+	
+			public function get_access_on_satellite_2_2()
+			{
+				$query = $this->db->query("
+					SELECT *
+					FROM users a
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite2' AND a.onsite_reg = 1
+			");
+				return $query->result_array();
+			}
 	
 		/** Participant	 */
 		public function get_access_on_participant_1()
@@ -859,7 +784,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1 AND a.remark1 != 'satellite1' AND a.remark1 != 'satellite2'
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1 AND COALESCE(a.remark1, '') = '';
 		");
 			return $query->result_array();
 		}
@@ -869,20 +794,20 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1 AND a.remark1 != 'satellite1' AND a.remark1 != 'satellite2'
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1 AND COALESCE(a.remark1, '') = '';
 		");
 			return $query->result_array();
 		}
 
-		public function get_access_on_participant_3()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
+		// public function get_access_on_participant_3()
+		// {
+		// 	$query = $this->db->query("
+		// 		SELECT *
+		// 		FROM users a
+		// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 1
+		// ");
+		// 	return $query->result_array();
+		// }
 
 		
 
@@ -892,7 +817,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 0 AND a.remark1 != '세틀1'
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 0 AND COALESCE(a.remark1, '') = '';
 			");
 				return $query->result_array();
 			}
@@ -902,20 +827,20 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 0 AND a.remark1 != '세틀1'
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 0  AND COALESCE(a.remark1, '') = '';
 			");
 				return $query->result_array();
 			}
 	
-			public function get_access_participant_3()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 0
-			");
-				return $query->result_array();
-			}
+			// public function get_access_participant_3()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
 	
 			
 		/** other	 */
@@ -924,7 +849,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 1
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.onsite_reg = 1
 		");
 			return $query->result_array();
 		}
@@ -934,20 +859,20 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 1
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자'AND a.onsite_reg = 1
 		");
 			return $query->result_array();
 		}
 
-		public function get_access_on_other_3()
-		{
-			$query = $this->db->query("
-				SELECT *
-				FROM users a
-				WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 1
-		");
-			return $query->result_array();
-		}
+		// public function get_access_on_other_3()
+		// {
+		// 	$query = $this->db->query("
+		// 		SELECT *
+		// 		FROM users a
+		// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.onsite_reg = 1
+		// ");
+		// 	return $query->result_array();
+		// }
 
 			/** other */
 			public function get_access_other_1()
@@ -955,7 +880,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -965,20 +890,20 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
 	
-			public function get_access_other_3()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
-			");
-				return $query->result_array();
-			}
+			// public function get_access_other_3()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.attendance_type != '연자' AND a.attendance_type != '좌장' AND a.attendance_type != '패널' AND a.attendance_type != '임원' AND a.attendance_type != '일반참석자' AND a.attendance_type NOT LIKE '%satellite%' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
 
 			/** day 1 */
 			public function get_access_day_1()
@@ -1025,26 +950,26 @@ class Users extends CI_Model
 			}
 
 			/** day 3 */
-			public function get_access_day_3()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.onsite_reg = 0
-			");
-				return $query->result_array();
-			}
+			// public function get_access_day_3()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.onsite_reg = 0
+			// ");
+			// 	return $query->result_array();
+			// }
 			
 			/** day 3 */
-			public function get_access_on_day_3()
-			{
-				$query = $this->db->query("
-					SELECT *
-					FROM users a
-					WHERE a.qr_chk_day_3 = 'Y' AND a.onsite_reg = 1
-			");
-				return $query->result_array();
-			}
+			// public function get_access_on_day_3()
+			// {
+			// 	$query = $this->db->query("
+			// 		SELECT *
+			// 		FROM users a
+			// 		WHERE a.qr_chk_day_3 = 'Y' AND a.onsite_reg = 1
+			// ");
+			// 	return $query->result_array();
+			// }
 	
 }
 

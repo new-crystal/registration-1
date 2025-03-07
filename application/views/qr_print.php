@@ -80,12 +80,12 @@ body {
                    echo '<div class="start_num">' .$users['registration_no'] . '</div>';
                    if($nicknameLength <= 3){
                     echo '<div class="nick_name" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';
-                   }else if($nicknameLength > 3  && $nicknameLength <= 5){
-                       echo '<div class="nick_name small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';   
-                   }else if($nicknameLength > 5 && $nicknameLength < 20 ){
-                    echo '<div class="nick_name small_small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">'. $users['nick_name'] . '</div>';   
-                   }else if($nicknameLength >= 20 ){
-                    echo '<div class="nick_name small_small_small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';   
+                //    }else if($nicknameLength > 3  && $nicknameLength <= 5){
+                //        echo '<div class="nick_name small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">' . $users['nick_name'] . '</div>';   
+                //    }else if($nicknameLength > 5 && $nicknameLength < 20 ){
+                //     echo '<div class="nick_name small_small" id="nick_name" style="letter-spacing: ' . $letter_spacing . ';margin-left: ' . $letter_spacing . ';">'. $users['nick_name'] . '</div>';   
+                   }else if($nicknameLength >= 4 ){
+                    echo '<div class="nick_name small_small_small" id="nick_name">' . $users['nick_name'] . '</div>';   
                    }
     
                    echo '<div class="org small_org" id="org">' . $users['org_nametag'] . '</div>';
