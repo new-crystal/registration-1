@@ -33,6 +33,61 @@
     select {
         padding: 4px 8px;
     }
+
+        
+    
+    .alert {
+        width: 100%;
+        height: 260px;
+        background: #9c27b0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #FFF;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.85;
+        z-index: 999;
+    }
+
+    .alert>p{
+        font-size: 8.5rem;
+        font-weight: 700;
+        position: relative;
+        /* animation: fadeInUp 1s; */
+        font-family: Gong;
+        -webkit-text-stroke-width: 5px;
+        -webkit-text-stroke-color: #004471;
+    }
+
+    .alert>h6 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        position: relative;
+        /* animation: fadeInUp 1s; */
+        font-family: Gong;
+        -webkit-text-stroke-width: 3px;
+        -webkit-text-stroke-color: #004471;
+        }
+        .access_btn{
+            width: 150px;
+            height: 50px;
+            background-color: orangered;
+            font-size: 20px;
+            font-weight: 800;
+            color:#FFF;
+            float: right;
+        }
+
+    .access_btn:hover{
+        background-color: red;
+    }
+    .rightT {
+        text-align: right;
+    }
 </style>
 <?php
     $onsite = "";
@@ -53,10 +108,14 @@
             <div class="col-lg-12">
                 <section class="panel form-horizontal">
                     <div class="panel-body">
+                    <div class="alert" id="alert" style="display:none;">
+                        <p class="time"></p>
+                        <p class="alert_text">출결 체크 완료!</p>
+                    </div>
                         <div class="detail_table">
                             <table>
                                 <tr>
-                                    <td colspan="2">
+                                    <td colspan="2" class="flex_beteween">
                                         <button type="button" class="btn btn-primary" onclick="print('<?php echo $item['registration_no']; ?>')">QR Print</button>
                                         <button type="button" onclick="saveTime('<?php echo $item['registration_no']; ?>')" class="access_btn">출결</button>
                                     </td>
@@ -429,20 +488,20 @@
     const ynList = document.querySelectorAll(".yn")
 
 
-    /**참가 유형 select box */
-    attendance_select.addEventListener("change", () => {
-        attendance.value = attendance_select.options[attendance_select.selectedIndex].value;
-    })
+    // /**참가 유형 select box */
+    // attendance_select.addEventListener("change", () => {
+    //     attendance.value = attendance_select.options[attendance_select.selectedIndex].value;
+    // })
 
-    /**참가자 구분 select box */
-    member_type_select.addEventListener("change", () => {
-        member_type.value = member_type_select.options[member_type_select.selectedIndex].value;
-    })
+    // /**참가자 구분 select box */
+    // member_type_select.addEventListener("change", () => {
+    //     member_type.value = member_type_select.options[member_type_select.selectedIndex].value;
+    // })
 
-    /**분야구분 select box */
-    ocupation_type_select.addEventListener("change", () => {
-        ocupation_type.value = ocupation_type_select.options[ocupation_type_select.selectedIndex].value;
-    })
+    // /**분야구분 select box */
+    // ocupation_type_select.addEventListener("change", () => {
+    //     ocupation_type.value = ocupation_type_select.options[ocupation_type_select.selectedIndex].value;
+    // })
 
     function removeUser(reg) {
         if (window.confirm("삭제하시겠습니까?")) {
@@ -482,7 +541,7 @@
                 url : url,
                 data: data,
                 success: function(result){
-
+                    console.log(result)
                     const alert = document.querySelector("#alert");
                     const alertText = document.querySelector(".alert_text");
 

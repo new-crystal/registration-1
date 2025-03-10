@@ -33,7 +33,14 @@ if ($err) {
     //print_r($responseData);
     $accessToken = $responseData['access_token'];
 
-    
+    // DateTime 객체로 변환
+    $datetime = DateTime::createFromFormat('H:i', $users['time_id']);
+
+    // 한 시간 추가
+    $datetime->modify('+1 hour');
+
+    // 결과를 문자열로 변환
+    $end_time = $datetime->format('H:i');
     //mms 포토문자
     $curl = curl_init();
 
@@ -51,13 +58,13 @@ if ($err) {
             'message' => '
 [미팅룸 예약안내]
 안녕하세요 ' .  $users['nickname'] .'님,
-신청하신 미팅룸 예약은 '. $users['time_id'] .'입니다.
+신청하신 미팅룸 예약은 ' . $users['time_id'] . ' - ' . $end_time . '입니다.
 예약 시간 20분 전이니 시간에 늦지 않게 부스 앞으로 와주시면 감사하겠습니다.
 
-※사용 시간 5분전 미팅룸(그랜드홀6)앞에서
+※사용 시간 5분 전 미팅룸(그랜드홀6)앞에서
  스탭에게 예약 문자 확인을 부탁드립니다.
 
-예약 취소를 원할시 문자를 받으신 연락처로
+예약 취소를 원할 시 문자를 받으신 연락처로
 취소 문자 발송 부탁드립니다. 
 
 운영사무국 드림.

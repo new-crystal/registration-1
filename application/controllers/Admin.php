@@ -1379,18 +1379,18 @@ class Admin extends CI_Controller
                     $this->users->update_msm_status($info, $where);
                     $postdata = http_build_query(
                         array(
-                            'CATEGORY_D_1'      => 'QRSystem',
+                            'CATEGORY_D_1'      => 'QrSystem',
                             'CATEGORY_D_2'      => 'ksso',
-                            'CATEGORY_D_3'      => '240308',
+                            'CATEGORY_D_3'      => '250314',
                             'SEND_ADDRESS'      => 'ksso@into-on.com',
                             'SEND_NAME'         => '제61차 대한비만학회 춘계학술대회',
                             'RECV_ADDRESS'      =>  $users['email'],
                             'RECV_NAME'         =>  $users['nick_name'],
-                            'REPLY_ADDRESS'     => 'endo@into-on.com',
+                            'REPLY_ADDRESS'     => 'ksso@into-on.com',
                             'REPLY_NAME'        => '제61차 대한비만학회 춘계학술대회',
                             'EMAIL_SUBJECT'     => '[제61차 대한비만학회 춘계학술대회] 현장 참석 안내',
                             'EMAIL_ALTBODY'     => '제61차 대한비만학회 춘계학술대회',
-                            'EMAIL_TEMPLETE_ID' => 'Qr_ksso_240308',
+                            'EMAIL_TEMPLETE_ID' => 'Qr_ksso_250314',
                             'EMBED_IMAGE_GRID'  => 'null',
                             'INSERT_TEXT_GRID'    => "{" .
                                 '"$text1" : ' . '"' .  $users['nick_name'] . '",' .
@@ -1550,8 +1550,9 @@ class Admin extends CI_Controller
     public function sendMail()
     {
         $userId = $_GET['n'];
+        $reg_num = $_GET['m'];
         $where = array(
-            'email' => $userId
+            'registration_no' => $reg_num
         );
         $info = array(
             'QR_MAIL_SEND_YN' =>  'Y'
@@ -1562,22 +1563,22 @@ class Admin extends CI_Controller
         $postdata = http_build_query(
             array(
                 'CATEGORY_D_1'      => 'QrSystem',
-                'CATEGORY_D_2'      => 'kes',
-                'CATEGORY_D_3'      => '240308',
+                'CATEGORY_D_2'      => 'ksso',
+                'CATEGORY_D_3'      => '250314',
                 'SEND_ADDRESS'      => 'ksso@into-on.com',
                 'SEND_NAME'         => '제61차 대한비만학회 춘계학술대회',
-                'RECV_ADDRESS'      => $data['users']['email'],
-                'RECV_NAME'         => $data['users']['nick_name'],
-                'REPLY_ADDRESS'     => 'endo@into-on.com',
+                'RECV_ADDRESS'      =>  $userId,
+                'RECV_NAME'         =>  $userId,
+                'REPLY_ADDRESS'     => 'ksso@into-on.com',
                 'REPLY_NAME'        => '제61차 대한비만학회 춘계학술대회',
                 'EMAIL_SUBJECT'     => '[제61차 대한비만학회 춘계학술대회] 현장 참석 안내',
                 'EMAIL_ALTBODY'     => '제61차 대한비만학회 춘계학술대회',
-                'EMAIL_TEMPLETE_ID' => 'Qr_ksso_240308',
+                'EMAIL_TEMPLETE_ID' => 'Qr_ksso_250314',
                 'EMBED_IMAGE_GRID'  => 'null',
                 'INSERT_TEXT_GRID'    => "{" .
-                    '"$text1" : ' . '"' . $data['users']['nick_name'] . '",' .
-                    '"$text2" : ' . '"' . $data['users']['org'] . '",' .
-                    '"$text3" : ' . '"' . $data['users']['registration_no'] . '",' .
+                    '"$text1" : ' . '"' .  $userId . '",' .
+                    '"$text2" : ' . '"' .  $userId . '",' .
+                    '"$text3" : ' . '"' .  $userId . '",' .
                     '"$text4" : ' . '"' . base64_encode(file_get_contents(getcwd() . '/assets/images/QR/qrcode_' . $data['users']['registration_no'] . '.jpg')) . '"' .
                     "}"
             )

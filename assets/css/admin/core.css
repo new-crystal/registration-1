@@ -13,6 +13,14 @@
   src: url('../css/icons/glyphicons/glyphicons-halflings-regular.eot');
   src: url('../css/icons/glyphicons/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../css/icons/glyphicons/glyphicons-halflings-regular.woff2') format('woff2'), url('../css/icons/glyphicons/glyphicons-halflings-regular.woff') format('woff'), url('../css/icons/glyphicons/glyphicons-halflings-regular.ttf') format('truetype'), url('../css/icons/glyphicons/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
+
+    
+@font-face {
+  font-family: Gong;
+  src: url("../../../assets/font/Gong_Gothic_OTF_Bold.otf");
+}
+
+
 .glyphicon {
   font-size: 16px;
   vertical-align: middle;
@@ -161,7 +169,7 @@
   height: 100%;
   float: left;
   position: relative;
-  padding: 170px 0px 0px 0px;
+  padding: 160px 0px 0px 0px;
 }
 
 #printThis .start_num{
@@ -170,7 +178,7 @@
   right: 20px; */
   width: 32%;
   position: relative;
-  top: -49px;
+  top: -46px;
   right: -12px;
 }
 
@@ -317,7 +325,7 @@
 }
 
 #printThis .receipt_price{
-  padding-bottom: 390px;
+  padding-bottom: 416px;
 }
 
 #printThis .receipt_name{
