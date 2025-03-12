@@ -338,10 +338,10 @@
             navigator.clipboard
                 .writeText(text)
                 .then(() => {
-                    // alert('클립보드에 복사되었습니다.');
+                     alert('클립보드에 복사되었습니다.');
                 })
                 .catch(() => {
-                    // alert('복사를 다시 시도해주세요.');
+                     alert('복사를 다시 시도해주세요.');
                 });
         }
     }
@@ -431,6 +431,10 @@
             }
         }).then((data) => {
             executeFunctionInChildWindow(qrcode);
+            changeBackgroundColorIfNotEmpty(remark1)
+            changeBackgroundColorIfNotEmpty(remark2)
+            changeBackgroundColorIfNotEmpty(remark3)
+            changeBackgroundColorIfNotEmpty(memo)
         }).then(() => {
             window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
         })
