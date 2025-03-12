@@ -72,9 +72,9 @@ if ($err) {
 -홈페이지: 메인 화면 > 로그인 > 마이 페이지 > 초록보기
 
 [어플리케이션 다운로드 안내]
--구글플레이 / 앱스토어 검색: ‘KSSO2025’
--애플앱스토어: https://apps.apple.com/kr/app/ksso2025/id6476071605
--구글플레이: https://play.google.com/store/apps/details?id=com.intoon.ksso
+-구글 플레이 / 앱스토어 검색: ‘KSSO2025’
+-앱스토어: https://apps.apple.com/kr/app/ksso2025/id6476071605
+-구글 플레이: https://play.google.com/store/apps/details?id=com.intoon.ksso
 
 문의사항이 있으시면 운영사무국으로 연락주시기 바랍니다.
 
