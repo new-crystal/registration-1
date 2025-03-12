@@ -696,7 +696,7 @@ class Admin extends CI_Controller
         }
     }
 
-    
+    //sujeong / 닉네임 변경 이벤트
     public function memo_nickname()
     {
 
@@ -725,6 +725,43 @@ class Admin extends CI_Controller
                     $info = array("nick_name" => null); // 메모 필드를 null로 설정하여 삭제
                 } else {
                     $info = array("nick_name" => $nickname);
+                }
+
+
+                $this->users->add_memo($info, $where);
+            }
+        }
+    }
+
+    //sujeong / 소속 변경 이벤트
+    public function memo_org()
+    {
+
+        if (!isset($this->session->admin_data['logged_in']))
+            $this->load->view('admin/login');
+        else {
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+            // 
+            $data['primary_menu'] = 'user_qr';
+            $userId = $_GET['n'];
+            $where = array(
+                'registration_no' => $userId
+            );
+            $data['item'] = $this->users->get_user($where);
+
+            $this->form_validation->set_rules('org', 'Memo', 'required');
+
+            if ($this->form_validation->run() === FALSE) {
+                $this->load->view('admin/memo_org', $data);
+            } else {
+
+                $org = $this->input->post('org');
+
+                if ($org === "") {
+                    $info = array("org_nametag" => null); // 메모 필드를 null로 설정하여 삭제
+                } else {
+                    $info = array("org_nametag" => $org);
                 }
 
 

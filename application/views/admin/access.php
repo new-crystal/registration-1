@@ -27,7 +27,7 @@
     .qr-info-table th {
         border: 2px solid #eee;
         text-align: center;
-        font-size: 1.25rem;
+        font-size: 1.6rem;
         line-height: 2.5rem;
     }
 
@@ -131,6 +131,10 @@
         display:flex;
         justify-content: space-between;
     }
+
+    .flex_beteween input {
+        width: 100%;
+    }
 </style>
 
 <div class="page-container">
@@ -194,8 +198,10 @@
                             </tr>
                             <tr>
                                 <th>소속</th>
-                                <td id="affiliation" class="qr_text">
-                                    <?php if (isset($user['org'])) echo $user['org'] ?></td>
+                                <td id="" class="qr_text flex_beteween">
+                                    <input id="affiliation" value="<?php if (isset($user['org_nametag'])) echo $user['org_nametag'] ?>"/>
+                                    <button class="w-[150px] h-[40px] bg-indigo-950 mt-20 mb-20 hover:bg-slate-300 active:bg-slate-300 text-white" type="button" id="org_btn">소속 변경</button>
+                                </td>
                             </tr>
                             <tr>
                                 <th>참가 유형</th>
@@ -246,15 +252,21 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th class="memoHeader">메모</th>
+                                <th class="memoHeader">이름변경, 동명이인, 프리뷰</th>
                                 <td id="remark5" class="qr_text">
                                 <?php if (isset($user['remark5'])) echo $user['remark5'] ?>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="memoHeader">중복역할</th>
+                                <th class="memoHeader">메모</th>
                                 <td id="remark6" class="qr_text">
                                 <?php if (isset($user['remark6'])) echo $user['remark6'] ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="memoHeader">중복역할</th>
+                                <td id="remark7" class="qr_text">
+                                <?php if (isset($user['remark7'])) echo $user['remark7'] ?>
                                 </td>
                             </tr>
                             <tr>
@@ -329,6 +341,7 @@
     
     //sujeong / 성함 변경 버튼
     const nicknameBtn = document.querySelector("#nickname_btn");
+    const orgBtn = document.querySelector("#org_btn")
 
     const content = document.querySelector(".content")
     const notice = document.querySelector("#notice")
@@ -423,7 +436,7 @@
                         /\s/g, "");
                 name.value = htmlDocument.querySelector("#name").value.replace(/<br\s*\/?>/gi, "").replace(
                     /\s/g, "");
-                    affiliation.innerText = htmlDocument.querySelector("#affiliation").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    affiliation.value = htmlDocument.querySelector("#affiliation").value.replace(/<br\s*\/?>/gi, "").replace(
                     /\s/g, "");
                     attendance_type.innerText = htmlDocument.querySelector("#attendance_type").innerText.replace(/<br\s*\/?>/gi, "")
                     .replace(/\s/g, "");
@@ -599,6 +612,25 @@
     nicknameBtn.addEventListener("click", ()=>{
         const regiNum = number.innerText;
         const url = `/admin/memo_nickname?n=${regiNum}`;
+        if (regiNum) {
+            const memoWindow = window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
+
+            window.addEventListener("message", (event) => {
+                if (event.source === memoWindow) {
+                    const childInputValue = event.data;
+                    // memo.innerText = childInputValue;
+                    // console.log("hi")
+                    fetchData(childInputValue)
+                }
+            });
+        }else{
+            alert("QR 코드를 확인해주세요.")
+        }
+    })
+
+    orgBtn.addEventListener("click", ()=>{
+        const regiNum = number.innerText;
+        const url = `/admin/memo_org?n=${regiNum}`;
         if (regiNum) {
             const memoWindow = window.open(url, "Certificate", "width=500, height=300, top=30, left=30");
 
