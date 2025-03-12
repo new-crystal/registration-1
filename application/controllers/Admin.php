@@ -249,14 +249,13 @@ class Admin extends CI_Controller
         $regNo = $this->input->post('userId');
        
         foreach ($regNo as $value) {
-            $info = array(
-                'deposit' =>  '결제완료'
-            );
-            $where = array(
-                'registration_no' => $value,
-            );
-            $this->users->update_deposit_status($info, $where);
-
+            // $info = array(
+            //     'deposit' =>  '결제완료'
+            // );
+            // $where = array(
+            //     'registration_no' => $value,
+            // );
+            
             /* QR생성 */
             $info = array(
                 'qr_generated' =>  'Y'
@@ -264,6 +263,7 @@ class Admin extends CI_Controller
             $where = array(
                 'registration_no' => $value
             );
+            $this->users->update_deposit_status($info, $where);
 
             $str = $value;
             $dir = "./assets/images/QR";
@@ -303,15 +303,14 @@ class Admin extends CI_Controller
         $regNo = $this->input->post('userId');
 
         foreach ($regNo as $value) {
-            $info = array(
-                'deposit' => '결제완료'
-            );
-            $where = array(
-                'registration_no' => $value,
-            );
-            $this->users->update_deposit_status($info, $where);
-
-
+            // $info = array(
+            //     'deposit' => '결제완료'
+            // );
+            // $where = array(
+            //     'registration_no' => $value,
+            // );
+            
+            
             /* QR생성 */
             $info = array(
                 'qr_generated' =>  'Y'
@@ -319,6 +318,7 @@ class Admin extends CI_Controller
             $where = array(
                 'registration_no' => $value
             );
+            $this->users->update_deposit_status($info, $where);
 
             $str = $value;
             $dir = "./assets/images/QR";
