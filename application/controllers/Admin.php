@@ -784,6 +784,9 @@ class Admin extends CI_Controller
                 $remark2 = $this->input->post('remark2');
                 $remark3 = $this->input->post('remark3');
                 $remark4 = $this->input->post('remark4');
+                $remark5 = $this->input->post('remark5');
+                $remark6 = $this->input->post('remark6');
+                $remark7 = $this->input->post('remark7');
                 $memo = $this->input->post('memo');
                 $deposit_memo = $this->input->post('deposit_memo');
                 
@@ -861,6 +864,9 @@ class Admin extends CI_Controller
                     'remark2' => $remark2,
                     'remark3' => $remark3,
                     'remark4' => $remark4,
+                    'remark5' => $remark5,
+                    'remark6' => $remark6,
+                    'remark7' => $remark7,
                     'memo' => $memo,
                     'deposit_memo' => $deposit_memo,
                     'fee' => $fee,

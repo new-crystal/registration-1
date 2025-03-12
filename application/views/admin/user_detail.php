@@ -121,28 +121,43 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="background-color: #fb8500">Remarks 1<br>(하단텍 및 구분)</th>
+                                    <th style="background-color: #fb8500">네임택 하단택</th>
                                     <td><input class="form-control" type="text" name="remark1" id="remark1" value="<?php echo $item['remark1']; ?>">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="background-color: #fb8500">Remarks 2<br>(Lunch with experts)</th>
+                                    <th style="background-color: #fb8500">임원</th>
                                     <td>
                                         <input class="form-control" type="text" value="<?php echo $item['remark2']; ?>" name="remark2" id="remark2">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="background-color: #fb8500">Remarks 3<br>(정보받기&안내)</th>
+                                    <th style="background-color: #fb8500">안내/심사표/Oral</th>
                                     <td><input class="form-control" type="text" name="remark3" value="<?php echo $item['remark3']; ?>" id="remark3">
                                     </td>
                                 </tr>
-                                <!-- <tr>
-                                    <th style="background-color: #fb8500">Remarks 4<br>결제 및 환불관련</th>
+                                <tr>
+                                    <th style="background-color: #fb8500">welcome Reception</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['remark4']; ?>" name="remark4" id="remark4">
                                     </td>
-                                </tr> -->
+                                </tr>
                                 <tr>
-                                    <th style="background-color: #fb8500">memo</th>
+                                    <th style="background-color: #fb8500">이름변경, 동명이인, 프리뷰</th>
+                                    <td><input class="form-control" type="text" value="<?php echo $item['remark5']; ?>" name="remark5" id="remark5">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #fb8500">메모</th>
+                                    <td><input class="form-control" type="text" value="<?php echo $item['remark6']; ?>" name="remark6" id="remark6">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #fb8500">중복역할</th>
+                                    <td><input class="form-control" type="text" value="<?php echo $item['remark7']; ?>" name="remark7" id="remark7">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="background-color: #fb8500">현장 메모</th>
                                     <td><input class="form-control" type="text" value="<?php echo $item['memo']; ?>" name="memo" id="memo">
                                     </td>
                                 </tr>
@@ -210,9 +225,9 @@
                                             <option value="연자">연자</option>
                                             <option value="패널">패널</option>
                                             <option value="기자">기자</option>
-                                            <!-- <option value="Satellite 1 참가자(동아ST)">Satellite 1 참가자(동아ST)</option>
-                                            <option value="Satellite 2 참가자(종근당)">Satellite 2 참가자(종근당)</option>
-                                            <option value="Satellite 3 참가자(대웅바이오)">Satellite 3 참가자(대웅바이오)</option>
+                                            <option value="satellite1">Satellite 1 참가자</option>
+                                            <option value="satellite2">Satellite 2 참가자</option>
+                                           <!--   <option value="Satellite 3 참가자(대웅바이오)">Satellite 3 참가자(대웅바이오)</option>
                                             <option value="Satellite 4 참가자(오가논)">Satellite 4 참가자(오가논)</option> -->
                                         </select>
                                     </td>

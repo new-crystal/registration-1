@@ -7,8 +7,8 @@ $(function() {
         stateDuration:-1,
         autoWidth: false,
         lengthMenu: [
-            [11, 100, 200], // 페이지 당 레코드 수 옵션
-            [11, 100, 200] // 옵션 레이블
+            [50, 100, 200], // 페이지 당 레코드 수 옵션
+            [50, 100, 200] // 옵션 레이블
         ],
         // columnDefs: [{ 
         //     orderable: false,
@@ -55,7 +55,7 @@ $(function() {
         minimumResultsForSearch: Infinity,
         width: 'auto',
         dropdownAutoWidth : true // Added for auto width
-    }).val(11).trigger('change');
+    }).val(50).trigger('change');
 });
 
 function excel_download(){
