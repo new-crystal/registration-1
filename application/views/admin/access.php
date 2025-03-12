@@ -461,7 +461,12 @@
             changeBackgroundColorIfNotEmpty(remark1)
             changeBackgroundColorIfNotEmpty(remark2)
             changeBackgroundColorIfNotEmpty(remark3)
+            changeBackgroundColorIfNotEmpty(remark4)
+            changeBackgroundColorIfNotEmpty(remark5)
+            changeBackgroundColorIfNotEmpty(remark6)
+            changeBackgroundColorIfNotEmpty(remark7)
             changeBackgroundColorIfNotEmpty(memo)
+            changeBackgroundColorIfNotEmpty(deposit_memo)
         }).then(() => {
             window.open(`https://reg1.webeon.net/qrcode/print_file?registration_no=${qrvalue}`, "_blank")
         })
