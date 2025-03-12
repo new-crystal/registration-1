@@ -605,7 +605,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite1' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.etc1 = 'satellite1' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -615,7 +615,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite1' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.etc1 = 'satellite1' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -637,7 +637,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite2' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.etc1 = 'satellite2' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -647,7 +647,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite2' AND a.onsite_reg = 0
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.etc1 = 'satellite2' AND a.onsite_reg = 0
 			");
 				return $query->result_array();
 			}
@@ -731,7 +731,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite1' AND a.onsite_reg = 1
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.etc1 = 'satellite1' AND a.onsite_reg = 1
 			");
 				return $query->result_array();
 			}
@@ -741,7 +741,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite1' AND a.onsite_reg = 1
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.etc1 = 'satellite1' AND a.onsite_reg = 1
 			");
 				return $query->result_array();
 			}
@@ -763,7 +763,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite2' AND a.onsite_reg = 1
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.etc1 = 'satellite2' AND a.onsite_reg = 1
 			");
 				return $query->result_array();
 			}
@@ -773,7 +773,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.remark1 = 'satellite2' AND a.onsite_reg = 1
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.etc1 = 'satellite2' AND a.onsite_reg = 1
 			");
 				return $query->result_array();
 			}
@@ -784,7 +784,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1 AND COALESCE(a.remark1, '') = '';
+				WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1 AND COALESCE(a.etc1, '') = '';
 		");
 			return $query->result_array();
 		}
@@ -794,7 +794,7 @@ class Users extends CI_Model
 			$query = $this->db->query("
 				SELECT *
 				FROM users a
-				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1 AND COALESCE(a.remark1, '') = '';
+				WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 1 AND COALESCE(a.etc1, '') = '';
 		");
 			return $query->result_array();
 		}
@@ -817,7 +817,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 0 AND COALESCE(a.remark1, '') = '';
+					WHERE a.qr_chk_day_1 = 'Y' AND a.attendance_type = '일반참석자' AND a.onsite_reg = 0 AND COALESCE(a.etc1, '') = '';
 			");
 				return $query->result_array();
 			}
@@ -827,7 +827,7 @@ class Users extends CI_Model
 				$query = $this->db->query("
 					SELECT *
 					FROM users a
-					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 0  AND COALESCE(a.remark1, '') = '';
+					WHERE a.qr_chk_day_2 = 'Y' AND a.attendance_type  = '일반참석자' AND a.onsite_reg = 0  AND COALESCE(a.etc1, '') = '';
 			");
 				return $query->result_array();
 			}

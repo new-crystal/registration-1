@@ -44,7 +44,7 @@
     }
 
     .qr-info-table tr {
-        height: 4rem;
+        height: 6rem;
         padding: 4px;
     }
 
@@ -127,7 +127,7 @@
 
     .flex_beteween{
         width:100%;
-        height:4rem;
+        height:6rem;
         display:flex;
         justify-content: space-between;
     }
@@ -160,10 +160,10 @@
                     </div>
                     <button class="w-[150px] h-[40px] bg-slate-300 mt-20 hover:bg-slate-400 active:bg-slate-500" type="button" id="open">새창</button>
                 </div>
-                <form action="/admin/access" id="qr_form" name="qr_form" class="w-full h-[88vh] flex flex-col items-center justify-center bg-slate-50">
+                <form action="/admin/access" id="qr_form" name="qr_form" class="w-full h-[88vh] flex flex-col items-center justify-start bg-slate-50">
 
                     <div class="w-2/5 flex flex-col items-center justify-center">
-                        <h1 class="text-5xl mt-32 font-semibold ">QR CODE 입력 </h1>
+                        <h1 class="text-5xl mt-8 font-semibold ">QR CODE 입력 </h1>
                         <div class="w-[1050px] flex justify-between">
                             <input id="qrcode_input" name="qrcode" class="w-[400px] h-[50px] mt-20 p-3 " type="text" autofocus placeholder="꼭 출결 찍어주세요!!" />
                             <button class="w-[150px] h-[40px] bg-slate-300 mt-20 mb-20 hover:bg-slate-400 active:bg-slate-500 text-black" type="submit" id="submit">등록</button>
@@ -222,34 +222,51 @@
                                 <col />
                             </colgroup>
                             <tr>
-                                <th class="memoHeader">remark1<br/>(하단텍 및 구분)</th>
+                                <th class="memoHeader">네임택 하단택</th>
                                 <td id="remark1" class="qr_text">
                                     <?php if (isset($user['remark1'])) echo $user['remark1'] ?>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="memoHeader">remark2<br/>(Lunch with experts)</th>
+                                <th class="memoHeader">임원</th>
                                 <td id="remark2" class="qr_text">
-                                    <?php if (isset($user['remark2'])) echo $user['remark2'] ?>
+                                <?php if (isset($user['remark2'])) echo $user['remark2'] ?>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="memoHeader">remark3<br/>(정보받기&안내)</th>
+                                <th class="memoHeader">안내/심사표/Oral</th>
                                 <td id="remark3" class="qr_text">
-                                    <?php if (isset($user['remark3'])) echo $user['remark3'] ?>
+                                <?php if (isset($user['remark3'])) echo $user['remark3'] ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="memoHeader">welcome Reception</th>
+                                <td id="remark4" class="qr_text">
+                                <?php if (isset($user['remark4'])) echo $user['remark4'] ?>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="memoHeader">메모</th>
-                                <td id="memo" class="qr_text">
-                                    <?php if (isset($user['memo'])) { echo $user['memo'] == 'null' ? "" : $user['memo'];}?>
+                                <td id="remark5" class="qr_text">
+                                <?php if (isset($user['remark5'])) echo $user['remark5'] ?>
                                 </td>
                             </tr>
-
+                            <tr>
+                                <th class="memoHeader">중복역할</th>
+                                <td id="remark6" class="qr_text">
+                                <?php if (isset($user['remark6'])) echo $user['remark6'] ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="memoHeader">현장 메모</th>
+                                <td id="memo" class="qr_text">
+                                <?php if (isset($user['memo'])) echo $user['memo'] ?>
+                                </td>
+                            </tr>
                             <tr>
                                 <th class="memoHeader">등록메모</th>
                                 <td id="deposit_memo" class="qr_text">
-                                    <?php if (isset($user['deposit_memo'])) { echo $user['deposit_memo'] == 'null' ? "" : $user['deposit_memo'];}?>
+                                <?php if (isset($user['deposit_memo'])) echo $user['deposit_memo'] ?>
                                 </td>
                             </tr>
                         </table>
@@ -302,6 +319,8 @@
     const remark3 = document.querySelector("#remark3")
     const remark4 = document.querySelector("#remark4")
     const remark5 = document.querySelector("#remark5")
+    const remark6 = document.querySelector("#remark6")
+    const remark7 = document.querySelector("#remark7")
     const special_request_food = document.querySelector("#special_request_food")
     // const remark6 = document.querySelector("#remark6")
     // const remark7 = document.querySelector("#remark7")
@@ -417,6 +436,14 @@
                     /\s/g, "");
                     remark3.innerText = htmlDocument.querySelector("#remark3").innerText.replace(/<br\s*\/?>/gi, "").replace(
                         /\s/g, "");
+                    remark4.innerText = htmlDocument.querySelector("#remark4").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                    remark5.innerText = htmlDocument.querySelector("#remark5").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                    /\s/g, "");
+                    remark6.innerText = htmlDocument.querySelector("#remark6").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                        /\s/g, "");
+                    remark7.innerText = htmlDocument.querySelector("#remark7").innerText.replace(/<br\s*\/?>/gi, "").replace(
+                            /\s/g, "");
                     memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "").replace(
                         /\s/g, "");
                         deposit_memo.innerText = htmlDocument.querySelector("#deposit_memo").innerText.replace(/<br\s*\/?>/gi, "").replace(
