@@ -74,7 +74,7 @@ table th {
                         <th>전화번호</th>
                         <th>Day 1 출결시간</th>
                         <th>Day 2 출결시간</th>
-                        <th>Day 3 출결시간</th>
+                        <!-- <th>Day 3 출결시간</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -91,7 +91,7 @@ table th {
                         echo '<td>' . $item['phone'] . '</td>';
                         echo '<td style="text-align: center;">' . $item['mintime_day_1'] . '</td>';
                         echo '<td style="text-align: center;">' . $item['mintime_day_2'] . '</td>';
-                        echo '<td style="text-align: center;">' . $item['mintime_day_3'] . '</td>';
+                        // echo '<td style="text-align: center;">' . $item['mintime_day_3'] . '</td>';
                         echo '</tr>';
                     }
                     ?>

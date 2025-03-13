@@ -178,7 +178,7 @@ class Users extends CI_Model
 		$this->db->insert($this->users, $info);
 
 		$id = $this->db->insert_id();
-		$registration_no = 'KSSO2025-0'. str_pad(substr($id, -3), 3, '0', STR_PAD_LEFT);
+		$registration_no = 'KSSO2025-0'. str_pad(substr($id, -3), 5, '0', STR_PAD_LEFT);
 		$this->db->where('id', $id);
 		$this->db->update($this->users, array('registration_no' => $registration_no));
 	}

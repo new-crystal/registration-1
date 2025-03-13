@@ -90,7 +90,7 @@ $remain_count = $total_gift_count - $gift_count;
 
         <div class="content">
             <div class="panel panel-flat">
-                <div class="gift_box">남은 선물: <?php echo $remain_count; ?></div>
+                <div class="gift_box">나간 선물 수: <?php echo $gift_count; ?></div>
                 <form action="/event/access" id="qr_form" name="qr_form" class="w-full h-[88vh] flex flex-col items-center justify-center bg-slate-50">
 
                     <div class="w-2/5 flex flex-col items-center justify-center">

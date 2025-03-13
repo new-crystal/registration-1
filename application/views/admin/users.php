@@ -263,6 +263,7 @@
 
 
 $('.depositChk').click(function() {
+    
     var formName = $('#depositForm');
     var formName2 = $('#nametagForm');
     var formName3 = $('#non_depositForm');

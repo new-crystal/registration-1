@@ -606,6 +606,7 @@ class Admin extends CI_Controller
                 $email = $this->input->post('email');
                 $attendance_type = $this->input->post('attendance_type');
                 $member_type = $this->input->post('member_type');
+                $occupation_type = $this->input->post('type1');
                 // $type1 = $this->input->post('type1');
                 // $member = $this->input->post('member');
                 $memo = $this->input->post('memo');
@@ -615,29 +616,29 @@ class Admin extends CI_Controller
 
                 //            error_log(print_r($name, TRUE), 3, '/tmp/errors.log');
 
-                $remark1 = "";
-                if(strpos($attendance_type, "Satellite") !== false){
+                $etc1 = "";
+                if(strpos($attendance_type, "satellite") !== false){
                     $fee = 0;
 
-                    if(strpos($attendance_type, "동아ST") !== false){
-                        $attendance_type = "세틀라이트 등록자";
-                        $remark1 = "세틀라이트 1(동아ST)";
+                    if(strpos($attendance_type, "satellite1") !== false){
+                        $attendance_type = "일반참석자";
+                        $etc1 = "satellite1";
                     }
                     
-                    if(strpos($attendance_type, "종근당") !== false){
-                        $attendance_type = "세틀라이트 등록자";
-                        $remark1 = "세틀라이트 2(종근당)";
+                    if(strpos($attendance_type, "satellite2") !== false){
+                        $attendance_type = "일반참석자";
+                        $etc1 = "satellite2";
                     }
                     
-                    if(strpos($attendance_type, "대웅바이오") !== false){
-                        $attendance_type = "세틀라이트 등록자";
-                        $remark1 = "세틀라이트 3(대웅바이오)";
-                    }
+                    // if(strpos($attendance_type, "대웅바이오") !== false){
+                    //     $attendance_type = "세틀라이트 등록자";
+                    //     $remark1 = "세틀라이트 3(대웅바이오)";
+                    // }
                     
-                    if(strpos($attendance_type, "오가논") !== false){
-                        $attendance_type = "세틀라이트 등록자";
-                        $remark1 = "세틀라이트 4(오가논)";
-                    }
+                    // if(strpos($attendance_type, "오가논") !== false){
+                    //     $attendance_type = "세틀라이트 등록자";
+                    //     $remark1 = "세틀라이트 4(오가논)";
+                    // }
             }
                 $info = array(
                     'nick_name' => preg_replace("/\s+/", "", $name),
@@ -647,6 +648,7 @@ class Admin extends CI_Controller
                     'email' => preg_replace("/\s+/", "", $email),
                     'attendance_type' => trim($attendance_type),
                     'member_type' => trim($member_type),
+                    'occupation_type' => trim($occupation_type),
                     // 'member' => trim($member),
                     'reg_date' => $time,
                     'deposit_date' => $time,
@@ -654,7 +656,7 @@ class Admin extends CI_Controller
                     'deposit' => '결제대기',
                     'memo' => $memo,
                     'onsite_reg' => '1',
-                    'remark1' => $remark1
+                    'etc1' => $etc1
                 );
                 //                var_dump($info);
                 $this->users->add_onsite_user($info);
