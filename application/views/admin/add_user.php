@@ -88,23 +88,24 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">전화번호 *</label>
+                                <label class="col-sm-2 control-label">소속 *</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="org" id="org" placeholder="*필수">
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">전화번호</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" name="phone" id="phone" placeholder="*필수 연락처 ('-'를 제외한 숫자만 입력해주세요.)">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">E-mail *</label>
+                                <label class="col-sm-2 control-label">E-mail</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" name="email" id="email">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">소속 *</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="org" id="org" placeholder="*필수">
                                 </div>
                             </div>
                           
@@ -198,14 +199,14 @@
 
 
 
-    $('#phone').bind('keyup', function(event) {
-        var regNumber = /^[0-9]*$/;
-        var temp = $('#phone').val();
-        if (!regNumber.test(temp)) {
-            alert('숫자만 입력하세요!');
-            $('#phone').val(temp.replace(/[^0-9]/g, ''));
-        }
-    })
+    // $('#phone').bind('keyup', function(event) {
+    //     var regNumber = /^[0-9]*$/;
+    //     var temp = $('#phone').val();
+    //     if (!regNumber.test(temp)) {
+    //         alert('숫자만 입력하세요!');
+    //         $('#phone').val(temp.replace(/[^0-9]/g, ''));
+    //     }
+    // })
     $(function() {
         $("#addForm").submit(function() {
             if (!$.trim($("#nick_name").val())) {
@@ -218,16 +219,16 @@
                 $("#org").focus();
                 return false;
             }
-            if (!$.trim($("#phone").val())) {
-                alert("연락처(전화번호)를 입력해주세요.");
-                $("#phone").focus();
-                return false;
-            }
-            if (!$.trim($("#email").val())) {
-                alert("이메일을 입력해주세요.");
-                $("#email").focus();
-                return false;
-            }
+            // if (!$.trim($("#phone").val())) {
+            //     alert("연락처(전화번호)를 입력해주세요.");
+            //     $("#phone").focus();
+            //     return false;
+            // }
+            // if (!$.trim($("#email").val())) {
+            //     alert("이메일을 입력해주세요.");
+            //     $("#email").focus();
+            //     return false;
+            // }
 
 
             $("#addForm").attr("action", "/admin/add_user");

@@ -602,8 +602,8 @@ class Admin extends CI_Controller
             } else {
                 $name = $this->input->post('nick_name');
                 $org = $this->input->post('org');
-                $phone = $this->input->post('phone');
-                $email = $this->input->post('email');
+                $phone = $this->input->post('phone') ?? "010-4058-5269";
+                $email = $this->input->post('email')?? "sujeong.shin@into-on.com";
                 $attendance_type = $this->input->post('attendance_type');
                 $member_type = $this->input->post('member_type');
                 $occupation_type = $this->input->post('type1');
