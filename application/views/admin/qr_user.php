@@ -79,6 +79,7 @@ table th {
                     <tr>
                         <th></th>
                         <th>접수번호</th>
+                        <!-- <th>입금여부</th> -->
                         <th style="min-width: 100px">참가자유형</th>
                         <!-- <th>참석자구분</th> -->
                         <th>이름</th>
@@ -100,6 +101,7 @@ table th {
                         echo '<tr>';
                         echo '<td style="text-align: center;"><input type="checkbox" name="depositChk" class="depositChk" value="' .  $item['registration_no'] . '"></td>';
                         echo '<td class="reg_num pointer">' . $item['registration_no'] . '</td>';
+                        // echo '<td class="reg_num pointer">' . $item['deposit'] . '</td>';
                         echo '<td>' . $item['attendance_type'] . '</td>';
                         // echo '<td>' . $item['member_type'] . '</td>';
                         echo '<td class="user_d">' . $item['nick_name'] . '</td>';

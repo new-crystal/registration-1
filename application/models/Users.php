@@ -145,7 +145,6 @@ class Users extends CI_Model
 			GROUP BY registration_no
 		) AS b1 ON a.registration_no = b1.qr_registration_no
 		WHERE a.qr_generated = 'Y' 
-			AND a.deposit = '결제완료'
 		ORDER BY a.id ASC;
 
 		");

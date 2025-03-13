@@ -258,10 +258,12 @@ class Admin extends CI_Controller
             
             /* QR생성 */
             $info = array(
-                'qr_generated' =>  'Y'
+                'qr_generated' =>  'Y',
+                'deposit' => '결제완료'
             );
             $where = array(
-                'registration_no' => $value
+                'registration_no' => $value,
+                'onsite_reg' => 1
             );
             $this->users->update_deposit_status($info, $where);
 
@@ -313,10 +315,12 @@ class Admin extends CI_Controller
             
             /* QR생성 */
             $info = array(
-                'qr_generated' =>  'Y'
+                'qr_generated' =>  'Y',
+                'deposit' => '결제완료'
             );
             $where = array(
-                'registration_no' => $value
+                'registration_no' => $value,
+                'onsite_reg' => 1
             );
             $this->users->update_deposit_status($info, $where);
 
