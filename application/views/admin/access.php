@@ -443,22 +443,14 @@
                     member_type.innerText = htmlDocument.querySelector("#member_type").innerText.replace(/<br\s*\/?>/gi, "")
                     .replace(/\s/g, "");
                 
-                    remark1.innerText = htmlDocument.querySelector("#remark1").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                    /\s/g, "");
-                    remark2.innerText = htmlDocument.querySelector("#remark2").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                    /\s/g, "");
-                    remark3.innerText = htmlDocument.querySelector("#remark3").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                        /\s/g, "");
-                    remark4.innerText = htmlDocument.querySelector("#remark4").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                    /\s/g, "");
-                    remark5.innerText = htmlDocument.querySelector("#remark5").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                    /\s/g, "");
-                    remark6.innerText = htmlDocument.querySelector("#remark6").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                        /\s/g, "");
-                    remark7.innerText = htmlDocument.querySelector("#remark7").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                            /\s/g, "");
-                    memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "").replace(
-                        /\s/g, "");
+                    remark1.innerText = htmlDocument.querySelector("#remark1").innerText.replace(/<br\s*\/?>/gi, "");
+                    remark2.innerText = htmlDocument.querySelector("#remark2").innerText.replace(/<br\s*\/?>/gi, "");
+                    remark3.innerText = htmlDocument.querySelector("#remark3").innerText.replace(/<br\s*\/?>/gi, "");
+                    remark4.innerText = htmlDocument.querySelector("#remark4").innerText.replace(/<br\s*\/?>/gi, "");
+                    remark5.innerText = htmlDocument.querySelector("#remark5").innerText.replace(/<br\s*\/?>/gi, "");
+                    remark6.innerText = htmlDocument.querySelector("#remark6").innerText.replace(/<br\s*\/?>/gi, "");
+                    remark7.innerText = htmlDocument.querySelector("#remark7").innerText.replace(/<br\s*\/?>/gi, "");
+                    memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "");
                         deposit_memo.innerText = htmlDocument.querySelector("#deposit_memo").innerText.replace(/<br\s*\/?>/gi, "").replace(
                             /\s/g, "");
             } else {
