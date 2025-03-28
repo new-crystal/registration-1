@@ -984,8 +984,8 @@ class Admin extends CI_Controller
             "등록비", "결제일", "결제방식", "등록 메모", "프로모션 코드", 
             "Welcome Reception", "Satellite Symposium", "Breakfast Symposium", "Luncheon Symposium", "개최 정보 습득 방법",
              "remark1", "remark2", "remark3", "remark4", "memo", 
-             "Day 1 참석여부", "Day 1 입실 시간", "Day 1 퇴실 시간", "체류시간", "Break 제외 시간", "Day 1 예상대한의사협회평점", "Day 1 예상내과전공의평점",
-             "Day 2 참석여부", "Day 2 입실 시간", "Day 2 퇴실 시간", "체류시간", "Break 제외 시간", "Day 2 예상대한의사협회평점", "Day 2 예상내과전공의평점"
+             "Day 1 참석여부", "Day 1 입실 시간", "Day 1 퇴실 시간", "체류시간", "Break 제외 시간", "Day 1 예상대한의사협회평점", "Day 1 예상내과전공의평점", "Day 1 대한내과학회 분과전문의 자격갱신 평점", "Day 1 대한비만학회 비만전문인정의 (신규/갱신)",
+             "Day 2 참석여부", "Day 2 입실 시간", "Day 2 퇴실 시간", "체류시간", "Break 제외 시간", "Day 2 예상대한의사협회평점", "Day 2 예상내과전공의평점", "Day 2 대한내과학회 분과전문의 자격갱신 평점", "Day 2 대한비만학회 비만전문인정의 (신규/갱신)", "한국영양교육평가원 임상영양사 전문연수교육 평점", "대한운동사협회 평점"
         );
     
         $column = 0;
@@ -1049,8 +1049,9 @@ class Admin extends CI_Controller
             $spent3_am = $this->time_spent->time_spentcalc($enter3, $leave3, $start, $end_day3_am, $breaks);
             $spent3_pm = $this->time_spent->time_spentcalc($enter3, $leave3, $end_day3_am, $end, $breaks);
 
-            // $enter = $row['mintime'];
-            // $leave = $row['maxtime'];
+            $enter4 = $row['mintime_day1'];
+            $leave4 = $row['maxtime_day2'];
+            $spent5 = $this->time_spent->time_spentcalc($enter4, $leave4, $start, $end, $breaks);
 
             // $spent = $this->time_spent->time_spentcalc($enter, $leave, $start, $end, $breaks);
             
@@ -1062,16 +1063,38 @@ class Admin extends CI_Controller
             $score1_1 = floor($spent1 / 180);
             $score1_1 = min(1, $score1_1);
 
+            //DAY1 대한내과학회 분과전문의 자격갱신
+            $score1_2 = $row['mintime_day1'] ? 1 : "";
+
             //DAY2 예상평점
             $score2 = floor($spent2 / 60);
             $score2 = min(6, $score2);
 
-            $score2_am = floor($spent2_am / 60);
-            $score2_pm = floor($spent2_pm / 60);
+            $score2_am = floor($spent2_am / 180);
+            $score2_pm = floor($spent2_pm / 180);
             $score2_am = min(1, $score2_am);
             $score2_pm = min(1, $score2_pm);
 
             $score2_1 = $score2_am + $score2_pm;
+
+            //DAY2 대한내과학회 분과전문의 자격갱신
+            $score2_2 = $row['mintime_day2'] ? 1 : "";
+
+            //임상영양사
+            $score3 = 0;
+            $score3 = floor($spent5 / 60);
+            $score3 = min(5, $score3);
+
+            //운동사
+            // $score4 = 0;
+            // $score4 = floor($spent5 / 60);
+            // $score4 = min(40, $score4);
+            $score4 =  $score1 + $score2;
+            if($score4 >= 6){
+                $score4 = 40;
+            }else{
+                $score4 = 0;
+            }
 
             //DAY3 예상평점
             // $score3 = floor($spent3 / 60);
@@ -1154,14 +1177,21 @@ class Admin extends CI_Controller
             $object->getActiveSheet()->setCellValueByColumnAndRow(44, $excel_row, hoursandmins($spent1));                  //DAY1 breack 제외 시간 
             $object->getActiveSheet()->setCellValueByColumnAndRow(45, $excel_row, $score1);                                 //DAY1 예상 평점
             $object->getActiveSheet()->setCellValueByColumnAndRow(46, $excel_row, $score1_1);                                 //DAY1 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(47, $excel_row, $score1_2);                                 //DAY1 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(48, $excel_row, $score1);                                 //DAY1 예상 평점
 
-            $object->getActiveSheet()->setCellValueByColumnAndRow(47, $excel_row,  $row['qr_chk_day_2']);
-            $object->getActiveSheet()->setCellValueByColumnAndRow(48, $excel_row, date("H:i", strtotime($row['mintime_day2'])));  //DAY2입실
-            $object->getActiveSheet()->setCellValueByColumnAndRow(49, $excel_row, date("H:i", strtotime($row['maxtime_day2'])));  //DAY2퇴실
-            $object->getActiveSheet()->setCellValueByColumnAndRow(50, $excel_row, $row['d_format_day2']);                           //DAY2체류시간
-            $object->getActiveSheet()->setCellValueByColumnAndRow(51, $excel_row, hoursandmins($spent2));                       //DAY2 breack 제외 시간 
-            $object->getActiveSheet()->setCellValueByColumnAndRow(52, $excel_row, $score2);                       //DAY2 예상 평점
-            $object->getActiveSheet()->setCellValueByColumnAndRow(53, $excel_row, $score2_1);                       //DAY2 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(49, $excel_row,  $row['qr_chk_day_2']);
+            $object->getActiveSheet()->setCellValueByColumnAndRow(50, $excel_row, date("H:i", strtotime($row['mintime_day2'])));  //DAY2입실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(51, $excel_row, date("H:i", strtotime($row['maxtime_day2'])));  //DAY2퇴실
+            $object->getActiveSheet()->setCellValueByColumnAndRow(52, $excel_row, $row['d_format_day2']);                           //DAY2체류시간
+            $object->getActiveSheet()->setCellValueByColumnAndRow(53, $excel_row, hoursandmins($spent2));                       //DAY2 breack 제외 시간 
+            $object->getActiveSheet()->setCellValueByColumnAndRow(54, $excel_row, $score2);                       //DAY2 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(55, $excel_row, $score2_1);                       //DAY2 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(56, $excel_row, $score2_2);                       //DAY2 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(57, $excel_row, $score2);      
+                          
+            $object->getActiveSheet()->setCellValueByColumnAndRow(58, $excel_row, $score3);                       //DAY2 예상 평점
+            $object->getActiveSheet()->setCellValueByColumnAndRow(59, $excel_row, $score4);                       //DAY2 예상 평점
 
             // $object->getActiveSheet()->setCellValueByColumnAndRow(49, $excel_row, $row['qr_chk_day_3']);
             // $object->getActiveSheet()->setCellValueByColumnAndRow(50, $excel_row, date("H:i", strtotime($row['mintime_day3'])));  //DAY3입실

@@ -470,7 +470,7 @@
                         <div clss="btn_group" style="float: right;">
                             <button type="submit" data-toggle="modal" class="btn btn-primary">수정</button>
                             </form>
-                            <button type="button" class="btn btn-danger" onclick="removeUser('<?php echo $item['registration_no']; ?>')">삭제</button>
+                            <!-- <button type="button" class="btn btn-danger" onclick="removeUser('<?php echo $item['registration_no']; ?>')">삭제</button> -->
 
                         </div>
                     </div>
