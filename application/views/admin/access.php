@@ -218,7 +218,7 @@
                             <tr>
                                 <th>등록비</th>
                                 <td id="fee" class="qr_text">
-                                    <?php if (isset($user['fee'])) echo $user['fee'] ?>
+                                    <?php if (isset($user['fee'])) echo $user['fee']; ?>
                                 </td>
                             </tr>
                         </table>
@@ -229,57 +229,39 @@
                             </colgroup>
                             <tr>
                                 <th class="memoHeader">네임택 하단택</th>
-                                <td id="remark1" class="qr_text">
-                                    <?php if (isset($user['remark1'])) echo $user['remark1'] ?>
-                                </td>
+                                <td id="remark1" class="qr_text"><?php if (isset($user['remark1'])) echo $user['remark1']; ?></td>
                             </tr>
                             <tr>
                                 <th class="memoHeader">임원</th>
-                                <td id="remark2" class="qr_text">
-                                <?php if (isset($user['remark2'])) echo $user['remark2'] ?>
-                                </td>
+                                <td id="remark2" class="qr_text"><?php if (isset($user['remark2'])) echo $user['remark2']; ?></td>
                             </tr>
                             <tr>
                                 <th class="memoHeader">안내/심사표/Oral</th>
-                                <td id="remark3" class="qr_text">
-                                <?php if (isset($user['remark3'])) echo $user['remark3'] ?>
-                                </td>
+                                <td id="remark3" class="qr_text"><?php if (isset($user['remark3'])) echo $user['remark3']; ?></td>
                             </tr>
                             <tr>
                                 <th class="memoHeader">welcome Reception</th>
-                                <td id="remark4" class="qr_text">
-                                <?php if (isset($user['remark4'])) echo $user['remark4'] ?>
-                                </td>
+                                <td id="remark4" class="qr_text"><?php if (isset($user['remark4'])) echo $user['remark4']; ?></td>
                             </tr>
                             <tr>
                                 <th class="memoHeader">이름변경, 동명이인, 프리뷰</th>
-                                <td id="remark5" class="qr_text">
-                                <?php if (isset($user['remark5'])) echo $user['remark5'] ?>
-                                </td>
+                                <td id="remark5" class="qr_text"><?php if (isset($user['remark5'])) echo $user['remark5']; ?></td>
                             </tr>
                             <tr>
                                 <th class="memoHeader">메모</th>
-                                <td id="remark6" class="qr_text">
-                                <?php if (isset($user['remark6'])) echo $user['remark6'] ?>
-                                </td>
+                                <td id="remark6" class="qr_text"><?php if (isset($user['remark6'])) echo $user['remark6']; ?></td>
                             </tr>
                             <tr>
                                 <th class="memoHeader">중복역할</th>
-                                <td id="remark7" class="qr_text">
-                                <?php if (isset($user['remark7'])) echo $user['remark7'] ?>
-                                </td>
+                                <td id="remark7" class="qr_text"><?php if (isset($user['remark7'])) echo $user['remark7']; ?></td>
                             </tr>
                             <tr>
                                 <th class="memoHeader">현장 메모</th>
-                                <td id="memo" class="qr_text">
-                                <?php if (isset($user['memo'])) echo $user['memo'] ?>
-                                </td>
+                                <td id="memo" class="qr_text"><?php if (isset($user['memo'])) echo $user['memo']; ?></td>
                             </tr>
                             <tr>
                                 <th class="memoHeader">등록메모</th>
-                                <td id="deposit_memo" class="qr_text">
-                                <?php if (isset($user['deposit_memo'])) echo $user['deposit_memo'] ?>
-                                </td>
+                                <td id="deposit_memo" class="qr_text"><?php if (isset($user['deposit_memo'])) echo $user['deposit_memo']; ?></td>
                             </tr>
                         </table>
                     </div>
@@ -453,6 +435,7 @@
                     memo.innerText = htmlDocument.querySelector("#memo").innerText.replace(/<br\s*\/?>/gi, "");
                         deposit_memo.innerText = htmlDocument.querySelector("#deposit_memo").innerText.replace(/<br\s*\/?>/gi, "").replace(
                             /\s/g, "");
+                    console.log(remark7.innerText)
             } else {
                 number.innerText = qrvalue
                 name.innerText = "없는 QR입니다."
